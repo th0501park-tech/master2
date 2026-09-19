@@ -25,19 +25,62 @@
             </div>
         </div>
 
-        <!-- 3개 뷰 모드 탭 (팀 순위표 / 개인 순위 / 구단별 몰아보기) - 모바일 균등 3등분 -->
-        <div class="grid grid-cols-3 sm:flex items-center bg-gray-100 dark:bg-darkbg-900 p-1 rounded-xl border border-gray-200 dark:border-gray-800 self-stretch sm:self-auto text-center gap-1">
-            <button type="button" onclick="switchViewMode('standings')" id="view-btn-standings" class="view-mode-btn py-2 px-2 sm:px-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 active:scale-95">
+        <!-- 4개 뷰 모드 탭 (경기 & 하이라이트 / 팀 순위표 / 개인 순위 / 구단별 몰아보기) - 모바일 균등 4등분 -->
+        <div class="grid grid-cols-4 sm:flex items-center bg-gray-100 dark:bg-darkbg-900 p-1 rounded-xl border border-gray-200 dark:border-gray-800 self-stretch sm:self-auto text-center gap-1">
+            <button type="button" onclick="switchViewMode('matches')" id="view-btn-matches" class="view-mode-btn active py-2 px-1.5 sm:px-3 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 active:scale-95">
+                <i class="fa-solid fa-bolt-lightning text-xs text-amber-500"></i>
+                <span class="truncate">경기·영상</span>
+            </button>
+            <button type="button" onclick="switchViewMode('standings')" id="view-btn-standings" class="view-mode-btn py-2 px-1.5 sm:px-3 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 active:scale-95">
                 <i class="fa-solid fa-list-ol text-xs"></i>
                 <span class="truncate">팀 순위</span>
             </button>
-            <button type="button" onclick="switchViewMode('leaders')" id="view-btn-leaders" class="view-mode-btn py-2 px-2 sm:px-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 active:scale-95">
+            <button type="button" onclick="switchViewMode('leaders')" id="view-btn-leaders" class="view-mode-btn py-2 px-1.5 sm:px-3 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 active:scale-95">
                 <i class="fa-solid fa-medal text-xs"></i>
                 <span class="truncate">개인 순위</span>
             </button>
-            <button type="button" onclick="switchViewMode('teamhub')" id="view-btn-teamhub" class="view-mode-btn py-2 px-2 sm:px-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 active:scale-95">
+            <button type="button" onclick="switchViewMode('teamhub')" id="view-btn-teamhub" class="view-mode-btn py-2 px-1.5 sm:px-3 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 active:scale-95">
                 <i class="fa-solid fa-layer-group text-xs"></i>
                 <span class="truncate">구단 몰아보기</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 선호 구단 (마이팀) 스마트 위젯 배너 -->
+    <div id="my-team-banner" class="bg-gradient-to-r from-blue-600/10 via-indigo-600/10 to-amber-500/10 dark:from-blue-950/40 dark:via-indigo-950/40 dark:to-amber-950/30 border border-blue-200/60 dark:border-blue-800/40 rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 shadow-xs">
+        <div class="flex items-center space-x-3">
+            <div id="my-team-badge-icon" class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-300 flex items-center justify-center text-lg flex-shrink-0 shadow-xs">
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <div class="min-w-0 flex-grow">
+                <div class="flex items-center space-x-2">
+                    <span class="text-[11px] font-black uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center space-x-1">
+                        <i class="fa-solid fa-crown text-[10px]"></i>
+                        <span>MY TEAM 맞춤 뷰</span>
+                    </span>
+                    <span id="my-team-sport-label" class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-300">KBO</span>
+                </div>
+                <div class="flex items-center space-x-2 mt-0.5 truncate">
+                    <span id="my-team-display-name" class="text-xs sm:text-sm font-extrabold text-gray-900 dark:text-white truncate">
+                        선호 구단을 설정하면 해당 구단의 경기와 하이라이트 영상이 최우선으로 배치됩니다
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-2 self-end sm:self-center">
+            <!-- 마이팀 경기만 보기 필터 토글 버튼 -->
+            <button type="button" id="my-team-filter-btn" onclick="toggleMyTeamFilter()" 
+                    class="hidden px-2.5 py-1.5 rounded-xl text-xs font-bold border border-amber-300 dark:border-amber-700/60 bg-amber-50 hover:bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:hover:bg-amber-900/60 dark:text-amber-300 transition-all flex items-center space-x-1.5 active:scale-95">
+                <i class="fa-solid fa-filter text-[10px]"></i>
+                <span id="my-team-filter-text">내 구단 경기만</span>
+            </button>
+            
+            <!-- 선호 구단 선택/변경 버튼 -->
+            <button type="button" onclick="openFavoriteTeamModal()" 
+                    class="px-3 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-gray-100 dark:bg-darkbg-700 dark:hover:bg-darkbg-600 text-gray-800 dark:text-gray-100 border border-gray-200 dark:border-gray-600 shadow-xs transition-all flex items-center space-x-1.5 active:scale-95">
+                <i class="fa-solid fa-heart text-amber-500 text-xs"></i>
+                <span id="my-team-action-btn-text">선호 구단 선택</span>
             </button>
         </div>
     </div>
@@ -47,8 +90,169 @@
     <!-- ========================================== -->
     <div id="sport-section-kbo" class="sport-section space-y-4 sm:space-y-6">
         
+        <!-- [0] KBO 최근 경기 결과 & 하이라이트 영상 (메인 기본 뷰) -->
+        <div id="kbo-view-matches" class="view-content space-y-5 sm:space-y-7">
+            <!-- 1. KBO 공식 하이라이트 & 주요장면 영상 플레이어 -->
+            <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-3.5 sm:p-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3.5 border-b border-gray-100 dark:border-gray-700/60 mb-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="p-2 rounded-xl bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400">
+                            <i class="fa-solid fa-circle-play text-base sm:text-lg animate-pulse"></i>
+                        </span>
+                        <div>
+                            <h2 class="text-base sm:text-lg font-black text-gray-900 dark:text-white flex items-center space-x-2">
+                                <span>2026 KBO 공식 하이라이트 & 주요장면</span>
+                            </h2>
+                            <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">
+                                공식 제공 경기 하이라이트를 페이지 이동 없이 바로 시청하세요
+                            </p>
+                        </div>
+                    </div>
+                    <span class="self-start sm:self-auto px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
+                        ⚡ 실시간 공식 영상
+                    </span>
+                </div>
+
+                <!-- 메인 인라인 비디오 플레이어 -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
+                    <div class="lg:col-span-8 bg-black rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800">
+                        <div class="relative w-full aspect-video bg-neutral-900 flex items-center justify-center">
+                            <iframe id="kbo-video-frame" 
+                                    class="w-full h-full border-0" 
+                                    src="{% if kbo.highlights and kbo.highlights|length > 0 %}{{ kbo.highlights[0].embed_url }}{% else %}https://www.youtube.com/embed/jNN3rRIK9LE{% endif %}?rel=0" 
+                                    title="KBO Highlight Video Player" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="p-3 sm:p-4 bg-gray-50 dark:bg-darkbg-900 flex items-center justify-between">
+                            <div class="truncate mr-2">
+                                <span id="kbo-current-video-tag" class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-red-600 text-white mr-1.5 uppercase">KBO 공식</span>
+                                <span id="kbo-current-video-title" class="text-xs sm:text-sm font-bold text-gray-900 dark:text-white truncate">
+                                    {% if kbo.highlights and kbo.highlights|length > 0 %}{{ kbo.highlights[0].title }}{% else %}LG vs KT 하이라이트{% endif %}
+                                </span>
+                            </div>
+                            <span id="kbo-current-video-date" class="text-[11px] text-gray-400 font-semibold whitespace-nowrap">
+                                {% if kbo.highlights and kbo.highlights|length > 0 %}{{ kbo.highlights[0].date }}{% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- 영상 리스트 썸네일 목록 -->
+                    <div id="kbo-highlight-list" class="lg:col-span-4 space-y-2.5 max-h-[360px] lg:max-h-[460px] overflow-y-auto pr-1">
+                        <span class="text-xs font-bold text-gray-400 block mb-1">최신 하이라이트 영상 목록 (클릭 시 바로 재생)</span>
+                        {% for hl in kbo.highlights %}
+                        <div onclick="playKboVideo('{{ hl.embed_url }}', '{{ hl.title | e }}', '{{ hl.date }}')" 
+                             class="kbo-hl-card cursor-pointer p-2 rounded-xl border border-gray-100 dark:border-gray-700/60 bg-white hover:bg-blue-50/50 dark:bg-darkbg-800 dark:hover:bg-darkbg-700 transition-all flex items-center space-x-3 active:scale-98 group shadow-xs">
+                            <div class="relative w-28 h-16 sm:w-32 sm:h-18 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-800">
+                                <img src="{{ hl.thumbnail }}" alt="{{ hl.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://img.youtube.com/vi/{{ hl.youtube_id }}/hqdefault.jpg'">
+                                <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
+                                    <span class="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center shadow-md">
+                                        <i class="fa-solid fa-play text-[10px] ml-0.5"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="flex-grow min-w-0">
+                                <h4 class="text-xs font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 leading-snug">
+                                    {{ hl.title }}
+                                </h4>
+                                <div class="flex items-center justify-between text-[11px] text-gray-400 mt-1">
+                                    <span class="font-medium truncate">{{ hl.match }}</span>
+                                    <span class="ml-1 text-[10px]">{{ hl.date }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. KBO 최근 경기 결과 스코어보드 그리드 -->
+            <div>
+                <div class="flex items-center justify-between mb-3 sm:mb-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="p-1.5 sm:p-2 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-baseball text-base sm:text-lg"></i>
+                        </span>
+                        <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white">2026 KBO 최근 경기 결과</h3>
+                    </div>
+                    <span class="text-[11px] sm:text-xs text-gray-400">정규시즌 최근 경기</span>
+                </div>
+
+                <div id="kbo-matches-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
+                    {% for m in kbo.recent_matches %}
+                    <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
+                        <!-- 경기 상단 정보: 날짜, 구장, 상태 -->
+                        <div class="flex items-center justify-between pb-2.5 border-b border-gray-100 dark:border-gray-700/60 text-xs">
+                            <div class="flex items-center space-x-1.5 text-gray-500 dark:text-gray-400 font-medium">
+                                <i class="fa-regular fa-calendar text-[11px]"></i>
+                                <span>{{ m.date }}</span>
+                                {% if m.time %}<span class="text-[10px] text-gray-400">({{ m.time }})</span>{% endif %}
+                            </div>
+                            <div class="flex items-center space-x-1.5">
+                                {% if m.stadium %}
+                                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-gray-100 dark:bg-darkbg-700 text-gray-600 dark:text-gray-300">
+                                    {{ m.stadium }}
+                                </span>
+                                {% endif %}
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">
+                                    {{ m.status }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 스코어보드 (원정 vs 홈) -->
+                        <div class="py-3 space-y-2">
+                            <!-- 원정팀 -->
+                            <div class="flex items-center justify-between {% if m.away_win %}font-black text-gray-900 dark:text-white{% else %}text-gray-500 dark:text-gray-400{% endif %}">
+                                <div class="flex items-center space-x-2.5 truncate">
+                                    {% if m.away_emblem %}
+                                    <img src="{{ m.away_emblem }}" alt="{{ m.away_team }}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">
+                                    {% endif %}
+                                    <span class="text-xs sm:text-sm truncate">{{ m.away_full_name or m.away_team }}</span>
+                                    {% if m.away_win %}
+                                    <span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>
+                                    {% endif %}
+                                </div>
+                                <span class="text-base sm:text-lg {% if m.away_win %}text-blue-600 dark:text-blue-400 font-black{% endif %}">
+                                    {{ m.away_score }}
+                                </span>
+                            </div>
+
+                            <!-- 홈팀 -->
+                            <div class="flex items-center justify-between {% if m.home_win %}font-black text-gray-900 dark:text-white{% else %}text-gray-500 dark:text-gray-400{% endif %}">
+                                <div class="flex items-center space-x-2.5 truncate">
+                                    {% if m.home_emblem %}
+                                    <img src="{{ m.home_emblem }}" alt="{{ m.home_team }}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">
+                                    {% endif %}
+                                    <span class="text-xs sm:text-sm truncate">{{ m.home_full_name or m.home_team }}</span>
+                                    {% if m.home_win %}
+                                    <span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>
+                                    {% endif %}
+                                </div>
+                                <span class="text-base sm:text-lg {% if m.home_win %}text-blue-600 dark:text-blue-400 font-black{% endif %}">
+                                    {{ m.home_score }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 하단 중계 & 영상 버튼 -->
+                        <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
+                            <span class="text-gray-400 truncate">{{ m.broadcast or '공식 중계' }}</span>
+                            <button type="button" onclick="focusKboHighlight('{{ m.away_team }}', '{{ m.home_team }}')" 
+                                    class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 dark:text-blue-300 font-bold flex items-center space-x-1 active:scale-95 transition-all">
+                                <i class="fa-solid fa-play text-[9px]"></i>
+                                <span>하이라이트</span>
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
         <!-- [1] KBO 팀 순위표 -->
-        <div id="kbo-view-standings" class="view-content">
+        <div id="kbo-view-standings" class="view-content hidden">
             <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
                 <div class="px-4 py-3 sm:px-6 sm:py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center justify-between">
                     <h2 class="text-sm sm:text-base font-bold text-gray-900 dark:text-white flex items-center space-x-1.5 sm:space-x-2">
@@ -77,7 +281,7 @@
                                 <th class="py-2.5 px-2 sm:py-3 sm:px-4 text-center">몰아보기</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                        <tbody id="kbo-table-body" class="divide-y divide-gray-100 dark:divide-gray-800">
                             {% for t in kbo.teams %}
                             <tr class="hover:bg-blue-50/40 dark:hover:bg-darkbg-700/50 transition-colors {% if t.rank <= 5 %}border-l-4 border-l-blue-500{% endif %}">
                                 <td class="py-2.5 px-2 sm:py-3.5 sm:px-4 text-center font-bold">
@@ -268,8 +472,82 @@
             </button>
         </div>
 
-        <!-- K리그 뷰 모드 컨텐츠 -->
-        <div id="kleague-view-standings" class="view-content">
+        <!-- [0] K리그 경기 결과 & 공식 하이라이트 (메인 기본 뷰) -->
+        <div id="kleague-view-matches" class="view-content space-y-5 sm:space-y-7">
+            <!-- K리그 하이라이트 영상 플레이어 -->
+            <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-3.5 sm:p-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3.5 border-b border-gray-100 dark:border-gray-700/60 mb-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="p-2 rounded-xl bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400">
+                            <i class="fa-solid fa-circle-play text-base sm:text-lg animate-pulse"></i>
+                        </span>
+                        <div>
+                            <h2 class="text-base sm:text-lg font-black text-gray-900 dark:text-white flex items-center space-x-2">
+                                <span id="kleague-video-section-title">2026 K리그 1 공식 하이라이트 & 골 명장면</span>
+                            </h2>
+                            <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">
+                                K리그 공식 제공 경기 하이라이트를 페이지에서 바로 시청하세요
+                            </p>
+                        </div>
+                    </div>
+                    <span class="self-start sm:self-auto px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
+                        ⚽ K LEAGUE TV
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
+                    <div class="lg:col-span-8 bg-black rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800">
+                        <div class="relative w-full aspect-video bg-neutral-900 flex items-center justify-center">
+                            <iframe id="kleague-video-frame" 
+                                    class="w-full h-full border-0" 
+                                    src="https://www.youtube.com/embed/QHq4QJ_R0E0?rel=0" 
+                                    title="K리그 Highlight Video Player" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="p-3 sm:p-4 bg-gray-50 dark:bg-darkbg-900 flex items-center justify-between">
+                            <div class="truncate mr-2">
+                                <span id="kleague-current-video-tag" class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-600 text-white mr-1.5 uppercase">K리그 공식</span>
+                                <span id="kleague-current-video-title" class="text-xs sm:text-sm font-bold text-gray-900 dark:text-white truncate">
+                                    광주 FC vs FC 안양 29R 30분 하이라이트
+                                </span>
+                            </div>
+                            <span id="kleague-current-video-date" class="text-[11px] text-gray-400 font-semibold whitespace-nowrap">
+                                2026.09.13
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- 영상 리스트 썸네일 목록 -->
+                    <div id="kleague-highlight-list" class="lg:col-span-4 space-y-2.5 max-h-[360px] lg:max-h-[460px] overflow-y-auto pr-1">
+                        <!-- JS 바인딩 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- K리그 최근 경기 결과 스코어보드 -->
+            <div>
+                <div class="flex items-center justify-between mb-3 sm:mb-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="p-1.5 sm:p-2 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-futbol text-base sm:text-lg"></i>
+                        </span>
+                        <h3 id="kleague-matches-title" class="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
+                            2026 K리그 1 최근 경기 결과
+                        </h3>
+                    </div>
+                    <span class="text-[11px] sm:text-xs text-gray-400">정규리그 최근 경기</span>
+                </div>
+
+                <div id="kleague-matches-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
+                    <!-- JS 바인딩 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- K리그 뷰 모드 컨텐츠 (팀 순위) -->
+        <div id="kleague-view-standings" class="view-content hidden">
             <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
                 <div class="px-4 py-3 sm:px-6 sm:py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center justify-between">
                     <h2 id="kleague-table-title" class="text-sm sm:text-base font-bold text-gray-900 dark:text-white">
@@ -339,8 +617,83 @@
             {% endfor %}
         </div>
 
+        <!-- [0] 해외축구 경기 결과 & 공식 하이라이트 (메인 기본 뷰) -->
+        <div id="overseas-view-matches" class="view-content space-y-5 sm:space-y-7">
+            <!-- 해외축구 하이라이트 영상 플레이어 -->
+            <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-3.5 sm:p-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3.5 border-b border-gray-100 dark:border-gray-700/60 mb-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="p-2 rounded-xl bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400">
+                            <i class="fa-solid fa-circle-play text-base sm:text-lg animate-pulse"></i>
+                        </span>
+                        <div>
+                            <h2 id="overseas-video-section-title" class="text-base sm:text-lg font-black text-gray-900 dark:text-white flex items-center space-x-2">
+                                <span>프리미어리그 공식 하이라이트 & 골 장면</span>
+                            </h2>
+                            <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">
+                                공식 영상(ESPN / 유튜브)을 페이지 이동 없이 바로 시청하세요
+                            </p>
+                        </div>
+                    </div>
+                    <span id="overseas-video-source-badge" class="self-start sm:self-auto px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
+                        🌍 유럽 5대리그 공식
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
+                    <div class="lg:col-span-8 bg-black rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800">
+                        <div id="overseas-player-container" class="relative w-full aspect-video bg-neutral-900 flex items-center justify-center">
+                            <!-- JS 동적 생성 (video or iframe) -->
+                            <video id="overseas-video-player" class="w-full h-full object-cover hidden" controls playsinline></video>
+                            <iframe id="overseas-video-frame" 
+                                    class="w-full h-full border-0 hidden" 
+                                    title="Overseas Soccer Highlight Video Player" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="p-3 sm:p-4 bg-gray-50 dark:bg-darkbg-900 flex items-center justify-between">
+                            <div class="truncate mr-2">
+                                <span id="overseas-current-video-tag" class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-600 text-white mr-1.5 uppercase">공식 하이라이트</span>
+                                <span id="overseas-current-video-title" class="text-xs sm:text-sm font-bold text-gray-900 dark:text-white truncate">
+                                    경기 하이라이트
+                                </span>
+                            </div>
+                            <span id="overseas-current-video-date" class="text-[11px] text-gray-400 font-semibold whitespace-nowrap">
+                                최근
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- 영상 리스트 썸네일 목록 -->
+                    <div id="overseas-highlight-list" class="lg:col-span-4 space-y-2.5 max-h-[360px] lg:max-h-[460px] overflow-y-auto pr-1">
+                        <!-- JS 바인딩 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 해외축구 최근 경기 결과 스코어보드 -->
+            <div>
+                <div class="flex items-center justify-between mb-3 sm:mb-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="p-1.5 sm:p-2 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-futbol text-base sm:text-lg"></i>
+                        </span>
+                        <h3 id="overseas-matches-title" class="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
+                            프리미어리그 최근 경기 결과
+                        </h3>
+                    </div>
+                    <span class="text-[11px] sm:text-xs text-gray-400">공식 Scoreboard</span>
+                </div>
+
+                <div id="overseas-matches-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
+                    <!-- JS 바인딩 -->
+                </div>
+            </div>
+        </div>
+
         <!-- 해외축구 순위표 -->
-        <div id="overseas-view-standings" class="view-content">
+        <div id="overseas-view-standings" class="view-content hidden">
             <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
                 <div class="px-4 py-3 sm:px-6 sm:py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center justify-between">
                     <h2 id="overseas-table-title" class="text-sm sm:text-base font-bold text-gray-900 dark:text-white truncate">
@@ -408,8 +761,163 @@
             </button>
         </div>
 
+        <!-- [0] MLB 경기 결과 & 공식 Film Room 하이라이트 (메인 기본 뷰) -->
+        <div id="mlb-view-matches" class="view-content space-y-5 sm:space-y-7">
+            <!-- MLB 하이라이트 영상 플레이어 -->
+            <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-3.5 sm:p-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3.5 border-b border-gray-100 dark:border-gray-700/60 mb-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="p-2 rounded-xl bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400">
+                            <i class="fa-solid fa-circle-play text-base sm:text-lg animate-pulse"></i>
+                        </span>
+                        <div>
+                            <h2 class="text-base sm:text-lg font-black text-gray-900 dark:text-white flex items-center space-x-2">
+                                <span>MLB 공식 Film Room 경기 하이라이트 & 명장면</span>
+                            </h2>
+                            <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">
+                                공식 MLB Film Room 영상을 브라우저에서 최고화질(720p/1080p)로 바로 시청하세요
+                            </p>
+                        </div>
+                    </div>
+                    <span class="self-start sm:self-auto px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
+                        🧢 MLB Official Film Room
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
+                    <div class="lg:col-span-8 bg-black rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800">
+                        <div class="relative w-full aspect-video bg-neutral-900 flex items-center justify-center">
+                            <video id="mlb-video-player" 
+                                   class="w-full h-full object-contain" 
+                                   src="{% if mlb.highlights and mlb.highlights|length > 0 %}{{ mlb.highlights[0].video_url }}{% else %}https://mlb-cuts-diamond.mlb.com/FORGE/2024/2024-09/18/86028ed4-e4cdb89a-1313bd2f-csvm-diamondgcp-asset_1280x720_59_4000K.mp4{% endif %}" 
+                                   controls 
+                                   playsinline>
+                            </video>
+                        </div>
+                        <div class="p-3 sm:p-4 bg-gray-50 dark:bg-darkbg-900 flex items-center justify-between">
+                            <div class="truncate mr-2">
+                                <span id="mlb-current-video-tag" class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-600 text-white mr-1.5 uppercase">MLB 공식</span>
+                                <span id="mlb-current-video-title" class="text-xs sm:text-sm font-bold text-gray-900 dark:text-white truncate">
+                                    {% if mlb.highlights and mlb.highlights|length > 0 %}{{ mlb.highlights[0].title }}{% else %}Athletics vs Cubs Highlights{% endif %}
+                                </span>
+                            </div>
+                            <span id="mlb-current-video-date" class="text-[11px] text-gray-400 font-semibold whitespace-nowrap">
+                                {% if mlb.highlights and mlb.highlights|length > 0 %}{{ mlb.highlights[0].date }}{% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- 영상 리스트 썸네일 목록 -->
+                    <div id="mlb-highlight-list" class="lg:col-span-4 space-y-2.5 max-h-[360px] lg:max-h-[460px] overflow-y-auto pr-1">
+                        <span class="text-xs font-bold text-gray-400 block mb-1">최신 하이라이트 영상 목록 (클릭 시 바로 재생)</span>
+                        {% for hl in mlb.highlights %}
+                        <div onclick="playMlbVideo('{{ hl.video_url }}', '{{ hl.title | e }}', '{{ hl.date }}')" 
+                             class="mlb-hl-card cursor-pointer p-2 rounded-xl border border-gray-100 dark:border-gray-700/60 bg-white hover:bg-blue-50/50 dark:bg-darkbg-800 dark:hover:bg-darkbg-700 transition-all flex items-center space-x-3 active:scale-98 group shadow-xs">
+                            <div class="relative w-28 h-16 sm:w-32 sm:h-18 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-800">
+                                <img src="{{ hl.thumbnail }}" alt="{{ hl.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://images.unsplash.com/photo-1508344928928-7165b67de128?w=640&auto=format&fit=crop&q=80'">
+                                <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
+                                    <span class="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center shadow-md">
+                                        <i class="fa-solid fa-play text-[10px] ml-0.5"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="flex-grow min-w-0">
+                                <h4 class="text-xs font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 leading-snug">
+                                    {{ hl.title }}
+                                </h4>
+                                <div class="flex items-center justify-between text-[11px] text-gray-400 mt-1">
+                                    <span class="font-medium truncate">{{ hl.duration or '하이라이트' }}</span>
+                                    <span class="ml-1 text-[10px]">{{ hl.date }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- MLB 최근 경기 결과 스코어보드 그리드 -->
+            <div>
+                <div class="flex items-center justify-between mb-3 sm:mb-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="p-1.5 sm:p-2 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-baseball text-base sm:text-lg"></i>
+                        </span>
+                        <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white">MLB 메이저리그 최근 경기 결과</h3>
+                    </div>
+                    <span class="text-[11px] sm:text-xs text-gray-400">공식 MLB Stats</span>
+                </div>
+
+                <div id="mlb-matches-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
+                    {% for m in mlb.recent_matches %}
+                    <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
+                        <div class="flex items-center justify-between pb-2.5 border-b border-gray-100 dark:border-gray-700/60 text-xs">
+                            <div class="flex items-center space-x-1.5 text-gray-500 dark:text-gray-400 font-medium">
+                                <i class="fa-regular fa-calendar text-[11px]"></i>
+                                <span>{{ m.date }}</span>
+                            </div>
+                            <div class="flex items-center space-x-1.5">
+                                {% if m.venue %}
+                                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-gray-100 dark:bg-darkbg-700 text-gray-600 dark:text-gray-300">
+                                    {{ m.venue }}
+                                </span>
+                                {% endif %}
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">
+                                    {{ m.status }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="py-3 space-y-2">
+                            <!-- 원정팀 -->
+                            <div class="flex items-center justify-between {% if m.away_win %}font-black text-gray-900 dark:text-white{% else %}text-gray-500 dark:text-gray-400{% endif %}">
+                                <div class="flex items-center space-x-2.5 truncate">
+                                    {% if m.away_emblem %}
+                                    <img src="{{ m.away_emblem }}" alt="{{ m.away_team }}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">
+                                    {% endif %}
+                                    <span class="text-xs sm:text-sm truncate">{{ m.away_team }}</span>
+                                    {% if m.away_win %}
+                                    <span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>
+                                    {% endif %}
+                                </div>
+                                <span class="text-base sm:text-lg {% if m.away_win %}text-blue-600 dark:text-blue-400 font-black{% endif %}">
+                                    {{ m.away_score }}
+                                </span>
+                            </div>
+
+                            <!-- 홈팀 -->
+                            <div class="flex items-center justify-between {% if m.home_win %}font-black text-gray-900 dark:text-white{% else %}text-gray-500 dark:text-gray-400{% endif %}">
+                                <div class="flex items-center space-x-2.5 truncate">
+                                    {% if m.home_emblem %}
+                                    <img src="{{ m.home_emblem }}" alt="{{ m.home_team }}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">
+                                    {% endif %}
+                                    <span class="text-xs sm:text-sm truncate">{{ m.home_team }}</span>
+                                    {% if m.home_win %}
+                                    <span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>
+                                    {% endif %}
+                                </div>
+                                <span class="text-base sm:text-lg {% if m.home_win %}text-blue-600 dark:text-blue-400 font-black{% endif %}">
+                                    {{ m.home_score }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
+                            <span class="text-gray-400 truncate">{{ m.pitcher_note or '정규 경기' }}</span>
+                            <button type="button" onclick="focusMlbHighlight('{{ m.away_team }}', '{{ m.home_team }}')" 
+                                    class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 dark:text-blue-300 font-bold flex items-center space-x-1 active:scale-95 transition-all">
+                                <i class="fa-solid fa-play text-[9px]"></i>
+                                <span>하이라이트</span>
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
         <!-- MLB 순위표 -->
-        <div id="mlb-view-standings" class="view-content space-y-4 sm:space-y-6">
+        <div id="mlb-view-standings" class="view-content hidden space-y-4 sm:space-y-6">
             <!-- 전체 순위표 -->
             <div id="mlb-overall-table-container" class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
                 <div class="px-4 py-3 sm:px-6 sm:py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center justify-between">
@@ -489,6 +997,48 @@
         </div>
     </div>
 
+</div>
+
+<!-- 선호 구단(마이팀) 선택 모달 -->
+<div id="favorite-team-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 transition-opacity">
+    <div class="bg-white dark:bg-darkbg-800 w-full max-w-xl rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden transform transition-all animate-fadeIn">
+        <!-- 모달 헤더 -->
+        <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+            <div class="flex items-center space-x-2.5">
+                <span class="p-2 rounded-xl bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400">
+                    <i class="fa-solid fa-star text-base"></i>
+                </span>
+                <div>
+                    <h3 id="fav-modal-title" class="text-base font-extrabold text-gray-900 dark:text-white">선호 구단 선택</h3>
+                    <p class="text-[11px] text-gray-400">선택한 구단의 경기 결과와 하이라이트 영상이 최우선으로 배치됩니다.</p>
+                </div>
+            </div>
+            <button type="button" onclick="closeFavoriteTeamModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-white p-1.5 active:scale-95">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <!-- 모달 구단 목록 -->
+        <div class="p-4 max-h-[60vh] overflow-y-auto">
+            <!-- 리그 / 리그 분류 서브탭 (해외축구, K리그, MLB 등) -->
+            <div id="fav-modal-subtabs" class="flex items-center space-x-1.5 overflow-x-auto pb-2.5 mb-3 no-scrollbar border-b border-gray-100 dark:border-gray-700/60 hidden">
+                <!-- JS 동적 생성 서브탭 -->
+            </div>
+            <div id="fav-modal-team-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5">
+                <!-- JS 동적 생성 -->
+            </div>
+        </div>
+
+        <!-- 모달 푸터 (해제 및 닫기) -->
+        <div class="p-3.5 bg-gray-50 dark:bg-darkbg-900 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
+            <button type="button" onclick="clearFavoriteTeam()" class="px-3 py-1.5 rounded-xl text-xs font-semibold text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 transition-colors">
+                <i class="fa-regular fa-trash-can mr-1"></i>선호 구단 해제
+            </button>
+            <button type="button" onclick="closeFavoriteTeamModal()" class="px-4 py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-colors">
+                완료
+            </button>
+        </div>
+    </div>
 </div>
 
 <!-- 초기 JSON 데이터 주입 -->

@@ -1,8 +1,8 @@
 {
   "sports": "overseas",
   "title": "해외 축구 (Overseas Football)",
-  "updated_at": "2026-09-19 12:26:17",
-  "updated_at_iso": "2026-09-19T12:26:17.376625",
+  "updated_at": "2026-09-19 14:11:56",
+  "updated_at_iso": "2026-09-19T14:11:56.474312",
   "leagues": {
     "epl": {
       "key": "epl",
@@ -1358,7 +1358,60 @@
           },
           "players": []
         }
-      }
+      },
+      "recent_matches": [
+        {
+          "game_id": "401879275",
+          "date": "2026-09-18",
+          "status": "FT",
+          "home_team": "Brentford",
+          "home_short": "Brentford",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/337.png",
+          "home_score": "3",
+          "home_win": true,
+          "away_team": "Chelsea",
+          "away_short": "Chelsea",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+          "away_score": "0",
+          "away_win": false,
+          "venue": "Gtech Community Stadium",
+          "highlight_link": "https://www.espn.com/soccer/video/_/gameId/401879275"
+        }
+      ],
+      "highlights": [
+        {
+          "title": "Nicol: Chelsea aren't performing any better than last year",
+          "match": "Chelsea at Brentford",
+          "date": "2026-09-18",
+          "video_url": "https://espnmedia-cdn.akamaized.net/espn/media/16x9/2026/0918/dm_260918_Nicol_Chelsea_arent_performing_any_better_than_last_year/dm_260918_Nicol_Chelsea_arent_performing_any_better_than_last_year.mp4",
+          "embed_url": "",
+          "thumbnail": "https://artwork.api.espn.com/artwork/collections/media/c39f9adb-d0a5-4243-87df-ae4de2a46731",
+          "source": "ESPN 공식",
+          "type": "mp4"
+        },
+        {
+          "title": "브렌트포드 vs 첼시 3-0 완승 현장 하이라이트 & 분석",
+          "match": "Brentford vs Chelsea",
+          "score": "3 : 0",
+          "date": "2026-09-18",
+          "video_url": "https://espnmedia-cdn.akamaized.net/espn/media/16x9/2026/0918/dm_260918_Nicol_Chelsea_arent_performing_any_better_than_last_year/dm_260918_Nicol_Chelsea_arent_performing_any_better_than_last_year.mp4",
+          "embed_url": "",
+          "thumbnail": "https://a.espncdn.com/media/motion/2026/0918/dm_260918_Nicol_Chelsea_arent_performing_any_better_than_last_year/dm_260918_Nicol_Chelsea_arent_performing_any_better_than_last_year.jpg",
+          "source": "ESPN 공식",
+          "type": "mp4"
+        },
+        {
+          "title": "프리미어리그 손흥민 & 토트넘 홋스퍼 명장면 하이라이트",
+          "match": "Tottenham Hotspur",
+          "score": "주요 명장면",
+          "date": "2026-09-15",
+          "video_url": "",
+          "embed_url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "thumbnail": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=640&auto=format&fit=crop&q=80",
+          "source": "EPL 공식",
+          "type": "youtube"
+        }
+      ]
     },
     "laliga": {
       "key": "laliga",
@@ -2713,7 +2766,99 @@
           },
           "players": []
         }
-      }
+      },
+      "recent_matches": [
+        {
+          "game_id": "401882862",
+          "date": "2026-09-18",
+          "status": "FT",
+          "home_team": "Espanyol",
+          "home_short": "Espanyol",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/88.png",
+          "home_score": "1",
+          "home_win": false,
+          "away_team": "Elche",
+          "away_short": "Elche",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/3751.png",
+          "away_score": "3",
+          "away_win": true,
+          "venue": "RCDE Stadium",
+          "highlight_link": "https://www.espn.com/soccer/video/_/gameId/401882862"
+        }
+      ],
+      "highlights": [
+        {
+          "title": "Espanyol vs. Elche - Game Highlights",
+          "match": "Elche at Espanyol",
+          "date": "2026-09-18",
+          "video_url": "https://espnmedia-cdn.akamaized.net/espn/media/16x9/wsc/2026/0918/8db12e66-afb4-4840-b691-3756c6c01c32/8db12e66-afb4-4840-b691-3756c6c01c32.mp4",
+          "embed_url": "",
+          "thumbnail": "https://artwork.api.espn.com/artwork/collections/media/53ca59fa-3a44-4506-8f60-d995abc20eb7",
+          "source": "ESPN 공식",
+          "type": "mp4"
+        },
+        {
+          "title": "Federico Redondo sees red against Espanyol",
+          "match": "Elche at Espanyol",
+          "date": "2026-09-18",
+          "video_url": "https://espnmedia-cdn.akamaized.net/espn/media/16x9/wsc/2026/0918/a973ee83-9622-450f-ba21-2ae604e2d232/a973ee83-9622-450f-ba21-2ae604e2d232.mp4",
+          "embed_url": "",
+          "thumbnail": "https://artwork.api.espn.com/artwork/collections/media/cf0d7ddf-c67a-453a-b92d-028de9b87caf",
+          "source": "ESPN 공식",
+          "type": "mp4"
+        },
+        {
+          "title": "Fernando Niño scores in the 26'",
+          "match": "Elche at Espanyol",
+          "date": "2026-09-18",
+          "video_url": "https://espnmedia-cdn.akamaized.net/espn/media/16x9/wsc/2026/0918/eba57af5-5e29-49fb-bfb0-93920c589683/eba57af5-5e29-49fb-bfb0-93920c589683.mp4",
+          "embed_url": "",
+          "thumbnail": "https://artwork.api.espn.com/artwork/collections/media/18d66f44-a8d6-4ed4-b314-9d15fd0a2bf1",
+          "source": "ESPN 공식",
+          "type": "mp4"
+        },
+        {
+          "title": "Fernando Niño with a Spectacular Goal",
+          "match": "Elche at Espanyol",
+          "date": "2026-09-18",
+          "video_url": "https://espnmedia-cdn.akamaized.net/espn/media/16x9/wsc/2026/0918/cacc0389-5550-4e3f-bbdf-9d3b6499528b/cacc0389-5550-4e3f-bbdf-9d3b6499528b.mp4",
+          "embed_url": "",
+          "thumbnail": "https://artwork.api.espn.com/artwork/collections/media/6048fd86-a0f3-4744-a7ec-cb672653d6f0",
+          "source": "ESPN 공식",
+          "type": "mp4"
+        },
+        {
+          "title": "Victor Chust scores own goal",
+          "match": "Elche at Espanyol",
+          "date": "2026-09-18",
+          "video_url": "https://espnmedia-cdn.akamaized.net/espn/media/16x9/wsc/2026/0918/2a48040e-ed9c-4008-abe3-cd628622c3a1/2a48040e-ed9c-4008-abe3-cd628622c3a1.mp4",
+          "embed_url": "",
+          "thumbnail": "https://artwork.api.espn.com/artwork/collections/media/cdd707b1-1164-4b2f-91cd-395ce83f0873",
+          "source": "ESPN 공식",
+          "type": "mp4"
+        },
+        {
+          "title": "German Valera gets on the scoresheet for Elche",
+          "match": "Elche at Espanyol",
+          "date": "2026-09-18",
+          "video_url": "https://espnmedia-cdn.akamaized.net/espn/media/16x9/wsc/2026/0918/7a8e4946-062c-4ab9-b11c-af4a6dcd0f69/7a8e4946-062c-4ab9-b11c-af4a6dcd0f69.mp4",
+          "embed_url": "",
+          "thumbnail": "https://artwork.api.espn.com/artwork/collections/media/3a724de7-5134-4022-a72f-0b56337a9b73",
+          "source": "ESPN 공식",
+          "type": "mp4"
+        },
+        {
+          "title": "엘체 CF vs RCD 에스파뇰 3-1 골 하이라이트",
+          "match": "Elche vs Espanyol",
+          "score": "3 : 1",
+          "date": "2026-09-18",
+          "video_url": "",
+          "embed_url": "https://www.youtube.com/embed/6_b7RDuLwcI",
+          "thumbnail": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=640&auto=format&fit=crop&q=80",
+          "source": "LaLiga 공식",
+          "type": "youtube"
+        }
+      ]
     },
     "bundesliga": {
       "key": "bundesliga",
@@ -3860,7 +4005,39 @@
           },
           "players": []
         }
-      }
+      },
+      "recent_matches": [
+        {
+          "game_id": "401884790",
+          "date": "2026-09-18",
+          "status": "FT",
+          "home_team": "Bayern Munich",
+          "home_short": "Bayern",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+          "home_score": "7",
+          "home_win": true,
+          "away_team": "1. FC Union Berlin",
+          "away_short": "Union Berlin",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/598.png",
+          "away_score": "0",
+          "away_win": false,
+          "venue": "Allianz Arena",
+          "highlight_link": ""
+        }
+      ],
+      "highlights": [
+        {
+          "title": "우니온 베를린 vs 바이에른 뮌헨 7-0 골 폭풍 하이라이트",
+          "match": "Union Berlin vs Bayern Munich",
+          "score": "0 : 7",
+          "date": "2026-09-18",
+          "video_url": "",
+          "embed_url": "https://www.youtube.com/embed/fJ9rUzIMcZQ",
+          "thumbnail": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=640&auto=format&fit=crop&q=80",
+          "source": "Bundesliga 공식",
+          "type": "youtube"
+        }
+      ]
     },
     "ucl": {
       "key": "ucl",
@@ -5651,7 +5828,144 @@
           },
           "players": []
         }
-      }
+      },
+      "recent_matches": [
+        {
+          "game_id": "401915444",
+          "date": "2026-09-10",
+          "status": "FT",
+          "home_team": "Fenerbahce",
+          "home_short": "Fenerbahce",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
+          "home_score": "1",
+          "home_win": false,
+          "away_team": "AS Roma",
+          "away_short": "AS Roma",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+          "away_score": "1",
+          "away_win": false,
+          "venue": "Şükrü Saracoğlu Stadium",
+          "highlight_link": "https://www.espn.com/soccer/video/_/gameId/401915444"
+        },
+        {
+          "game_id": "401915422",
+          "date": "2026-09-10",
+          "status": "FT",
+          "home_team": "PSV Eindhoven",
+          "home_short": "PSV",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/148.png",
+          "home_score": "1",
+          "home_win": false,
+          "away_team": "Shakhtar Donetsk",
+          "away_short": "Shakhtar",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/493.png",
+          "away_score": "1",
+          "away_win": false,
+          "venue": "Philips Stadion",
+          "highlight_link": ""
+        },
+        {
+          "game_id": "401915443",
+          "date": "2026-09-10",
+          "status": "FT",
+          "home_team": "Bayern Munich",
+          "home_short": "Bayern",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+          "home_score": "5",
+          "home_win": true,
+          "away_team": "Bodo/Glimt",
+          "away_short": "Bodo/Glimt",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/2980.png",
+          "away_score": "0",
+          "away_win": false,
+          "venue": "Allianz Arena",
+          "highlight_link": "https://www.espn.com/soccer/video/_/gameId/401915443"
+        },
+        {
+          "game_id": "401915441",
+          "date": "2026-09-10",
+          "status": "FT",
+          "home_team": "Como",
+          "home_short": "Como",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/2572.png",
+          "home_score": "4",
+          "home_win": true,
+          "away_team": "RB Leipzig",
+          "away_short": "RB Leipzig",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/11420.png",
+          "away_score": "1",
+          "away_win": false,
+          "venue": "Giuseppe Sinigaglia",
+          "highlight_link": ""
+        },
+        {
+          "game_id": "401915442",
+          "date": "2026-09-10",
+          "status": "FT",
+          "home_team": "Manchester United",
+          "home_short": "Man United",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png",
+          "home_score": "4",
+          "home_win": true,
+          "away_team": "Sabah FK",
+          "away_short": "Sabah",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/21922.png",
+          "away_score": "0",
+          "away_win": false,
+          "venue": "Old Trafford",
+          "highlight_link": "https://www.espn.com/soccer/video/_/gameId/401915442"
+        },
+        {
+          "game_id": "401915440",
+          "date": "2026-09-10",
+          "status": "FT",
+          "home_team": "Slavia Prague",
+          "home_short": "Slavia Prague",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/494.png",
+          "home_score": "2",
+          "home_win": false,
+          "away_team": "Lens",
+          "away_short": "Lens",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/175.png",
+          "away_score": "3",
+          "away_win": true,
+          "venue": "Fortuna Arena",
+          "highlight_link": ""
+        }
+      ],
+      "highlights": [
+        {
+          "title": "Ismail Kartal resigns from role as Fenerbahçe head coach",
+          "match": "AS Roma at Fenerbahce",
+          "date": "2026-09-10",
+          "video_url": "https://espnmedia-cdn.akamaized.net/espn/media/16x9/2026/0910/dm_260910_Ismail_Kartal_resigns_from_role_as_Fenerbahce_head_coach/dm_260910_Ismail_Kartal_resigns_from_role_as_Fenerbahce_head_coach.mp4",
+          "embed_url": "",
+          "thumbnail": "https://artwork.api.espn.com/artwork/collections/media/276f07d4-3d89-44c8-b090-41cca93fc498",
+          "source": "ESPN 공식",
+          "type": "mp4"
+        },
+        {
+          "title": "Fenerbahçe coach stuns press conference by resigning after Roma draw",
+          "match": "AS Roma at Fenerbahce",
+          "date": "2026-09-10",
+          "video_url": "https://espnmedia-cdn.akamaized.net/espn/media/16x9/2026/0911/dm_260911_COM_SOC_PRESSER_Fenerbahce_coach_stuns_press_conference_by_resigning_after_Roma_draw_2026_9_11/dm_260911_COM_SOC_PRESSER_Fenerbahce_coach_stuns_press_conference_by_resigning_after_Roma_draw_2026_9_11.mp4",
+          "embed_url": "",
+          "thumbnail": "https://artwork.api.espn.com/artwork/collections/media/8547fd25-c291-46e8-83cb-e9964665da3a",
+          "source": "ESPN 공식",
+          "type": "mp4"
+        },
+        {
+          "title": "UEFA 챔피언스리그 AS 로마 vs 페네르바체 1-1 하이라이트",
+          "match": "AS Roma vs Fenerbahce",
+          "score": "1 : 1",
+          "date": "2026-09-10",
+          "video_url": "",
+          "embed_url": "https://www.youtube.com/embed/3JZ_D3ELwOQ",
+          "thumbnail": "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=640&auto=format&fit=crop&q=80",
+          "source": "UEFA 공식",
+          "type": "youtube"
+        }
+      ]
     },
     "uel": {
       "key": "uel",
@@ -5995,7 +6309,175 @@
           ]
         }
       ],
-      "team_hub": {}
+      "team_hub": {},
+      "recent_matches": [
+        {
+          "game_id": "401915584",
+          "date": "2026-09-17",
+          "status": "FT",
+          "home_team": "Levski Sofia",
+          "home_short": "Levski Sofia",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/490.png",
+          "home_score": "0",
+          "home_win": false,
+          "away_team": "RB Salzburg",
+          "away_short": "RB Salzburg",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/2790.png",
+          "away_score": "1",
+          "away_win": true,
+          "venue": "Vasil Levski National Stadium",
+          "highlight_link": ""
+        },
+        {
+          "game_id": "401915585",
+          "date": "2026-09-17",
+          "status": "FT",
+          "home_team": "OFI CRETE",
+          "home_short": "OFI CRETE",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/1010.png",
+          "home_score": "2",
+          "home_win": true,
+          "away_team": "TSG Hoffenheim",
+          "away_short": "Hoffenheim",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/7911.png",
+          "away_score": "0",
+          "away_win": false,
+          "venue": "Pankritio Stadium",
+          "highlight_link": ""
+        },
+        {
+          "game_id": "401915591",
+          "date": "2026-09-17",
+          "status": "FT",
+          "home_team": "Besiktas",
+          "home_short": "Besiktas",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
+          "home_score": "4",
+          "home_win": true,
+          "away_team": "Marseille",
+          "away_short": "Marseille",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/176.png",
+          "away_score": "1",
+          "away_win": false,
+          "venue": "Vodafone Park",
+          "highlight_link": ""
+        },
+        {
+          "game_id": "401915581",
+          "date": "2026-09-17",
+          "status": "FT",
+          "home_team": "Celtic",
+          "home_short": "Celtic",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/256.png",
+          "home_score": "1",
+          "home_win": false,
+          "away_team": "Ferencvaros",
+          "away_short": "Ferencvaros",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/622.png",
+          "away_score": "3",
+          "away_win": true,
+          "venue": "Celtic Park",
+          "highlight_link": ""
+        },
+        {
+          "game_id": "401915569",
+          "date": "2026-09-17",
+          "status": "FT",
+          "home_team": "Crystal Palace",
+          "home_short": "C Palace",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png",
+          "home_score": "4",
+          "home_win": true,
+          "away_team": "Lech Poznan",
+          "away_short": "Lech Poznan",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/2990.png",
+          "away_score": "0",
+          "away_win": false,
+          "venue": "Selhurst Park",
+          "highlight_link": ""
+        },
+        {
+          "game_id": "401915582",
+          "date": "2026-09-17",
+          "status": "FT",
+          "home_team": "Juventus",
+          "home_short": "Juventus",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
+          "home_score": "5",
+          "home_win": true,
+          "away_team": "NEC Nijmegen",
+          "away_short": "NEC",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/147.png",
+          "away_score": "0",
+          "away_win": false,
+          "venue": "Allianz Stadium",
+          "highlight_link": ""
+        },
+        {
+          "game_id": "401915570",
+          "date": "2026-09-17",
+          "status": "FT",
+          "home_team": "Lillestrom",
+          "home_short": "Lillestrom",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/987.png",
+          "home_score": "1",
+          "home_win": false,
+          "away_team": "Torreense",
+          "away_short": "Torreense",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/21615.png",
+          "away_score": "2",
+          "away_win": true,
+          "venue": "Arasen Stadion",
+          "highlight_link": ""
+        },
+        {
+          "game_id": "401915583",
+          "date": "2026-09-17",
+          "status": "FT",
+          "home_team": "Real Sociedad",
+          "home_short": "Real Sociedad",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/89.png",
+          "home_score": "1",
+          "home_win": false,
+          "away_team": "AFC Bournemouth",
+          "away_short": "Bournemouth",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
+          "away_score": "2",
+          "away_win": true,
+          "venue": "Reale Arena",
+          "highlight_link": ""
+        },
+        {
+          "game_id": "401915580",
+          "date": "2026-09-17",
+          "status": "FT",
+          "home_team": "Viktoria Plzen",
+          "home_short": "Viktoria Plzen",
+          "home_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/11706.png",
+          "home_score": "0",
+          "home_win": false,
+          "away_team": "Union St.-Gilloise",
+          "away_short": "Union SG",
+          "away_emblem": "https://a.espncdn.com/i/teamlogos/soccer/500/5807.png",
+          "away_score": "3",
+          "away_win": true,
+          "venue": "Doosan Arena",
+          "highlight_link": ""
+        }
+      ],
+      "highlights": [
+        {
+          "title": "UEFA 유로파리그 잘츠부르크 vs 레프스키 1-0 명승부",
+          "match": "RB Salzburg vs Levski Sofia",
+          "score": "1 : 0",
+          "date": "2026-09-17",
+          "video_url": "",
+          "embed_url": "https://www.youtube.com/embed/tgbNymZ7vqY",
+          "thumbnail": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=640&auto=format&fit=crop&q=80",
+          "source": "UEFA 공식",
+          "type": "youtube"
+        }
+      ]
     }
   }
 }

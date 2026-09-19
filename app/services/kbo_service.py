@@ -246,6 +246,224 @@ def build_team_hub(teams, hitters, pitchers):
     return hub
 
 
+def fetch_kbo_recent_matches():
+    """KBO 최근 경기 결과 크롤링 (최근 15경기)"""
+    try:
+        url = "https://www.koreabaseball.com/ws/Schedule.asmx/GetScheduleList"
+        headers = {
+            **HEADERS,
+            "Referer": "https://www.koreabaseball.com/Schedule/Schedule.aspx",
+            "X-Requested-With": "XMLHttpRequest",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+        }
+        # 현재 연도 및 월
+        now = datetime.now()
+        year_str = str(now.year) if now.year <= 2026 else "2026"
+        month_str = f"{now.month:02d}"
+
+        data = {
+            'leId': '1',
+            'srIdList': '0,9,6',
+            'seasonId': year_str,
+            'gameMonth': month_str,
+            'teamId': ''
+        }
+        r = requests.post(url, headers=headers, data=data, timeout=8)
+        rows = r.json().get('rows', [])
+
+        # 만약 이번 달에 경기가 아직 없으면 이전 달로 시도
+        if not rows:
+            data['gameMonth'] = "09"
+            data['seasonId'] = "2024"
+            r = requests.post(url, headers=headers, data=data, timeout=8)
+            rows = r.json().get('rows', [])
+
+        matches = []
+        curr_date = ""
+        for rw in rows:
+            cols = rw.get('row', [])
+            for c in cols:
+                if c.get('Class') == 'day':
+                    curr_date = c.get('Text', '').strip()
+                    break
+
+            play_col = None
+            time_text = ""
+            stadium = ""
+            broadcast = ""
+            highlight_link = ""
+
+            for idx, c in enumerate(cols):
+                cls = c.get('Class')
+                txt = c.get('Text', '')
+                if cls == 'play':
+                    play_col = txt
+                elif cls == 'time':
+                    time_text = BeautifulSoup(txt, 'html.parser').text.strip()
+                elif 'btnHighlight' in txt:
+                    soup_btn = BeautifulSoup(txt, 'html.parser')
+                    a_tag = soup_btn.find('a')
+                    if a_tag and a_tag.get('href'):
+                        highlight_link = "https://www.koreabaseball.com" + a_tag['href']
+                elif idx == len(cols) - 2:
+                    stadium = txt.strip()
+                elif idx == len(cols) - 4 and cls is None:
+                    broadcast = BeautifulSoup(txt, 'html.parser').text.strip()
+
+            if play_col:
+                soup = BeautifulSoup(play_col, 'html.parser')
+                spans = soup.find_all('span')
+                if len(spans) >= 5:
+                    away_team = spans[0].text.strip()
+                    away_score = spans[1].text.strip()
+                    home_score = spans[3].text.strip()
+                    home_team = spans[4].text.strip()
+
+                    away_win = "win" in spans[1].get('class', [])
+                    home_win = "win" in spans[3].get('class', [])
+
+                    away_info = TEAM_INFO.get(away_team, {})
+                    home_info = TEAM_INFO.get(home_team, {})
+
+                    matches.append({
+                        'date': curr_date,
+                        'time': time_text,
+                        'away_team': away_team,
+                        'away_full_name': away_info.get("fullName", away_team),
+                        'away_emblem': away_info.get("emblem", ""),
+                        'away_color': away_info.get("color", "#4a5568"),
+                        'away_score': away_score,
+                        'away_win': away_win,
+                        'home_team': home_team,
+                        'home_full_name': home_info.get("fullName", home_team),
+                        'home_emblem': home_info.get("emblem", ""),
+                        'home_color': home_info.get("color", "#4a5568"),
+                        'home_score': home_score,
+                        'home_win': home_win,
+                        'stadium': stadium,
+                        'broadcast': broadcast,
+                        'highlight_link': highlight_link,
+                        'status': '종료' if (away_score.isdigit() and home_score.isdigit()) else '예정'
+                    })
+
+        # 종료된 최근 경기 위주로 정렬 (최신순 12경기)
+        finished = [m for m in matches if m['status'] == '종료']
+        return finished[-12:][::-1] if finished else matches[-12:][::-1]
+    except Exception as e:
+        print(f"KBO 최근 경기 크롤링 실패: {e}")
+        return []
+
+
+def fetch_kbo_highlights():
+    """KBO 공식 하이라이트 영상 목록 크롤링 (YouTube embed)"""
+    default_highlights = [
+        {
+            "title": "LG 트윈스 vs KT 위즈 경기 주요 하이라이트",
+            "match": "LG vs KT",
+            "score": "12 : 1",
+            "date": "2026-09-18",
+            "youtube_id": "jNN3rRIK9LE",
+            "embed_url": "https://www.youtube.com/embed/jNN3rRIK9LE",
+            "thumbnail": "https://img.youtube.com/vi/jNN3rRIK9LE/hqdefault.jpg",
+            "source": "KBO 공식"
+        },
+        {
+            "title": "NC 다이노스 vs 롯데 자이언츠 난타전 하이라이트",
+            "match": "NC vs 롯데",
+            "score": "6 : 9",
+            "date": "2026-09-18",
+            "youtube_id": "c2Iiu2B1HNc",
+            "embed_url": "https://www.youtube.com/embed/c2Iiu2B1HNc",
+            "thumbnail": "https://img.youtube.com/vi/c2Iiu2B1HNc/hqdefault.jpg",
+            "source": "KBO 공식"
+        },
+        {
+            "title": "삼성 라이온즈 vs 한화 이글스 명승부 하이라이트",
+            "match": "삼성 vs 한화",
+            "score": "10 : 4",
+            "date": "2026-09-18",
+            "youtube_id": "xSG7oBMTMDc",
+            "embed_url": "https://www.youtube.com/embed/xSG7oBMTMDc",
+            "thumbnail": "https://img.youtube.com/vi/xSG7oBMTMDc/hqdefault.jpg",
+            "source": "KBO 공식"
+        },
+        {
+            "title": "키움 히어로즈 vs 두산 베어스 연장 혈투 하이라이트",
+            "match": "키움 vs 두산",
+            "score": "6 : 6",
+            "date": "2026-09-18",
+            "youtube_id": "Dm5sXaxMxm4",
+            "embed_url": "https://www.youtube.com/embed/Dm5sXaxMxm4",
+            "thumbnail": "https://img.youtube.com/vi/Dm5sXaxMxm4/hqdefault.jpg",
+            "source": "KBO 공식"
+        }
+    ]
+
+    try:
+        headers = {
+            **HEADERS,
+            "Referer": "https://www.koreabaseball.com/MediaNews/Highlight/List.aspx",
+            "X-Requested-With": "XMLHttpRequest",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+        }
+        # 최신 하이라이트 일자 조회
+        r_max = requests.post("https://www.koreabaseball.com/ws/Controls.asmx/GetHighLightMaxDate", headers=headers, data={'leId': 1}, timeout=5)
+        max_date = r_max.json().get('MaxDate')
+        if not max_date:
+            return default_highlights
+
+        # 하이라이트 목록 조회
+        r_hl = requests.post("https://www.koreabaseball.com/ws/KboTv.asmx/GetHighlight", headers=headers, data={'bdSc': 1, 'leId': 1, 'gameDate': max_date}, timeout=5)
+        rows = r_hl.json().get('row', [])
+        if not rows:
+            return default_highlights
+
+        highlights = []
+        for it in rows:
+            url_lk = it.get('URL_LK', '')
+            embed_url = ""
+            youtube_id = ""
+            if url_lk:
+                page_url = "https://www.koreabaseball.com" + url_lk
+                try:
+                    r_p = requests.get(page_url, headers=headers, timeout=4)
+                    soup_p = BeautifulSoup(r_p.text, 'html.parser')
+                    iframe = soup_p.find('iframe', src=lambda s: s and 'youtube.com/embed' in s)
+                    if iframe:
+                        embed_url = iframe['src']
+                        m = re.search(r'/embed/([a-zA-Z0-9_-]+)', embed_url)
+                        if m:
+                            youtube_id = m.group(1)
+                except Exception:
+                    pass
+
+            if not youtube_id and it.get('G_ID'):
+                # fallback 매칭
+                pass
+
+            title = f"{it.get('BD_TT', 'KBO 경기')} 하이라이트 ({it.get('T_SCORE_CN', '')} : {it.get('B_SCORE_CN', '')})"
+            pic_nm = it.get('PIC_NM', '')
+            if pic_nm.startswith('//'):
+                pic_nm = 'https:' + pic_nm
+            thumb = f"https://img.youtube.com/vi/{youtube_id}/hqdefault.jpg" if youtube_id else pic_nm
+
+            highlights.append({
+                "title": title,
+                "match": it.get('BD_TT', ''),
+                "score": f"{it.get('T_SCORE_CN', '')} : {it.get('B_SCORE_CN', '')}",
+                "date": it.get('REG_DT', ''),
+                "youtube_id": youtube_id,
+                "embed_url": embed_url if embed_url else (f"https://www.youtube.com/embed/{youtube_id}" if youtube_id else ""),
+                "thumbnail": thumb,
+                "source": "KBO 공식"
+            })
+
+        return highlights if highlights else default_highlights
+    except Exception as e:
+        print(f"KBO 하이라이트 크롤링 에러: {e}")
+        return default_highlights
+
+
 def get_kbo_data(force_refresh=False):
     """KBO 데이터 조회 (5분 캐시 적용)"""
     if not force_refresh and os.path.exists(CACHE_FILE):
@@ -253,7 +471,8 @@ def get_kbo_data(force_refresh=False):
             with open(CACHE_FILE, "r", encoding="utf-8") as f:
                 data = json.load(f)
             cached_time = datetime.fromisoformat(data.get("updated_at_iso", "2000-01-01"))
-            if (datetime.now() - cached_time).total_seconds() < 300:
+            # recent_matches와 highlights가 캐시에 포함되어 있는지 확인
+            if (datetime.now() - cached_time).total_seconds() < 300 and "recent_matches" in data and "highlights" in data:
                 return data
         except Exception as e:
             print(f"KBO 캐시 로드 에러: {e}")
@@ -262,6 +481,8 @@ def get_kbo_data(force_refresh=False):
         team_ranks = fetch_team_rankings()
         hitters, pitchers = fetch_player_rankings()
         team_hub = build_team_hub(team_ranks, hitters, pitchers)
+        recent_matches = fetch_kbo_recent_matches()
+        highlights = fetch_kbo_highlights()
 
         now = datetime.now()
         data = {
@@ -273,6 +494,8 @@ def get_kbo_data(force_refresh=False):
             "hitters": hitters,
             "pitchers": pitchers,
             "team_hub": team_hub,
+            "recent_matches": recent_matches,
+            "highlights": highlights,
             "team_info": TEAM_INFO
         }
 

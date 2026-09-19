@@ -4,11 +4,15 @@
 
 // 전역 상태
 let currentSport = "kbo";
-let currentViewMode = "standings"; // 'standings' | 'leaders' | 'teamhub'
+let currentViewMode = "matches"; // 'matches' | 'standings' | 'leaders' | 'teamhub'
 let currentKLeagueSub = "k1";
 let currentOverseasSub = "epl";
 let currentMLBSub = "overall";
 let searchDebounceTimer = null;
+
+// 선호 구단(마이팀) 상태 관리
+const FAVORITES_STORAGE_KEY = "sports_hub_favorites";
+let isMyTeamOnlyFilter = false;
 
 // 스포츠별 메타데이터
 const SPORT_META = {
@@ -26,29 +30,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 초기 스포츠 탭 설정
     const initialSport = window.INITIAL_DATA ? window.INITIAL_DATA.activeTab : "kbo";
-    switchMainSport(initialSport || "kbo", false);
+    currentSport = initialSport || "kbo";
 
-    // K리그 초기 렌더링
+    // 상단 마이팀 배너 초기화
+    updateMyTeamBanner();
+
+    // 4대 스포츠 경기 및 영상 렌더링
+    renderKboMatches();
+    renderKboHighlights();
+    renderKboStandings();
     renderKLeague();
-
-    // 해외축구 초기 렌더링
     renderOverseas();
-
-    // MLB 초기 렌더링
     renderMLB();
+    renderMlbMatches();
+    renderMlbHighlights();
+
+    // 초기 탭 활성화
+    switchMainSport(currentSport, false);
 
     // KBO 구단허브 초기 첫번째 팀 선택
     if (window.INITIAL_DATA?.kbo?.teams?.length > 0) {
-        renderTeamHubDetails("kbo", window.INITIAL_DATA.kbo.teams[0].team);
+        const fav = getFavoriteTeam("kbo");
+        renderTeamHubDetails("kbo", fav || window.INITIAL_DATA.kbo.teams[0].team);
     }
 
-    // 단축키 설정 (Ctrl+K or Cmd+K 로 검색 열기)
+    // 모달 배경 클릭 시 닫기
+    const modal = document.getElementById("favorite-team-modal");
+    if (modal) {
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) closeFavoriteTeamModal();
+        });
+    }
+
+    // 단축키 설정 (Ctrl+K or Cmd+K 로 검색 열기, ESC 로 모달 닫기)
     document.addEventListener("keydown", (e) => {
         if ((e.ctrlKey || e.metaKey) && e.key === "k") {
             e.preventDefault();
             openSearchModal();
         } else if (e.key === "Escape") {
             closeSearchModal();
+            closeFavoriteTeamModal();
         }
     });
 
@@ -68,6 +89,478 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+// ========================================================
+// 마이팀 (선호 구단) 핵심 로직
+// ========================================================
+function getFavoriteTeams() {
+    try {
+        const stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
+        return stored ? JSON.parse(stored) : {};
+    } catch (e) {
+        return {};
+    }
+}
+
+let currentModalSubKey = null;
+
+function getFavoriteTeam(sportKey = currentSport, leagueKey = null) {
+    const favs = getFavoriteTeams();
+    if (sportKey === "overseas") {
+        const sub = leagueKey || currentOverseasSub || "epl";
+        return favs[`overseas_${sub}`] || (sub === "epl" ? favs["overseas"] : null) || null;
+    } else if (sportKey === "kleague") {
+        const sub = leagueKey || currentKLeagueSub || "k1";
+        let team = favs[`kleague_${sub}`] || null;
+        if (!team && favs["kleague"]) {
+            // 하위 호환: 기존에 단일 kleague 키로 저장된 구단이 있을 경우 해당 리그 팀인지 확인
+            const teams = getAllTeamsForSport("kleague", sub);
+            if (teams.some(t => isTeamMatch(t.id, favs["kleague"]) || isTeamMatch(t.name, favs["kleague"]))) {
+                team = favs["kleague"];
+            }
+        }
+        return team;
+    }
+    return favs[sportKey] || null;
+}
+
+function setFavoriteTeam(sportKey, teamName, leagueKey = null) {
+    if (!sportKey || !teamName) return;
+    const favs = getFavoriteTeams();
+    let storageKey = sportKey;
+    if (sportKey === "overseas") {
+        storageKey = `overseas_${leagueKey || currentOverseasSub || 'epl'}`;
+    } else if (sportKey === "kleague") {
+        storageKey = `kleague_${leagueKey || currentKLeagueSub || 'k1'}`;
+        delete favs["kleague"]; // 이전 단일 키 정리
+    }
+    favs[storageKey] = teamName;
+    try {
+        localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favs));
+    } catch (e) {}
+
+    showToast(`⭐ [${teamName}] 선호 구단으로 등록되었습니다!`);
+    closeFavoriteTeamModal();
+    updateMyTeamBanner();
+    refreshCurrentSportViews();
+}
+
+function clearFavoriteTeam(sportKey = currentSport, leagueKey = null) {
+    const favs = getFavoriteTeams();
+    if (sportKey === "overseas") {
+        const sub = leagueKey || currentModalSubKey || currentOverseasSub || "epl";
+        delete favs[`overseas_${sub}`];
+        if (sub === "epl") delete favs["overseas"];
+    } else if (sportKey === "kleague") {
+        const sub = leagueKey || (currentModalSubKey && currentModalSubKey !== "all" ? currentModalSubKey : null) || currentKLeagueSub || "k1";
+        delete favs[`kleague_${sub}`];
+        delete favs["kleague"];
+    } else {
+        delete favs[sportKey];
+    }
+    try {
+        localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favs));
+    } catch (e) {}
+
+    isMyTeamOnlyFilter = false;
+    showToast(`선호 구단 설정이 해제되었습니다.`);
+    closeFavoriteTeamModal();
+    updateMyTeamBanner();
+    refreshCurrentSportViews();
+}
+
+function toggleFavoriteTeam(sportKey, teamName, leagueKey = null) {
+    const currentFav = getFavoriteTeam(sportKey, leagueKey);
+    if (currentFav && isTeamMatch(currentFav, teamName)) {
+        clearFavoriteTeam(sportKey, leagueKey);
+    } else {
+        setFavoriteTeam(sportKey, teamName, leagueKey);
+    }
+}
+
+function toggleMyTeamFilter() {
+    let subKey = null;
+    if (currentSport === "overseas") subKey = currentOverseasSub;
+    else if (currentSport === "kleague") subKey = currentKLeagueSub;
+    const fav = getFavoriteTeam(currentSport, subKey);
+    if (!fav) {
+        openFavoriteTeamModal();
+        return;
+    }
+    isMyTeamOnlyFilter = !isMyTeamOnlyFilter;
+    updateMyTeamBanner();
+    refreshCurrentSportViews();
+    showToast(isMyTeamOnlyFilter ? `🔍 [${fav}] 경기만 필터링합니다` : "📋 모든 경기를 표시합니다");
+}
+
+function isTeamMatch(teamStr, targetStr) {
+    if (!teamStr || !targetStr) return false;
+    const s1 = String(teamStr).toLowerCase().replace(/[\s\-_]/g, "");
+    const s2 = String(targetStr).toLowerCase().replace(/[\s\-_]/g, "");
+
+    // 1. 수원삼성 vs 수원FC 철저 분리
+    const isSuwonSamsung1 = s1.includes("수원삼성") || s1.includes("블루윙즈") || s1 === "수원";
+    const isSuwonSamsung2 = s2.includes("수원삼성") || s2.includes("블루윙즈") || s2 === "수원";
+    const isSuwonFC1 = s1.includes("수원fc") || s1.includes("suwonfc");
+    const isSuwonFC2 = s2.includes("수원fc") || s2.includes("suwonfc");
+    if ((isSuwonSamsung1 && isSuwonFC2) || (isSuwonFC1 && isSuwonSamsung2)) return false;
+
+    // 2. 맨체스터 시티 vs 맨체스터 유나이티드 철저 분리
+    const isManCity1 = s1.includes("맨시티") || s1.includes("mancity") || (s1.includes("맨체스터") && s1.includes("시티"));
+    const isManCity2 = s2.includes("맨시티") || s2.includes("mancity") || (s2.includes("맨체스터") && s2.includes("시티"));
+    const isManUtd1 = s1.includes("맨유") || s1.includes("manutd") || (s1.includes("맨체스터") && s1.includes("유나이티드"));
+    const isManUtd2 = s2.includes("맨유") || s2.includes("manutd") || (s2.includes("맨체스터") && s2.includes("유나이티드"));
+    if ((isManCity1 && isManUtd2) || (isManUtd1 && isManCity2)) return false;
+
+    // 3. 레알 마드리드 vs 아틀레티코 마드리드 분리
+    const isRealMadrid1 = s1.includes("레알마드리드") || s1.includes("realmadrid") || (s1.includes("레알") && !s1.includes("베티스") && !s1.includes("소시에다드"));
+    const isRealMadrid2 = s2.includes("레알마드리드") || s2.includes("realmadrid") || (s2.includes("레알") && !s2.includes("베티스") && !s2.includes("소시에다드"));
+    const isAtleti1 = s1.includes("아틀레티코") || s1.includes("atletico") || s1.includes("atm");
+    const isAtleti2 = s2.includes("아틀레티코") || s2.includes("atletico") || s2.includes("atm");
+    if ((isRealMadrid1 && isAtleti2) || (isAtleti1 && isRealMadrid2)) return false;
+
+    if (s1 === s2) return true;
+    return s1.includes(s2) || s2.includes(s1);
+}
+
+function getAllTeamsForSport(sportKey, subKey = null) {
+    const d = window.INITIAL_DATA;
+    if (!d) return [];
+
+    if (sportKey === "kbo") {
+        return (d.kbo?.teams || []).map(t => ({
+            id: t.team,
+            name: t.fullName || t.team,
+            emblem: t.emblem,
+            sub: "KBO 정규리그",
+            subKey: "kbo"
+        }));
+    } else if (sportKey === "kleague") {
+        const k1 = (d.kleague?.k1?.teams || []).map(t => ({ 
+            id: t.team, 
+            name: t.fullName || t.team, 
+            emblem: t.emblem, 
+            sub: "K리그 1",
+            subKey: "k1" 
+        }));
+        const k2 = (d.kleague?.k2?.teams || []).map(t => ({ 
+            id: t.team, 
+            name: t.fullName || t.team, 
+            emblem: t.emblem, 
+            sub: "K리그 2",
+            subKey: "k2" 
+        }));
+        if (subKey === "k1") return k1;
+        if (subKey === "k2") return k2;
+        return [...k1, ...k2];
+    } else if (sportKey === "overseas") {
+        const leagues = d.overseas?.leagues || {};
+        if (subKey && leagues[subKey]) {
+            return (leagues[subKey].teams || []).map(t => ({
+                id: t.team,
+                name: t.team,
+                teamEng: t.teamEng,
+                emblem: t.emblem,
+                sub: leagues[subKey].shortName || leagues[subKey].name,
+                subKey: subKey
+            }));
+        }
+        const all = [];
+        for (const [lKey, lVal] of Object.entries(leagues)) {
+            (lVal.teams || []).forEach(t => {
+                all.push({ 
+                    id: t.team, 
+                    name: t.team, 
+                    teamEng: t.teamEng,
+                    emblem: t.emblem, 
+                    sub: lVal.shortName || lVal.name || lKey.toUpperCase(),
+                    subKey: lKey 
+                });
+            });
+        }
+        return all;
+    } else if (sportKey === "mlb") {
+        const all = (d.mlb?.all_teams || []).map(t => {
+            const isAl = (t.division || "").includes("아메리칸") || (t.division || "").includes("AL");
+            return {
+                id: t.team,
+                name: `${t.team} (${t.teamEng || ''})`,
+                emblem: t.emblem,
+                sub: t.division || "MLB",
+                subKey: isAl ? "al" : "nl"
+            };
+        });
+        if (subKey === "al") return all.filter(t => t.subKey === "al");
+        if (subKey === "nl") return all.filter(t => t.subKey === "nl");
+        return all;
+    }
+    return [];
+}
+
+function findTeamInfo(sportKey, teamName, subKey = null) {
+    if (!teamName) return null;
+    const teams = getAllTeamsForSport(sportKey, subKey);
+    let found = teams.find(t => isTeamMatch(t.id, teamName) || isTeamMatch(t.name, teamName));
+    if (!found && subKey) {
+        const allTeams = getAllTeamsForSport(sportKey, null);
+        found = allTeams.find(t => isTeamMatch(t.id, teamName) || isTeamMatch(t.name, teamName));
+    }
+    return found || { id: teamName, name: teamName, emblem: null };
+}
+
+function updateMyTeamBanner() {
+    const banner = document.getElementById("my-team-banner");
+    const emblemContainer = document.getElementById("my-team-badge-icon");
+    const sportLabel = document.getElementById("my-team-sport-label");
+    const displayName = document.getElementById("my-team-display-name");
+    const filterBtn = document.getElementById("my-team-filter-btn");
+    const filterText = document.getElementById("my-team-filter-text");
+    const actionBtnText = document.getElementById("my-team-action-btn-text");
+    if (!banner) return;
+
+    let fav = null;
+    let labelText = currentSport.toUpperCase();
+    let subTitlePrefix = "";
+
+    if (currentSport === "overseas") {
+        const league = window.INITIAL_DATA?.overseas?.leagues?.[currentOverseasSub];
+        const leagueShort = league?.shortName || currentOverseasSub.toUpperCase();
+        labelText = `해외축구 • ${leagueShort}`;
+        subTitlePrefix = `${league?.name || '해외축구'} `;
+        fav = getFavoriteTeam("overseas", currentOverseasSub);
+    } else if (currentSport === "kleague") {
+        const leagueName = currentKLeagueSub === "k2" ? "K리그 2" : "K리그 1";
+        labelText = `K LEAGUE • ${currentKLeagueSub.toUpperCase()}`;
+        subTitlePrefix = `${leagueName} `;
+        fav = getFavoriteTeam("kleague", currentKLeagueSub);
+    } else {
+        fav = getFavoriteTeam(currentSport);
+        if (currentSport === "kbo") labelText = "KBO";
+        else if (currentSport === "mlb") labelText = "MLB";
+    }
+
+    if (sportLabel) {
+        sportLabel.innerText = labelText;
+    }
+
+    if (fav) {
+        const subForFind = currentSport === "overseas" ? currentOverseasSub : (currentSport === "kleague" ? currentKLeagueSub : null);
+        const teamInfo = findTeamInfo(currentSport, fav, subForFind);
+        if (emblemContainer) {
+            if (teamInfo?.emblem) {
+                emblemContainer.innerHTML = `
+                    <div class="relative w-8 h-8 flex items-center justify-center">
+                        <img src="${teamInfo.emblem}" alt="${fav}" class="w-8 h-8 object-contain drop-shadow-sm" onerror="this.style.display='none'; if (this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');">
+                        <span class="w-8 h-8 rounded-full bg-amber-400 text-amber-950 flex items-center justify-center text-sm font-black shadow-xs hidden"><i class="fa-solid fa-star"></i></span>
+                    </div>
+                `;
+            } else {
+                emblemContainer.innerHTML = `<span class="w-8 h-8 rounded-full bg-amber-400 text-amber-950 flex items-center justify-center text-sm font-black shadow-xs"><i class="fa-solid fa-star"></i></span>`;
+            }
+        }
+
+        if (displayName) {
+            displayName.innerHTML = `
+                <div class="flex items-center space-x-1.5 flex-wrap">
+                    <span class="px-2 py-0.5 rounded-full text-[11px] font-black bg-amber-400 text-amber-950 shadow-xs flex items-center space-x-1">
+                        <i class="fa-solid fa-star text-[9px]"></i><span>MY TEAM</span>
+                    </span>
+                    <span class="text-sm sm:text-base font-black text-gray-900 dark:text-white">${teamInfo?.name || fav}</span>
+                    <span class="text-[11px] text-gray-500 dark:text-gray-400 hidden md:inline">• 하이라이트 & 경기 결과 최우선 노출 중</span>
+                </div>
+            `;
+        }
+
+        if (actionBtnText) actionBtnText.innerText = "구단 변경";
+
+        if (filterBtn) {
+            filterBtn.classList.remove("hidden");
+            if (isMyTeamOnlyFilter) {
+                filterBtn.className = "px-2.5 py-1.5 rounded-xl text-xs font-bold border border-amber-500 bg-amber-500 text-white shadow-sm transition-all flex items-center space-x-1.5 active:scale-95";
+                if (filterText) filterText.innerText = "전체 경기 보기";
+            } else {
+                filterBtn.className = "px-2.5 py-1.5 rounded-xl text-xs font-bold border border-amber-300 dark:border-amber-700/60 bg-amber-50 hover:bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:hover:bg-amber-900/60 dark:text-amber-300 transition-all flex items-center space-x-1.5 active:scale-95";
+                if (filterText) filterText.innerText = "내 구단 경기만";
+            }
+        }
+    } else {
+        if (emblemContainer) {
+            emblemContainer.innerHTML = `<span class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center text-amber-600 dark:text-amber-400 text-sm font-black"><i class="fa-regular fa-star"></i></span>`;
+        }
+        if (displayName) {
+            displayName.innerText = `${subTitlePrefix}선호 구단을 설정하면 해당 구단의 경기와 영상이 최우선으로 배치됩니다`;
+        }
+        if (actionBtnText) actionBtnText.innerText = "선호 구단 선택";
+        if (filterBtn) filterBtn.classList.add("hidden");
+        isMyTeamOnlyFilter = false;
+    }
+}
+
+function openFavoriteTeamModal(targetSubKey = null) {
+    const modal = document.getElementById("favorite-team-modal");
+    if (!modal) return;
+
+    if (currentSport === "overseas") {
+        currentModalSubKey = targetSubKey || currentOverseasSub || "epl";
+    } else if (currentSport === "kleague") {
+        currentModalSubKey = targetSubKey || currentKLeagueSub || "k1";
+    } else if (currentSport === "mlb") {
+        currentModalSubKey = targetSubKey || "all";
+    } else {
+        currentModalSubKey = "all";
+    }
+
+    renderModalSubTabs();
+    renderModalTeamGrid();
+    modal.classList.remove("hidden");
+}
+
+function renderModalSubTabs() {
+    const subtabsContainer = document.getElementById("fav-modal-subtabs");
+    const title = document.getElementById("fav-modal-title");
+    if (!subtabsContainer) return;
+
+    const meta = SPORT_META[currentSport] || { title: currentSport.toUpperCase() };
+    if (title) {
+        if (currentSport === "overseas") {
+            title.innerText = "해외축구 리그별 선호 구단 선택";
+        } else if (currentSport === "kleague") {
+            title.innerText = "K리그 (K1 / K2) 리그별 선호 구단 선택";
+        } else {
+            title.innerText = `${meta.title} 선호 구단 선택`;
+        }
+    }
+
+    let tabs = [];
+    if (currentSport === "overseas") {
+        const leagues = window.INITIAL_DATA?.overseas?.leagues || {};
+        tabs = Object.entries(leagues).map(([lKey, lVal]) => {
+            const hasFav = !!getFavoriteTeam("overseas", lKey);
+            return {
+                id: lKey,
+                label: lVal.shortName || lKey.toUpperCase(),
+                hasFav: hasFav
+            };
+        });
+    } else if (currentSport === "kleague") {
+        const hasK1 = !!getFavoriteTeam("kleague", "k1");
+        const hasK2 = !!getFavoriteTeam("kleague", "k2");
+        tabs = [
+            { id: "k1", label: "K리그 1", hasFav: hasK1 },
+            { id: "k2", label: "K리그 2", hasFav: hasK2 },
+            { id: "all", label: "전체 K리그", hasFav: hasK1 || hasK2 }
+        ];
+    } else if (currentSport === "mlb") {
+        tabs = [
+            { id: "all", label: "전체 30구단", hasFav: false },
+            { id: "al", label: "AL (아메리칸)", hasFav: false },
+            { id: "nl", label: "NL (내셔널)", hasFav: false }
+        ];
+    }
+
+    if (tabs.length === 0) {
+        subtabsContainer.classList.add("hidden");
+        subtabsContainer.innerHTML = "";
+    } else {
+        subtabsContainer.classList.remove("hidden");
+        subtabsContainer.innerHTML = tabs.map(t => {
+            const isActive = currentModalSubKey === t.id;
+            return `
+                <button type="button" onclick="switchModalSub('${t.id}')" 
+                        class="whitespace-nowrap px-3 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center space-x-1 ${
+                            isActive 
+                            ? 'bg-blue-600 text-white shadow-xs' 
+                            : 'bg-gray-100 hover:bg-gray-200 dark:bg-darkbg-700 dark:hover:bg-darkbg-600 text-gray-700 dark:text-gray-300'
+                        }">
+                    <span>${t.label}</span>
+                    ${t.hasFav ? '<span class="text-amber-300 text-[10px]">⭐</span>' : ''}
+                </button>
+            `;
+        }).join("");
+    }
+}
+
+function switchModalSub(subKey) {
+    currentModalSubKey = subKey;
+    renderModalSubTabs();
+    renderModalTeamGrid();
+}
+
+function renderModalTeamGrid() {
+    const grid = document.getElementById("fav-modal-team-grid");
+    if (!grid) return;
+
+    const querySub = currentModalSubKey === "all" ? null : currentModalSubKey;
+    const teams = getAllTeamsForSport(currentSport, querySub);
+
+    if (teams.length === 0) {
+        grid.innerHTML = `<div class="col-span-full py-8 text-center text-xs text-gray-400">등록된 구단 정보가 없습니다.</div>`;
+        return;
+    }
+
+    grid.innerHTML = teams.map(t => {
+        let isSelected = false;
+        let targetSubArg = null;
+
+        if (currentSport === "overseas") {
+            targetSubArg = t.subKey || currentModalSubKey;
+            const favForSub = getFavoriteTeam("overseas", targetSubArg);
+            isSelected = favForSub && (isTeamMatch(t.id, favForSub) || isTeamMatch(t.name, favForSub));
+        } else if (currentSport === "kleague") {
+            targetSubArg = t.subKey || (currentModalSubKey !== "all" ? currentModalSubKey : (t.sub?.includes("2") ? "k2" : "k1"));
+            const favForSub = getFavoriteTeam("kleague", targetSubArg);
+            isSelected = favForSub && (isTeamMatch(t.id, favForSub) || isTeamMatch(t.name, favForSub));
+        } else {
+            const currentFav = getFavoriteTeam(currentSport);
+            isSelected = currentFav && (isTeamMatch(t.id, currentFav) || isTeamMatch(t.name, currentFav));
+        }
+
+        const setFnCall = targetSubArg 
+            ? `setFavoriteTeam('${currentSport}', '${escapeHtml(t.id)}', '${targetSubArg}')`
+            : `setFavoriteTeam('${currentSport}', '${escapeHtml(t.id)}')`;
+
+        return `
+            <button type="button" onclick="${setFnCall}" 
+                    class="p-2.5 sm:p-3 rounded-xl border text-left flex items-center space-x-2.5 transition-all active:scale-95 group ${
+                        isSelected 
+                        ? 'border-amber-400 bg-amber-50 dark:bg-amber-950/40 ring-2 ring-amber-400 shadow-sm' 
+                        : 'border-gray-200 dark:border-gray-700 bg-white hover:bg-gray-50 dark:bg-darkbg-700 dark:hover:bg-darkbg-600'
+                    }">
+                <div class="w-8 h-8 flex-shrink-0 flex items-center justify-center">
+                    ${t.emblem ? `<img src="${t.emblem}" alt="${t.name}" class="w-8 h-8 object-contain" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"><div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-darkbg-600 flex items-center justify-center text-xs hidden">⚽</div>` : '<div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-darkbg-600 flex items-center justify-center text-xs">⚽</div>'}
+                </div>
+                <div class="flex-grow min-w-0">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs sm:text-sm font-bold text-gray-900 dark:text-white truncate ${isSelected ? 'text-amber-900 dark:text-amber-200' : ''}">${t.name}</span>
+                        ${isSelected ? '<span class="text-[10px] font-black px-1.5 py-0.2 rounded bg-amber-400 text-amber-950 ml-1">선택됨</span>' : ''}
+                    </div>
+                    <span class="text-[10px] text-gray-400 block truncate">${t.sub}</span>
+                </div>
+            </button>
+        `;
+    }).join("");
+}
+
+function closeFavoriteTeamModal() {
+    const modal = document.getElementById("favorite-team-modal");
+    if (modal) modal.classList.add("hidden");
+}
+
+function refreshCurrentSportViews() {
+    if (currentSport === "kbo") {
+        renderKboMatches();
+        renderKboHighlights();
+        renderKboStandings();
+    } else if (currentSport === "kleague") {
+        renderKLeague();
+    } else if (currentSport === "overseas") {
+        renderOverseas();
+    } else if (currentSport === "mlb") {
+        renderMLB();
+        renderMlbMatches();
+        renderMlbHighlights();
+    }
+}
 
 // ========================================================
 // 1. 메인 스포츠 탭 전환
@@ -102,6 +595,9 @@ function switchMainSport(sportKey, updateUrl = true) {
     // 업데이트 시각 표시
     updateLastUpdatedTime(sportKey);
 
+    // 상단 마이팀 배너 갱신
+    updateMyTeamBanner();
+
     // 모든 스포츠 섹션 숨기고 해당 섹션 표시
     document.querySelectorAll(".sport-section").forEach(sec => sec.classList.add("hidden"));
     const activeSec = document.getElementById(`sport-section-${sportKey}`);
@@ -109,6 +605,9 @@ function switchMainSport(sportKey, updateUrl = true) {
 
     // 기본 뷰모드 적용
     switchViewMode(currentViewMode);
+
+    // 해당 스포츠 뷰 갱신
+    refreshCurrentSportViews();
 
     if (updateUrl && history.pushState) {
         history.pushState(null, "", `/${sportKey}`);
@@ -124,7 +623,7 @@ function updateLastUpdatedTime(sportKey) {
 }
 
 // ========================================================
-// 2. 뷰 모드 전환 (팀순위 / 개인순위 / 구단별 몰아보기)
+// 2. 뷰 모드 전환 (경기·영상 / 팀순위 / 개인순위 / 구단별 몰아보기)
 // ========================================================
 function switchViewMode(mode) {
     currentViewMode = mode;
@@ -134,13 +633,242 @@ function switchViewMode(mode) {
     const activeBtn = document.getElementById(`view-btn-${mode}`);
     if (activeBtn) activeBtn.classList.add("active");
 
-    // 현재 스포츠 섹션 안의 3개 뷰 토글
+    // 현재 스포츠 섹션 안의 뷰 토글
     const sec = document.getElementById(`sport-section-${currentSport}`);
     if (!sec) return;
 
     sec.querySelectorAll(".view-content").forEach(v => v.classList.add("hidden"));
     const targetView = document.getElementById(`${currentSport}-view-${mode}`);
     if (targetView) targetView.classList.remove("hidden");
+
+    // 구단별 몰아보기로 이동 시 선호 구단이 있으면 자동으로 해당 구단 허브 열기
+    if (mode === "teamhub") {
+        const fav = getFavoriteTeam(currentSport);
+        if (fav) {
+            renderTeamHubDetails(currentSport, fav);
+        }
+    }
+}
+
+// ========================================================
+// 2-1. KBO 최근 경기 결과 & 공식 하이라이트 영상 렌더링 (마이팀 연동)
+// ========================================================
+function renderKboMatches() {
+    const kboData = window.INITIAL_DATA?.kbo;
+    const grid = document.getElementById("kbo-matches-grid");
+    if (!grid || !kboData) return;
+
+    const fav = getFavoriteTeam("kbo");
+    let matches = [...(kboData.recent_matches || [])];
+
+    matches.forEach(m => {
+        m.isFav = fav && (
+            isTeamMatch(m.away_team, fav) ||
+            isTeamMatch(m.home_team, fav) ||
+            isTeamMatch(m.away_full_name, fav) ||
+            isTeamMatch(m.home_full_name, fav)
+        );
+    });
+
+    if (isMyTeamOnlyFilter && fav) {
+        matches = matches.filter(m => m.isFav);
+    } else {
+        matches.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
+    }
+
+    if (matches.length === 0) {
+        grid.innerHTML = `
+            <div class="col-span-full py-10 text-center bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800">
+                <p class="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400">
+                    ${isMyTeamOnlyFilter ? `선호 구단 [${fav}]의 최근 경기 결과가 없습니다.` : '최근 경기 결과가 준비 중입니다.'}
+                </p>
+                ${isMyTeamOnlyFilter ? `<button type="button" onclick="toggleMyTeamFilter()" class="mt-3 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold active:scale-95 transition-all">전체 경기 보기</button>` : ''}
+            </div>
+        `;
+        return;
+    }
+
+    grid.innerHTML = matches.map(m => `
+        <div class="bg-white dark:bg-darkbg-800 rounded-2xl border ${m.isFav ? 'border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/30 my-team-card' : 'border-gray-200 dark:border-gray-800'} p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
+            <div class="flex items-center justify-between pb-2.5 border-b border-gray-100 dark:border-gray-700/60 text-xs">
+                <div class="flex items-center space-x-1.5 text-gray-500 dark:text-gray-400 font-medium">
+                    <i class="fa-regular fa-calendar text-[11px]"></i>
+                    <span>${m.date}</span>
+                    ${m.time ? `<span class="text-[10px] text-gray-400">(${m.time})</span>` : ''}
+                </div>
+                <div class="flex items-center space-x-1.5">
+                    ${m.isFav ? `
+                    <span class="px-1.5 py-0.2 rounded text-[10px] font-black bg-amber-400 text-amber-950 shadow-xs flex items-center space-x-1">
+                        <i class="fa-solid fa-star text-[9px]"></i><span>MY TEAM</span>
+                    </span>
+                    ` : ''}
+                    ${m.stadium ? `
+                    <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-gray-100 dark:bg-darkbg-700 text-gray-600 dark:text-gray-300">
+                        ${m.stadium}
+                    </span>` : ''}
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">
+                        ${m.status}
+                    </span>
+                </div>
+            </div>
+
+            <div class="py-3 space-y-2">
+                <!-- 원정팀 -->
+                <div class="flex items-center justify-between ${m.away_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
+                    <div class="flex items-center space-x-2.5 truncate">
+                        ${m.away_emblem ? `<img src="${m.away_emblem}" alt="${m.away_team}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">` : ''}
+                        <span class="text-xs sm:text-sm truncate font-semibold">${m.away_full_name || m.away_team}</span>
+                        ${m.away_win ? `<span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>` : ''}
+                        <button type="button" onclick="toggleFavoriteTeam('kbo', '${m.away_team}')" title="선호 구단 등록/해제" 
+                                class="fav-star-btn text-xs ${fav && isTeamMatch(m.away_team, fav) ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
+                            ★
+                        </button>
+                    </div>
+                    <span class="text-base sm:text-lg ${m.away_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">
+                        ${m.away_score}
+                    </span>
+                </div>
+
+                <!-- 홈팀 -->
+                <div class="flex items-center justify-between ${m.home_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
+                    <div class="flex items-center space-x-2.5 truncate">
+                        ${m.home_emblem ? `<img src="${m.home_emblem}" alt="${m.home_team}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">` : ''}
+                        <span class="text-xs sm:text-sm truncate font-semibold">${m.home_full_name || m.home_team}</span>
+                        ${m.home_win ? `<span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>` : ''}
+                        <button type="button" onclick="toggleFavoriteTeam('kbo', '${m.home_team}')" title="선호 구단 등록/해제" 
+                                class="fav-star-btn text-xs ${fav && isTeamMatch(m.home_team, fav) ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
+                            ★
+                        </button>
+                    </div>
+                    <span class="text-base sm:text-lg ${m.home_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">
+                        ${m.home_score}
+                    </span>
+                </div>
+            </div>
+
+            <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
+                <span class="text-gray-400 truncate">${m.broadcast || '공식 중계'}</span>
+                <button type="button" onclick="focusKboHighlight('${m.away_team}', '${m.home_team}')" 
+                        class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 dark:text-blue-300 font-bold flex items-center space-x-1 active:scale-95 transition-all">
+                    <i class="fa-solid fa-play text-[9px]"></i>
+                    <span>하이라이트</span>
+                </button>
+            </div>
+        </div>
+    `).join("");
+}
+
+function renderKboHighlights() {
+    const kboData = window.INITIAL_DATA?.kbo;
+    const hlList = document.getElementById("kbo-highlight-list");
+    if (!hlList || !kboData) return;
+
+    const fav = getFavoriteTeam("kbo");
+    let highlights = [...(kboData.highlights || [])];
+
+    highlights.forEach(h => {
+        h.isFav = fav && (isTeamMatch(h.title, fav) || isTeamMatch(h.match, fav));
+    });
+
+    highlights.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
+
+    // 선호 구단 영상이 1순위로 있으면 상단 플레이어에 해당 영상 기본 로드
+    if (highlights.length > 0 && highlights[0].isFav) {
+        const frame = document.getElementById("kbo-video-frame");
+        const titleEl = document.getElementById("kbo-current-video-title");
+        const dateEl = document.getElementById("kbo-current-video-date");
+        const tagEl = document.getElementById("kbo-current-video-tag");
+        if (frame && !frame.src.includes(highlights[0].embed_url)) {
+            frame.src = `${highlights[0].embed_url}?rel=0`;
+        }
+        if (titleEl) titleEl.innerText = highlights[0].title;
+        if (dateEl) dateEl.innerText = highlights[0].date;
+        if (tagEl) tagEl.innerText = `★ ${fav} 공식 영상`;
+    }
+
+    hlList.innerHTML = `
+        <span class="text-xs font-bold text-gray-400 block mb-1">
+            ${fav ? `선호 구단 [${fav}] 영상 우선 배치됨 (클릭 시 바로 재생)` : '최신 공식 하이라이트 영상 목록 (클릭 시 바로 재생)'}
+        </span>
+        ${highlights.map(hl => `
+            <div onclick="playKboVideo('${hl.embed_url}', '${escapeHtml(hl.title)}', '${hl.date}')" 
+                 class="kbo-hl-card cursor-pointer p-2 rounded-xl border ${hl.isFav ? 'border-amber-400 bg-amber-50/40 dark:bg-amber-950/40 shadow-xs' : 'border-gray-100 dark:border-gray-700/60 bg-white dark:bg-darkbg-800'} hover:bg-blue-50/50 dark:hover:bg-darkbg-700 transition-all flex items-center space-x-3 active:scale-98 group shadow-xs">
+                <div class="relative w-28 h-16 sm:w-32 sm:h-18 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-800">
+                    <img src="${hl.thumbnail}" alt="${hl.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://images.unsplash.com/photo-1508344928928-7165b67de128?w=640&auto=format&fit=crop&q=80'">
+                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
+                        <span class="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center shadow-md">
+                            <i class="fa-solid fa-play text-[10px] ml-0.5"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="flex-grow min-w-0">
+                    <div class="flex items-center space-x-1 mb-0.5">
+                        ${hl.isFav ? `<span class="px-1.5 py-0.2 rounded text-[9px] font-black bg-amber-400 text-amber-950 flex-shrink-0">MY TEAM</span>` : ''}
+                        <h4 class="text-xs font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 leading-snug">
+                            ${hl.title}
+                        </h4>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] text-gray-400 mt-1">
+                        <span class="font-medium truncate">${hl.match || 'KBO'}</span>
+                        <span class="ml-1 text-[10px]">${hl.date}</span>
+                    </div>
+                </div>
+            </div>
+        `).join("")}
+    `;
+}
+
+function renderKboStandings() {
+    const kboData = window.INITIAL_DATA?.kbo;
+    const tbody = document.getElementById("kbo-table-body");
+    if (!tbody || !kboData) return;
+
+    const fav = getFavoriteTeam("kbo");
+    const teams = kboData.teams || [];
+
+    tbody.innerHTML = teams.map(t => {
+        const isFavTeam = fav && isTeamMatch(t.team, fav);
+        return `
+            <tr class="hover:bg-blue-50/40 dark:hover:bg-darkbg-700/50 transition-colors ${isFavTeam ? 'bg-amber-50/30 dark:bg-amber-950/20 border-l-4 border-l-amber-500' : (t.rank <= 5 ? 'border-l-4 border-l-blue-500' : '')}">
+                <td class="py-2.5 px-2 sm:py-3.5 sm:px-4 text-center font-bold">
+                    <span class="w-5 h-5 sm:w-6 sm:h-6 rounded-full inline-flex items-center justify-center text-[11px] sm:text-xs
+                        ${isFavTeam ? 'bg-amber-400 text-amber-950 font-black' : (t.rank === 1 ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300 font-black' : (t.rank <= 3 ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300' : (t.rank <= 5 ? 'bg-indigo-50 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300' : 'text-gray-500 dark:text-gray-400')))}">
+                        ${t.rank}
+                    </span>
+                </td>
+                <td class="py-2.5 px-2 sm:py-3.5 sm:px-4 font-semibold text-gray-900 dark:text-white">
+                    <div class="flex items-center space-x-2 sm:space-x-3">
+                        ${t.emblem ? `<img src="${t.emblem}" alt="${t.team}" class="w-5 h-5 sm:w-7 sm:h-7 object-contain drop-shadow-sm" onerror="this.style.display='none'">` : ''}
+                        <span class="hidden sm:inline ${isFavTeam ? 'font-black text-amber-900 dark:text-amber-200' : ''}">${t.fullName}</span>
+                        <span class="sm:hidden font-bold ${isFavTeam ? 'font-black text-amber-900 dark:text-amber-200' : ''}">${t.team}</span>
+                        <button type="button" onclick="toggleFavoriteTeam('kbo', '${t.team}')" title="선호 구단 등록/해제" 
+                                class="fav-star-btn text-xs ${isFavTeam ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
+                            ★
+                        </button>
+                    </div>
+                </td>
+                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-gray-600 dark:text-gray-300">${t.games}</td>
+                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center font-bold text-gray-900 dark:text-white">${t.win}</td>
+                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-gray-600 dark:text-gray-300">${t.loss}</td>
+                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-gray-600 dark:text-gray-300">${t.draw}</td>
+                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center font-extrabold text-blue-600 dark:text-blue-400 text-xs sm:text-sm">${t.rate}</td>
+                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-gray-600 dark:text-gray-300">${t.game_diff}</td>
+                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-xs text-gray-500 dark:text-gray-400 hidden md:table-cell">${t.recent10}</td>
+                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-xs hidden sm:table-cell">
+                    <span class="px-1.5 py-0.5 rounded-full text-[11px] font-semibold ${t.streak && t.streak.includes('승') ? 'bg-red-50 text-red-600 dark:bg-red-950/60 dark:text-red-400' : 'bg-gray-100 text-gray-600 dark:bg-darkbg-700 dark:text-gray-300'}">
+                        ${t.streak}
+                    </span>
+                </td>
+                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-xs text-gray-500 dark:text-gray-400 hidden lg:table-cell">${t.home}</td>
+                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-xs text-gray-500 dark:text-gray-400 hidden lg:table-cell">${t.away}</td>
+                <td class="py-2.5 px-2 sm:py-3.5 sm:px-4 text-center">
+                    <button type="button" onclick="selectTeamInHub('kbo', '${t.team}')" class="px-2 py-1 text-[11px] sm:text-xs font-semibold rounded-lg bg-gray-100 hover:bg-blue-600 hover:text-white dark:bg-darkbg-700 dark:hover:bg-blue-600 text-gray-700 dark:text-gray-200 transition-colors active:scale-95">
+                        선수기록 ➔
+                    </button>
+                </td>
+            </tr>
+        `;
+    }).join("");
 }
 
 // ========================================================
@@ -157,6 +885,7 @@ function switchKLeagueSub(subKey) {
         activeBtn.classList.add("bg-blue-600", "text-white", "shadow-sm");
         activeBtn.classList.remove("text-gray-600", "dark:text-gray-400");
     }
+    updateMyTeamBanner();
     renderKLeague();
 }
 
@@ -167,6 +896,157 @@ function renderKLeague() {
     const subData = klData[currentKLeagueSub];
     if (!subData) return;
 
+    const fav = getFavoriteTeam("kleague", currentKLeagueSub);
+
+    // 0-1) K리그 최근 경기 결과 렌더링
+    const matchesTitle = document.getElementById("kleague-matches-title");
+    if (matchesTitle) matchesTitle.innerText = `2026 ${subData.name} 최근 경기 결과`;
+
+    const matchesGrid = document.getElementById("kleague-matches-grid");
+    if (matchesGrid) {
+        let recentMatches = [...(subData.recent_matches || [])];
+        recentMatches.forEach(m => {
+            m.isFav = fav && (isTeamMatch(m.home_team, fav) || isTeamMatch(m.away_team, fav));
+        });
+
+        if (isMyTeamOnlyFilter && fav) {
+            recentMatches = recentMatches.filter(m => m.isFav);
+        } else {
+            recentMatches.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
+        }
+
+        if (recentMatches.length === 0) {
+            matchesGrid.innerHTML = `
+                <div class="col-span-full py-10 text-center bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800">
+                    <p class="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400">
+                        ${isMyTeamOnlyFilter ? `선호 구단 [${fav}]의 최근 경기 결과가 없습니다.` : '최근 경기 일정이 준비 중입니다.'}
+                    </p>
+                    ${isMyTeamOnlyFilter ? `<button type="button" onclick="toggleMyTeamFilter()" class="mt-3 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold active:scale-95 transition-all">전체 경기 보기</button>` : ''}
+                </div>
+            `;
+        } else {
+            matchesGrid.innerHTML = recentMatches.map(m => `
+                <div class="bg-white dark:bg-darkbg-800 rounded-2xl border ${m.isFav ? 'border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/30 my-team-card' : 'border-gray-200 dark:border-gray-800'} p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-2.5 border-b border-gray-100 dark:border-gray-700/60 text-xs">
+                        <div class="flex items-center space-x-1.5 text-gray-500 dark:text-gray-400 font-medium">
+                            <i class="fa-regular fa-calendar text-[11px]"></i>
+                            <span>${m.game_date}</span>
+                            ${m.game_time ? `<span class="text-[10px] text-gray-400">(${m.game_time})</span>` : ''}
+                        </div>
+                        <div class="flex items-center space-x-1.5">
+                            ${m.isFav ? `
+                            <span class="px-1.5 py-0.2 rounded text-[10px] font-black bg-amber-400 text-amber-950 shadow-xs flex items-center space-x-1">
+                                <i class="fa-solid fa-star text-[9px]"></i><span>MY TEAM</span>
+                            </span>
+                            ` : ''}
+                            ${m.round ? `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">${m.round}</span>` : ''}
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">${m.status}</span>
+                        </div>
+                    </div>
+                    <div class="py-3 space-y-2">
+                        <!-- 홈팀 -->
+                        <div class="flex items-center justify-between ${m.home_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
+                            <div class="flex items-center space-x-2.5 truncate">
+                                ${m.home_emblem ? `<img src="${m.home_emblem}" alt="${m.home_team}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">` : ''}
+                                <span class="text-xs sm:text-sm truncate font-semibold">${m.home_team}</span>
+                                ${m.home_win ? `<span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>` : ''}
+                                <button type="button" onclick="toggleFavoriteTeam('kleague', '${m.home_team}', '${currentKLeagueSub}')" title="선호 구단 등록/해제" 
+                                        class="fav-star-btn text-xs ${fav && isTeamMatch(m.home_team, fav) ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
+                                    ★
+                                </button>
+                            </div>
+                            <span class="text-base sm:text-lg ${m.home_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">${m.home_goal}</span>
+                        </div>
+                        <!-- 원정팀 -->
+                        <div class="flex items-center justify-between ${m.away_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
+                            <div class="flex items-center space-x-2.5 truncate">
+                                ${m.away_emblem ? `<img src="${m.away_emblem}" alt="${m.away_team}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">` : ''}
+                                <span class="text-xs sm:text-sm truncate font-semibold">${m.away_team}</span>
+                                ${m.away_win ? `<span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>` : ''}
+                                <button type="button" onclick="toggleFavoriteTeam('kleague', '${m.away_team}', '${currentKLeagueSub}')" title="선호 구단 등록/해제" 
+                                        class="fav-star-btn text-xs ${fav && isTeamMatch(m.away_team, fav) ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
+                                    ★
+                                </button>
+                            </div>
+                            <span class="text-base sm:text-lg ${m.away_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">${m.away_goal}</span>
+                        </div>
+                    </div>
+                    <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
+                        <span class="text-gray-400 truncate">${m.field_name || '경기장'}</span>
+                        <button type="button" onclick="focusKleagueHighlight('${m.home_team}', '${m.away_team}')" 
+                                class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 dark:text-blue-300 font-bold flex items-center space-x-1 active:scale-95 transition-all">
+                            <i class="fa-solid fa-play text-[9px]"></i>
+                            <span>하이라이트</span>
+                        </button>
+                    </div>
+                </div>
+            `).join("");
+        }
+    }
+
+    // 0-2) K리그 하이라이트 영상 목록 렌더링 (K1 / K2 리그별 완전 분리)
+    const hlSectionTitle = document.getElementById("kleague-video-section-title");
+    if (hlSectionTitle) hlSectionTitle.innerText = `2026 ${subData.name} 공식 하이라이트 & 30분 경기영상`;
+
+    const hlList = document.getElementById("kleague-highlight-list");
+    if (hlList) {
+        let highlights = [...(subData.highlights || [])];
+        if (highlights.length === 0) {
+            highlights = [...(klData.highlights || [])];
+        }
+        highlights.forEach(h => {
+            h.isFav = fav && isTeamMatch(h.title, fav);
+        });
+
+        highlights.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
+
+        // 리그 전환 시 해당 리그 1순위(선호구단 우선) 영상 플레이어 로드
+        if (highlights.length > 0) {
+            const topVideo = highlights[0];
+            const frame = document.getElementById("kleague-video-frame");
+            const titleEl = document.getElementById("kleague-current-video-title");
+            const dateEl = document.getElementById("kleague-current-video-date");
+            const tagEl = document.getElementById("kleague-current-video-tag");
+            if (frame && (!frame.src || !frame.src.includes(topVideo.youtube_id))) {
+                frame.src = `${topVideo.embed_url}?rel=0`;
+            }
+            if (titleEl) titleEl.innerText = topVideo.title;
+            if (dateEl) dateEl.innerText = topVideo.date;
+            if (tagEl) tagEl.innerText = topVideo.isFav ? `★ ${fav} 공식 영상` : `${subData.name} 공식`;
+        }
+
+        hlList.innerHTML = `
+            <span class="text-xs font-bold text-gray-400 block mb-1">
+                ${fav ? `선호 구단 [${fav}] 영상 우선 배치됨 (클릭 시 바로 재생)` : `${subData.name} 30분 하이라이트 목록 (클릭 시 바로 재생)`}
+            </span>
+            ${highlights.map(hl => `
+                <div onclick="playKleagueVideo('${hl.embed_url}', '${escapeHtml(hl.title)}', '${hl.date}')" 
+                     class="kleague-hl-card cursor-pointer p-2 rounded-xl border ${hl.isFav ? 'border-amber-400 bg-amber-50/40 dark:bg-amber-950/40 shadow-xs' : 'border-gray-100 dark:border-gray-700/60 bg-white dark:bg-darkbg-800'} hover:bg-blue-50/50 dark:hover:bg-darkbg-700 transition-all flex items-center space-x-3 active:scale-98 group shadow-xs">
+                    <div class="relative w-28 h-16 sm:w-32 sm:h-18 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-800">
+                        <img src="${hl.thumbnail}" alt="${hl.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://img.youtube.com/vi/${hl.youtube_id}/hqdefault.jpg'">
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
+                            <span class="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center shadow-md">
+                                <i class="fa-solid fa-play text-[10px] ml-0.5"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex-grow min-w-0">
+                        <div class="flex items-center space-x-1 mb-0.5">
+                            ${hl.isFav ? `<span class="px-1.5 py-0.2 rounded text-[9px] font-black bg-amber-400 text-amber-950 flex-shrink-0">MY TEAM</span>` : ''}
+                            <h4 class="text-xs font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 leading-snug">
+                                ${hl.title}
+                            </h4>
+                        </div>
+                        <div class="flex items-center justify-between text-[11px] text-gray-400 mt-1">
+                            <span class="font-medium truncate">${hl.source || (subData.name + ' 공식')}</span>
+                            <span class="ml-1 text-[10px]">${hl.date}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join("")}
+        `;
+    }
+
     // 1) 테이블 제목
     const tableTitle = document.getElementById("kleague-table-title");
     if (tableTitle) tableTitle.innerText = `🏆 ${subData.name} 팀 순위표`;
@@ -176,6 +1056,7 @@ function renderKLeague() {
     if (tbody) {
         tbody.innerHTML = subData.teams.map((t, idx) => {
             const isTop = t.rank <= 3;
+            const isFavTeam = fav && isTeamMatch(t.team, fav);
             const recentHtml = (t.recent || []).map(r => {
                 let badgeClass = "bg-gray-100 text-gray-700 dark:bg-darkbg-700 dark:text-gray-300";
                 if (r === "승") badgeClass = "bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300 font-bold";
@@ -184,17 +1065,21 @@ function renderKLeague() {
             }).join(" ");
 
             return `
-            <tr class="hover:bg-blue-50/40 dark:hover:bg-darkbg-700/50 transition-colors ${isTop ? 'border-l-4 border-l-emerald-500' : ''}">
+            <tr class="hover:bg-blue-50/40 dark:hover:bg-darkbg-700/50 transition-colors ${isFavTeam ? 'bg-amber-50/30 dark:bg-amber-950/20 border-l-4 border-l-amber-500' : (isTop ? 'border-l-4 border-l-emerald-500' : '')}">
                 <td class="py-2.5 px-2 sm:py-3.5 sm:px-4 text-center font-bold">
-                    <span class="w-5 h-5 sm:w-6 sm:h-6 rounded-full inline-flex items-center justify-center text-[11px] sm:text-xs ${isTop ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-black' : 'text-gray-500 dark:text-gray-400'}">
+                    <span class="w-5 h-5 sm:w-6 sm:h-6 rounded-full inline-flex items-center justify-center text-[11px] sm:text-xs ${isFavTeam ? 'bg-amber-400 text-amber-950 font-black' : (isTop ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-black' : 'text-gray-500 dark:text-gray-400')}">
                         ${t.rank}
                     </span>
                 </td>
                 <td class="py-2.5 px-2 sm:py-3.5 sm:px-4 font-semibold text-gray-900 dark:text-white">
                     <div class="flex items-center space-x-2 sm:space-x-3">
                         ${t.emblem ? `<img src="${t.emblem}" alt="${t.team}" class="w-5 h-5 sm:w-7 sm:h-7 object-contain drop-shadow-sm" onerror="this.style.display='none'">` : ''}
-                        <span class="hidden sm:inline">${t.fullName}</span>
-                        <span class="sm:hidden font-bold">${t.team}</span>
+                        <span class="hidden sm:inline ${isFavTeam ? 'font-black text-amber-900 dark:text-amber-200' : ''}">${t.fullName}</span>
+                        <span class="sm:hidden font-bold ${isFavTeam ? 'font-black text-amber-900 dark:text-amber-200' : ''}">${t.team}</span>
+                        <button type="button" onclick="toggleFavoriteTeam('kleague', '${t.team}', '${currentKLeagueSub}')" title="선호 구단 등록/해제" 
+                                class="fav-star-btn text-xs ${isFavTeam ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'}">
+                            ★
+                        </button>
                     </div>
                 </td>
                 <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-gray-600 dark:text-gray-300">${t.games}</td>
@@ -270,7 +1155,8 @@ function renderKLeague() {
         `).join("");
 
         if (subData.teams.length > 0) {
-            renderTeamHubDetails("kleague", subData.teams[0].team);
+            const initialHubTeam = fav && subData.teams.find(t => isTeamMatch(t.team, fav)) ? fav : subData.teams[0].team;
+            renderTeamHubDetails("kleague", initialHubTeam);
         }
     }
 }
@@ -289,6 +1175,7 @@ function switchOverseasSub(leagueKey) {
         activeBtn.classList.add("bg-blue-600", "text-white", "shadow-sm");
         activeBtn.classList.remove("text-gray-600", "dark:text-gray-400");
     }
+    updateMyTeamBanner();
     renderOverseas();
 }
 
@@ -299,6 +1186,146 @@ function renderOverseas() {
     const league = socData.leagues ? socData.leagues[currentOverseasSub] : null;
     if (!league) return;
 
+    const fav = getFavoriteTeam("overseas", currentOverseasSub);
+
+    // 0-1) 해외축구 최근 경기 결과 렌더링
+    const matchesTitle = document.getElementById("overseas-matches-title");
+    if (matchesTitle) matchesTitle.innerText = `${league.name} 최근 경기 결과`;
+
+    const matchesGrid = document.getElementById("overseas-matches-grid");
+    if (matchesGrid) {
+        let recentMatches = [...(league.recent_matches || [])];
+        recentMatches.forEach(m => {
+            m.isFav = fav && (
+                isTeamMatch(m.home_team, fav) || 
+                isTeamMatch(m.away_team, fav) ||
+                isTeamMatch(m.home_short, fav) ||
+                isTeamMatch(m.away_short, fav)
+            );
+        });
+
+        if (isMyTeamOnlyFilter && fav) {
+            recentMatches = recentMatches.filter(m => m.isFav);
+        } else {
+            recentMatches.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
+        }
+
+        if (recentMatches.length === 0) {
+            matchesGrid.innerHTML = `
+                <div class="col-span-full py-10 text-center bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800">
+                    <p class="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400">
+                        ${isMyTeamOnlyFilter ? `선호 구단 [${fav}]의 최근 경기 결과가 없습니다.` : '최근 경기 결과가 준비 중입니다.'}
+                    </p>
+                    ${isMyTeamOnlyFilter ? `<button type="button" onclick="toggleMyTeamFilter()" class="mt-3 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold active:scale-95 transition-all">전체 경기 보기</button>` : ''}
+                </div>
+            `;
+        } else {
+            matchesGrid.innerHTML = recentMatches.map(m => `
+                <div class="bg-white dark:bg-darkbg-800 rounded-2xl border ${m.isFav ? 'border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/30 my-team-card' : 'border-gray-200 dark:border-gray-800'} p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-2.5 border-b border-gray-100 dark:border-gray-700/60 text-xs">
+                        <div class="flex items-center space-x-1.5 text-gray-500 dark:text-gray-400 font-medium">
+                            <i class="fa-regular fa-calendar text-[11px]"></i>
+                            <span>${m.date}</span>
+                        </div>
+                        <div class="flex items-center space-x-1.5">
+                            ${m.isFav ? `
+                            <span class="px-1.5 py-0.2 rounded text-[10px] font-black bg-amber-400 text-amber-950 shadow-xs flex items-center space-x-1">
+                                <i class="fa-solid fa-star text-[9px]"></i><span>MY TEAM</span>
+                            </span>
+                            ` : ''}
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">${m.status}</span>
+                        </div>
+                    </div>
+                    <div class="py-3 space-y-2">
+                        <!-- 홈팀 -->
+                        <div class="flex items-center justify-between ${m.home_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
+                            <div class="flex items-center space-x-2.5 truncate">
+                                ${m.home_emblem ? `<img src="${m.home_emblem}" alt="${m.home_team}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">` : ''}
+                                <span class="text-xs sm:text-sm truncate font-semibold">${m.home_short || m.home_team}</span>
+                                ${m.home_win ? `<span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>` : ''}
+                                <button type="button" onclick="toggleFavoriteTeam('overseas', '${m.home_short || m.home_team}', '${currentOverseasSub}')" title="선호 구단 등록/해제" 
+                                        class="fav-star-btn text-xs ${fav && isTeamMatch(m.home_team, fav) ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
+                                    ★
+                                </button>
+                            </div>
+                            <span class="text-base sm:text-lg ${m.home_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">${m.home_score}</span>
+                        </div>
+                        <!-- 원정팀 -->
+                        <div class="flex items-center justify-between ${m.away_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
+                            <div class="flex items-center space-x-2.5 truncate">
+                                ${m.away_emblem ? `<img src="${m.away_emblem}" alt="${m.away_team}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">` : ''}
+                                <span class="text-xs sm:text-sm truncate font-semibold">${m.away_short || m.away_team}</span>
+                                ${m.away_win ? `<span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>` : ''}
+                                <button type="button" onclick="toggleFavoriteTeam('overseas', '${m.away_short || m.away_team}', '${currentOverseasSub}')" title="선호 구단 등록/해제" 
+                                        class="fav-star-btn text-xs ${fav && isTeamMatch(m.away_team, fav) ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
+                                    ★
+                                </button>
+                            </div>
+                            <span class="text-base sm:text-lg ${m.away_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">${m.away_score}</span>
+                        </div>
+                    </div>
+                    <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
+                        <span class="text-gray-400 truncate">${m.venue || '경기장'}</span>
+                        <button type="button" onclick="focusOverseasHighlight('${m.home_team}', '${m.away_team}')" 
+                                class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 dark:text-blue-300 font-bold flex items-center space-x-1 active:scale-95 transition-all">
+                            <i class="fa-solid fa-play text-[9px]"></i>
+                            <span>하이라이트</span>
+                        </button>
+                    </div>
+                </div>
+            `).join("");
+        }
+    }
+
+    // 0-2) 해외축구 하이라이트 영상 목록 렌더링
+    const videoSectionTitle = document.getElementById("overseas-video-section-title");
+    if (videoSectionTitle) videoSectionTitle.innerText = `${league.name} 공식 하이라이트 & 골 장면`;
+
+    const hlList = document.getElementById("overseas-highlight-list");
+    if (hlList) {
+        let highlights = [...(league.highlights || [])];
+        highlights.forEach(h => {
+            h.isFav = fav && (isTeamMatch(h.title, fav) || isTeamMatch(h.match, fav));
+        });
+
+        highlights.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
+
+        if (highlights.length > 0) {
+            setOverseasDefaultVideo(highlights[0]);
+        }
+
+        hlList.innerHTML = `
+            <span class="text-xs font-bold text-gray-400 block mb-1">
+                ${fav ? `선호 구단 [${fav}] 영상 우선 배치됨 (클릭 시 바로 재생)` : '공식 하이라이트 영상 목록 (클릭 시 바로 재생)'}
+            </span>
+            ${highlights.map((hl, idx) => `
+                <div onclick="playOverseasVideo('${hl.type}', '${hl.video_url || ''}', '${hl.embed_url || ''}', '${escapeHtml(hl.title)}', '${hl.date}')" 
+                     class="overseas-hl-card cursor-pointer p-2 rounded-xl border ${hl.isFav ? 'border-amber-400 bg-amber-50/40 dark:bg-amber-950/40 shadow-xs' : 'border-gray-100 dark:border-gray-700/60 bg-white dark:bg-darkbg-800'} hover:bg-blue-50/50 dark:hover:bg-darkbg-700 transition-all flex items-center space-x-3 active:scale-98 group shadow-xs">
+                    <div class="relative w-28 h-16 sm:w-32 sm:h-18 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-800">
+                        <img src="${hl.thumbnail}" alt="${hl.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=640&auto=format&fit=crop&q=80'">
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
+                            <span class="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center shadow-md">
+                                <i class="fa-solid fa-play text-[10px] ml-0.5"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex-grow min-w-0">
+                        <div class="flex items-center space-x-1 mb-0.5">
+                            ${hl.isFav ? `<span class="px-1.5 py-0.2 rounded text-[9px] font-black bg-amber-400 text-amber-950 flex-shrink-0">MY TEAM</span>` : ''}
+                            <h4 class="text-xs font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 leading-snug">
+                                ${hl.title}
+                            </h4>
+                        </div>
+                        <div class="flex items-center justify-between text-[11px] text-gray-400 mt-1">
+                            <span class="font-medium truncate">${hl.source || '공식 영상'}</span>
+                            <span class="ml-1 text-[10px]">${hl.date}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join("")}
+        `;
+    }
+
     // 1) 테이블 제목
     const tableTitle = document.getElementById("overseas-table-title");
     if (tableTitle) tableTitle.innerText = `🏆 ${league.name} 순위표`;
@@ -308,18 +1335,23 @@ function renderOverseas() {
     if (tbody) {
         tbody.innerHTML = (league.teams || []).map(t => {
             const isUcl = t.rank <= 4;
+            const isFavTeam = fav && isTeamMatch(t.team, fav);
             return `
-            <tr class="hover:bg-blue-50/40 dark:hover:bg-darkbg-700/50 transition-colors ${isUcl ? 'border-l-4 border-l-blue-600' : ''}">
+            <tr class="hover:bg-blue-50/40 dark:hover:bg-darkbg-700/50 transition-colors ${isFavTeam ? 'bg-amber-50/30 dark:bg-amber-950/20 border-l-4 border-l-amber-500' : (isUcl ? 'border-l-4 border-l-blue-600' : '')}">
                 <td class="py-2.5 px-2 sm:py-3.5 sm:px-4 text-center font-bold">
-                    <span class="w-5 h-5 sm:w-6 sm:h-6 rounded-full inline-flex items-center justify-center text-[11px] sm:text-xs ${isUcl ? 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 font-black' : 'text-gray-500 dark:text-gray-400'}">
+                    <span class="w-5 h-5 sm:w-6 sm:h-6 rounded-full inline-flex items-center justify-center text-[11px] sm:text-xs ${isFavTeam ? 'bg-amber-400 text-amber-950 font-black' : (isUcl ? 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 font-black' : 'text-gray-500 dark:text-gray-400')}">
                         ${t.rank}
                     </span>
                 </td>
                 <td class="py-2.5 px-2 sm:py-3.5 sm:px-4 font-semibold text-gray-900 dark:text-white">
                     <div class="flex items-center space-x-2 sm:space-x-3">
                         ${t.emblem ? `<img src="${t.emblem}" alt="${t.team}" class="w-5 h-5 sm:w-7 sm:h-7 object-contain drop-shadow-sm" onerror="this.style.display='none'">` : ''}
-                        <span class="font-bold">${t.team}</span>
+                        <span class="font-bold ${isFavTeam ? 'text-amber-900 dark:text-amber-200' : ''}">${t.team}</span>
                         ${t.teamEng && t.teamEng !== t.team ? `<span class="hidden sm:inline text-xs text-gray-400 font-normal">(${t.teamEng})</span>` : ''}
+                        <button type="button" onclick="toggleFavoriteTeam('overseas', '${t.team}', '${currentOverseasSub}')" title="선호 구단 등록/해제" 
+                                class="fav-star-btn text-xs ${isFavTeam ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'}">
+                            ★
+                        </button>
                     </div>
                 </td>
                 <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-gray-600 dark:text-gray-300">${t.games}</td>
@@ -395,7 +1427,8 @@ function renderOverseas() {
         `).join("");
 
         if (league.teams?.length > 0) {
-            renderTeamHubDetails("overseas", league.teams[0].team);
+            const initialHubTeam = fav && league.teams.find(t => isTeamMatch(t.team, fav)) ? fav : league.teams[0].team;
+            renderTeamHubDetails("overseas", initialHubTeam);
         }
     }
 }
@@ -430,21 +1463,33 @@ function renderMLB() {
     const mlbData = window.INITIAL_DATA?.mlb;
     if (!mlbData) return;
 
+    const fav = getFavoriteTeam("mlb");
+
+    // 0) 경기 결과 및 하이라이트 영상 렌더링
+    renderMlbMatches();
+    renderMlbHighlights();
+
     // 1) 30개 구단 전체 순위표
     const tbody = document.getElementById("mlb-overall-tbody");
     if (tbody) {
-        tbody.innerHTML = (mlbData.all_teams || []).map((t, idx) => `
-            <tr class="hover:bg-blue-50/40 dark:hover:bg-darkbg-700/50 transition-colors ${idx < 12 ? 'border-l-4 border-l-blue-500' : ''}">
+        tbody.innerHTML = (mlbData.all_teams || []).map((t, idx) => {
+            const isFavTeam = fav && isTeamMatch(t.team, fav);
+            return `
+            <tr class="hover:bg-blue-50/40 dark:hover:bg-darkbg-700/50 transition-colors ${isFavTeam ? 'bg-amber-50/30 dark:bg-amber-950/20 border-l-4 border-l-amber-500' : (idx < 12 ? 'border-l-4 border-l-blue-500' : '')}">
                 <td class="py-2.5 px-2 sm:py-3.5 sm:px-4 text-center font-bold">
-                    <span class="w-5 h-5 sm:w-6 sm:h-6 rounded-full inline-flex items-center justify-center text-[11px] sm:text-xs ${idx < 12 ? 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 font-bold' : 'text-gray-500'}">
+                    <span class="w-5 h-5 sm:w-6 sm:h-6 rounded-full inline-flex items-center justify-center text-[11px] sm:text-xs ${isFavTeam ? 'bg-amber-400 text-amber-950 font-black' : (idx < 12 ? 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 font-bold' : 'text-gray-500')}">
                         ${t.overallRank || idx + 1}
                     </span>
                 </td>
                 <td class="py-2.5 px-2 sm:py-3.5 sm:px-4 font-semibold text-gray-900 dark:text-white">
                     <div class="flex items-center space-x-2 sm:space-x-3">
                         ${t.emblem ? `<img src="${t.emblem}" alt="${t.team}" class="w-5 h-5 sm:w-7 sm:h-7 object-contain" onerror="this.style.display='none'">` : ''}
-                        <span class="font-bold">${t.team}</span>
+                        <span class="font-bold ${isFavTeam ? 'text-amber-900 dark:text-amber-200' : ''}">${t.team}</span>
                         <span class="hidden sm:inline text-xs text-gray-400 font-normal">(${t.teamEng})</span>
+                        <button type="button" onclick="toggleFavoriteTeam('mlb', '${t.team}')" title="선호 구단 등록/해제" 
+                                class="fav-star-btn text-xs ${isFavTeam ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'}">
+                            ★
+                        </button>
                     </div>
                 </td>
                 <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-xs text-gray-500 dark:text-gray-400">${t.division}</td>
@@ -461,7 +1506,8 @@ function renderMLB() {
                     </button>
                 </td>
             </tr>
-        `).join("");
+            `;
+        }).join("");
     }
 
     // 2) 6개 지구별 순위 카드
@@ -486,19 +1532,26 @@ function renderMLB() {
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-50 dark:divide-gray-800/50">
-                            ${(d.teams || []).map(t => `
-                            <tr class="hover:bg-gray-50 dark:hover:bg-darkbg-700/50">
-                                <td class="p-2 text-center font-bold text-gray-500">${t.rank}</td>
-                                <td class="p-2 font-semibold flex items-center space-x-2">
-                                    <img src="${t.emblem}" alt="${t.team}" class="w-5 h-5 object-contain" onerror="this.style.display='none'">
-                                    <span>${t.team}</span>
-                                </td>
-                                <td class="p-2 text-center font-bold">${t.win}</td>
-                                <td class="p-2 text-center text-gray-500">${t.loss}</td>
-                                <td class="p-2 text-center font-bold text-blue-600 dark:text-blue-400">${t.rate}</td>
-                                <td class="p-2 text-center text-gray-500">${t.game_diff}</td>
-                            </tr>
-                            `).join("")}
+                            ${(d.teams || []).map(t => {
+                                const isFavTeam = fav && isTeamMatch(t.team, fav);
+                                return `
+                                <tr class="hover:bg-gray-50 dark:hover:bg-darkbg-700/50 ${isFavTeam ? 'bg-amber-50/40 dark:bg-amber-950/20 font-bold' : ''}">
+                                    <td class="p-2 text-center font-bold ${isFavTeam ? 'text-amber-600 dark:text-amber-400' : 'text-gray-500'}">${t.rank}</td>
+                                    <td class="p-2 font-semibold flex items-center space-x-2">
+                                        <img src="${t.emblem}" alt="${t.team}" class="w-5 h-5 object-contain" onerror="this.style.display='none'">
+                                        <span class="${isFavTeam ? 'text-amber-900 dark:text-amber-200 font-black' : ''}">${t.team}</span>
+                                        <button type="button" onclick="toggleFavoriteTeam('mlb', '${t.team}')" title="선호 구단 등록/해제" 
+                                                class="fav-star-btn text-xs ${isFavTeam ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
+                                            ★
+                                        </button>
+                                    </td>
+                                    <td class="p-2 text-center font-bold">${t.win}</td>
+                                    <td class="p-2 text-center text-gray-500">${t.loss}</td>
+                                    <td class="p-2 text-center font-bold text-blue-600 dark:text-blue-400">${t.rate}</td>
+                                    <td class="p-2 text-center text-gray-500">${t.game_diff}</td>
+                                </tr>
+                                `;
+                            }).join("")}
                         </tbody>
                     </table>
                 </div>
@@ -530,9 +1583,165 @@ function renderMLB() {
         `).join("");
 
         if (mlbData.all_teams?.length > 0) {
-            renderTeamHubDetails("mlb", mlbData.all_teams[0].team);
+            const initialHubTeam = fav && mlbData.all_teams.find(t => isTeamMatch(t.team, fav)) ? fav : mlbData.all_teams[0].team;
+            renderTeamHubDetails("mlb", initialHubTeam);
         }
     }
+}
+
+// 5-1. MLB 최근 경기 결과 렌더링 (마이팀 연동)
+function renderMlbMatches() {
+    const mlbData = window.INITIAL_DATA?.mlb;
+    const grid = document.getElementById("mlb-matches-grid");
+    if (!grid || !mlbData) return;
+
+    const fav = getFavoriteTeam("mlb");
+    let matches = [...(mlbData.recent_matches || [])];
+
+    matches.forEach(m => {
+        m.isFav = fav && (
+            isTeamMatch(m.home_team, fav) ||
+            isTeamMatch(m.away_team, fav) ||
+            isTeamMatch(m.home_full, fav) ||
+            isTeamMatch(m.away_full, fav)
+        );
+    });
+
+    if (isMyTeamOnlyFilter && fav) {
+        matches = matches.filter(m => m.isFav);
+    } else {
+        matches.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
+    }
+
+    if (matches.length === 0) {
+        grid.innerHTML = `
+            <div class="col-span-full py-10 text-center bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800">
+                <p class="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400">
+                    ${isMyTeamOnlyFilter ? `선호 구단 [${fav}]의 최근 경기 결과가 없습니다.` : '최근 경기 결과가 준비 중입니다.'}
+                </p>
+                ${isMyTeamOnlyFilter ? `<button type="button" onclick="toggleMyTeamFilter()" class="mt-3 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold active:scale-95 transition-all">전체 경기 보기</button>` : ''}
+            </div>
+        `;
+        return;
+    }
+
+    grid.innerHTML = matches.map(m => `
+        <div class="bg-white dark:bg-darkbg-800 rounded-2xl border ${m.isFav ? 'border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/30 my-team-card' : 'border-gray-200 dark:border-gray-800'} p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
+            <div class="flex items-center justify-between pb-2.5 border-b border-gray-100 dark:border-gray-700/60 text-xs">
+                <div class="flex items-center space-x-1.5 text-gray-500 dark:text-gray-400 font-medium">
+                    <i class="fa-regular fa-calendar text-[11px]"></i>
+                    <span>${m.date}</span>
+                </div>
+                <div class="flex items-center space-x-1.5">
+                    ${m.isFav ? `
+                    <span class="px-1.5 py-0.2 rounded text-[10px] font-black bg-amber-400 text-amber-950 shadow-xs flex items-center space-x-1">
+                        <i class="fa-solid fa-star text-[9px]"></i><span>MY TEAM</span>
+                    </span>
+                    ` : ''}
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">
+                        ${m.status}
+                    </span>
+                </div>
+            </div>
+            <div class="py-3 space-y-2">
+                <!-- 원정팀 -->
+                <div class="flex items-center justify-between ${m.away_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
+                    <div class="flex items-center space-x-2.5 truncate">
+                        ${m.away_emblem ? `<img src="${m.away_emblem}" alt="${m.away_team}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">` : ''}
+                        <span class="text-xs sm:text-sm truncate font-semibold">${m.away_full || m.away_team}</span>
+                        ${m.away_win ? `<span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>` : ''}
+                        <button type="button" onclick="toggleFavoriteTeam('mlb', '${m.away_team}')" title="선호 구단 등록/해제" 
+                                class="fav-star-btn text-xs ${fav && isTeamMatch(m.away_team, fav) ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
+                            ★
+                        </button>
+                    </div>
+                    <span class="text-base sm:text-lg ${m.away_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">${m.away_score}</span>
+                </div>
+                <!-- 홈팀 -->
+                <div class="flex items-center justify-between ${m.home_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
+                    <div class="flex items-center space-x-2.5 truncate">
+                        ${m.home_emblem ? `<img src="${m.home_emblem}" alt="${m.home_team}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">` : ''}
+                        <span class="text-xs sm:text-sm truncate font-semibold">${m.home_full || m.home_team}</span>
+                        ${m.home_win ? `<span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>` : ''}
+                        <button type="button" onclick="toggleFavoriteTeam('mlb', '${m.home_team}')" title="선호 구단 등록/해제" 
+                                class="fav-star-btn text-xs ${fav && isTeamMatch(m.home_team, fav) ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
+                            ★
+                        </button>
+                    </div>
+                    <span class="text-base sm:text-lg ${m.home_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">${m.home_score}</span>
+                </div>
+            </div>
+            <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
+                <span class="text-gray-400 truncate">${m.venue || '경기장'}</span>
+                <button type="button" onclick="focusMlbHighlight('${m.away_team}', '${m.home_team}')" 
+                        class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 dark:text-blue-300 font-bold flex items-center space-x-1 active:scale-95 transition-all">
+                    <i class="fa-solid fa-play text-[9px]"></i>
+                    <span>하이라이트</span>
+                </button>
+            </div>
+        </div>
+    `).join("");
+}
+
+// 5-2. MLB 하이라이트 영상 목록 렌더링 (마이팀 연동)
+function renderMlbHighlights() {
+    const mlbData = window.INITIAL_DATA?.mlb;
+    const hlList = document.getElementById("mlb-highlight-list");
+    if (!hlList || !mlbData) return;
+
+    const fav = getFavoriteTeam("mlb");
+    let highlights = [...(mlbData.highlights || [])];
+
+    highlights.forEach(h => {
+        h.isFav = fav && (isTeamMatch(h.title, fav) || isTeamMatch(h.match, fav));
+    });
+
+    highlights.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
+
+    // 선호 구단 영상이 1순위로 있으면 상단 플레이어에 해당 영상 기본 세팅
+    if (highlights.length > 0 && highlights[0].isFav) {
+        const player = document.getElementById("mlb-video-player");
+        const titleEl = document.getElementById("mlb-current-video-title");
+        const dateEl = document.getElementById("mlb-current-video-date");
+        const tagEl = document.getElementById("mlb-current-video-tag");
+        if (player && highlights[0].video_url && player.src !== highlights[0].video_url) {
+            player.src = highlights[0].video_url;
+        }
+        if (titleEl) titleEl.innerText = highlights[0].title;
+        if (dateEl) dateEl.innerText = highlights[0].date;
+        if (tagEl) tagEl.innerText = `★ ${fav} 공식 영상`;
+    }
+
+    hlList.innerHTML = `
+        <span class="text-xs font-bold text-gray-400 block mb-1">
+            ${fav ? `선호 구단 [${fav}] 영상 우선 배치됨 (클릭 시 바로 재생)` : '최신 하이라이트 영상 목록 (클릭 시 바로 재생)'}
+        </span>
+        ${highlights.map(hl => `
+            <div onclick="playMlbVideo('${hl.video_url}', '${escapeHtml(hl.title)}', '${hl.date}')" 
+                 class="mlb-hl-card cursor-pointer p-2 rounded-xl border ${hl.isFav ? 'border-amber-400 bg-amber-50/40 dark:bg-amber-950/40 shadow-xs' : 'border-gray-100 dark:border-gray-700/60 bg-white dark:bg-darkbg-800'} hover:bg-blue-50/50 dark:hover:bg-darkbg-700 transition-all flex items-center space-x-3 active:scale-98 group shadow-xs">
+                <div class="relative w-28 h-16 sm:w-32 sm:h-18 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-800">
+                    <img src="${hl.thumbnail}" alt="${hl.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://images.unsplash.com/photo-1508344928928-7165b67de128?w=640&auto=format&fit=crop&q=80'">
+                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
+                        <span class="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center shadow-md">
+                            <i class="fa-solid fa-play text-[10px] ml-0.5"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="flex-grow min-w-0">
+                    <div class="flex items-center space-x-1 mb-0.5">
+                        ${hl.isFav ? `<span class="px-1.5 py-0.2 rounded text-[9px] font-black bg-amber-400 text-amber-950 flex-shrink-0">MY TEAM</span>` : ''}
+                        <h4 class="text-xs font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 leading-snug">
+                            ${hl.title}
+                        </h4>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] text-gray-400 mt-1">
+                        <span class="font-medium truncate">${hl.duration || '하이라이트'}</span>
+                        <span class="ml-1 text-[10px]">${hl.date}</span>
+                    </div>
+                </div>
+            </div>
+        `).join("")}
+    `;
 }
 
 function renderLeaderCard(cat, colorTheme) {
@@ -1015,4 +2224,186 @@ function showToast(message, isError = false) {
     setTimeout(() => {
         toast.classList.add("translate-y-20", "opacity-0");
     }, 3000);
+}
+
+// ========================================================
+// 10. 공식 영상 플레이어 제어 및 경기 하이라이트 포커스
+// ========================================================
+function escapeHtml(str) {
+    if (!str) return "";
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+// 1) KBO 영상 재생
+function playKboVideo(embedUrl, title, date) {
+    const frame = document.getElementById("kbo-video-frame");
+    if (!frame || !embedUrl) return;
+
+    const autoplayUrl = embedUrl.includes("?") ? `${embedUrl}&autoplay=1` : `${embedUrl}?autoplay=1`;
+    frame.src = autoplayUrl;
+
+    const titleEl = document.getElementById("kbo-current-video-title");
+    if (titleEl) titleEl.innerText = title || "KBO 공식 하이라이트";
+
+    const dateEl = document.getElementById("kbo-current-video-date");
+    if (dateEl) dateEl.innerText = date || "";
+
+    showToast(`🎬 ${title} 재생 중`);
+    frame.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+// 2) K리그 영상 재생
+function playKleagueVideo(embedUrl, title, date) {
+    const frame = document.getElementById("kleague-video-frame");
+    if (!frame || !embedUrl) return;
+
+    const autoplayUrl = embedUrl.includes("?") ? `${embedUrl}&autoplay=1` : `${embedUrl}?autoplay=1`;
+    frame.src = autoplayUrl;
+
+    const titleEl = document.getElementById("kleague-current-video-title");
+    if (titleEl) titleEl.innerText = title || "K리그 공식 하이라이트";
+
+    const dateEl = document.getElementById("kleague-current-video-date");
+    if (dateEl) dateEl.innerText = date || "";
+
+    showToast(`🎬 ${title} 재생 중`);
+    frame.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+// 3) 해외축구 기본 비디오 설정
+function setOverseasDefaultVideo(hl) {
+    if (!hl) return;
+    const videoPlayer = document.getElementById("overseas-video-player");
+    const videoFrame = document.getElementById("overseas-video-frame");
+    if (!videoPlayer || !videoFrame) return;
+
+    const titleEl = document.getElementById("overseas-current-video-title");
+    if (titleEl) titleEl.innerText = hl.title || "해외축구 공식 하이라이트";
+
+    const dateEl = document.getElementById("overseas-current-video-date");
+    if (dateEl) dateEl.innerText = hl.date || "";
+
+    const tagEl = document.getElementById("overseas-current-video-tag");
+    if (tagEl) tagEl.innerText = hl.source || "공식 영상";
+
+    if (hl.type === "mp4" && hl.video_url) {
+        videoPlayer.src = hl.video_url;
+        videoPlayer.classList.remove("hidden");
+        videoFrame.classList.add("hidden");
+        videoFrame.src = "";
+    } else if (hl.embed_url) {
+        videoFrame.src = hl.embed_url;
+        videoFrame.classList.remove("hidden");
+        videoPlayer.classList.add("hidden");
+        videoPlayer.src = "";
+    }
+}
+
+// 4) 해외축구 영상 재생 (클릭 시 자동 재생)
+function playOverseasVideo(type, videoUrl, embedUrl, title, date) {
+    const videoPlayer = document.getElementById("overseas-video-player");
+    const videoFrame = document.getElementById("overseas-video-frame");
+    if (!videoPlayer || !videoFrame) return;
+
+    const titleEl = document.getElementById("overseas-current-video-title");
+    if (titleEl) titleEl.innerText = title || "해외축구 공식 하이라이트";
+
+    const dateEl = document.getElementById("overseas-current-video-date");
+    if (dateEl) dateEl.innerText = date || "";
+
+    if (type === "mp4" && videoUrl) {
+        videoPlayer.src = videoUrl;
+        videoPlayer.classList.remove("hidden");
+        videoFrame.classList.add("hidden");
+        videoFrame.src = "";
+        videoPlayer.play().catch(() => {});
+        videoPlayer.scrollIntoView({ behavior: "smooth", block: "center" });
+    } else if (embedUrl) {
+        const autoplayUrl = embedUrl.includes("?") ? `${embedUrl}&autoplay=1` : `${embedUrl}?autoplay=1`;
+        videoFrame.src = autoplayUrl;
+        videoFrame.classList.remove("hidden");
+        videoPlayer.classList.add("hidden");
+        videoPlayer.src = "";
+        videoFrame.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    showToast(`🎬 ${title} 재생 중`);
+}
+
+// 5) MLB 영상 재생 (mp4 고화질 재생)
+function playMlbVideo(videoUrl, title, date) {
+    const player = document.getElementById("mlb-video-player");
+    if (!player || !videoUrl) return;
+
+    player.src = videoUrl;
+    player.play().catch(() => {});
+
+    const titleEl = document.getElementById("mlb-current-video-title");
+    if (titleEl) titleEl.innerText = title || "MLB Film Room 하이라이트";
+
+    const dateEl = document.getElementById("mlb-current-video-date");
+    if (dateEl) dateEl.innerText = date || "";
+
+    showToast(`🎬 ${title} 재생 중`);
+    player.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+// 6) 경기 카드에서 하이라이트 포커스
+function focusKboHighlight(t1, t2) {
+    const kboData = window.INITIAL_DATA?.kbo;
+    const highlights = kboData?.highlights || [];
+    let match = highlights.find(h => (h.match && (h.match.includes(t1) || h.match.includes(t2))) || (h.title && (h.title.includes(t1) || h.title.includes(t2))));
+    if (!match && highlights.length > 0) match = highlights[0];
+
+    if (match) {
+        playKboVideo(match.embed_url, match.title, match.date);
+    } else {
+        showToast("해당 경기의 영상이 준비 중입니다.");
+    }
+}
+
+function focusKleagueHighlight(home, away) {
+    const klData = window.INITIAL_DATA?.kleague;
+    const subData = klData?.[currentKLeagueSub];
+    const highlights = subData?.highlights || klData?.highlights || [];
+    let match = highlights.find(h => (h.title && (isTeamMatch(h.title, home) || isTeamMatch(h.title, away))));
+    if (!match && highlights.length > 0) match = highlights[0];
+
+    if (match) {
+        playKleagueVideo(match.embed_url, match.title, match.date);
+    } else {
+        showToast("해당 경기의 영상이 준비 중입니다.");
+    }
+}
+
+function focusOverseasHighlight(home, away) {
+    const socData = window.INITIAL_DATA?.overseas;
+    const league = socData?.leagues ? socData.leagues[currentOverseasSub] : null;
+    const highlights = league?.highlights || [];
+    let match = highlights.find(h => (h.match && (h.match.includes(home) || h.match.includes(away))) || (h.title && (h.title.includes(home) || h.title.includes(away))));
+    if (!match && highlights.length > 0) match = highlights[0];
+
+    if (match) {
+        playOverseasVideo(match.type, match.video_url, match.embed_url, match.title, match.date);
+    } else {
+        showToast("해당 경기의 영상이 준비 중입니다.");
+    }
+}
+
+function focusMlbHighlight(t1, t2) {
+    const mlbData = window.INITIAL_DATA?.mlb;
+    const highlights = mlbData?.highlights || [];
+    let match = highlights.find(h => (h.match && (h.match.includes(t1) || h.match.includes(t2))) || (h.title && (h.title.includes(t1) || h.title.includes(t2))));
+    if (!match && highlights.length > 0) match = highlights[0];
+
+    if (match) {
+        playMlbVideo(match.video_url, match.title, match.date);
+    } else {
+        showToast("해당 경기의 영상이 준비 중입니다.");
+    }
 }
