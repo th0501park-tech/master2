@@ -848,11 +848,20 @@ function renderKboMatches() {
 
                 <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
                     <span class="text-gray-400 truncate">${m.broadcast || '공식 중계'}</span>
+                    ${isLive ? `
+                    <button type="button" onclick="openLiveRelayModal('${m.game_id || ''}', '${m.away_team}', '${m.home_team}', 'kbo')" 
+                            class="px-2.5 py-1 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-950/60 dark:hover:bg-red-900/80 dark:text-red-300 font-bold flex items-center space-x-1.5 active:scale-95 transition-all shadow-xs border border-red-200 dark:border-red-900/40"
+                            title="네이버스포츠 실시간 문자중계 보기">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
+                        <span>실시간 중계확인</span>
+                    </button>
+                    ` : `
                     <button type="button" onclick="focusKboHighlight('${m.away_team}', '${m.home_team}')" 
                             class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 dark:text-blue-300 font-bold flex items-center space-x-1 active:scale-95 transition-all">
                         <i class="fa-solid fa-play text-[9px]"></i>
                         <span>하이라이트</span>
                     </button>
+                    `}
                 </div>
             </div>
         `;
@@ -1126,11 +1135,20 @@ function renderKLeague() {
                     ${liveNoticeHtml}
                     <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
                         <span class="text-gray-400 truncate">${m.field_name || '경기장'}</span>
+                        ${isLive ? `
+                        <button type="button" onclick="openLiveRelayModal('${m.game_id || ''}', '${m.home_team}', '${m.away_team}', 'kleague')" 
+                                class="px-2.5 py-1 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-950/60 dark:hover:bg-red-900/80 dark:text-red-300 font-bold flex items-center space-x-1.5 active:scale-95 transition-all shadow-xs border border-red-200 dark:border-red-900/40"
+                                title="네이버스포츠 실시간 문자중계 보기">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
+                            <span>실시간 중계확인</span>
+                        </button>
+                        ` : `
                         <button type="button" onclick="focusKleagueHighlight('${m.home_team}', '${m.away_team}')" 
                                 class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 dark:text-blue-300 font-bold flex items-center space-x-1 active:scale-95 transition-all">
                             <i class="fa-solid fa-play text-[9px]"></i>
                             <span>하이라이트</span>
                         </button>
+                        `}
                     </div>
                 </div>
                 `;
@@ -1473,11 +1491,20 @@ function renderOverseas() {
                     ${liveNoticeHtml}
                     <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
                         <span class="text-gray-400 truncate">${m.venue || '경기장'}</span>
+                        ${isLive ? `
+                        <button type="button" onclick="openLiveRelayModal('${m.game_id || ''}', '${m.home_team}', '${m.away_team}', 'overseas')" 
+                                class="px-2.5 py-1 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-950/60 dark:hover:bg-red-900/80 dark:text-red-300 font-bold flex items-center space-x-1.5 active:scale-95 transition-all shadow-xs border border-red-200 dark:border-red-900/40"
+                                title="네이버스포츠 실시간 문자중계 보기">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
+                            <span>실시간 중계확인</span>
+                        </button>
+                        ` : `
                         <button type="button" onclick="focusOverseasHighlight('${m.home_team}', '${m.away_team}')" 
                                 class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 dark:text-blue-300 font-bold flex items-center space-x-1 active:scale-95 transition-all">
                             <i class="fa-solid fa-play text-[9px]"></i>
                             <span>하이라이트</span>
                         </button>
+                        `}
                     </div>
                 </div>
                 `;
@@ -1953,11 +1980,20 @@ function renderMlbMatches() {
             ${pitcherInfoHtml}
             <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
                 <span class="text-gray-400 truncate">${m.venue || '경기장'}</span>
+                ${isLive ? `
+                <button type="button" onclick="openLiveRelayModal('${m.game_id || ''}', '${m.away_team}', '${m.home_team}', 'mlb')" 
+                        class="px-2.5 py-1 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-950/60 dark:hover:bg-red-900/80 dark:text-red-300 font-bold flex items-center space-x-1.5 active:scale-95 transition-all shadow-xs border border-red-200 dark:border-red-900/40"
+                        title="네이버스포츠 실시간 문자중계 보기">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
+                    <span>실시간 중계확인</span>
+                </button>
+                ` : `
                 <button type="button" onclick="focusMlbHighlight('${m.away_team}', '${m.home_team}')" 
                         class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 dark:text-blue-300 font-bold flex items-center space-x-1 active:scale-95 transition-all">
                     <i class="fa-solid fa-play text-[9px]"></i>
                     <span>하이라이트</span>
                 </button>
+                `}
             </div>
         </div>
         `;
@@ -2775,3 +2811,102 @@ function focusMlbHighlight(t1, t2) {
         showToast("해당 경기의 영상이 준비 중입니다.");
     }
 }
+
+// ==========================================
+// 11. 네이버스포츠 실시간 문자중계 모달 제어
+// ==========================================
+function getNaverRelayUrl(gameId, sportCategory) {
+    if (gameId && typeof gameId === 'string' && gameId.trim().length > 0 && gameId !== 'undefined' && gameId !== 'null') {
+        return `https://m.sports.naver.com/game/${encodeURIComponent(gameId.trim())}/relay`;
+    }
+    switch (sportCategory) {
+        case 'kbo':
+            return 'https://m.sports.naver.com/kbaseball/index';
+        case 'kleague':
+            return 'https://m.sports.naver.com/kleague/index';
+        case 'overseas':
+            return 'https://m.sports.naver.com/wfootball/index';
+        case 'mlb':
+            return 'https://m.sports.naver.com/wbaseball/index';
+        default:
+            return 'https://m.sports.naver.com/';
+    }
+}
+
+function openLiveRelayModal(gameId, awayTeam, homeTeam, sportCategory = 'kbo') {
+    const modal = document.getElementById('live-relay-modal');
+    const iframe = document.getElementById('live-relay-iframe');
+    const titleEl = document.getElementById('relay-modal-title');
+    const subtitleEl = document.getElementById('relay-modal-subtitle');
+    const extLink = document.getElementById('relay-modal-external-link');
+    const loader = document.getElementById('relay-iframe-loader');
+
+    if (!modal || !iframe) return;
+
+    const url = getNaverRelayUrl(gameId, sportCategory);
+
+    if (titleEl) {
+        titleEl.innerText = (awayTeam && homeTeam) 
+            ? `${awayTeam} vs ${homeTeam} 실시간 문자중계` 
+            : '네이버스포츠 실시간 문자중계';
+    }
+    if (subtitleEl) {
+        const catName = sportCategory === 'kbo' ? 'KBO 프로야구' : (sportCategory === 'mlb' ? 'MLB 메이저리그' : (sportCategory === 'kleague' ? 'K리그' : '해외축구'));
+        subtitleEl.innerText = `${catName} 공식 실시간 볼카운트 & 투구/경기 상황 문자중계`;
+    }
+    if (extLink) {
+        extLink.href = url;
+    }
+
+    if (loader) {
+        loader.classList.remove('hidden');
+        loader.style.opacity = '1';
+    }
+
+    // iframe URL 변경 및 모달 표시
+    iframe.src = url;
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLiveRelayModal() {
+    const modal = document.getElementById('live-relay-modal');
+    const iframe = document.getElementById('live-relay-iframe');
+    if (!modal) return;
+
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+
+    if (iframe) {
+        iframe.src = 'about:blank';
+    }
+}
+
+function onRelayIframeLoaded() {
+    const loader = document.getElementById('relay-iframe-loader');
+    if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.classList.add('hidden');
+        }, 250);
+    }
+}
+
+// ESC 키 및 모달 배경 클릭 닫기 이벤트 리스너
+document.addEventListener('DOMContentLoaded', () => {
+    const relayModal = document.getElementById('live-relay-modal');
+    if (relayModal) {
+        relayModal.addEventListener('click', (e) => {
+            if (e.target === relayModal) {
+                closeLiveRelayModal();
+            }
+        });
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeLiveRelayModal();
+    }
+});
+

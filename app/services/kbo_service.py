@@ -454,6 +454,7 @@ def fetch_kbo_recent_matches():
                     is_fin = away_score.isdigit() and home_score.isdigit()
 
                     fallback_matches.append({
+                        'game_id': '',
                         'date': curr_date,
                         'time': time_text,
                         'away_team': away_team,

@@ -413,12 +413,28 @@ def fetch_soccer_recent_matches(espn_code):
             short_detail = st_type.get("shortDetail", "")
             display_clock = st_obj.get("displayClock", "")
 
-            is_live = state == "in"
-            is_finished = state == "post" or short_detail == "FT"
+            is_live = state == "in" or "in" in state.lower() or short_detail in ["HT", "Half Time"] or ("'" in short_detail)
+            is_finished = state == "post" or short_detail in ["FT", "AET", "PEN", "Final"] or "종료" in short_detail
             is_upcoming = not is_live and not is_finished
 
-            date_str = e.get("date", "")[:10]
-            time_str = e.get("date", "")[11:16] if len(e.get("date", "")) >= 16 else ""
+            # UTC -> KST 한국 시간 변환 (+9h)
+            raw_date = e.get("date", "")
+            date_str = raw_date[:10]
+            time_str = raw_date[11:16] if len(raw_date) >= 16 else ""
+            if raw_date:
+                try:
+                    if raw_date.endswith("Z"):
+                        utc_dt = datetime.strptime(raw_date, "%Y-%m-%dT%H:%MZ")
+                        kst_dt = utc_dt + timedelta(hours=9)
+                        date_str = kst_dt.strftime("%Y-%m-%d")
+                        time_str = kst_dt.strftime("%H:%M")
+                    elif "+" in raw_date:
+                        utc_dt = datetime.fromisoformat(raw_date)
+                        date_str = utc_dt.strftime("%Y-%m-%d")
+                        time_str = utc_dt.strftime("%H:%M")
+                except Exception:
+                    pass
+
             venue = comp.get("venue", {}).get("fullName", "")
 
             if is_live:

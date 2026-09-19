@@ -457,9 +457,37 @@ def find_kleague_team_info(team_name, team_id=None):
     return get_team_meta(team_name, team_id=team_id)
 
 
+def fetch_naver_kfootball_map():
+    """네이버 스포츠 kfootball API를 통해 실시간 경기, 스코어, gameId 매핑 조회"""
+    naver_map = {}
+    try:
+        now = datetime.now()
+        from_date = (now - timedelta(days=2)).strftime("%Y-%m-%d")
+        to_date = (now + timedelta(days=2)).strftime("%Y-%m-%d")
+        url = f"https://api-gw.sports.naver.com/schedule/games?fields=basic%2CsuperOrganId&fromDate={from_date}&toDate={to_date}&upperCategoryId=kfootball&size=100"
+        r = requests.get(url, headers=HEADERS, timeout=6)
+        if r.status_code == 200:
+            games = r.json().get("result", {}).get("games", [])
+            for g in games:
+                home = g.get("homeTeamName", "").strip()
+                away = g.get("awayTeamName", "").strip()
+                if home and away:
+                    naver_map[(home, away)] = g
+                    # 앞 2글자 또는 단축명 매핑
+                    h_short = home[:2] if len(home) >= 2 else home
+                    a_short = away[:2] if len(away) >= 2 else away
+                    naver_map[(h_short, a_short)] = g
+    except Exception as e:
+        print(f"네이버 K리그 API 조회 오류: {e}")
+    return naver_map
+
+
 def fetch_kleague_recent_matches(league_id=1):
     """K리그 공식 경기 일정/결과 (최근 종료 경기, 금주 예정 경기, 실시간 LIVE 스코어)"""
     try:
+        # 네이버 실시간 K리그 경기 맵 조회
+        naver_map = fetch_naver_kfootball_map()
+
         url = "https://www.kleague.com/getScheduleList.do"
         headers = {
             **HEADERS,
@@ -488,8 +516,8 @@ def fetch_kleague_recent_matches(league_id=1):
 
         matches = []
         for s in sched_list:
-            home_name = s.get("homeTeamName", "")
-            away_name = s.get("awayTeamName", "")
+            home_name = s.get("homeTeamName", "").strip()
+            away_name = s.get("awayTeamName", "").strip()
             home_id = s.get("homeTeam")
             away_id = s.get("awayTeam")
 
@@ -503,23 +531,54 @@ def fetch_kleague_recent_matches(league_id=1):
             home_goal = s.get("homeGoal")
             away_goal = s.get("awayGoal")
             end_yn = s.get("endYn") == "Y"
-            game_status_code = s.get("gameStatus", "")
+            game_status_code = str(s.get("gameStatus") or "").strip().upper()
+
+            # 네이버 실시간 정보 매핑 확인
+            naver_game = naver_map.get((home_name, away_name))
+            if not naver_game:
+                naver_game = naver_map.get((home_name[:2], away_name[:2]))
+
+            naver_status = naver_game.get("statusCode", "") if naver_game else ""
+            naver_info = naver_game.get("statusInfo", "") if naver_game else ""
+            naver_game_id = naver_game.get("gameId", "") if naver_game else ""
+
+            # 네이버 실시간 스코어 우선 반영
+            if naver_game:
+                if naver_game.get("homeTeamScore") is not None:
+                    home_goal = naver_game.get("homeTeamScore")
+                if naver_game.get("awayTeamScore") is not None:
+                    away_goal = naver_game.get("awayTeamScore")
 
             # 상태 판별 (LIVE, 종료, 예정)
-            is_finished = end_yn or game_status_code == "FE"
-            is_live = not is_finished and (game_status_code in ["1H", "2H", "HT", "ET", "ING", "LIVE"])
+            # K리그 공식 사이트 상태코드: 1S xx (전반), 2S xx (후반), HT (하프타임), FE (경기종료)
+            is_finished = end_yn or game_status_code.startswith("FE") or "종료" in game_status_code or naver_status in ["RESULT", "END"] or "종료" in naver_info
+            
+            # 라이브 판별
+            is_live_code = any(code in game_status_code for code in ["1S", "2S", "HT", "ET", "PK", "1H", "2H", "ING", "LIVE", "PLAY", "1E", "2E"])
+            is_naver_live = naver_status in ["STARTED", "ING", "PROGRESS", "PLAY"] or ("전반" in naver_info or "후반" in naver_info or "하프타임" in naver_info)
+            is_live = not is_finished and (is_live_code or is_naver_live)
             is_upcoming = not is_finished and not is_live
 
             if is_live:
                 status_label = "LIVE"
-                if game_status_code == "1H":
-                    status_info = "전반 진행중"
-                elif game_status_code == "2H":
-                    status_info = "후반 진행중"
-                elif game_status_code == "HT":
+                if naver_info and ("전반" in naver_info or "후반" in naver_info or "하프" in naver_info or "'" in naver_info):
+                    status_info = naver_info
+                elif "HT" in game_status_code:
                     status_info = "하프타임 (HT)"
+                elif "1S" in game_status_code or "1H" in game_status_code:
+                    parts = game_status_code.split()
+                    min_str = parts[1] if len(parts) > 1 and parts[1].isdigit() else ""
+                    status_info = f"전반 {min_str}분" if min_str else "전반 진행중"
+                elif "2S" in game_status_code or "2H" in game_status_code:
+                    parts = game_status_code.split()
+                    min_str = parts[1] if len(parts) > 1 and parts[1].isdigit() else ""
+                    status_info = f"후반 {min_str}분" if min_str else "후반 진행중"
+                elif "ET" in game_status_code:
+                    status_info = "연장 진행중"
+                elif "PK" in game_status_code:
+                    status_info = "승부차기"
                 else:
-                    status_info = "LIVE 경기중"
+                    status_info = naver_info or "LIVE 진행중"
             elif is_finished:
                 status_label = "종료"
                 status_info = "경기종료"
@@ -536,6 +595,7 @@ def fetch_kleague_recent_matches(league_id=1):
             away_win = (home_goal is not None and away_goal is not None and away_goal > home_goal)
 
             matches.append({
+                "game_id": naver_game_id,
                 "game_date": s.get("gameDate", ""),
                 "game_time": s.get("gameTime", ""),
                 "weekday": s.get("weekdayShort", ""),

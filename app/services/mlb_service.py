@@ -354,6 +354,7 @@ def fetch_mlb_recent_matches():
                     time_str = game_datetime[11:16]
 
                 matches.append({
+                    "game_id": str(game_pk),
                     "game_pk": game_pk,
                     "date": game_datetime[:10],
                     "time": time_str,
