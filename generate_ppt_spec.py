@@ -68,7 +68,7 @@ def create_base_slide(title_text, category_text="SPORTS HUB SYSTEM ARCHITECTURE"
     footer_box = slide.shapes.add_textbox(Inches(0.8), Inches(7.05), Inches(11.7), Inches(0.3))
     ft_tf = footer_box.text_frame
     p_ft = ft_tf.paragraphs[0]
-    p_ft.text = "SPORTS HUB v2.1.0  |  실시간 스포츠 종합 대시보드 시스템 명세서  |  Confidential"
+    p_ft.text = "SPORTS HUB v2.2.0  |  실시간 스포츠 종합 대시보드 시스템 명세서  |  Confidential"
     p_ft.font.name = "Malgun Gothic"
     p_ft.font.size = Pt(9)
     p_ft.font.color.rgb = COLOR_TEXT_MUTED
@@ -124,7 +124,7 @@ p2.font.color.rgb = COLOR_WHITE
 p2.space_before = Pt(12)
 
 p3 = tf1.add_paragraph()
-p3.text = "실시간 스포츠 순위 · 경기결과 스코어보드 · 소스구성도 · 프로세스 흐름도"
+p3.text = "실시간 스포츠 순위 · 경기결과 스코어보드 · 네이버 실시간 문자중계 · 프로세스 흐름도"
 p3.font.name = "Malgun Gothic"
 p3.font.size = Pt(16)
 p3.font.color.rgb = RGBColor(226, 232, 240)
@@ -147,7 +147,7 @@ p_meta2.font.color.rgb = RGBColor(148, 163, 184)
 p_meta2.space_before = Pt(4)
 
 p_meta3 = tf_meta.add_paragraph()
-p_meta3.text = "• 문서 버전: v2.1.0  |  작성일: 2026-09-19  |  저장소: https://github.com/th0501park-tech/master2"
+p_meta3.text = "• 문서 버전: v2.2.0  |  작성일: 2026-09-19  |  저장소: https://github.com/th0501park-tech/master2"
 p_meta3.font.name = "Malgun Gothic"
 p_meta3.font.size = Pt(11)
 p_meta3.font.color.rgb = RGBColor(148, 163, 184)
@@ -164,12 +164,12 @@ card_data_s2 = [
     ("⚾ 4대 프로 스포츠 통합 제공", 
      "KBO, K리그, 해외축구, MLB 단일 플랫폼 통합", 
      "• KBO / MLB: 10개 구단 및 30개 구단 순위, 타자/투수 개인기록 리더보드 통합\n• K리그 1·2: 승강제 반영 전 구단 순위 및 득점/도움/공격포인트 순위\n• 해외축구: EPL, 라리가, 분데스리가, UCL, UEL 5개 리그 탭 완벽 지원\n• 반응형 SPA: 새로고침 없는 원클릭 종목/서브리그 즉시 전환"),
-    ("🔥 상단 스코어보드 & 실시간 LIVE", 
-     "사용자 중심의 상하 레이아웃 배치 전환 완료", 
-     "• 레이아웃 혁신: 최상단에 경기 결과 및 스코어보드 우선 노출\n• 야구(KBO/MLB): 실시간 LIVE 이닝, 승·패·세이브 결정투수, 선발투수 예고\n• 축구(K리그/해외축구): 금주 기준 LIVE(전·후반 분), 금주 예정 시간, 지난주 종료 결과\n• 상태 필터 칩: [전체], [🔴 LIVE], [최근 결과], [금주/내일 예정] 원클릭 필터"),
+    ("🔥 상단 스코어 & 네이버 문자중계", 
+     "실시간 LIVE 중계확인 모달 & 레이아웃 혁신", 
+     "• 실시간 문자중계 모달: LIVE 경기 카드에서 [⚡ 실시간 중계확인] 클릭 시 네이버스포츠 실시간 문자중계 즉시 렌더링\n• 볼카운트 / 투구 추적 / 이닝별 상세 결과를 모달에서 이탈 없이 확인\n• 야구(KBO/MLB): 실시간 LIVE 이닝, 승·패·세이브 결정투수, 선발투수 예고\n• 축구(K리그/해외축구): 공식 상태(1S/2S/HT/ET/PK), 네이버 kfootball 실시간 분/스코어 연동"),
     ("⚡ 고성능 캐싱 & 영상 지연로딩", 
      "0.5초 이내 초고속 응답 & 마이팀 개인화", 
-     "• 로컬 파일 캐시: 5~15분 주기 TTL 캐싱으로 외부 API 호출 쿼터 및 지연 방지\n• Facade 패턴: 무거운 Iframe 대신 고화질 포스터를 선로딩하여 트래픽 90% 절감\n• 마이팀(선호 구단): 로컬스토리지 연동으로 응원팀 경기 최상단 정렬 및 골드 강조\n• 다크/라이트 모드: 시스템 설정 자동 감지 및 사용자 수동 토글 지원")
+     "• 로컬 파일 캐시: 5~15분 주기 TTL 캐싱으로 외부 API 호출 쿼터 및 지연 방지\n• Facade 패턴: 종료 경기 하이라이트는 고화질 포스터를 선로딩하여 트래픽 90% 절감\n• 마이팀(선호 구단): 로컬스토리지 연동으로 응원팀 경기 최상단 정렬 및 골드 강조\n• 다크/라이트 모드: 시스템 설정 자동 감지 및 사용자 수동 토글 지원")
 ]
 
 for idx, (head, sub, desc) in enumerate(card_data_s2):
@@ -297,10 +297,10 @@ services_data = [
      "• 네이버 스포츠 KBO API (api-gw.sports.naver.com)\n• 실시간 LIVE: status_code(STARTED) 기반 당일 진행중 이닝/현재투수\n• 최근 경기 결과: 승리투수(winPitcherName), 패전투수(losePitcherName)\n• 예정 경기: 오늘/내일 선발투수 예고(homeStarterName, awayStarterName)\n• 팀순위 및 타자/투수 리더보드 수집 및 로컬 캐싱 (kbo_data.json)"),
     ("🧢 MLB 메이저리그 서비스", "mlb_service.py (약 450 라인)", 
      "• MLB Stats 공식 API (statsapi.mlb.com)\n• hydrate 파라미터 적용: linescore, decisions, probablePitcher 일괄 취득\n• 결정투수 명세: 승리투수(W), 패전투수(L), 세이브투수(S) 완벽 추출\n• 실시간 이닝 및 선발 매치업 예고 제공\n• AL/NL 30개 구단 디비전 순위 및 개인기록 수집 (mlb_data.json)"),
-    ("⚽ K리그 (K1 · K2) 서비스", "kleague_service.py (약 850 라인)", 
-     "• K리그 공식 데이터 포털 (getScheduleList.do, teamRank.do)\n• 주차별 필터링: 금주 일요일까지 예정된 경기만 '금주 예정' 표기\n• 지난 경기 필터링: 지난주 월요일 이후 종료된 경기만 최신순 노출\n• 실시간 경기 진행시간: 전반(1H), 후반(2H), 하프타임(HT) 분기\n• K1/K2 25개 구단 공식 엠블럼 및 득점/도움/무실점 순위 제공"),
+    ("⚽ K리그 (K1 · K2) 서비스", "kleague_service.py (네이버 kfootball + K리그 공식 API)", 
+     "• 네이버 스포츠 K리그 API(kfootball) + K리그 공식 포털 하이브리드 연동\n• 실시간 LIVE 동기화: status: STARTED, 실시간 분(1S 30, 2S 15 등) 및 점수 반영\n• 네이버 gameId 자동 추출: 네이버 실시간 문자중계 팝업 모달 연동 지원\n• 주차별 필터링: 금주 일요일까지 예정된 경기만 '금주 예정', 지난주 경기만 종료 표기\n• K1/K2 25개 구단 공식 엠블럼 및 득점/도움/무실점 순위 제공"),
     ("🌍 해외축구 5대리그 서비스", "overseas_soccer_service.py (약 680 라인)", 
-     "• ESPN Soccer Scoreboard & Statistics API (site.web.api.espn.com)\n• 대상 리그: EPL, 라리가, 분데스리가, UCL, UEL\n• 캘린더 기반 동적 일정 수집: 금주 주말 예정 경기 + 지난주 종료 경기\n• 실시간 분 정보: displayClock (35', 72') 및 하이라이트 영상 추출\n• 구단명 한국어 자동 매핑 딕셔너리 (TEAM_KR_NAMES)")
+     "• ESPN Soccer Scoreboard API (EPL, 라리가, 분데스리가, UCL, UEL)\n• 한국 표준시(KST, UTC+9) 자동 변환: UTC 일정을 한국 시간대로 정확히 보정\n• 캘린더 기반 동적 일정 수집: 금주 주말 예정 경기 + 지난주 종료 경기\n• 실시간 분 정보: displayClock (35', 72') 및 하이라이트 영상 추출\n• 구단명 한국어 자동 매핑 딕셔너리 (TEAM_KR_NAMES)")
 ]
 
 for idx, (stitle, sfile, sdesc) in enumerate(services_data):
@@ -342,14 +342,14 @@ for idx, (stitle, sfile, sdesc) in enumerate(services_data):
 s5 = create_base_slide("프론트엔드 프로그램 명세서 (Frontend & SPA)", "04. FRONTEND SPECIFICATIONS")
 
 fe_cards = [
+    ("⚡ 실시간 중계확인 & 네이버 문자중계", "main.js (openLiveRelayModal, closeLiveRelayModal)",
+     "• LIVE 진행 중인 경기: 하단 [하이라이트] 대신 [⚡ 실시간 중계확인] 버튼 노출\n• 원클릭 팝업 모달: 네이버스포츠 실시간 문자중계(/relay)를 인앱 Iframe으로 즉시 렌더링\n• 외부 브라우저 새창 이동([네이버스포츠로 이동]) 및 ESC/외부클릭 닫기 지원\n• 타 종목(KBO, K리그 등) liveUrl / gameId 기반 동적 라우팅"),
     ("🎛️ 경기 상태별 원클릭 필터 칩", "main.js (setMatchFilter, filterMatchesByStatus)",
      "• 4종 필터 칩: [전체], [🔴 LIVE], [최근 결과], [금주/내일 예정]\n• 클릭 시 새로고침 없이 해당 상태의 경기 카드만 즉시 필터링 렌더링\n• LIVE 상태 시 실시간 깜빡임 펄스 뱃지 & 실시간 투수/이닝 표기\n• .match-filter-chip.active 스타일 적용 및 라이트/다크모드 완벽 대응"),
     ("⭐ 마이팀(선호 구단) 개인화", "main.js (toggleFavoriteTeam, updateMyTeamBanner)",
      "• 경기 카드 및 순위표의 ★ 별표 클릭 시 선호 구단으로 즉시 지정\n• localStorage 연동: 브라우저 재방문 시에도 선호 구단 상태 영구 보존\n• 선호 구단 등록 시 해당 구단 경기 최상단 우선 정렬 & 골드 링 테두리 강조\n• [선호 구단 경기만 보기] 원클릭 필터 제공"),
-    ("🎬 Facade 기반 영상 지연 로딩", "main.js (Facade Player & Iframe On-Demand)",
-     "• 기존: 무거운 YouTube Iframe 수십 개 동시 로딩으로 브라우저 멈춤 발생\n• 개선: Facade 기법 적용으로 고화질 썸네일 포스터 및 재생 버튼만 초기 렌더링\n• 사용자가 [재생] 또는 카드 클릭 시에만 해당 Iframe을 동적으로 삽입하여 재생\n• 초기 페이지 로딩 속도 0.5초 이내 유지 및 네트워크 데이터 90% 절감"),
-    ("📱 반응형 레이아웃 & 테마", "index.html & style.css (TailwindCSS Grid)",
-     "• 상단: 실시간 스코어보드 그리드 (모바일 1열, 태블릿 2열, 데스크톱 3열)\n• 하단: 대형 공식 하이라이트 영상 플레이어 + 우측 썸네일 재생 목록\n• 다크모드: 시스템 환경 자동 감지 및 GNB 버튼을 통한 즉시 전환\n• 모바일 최적화: 가로 스크롤 테이블 및 터치 인터랙션 완벽 대응")
+    ("🎬 Facade 기반 하이라이트 플레이어", "main.js (Facade Player & Iframe On-Demand)",
+     "• Facade 기법: YouTube 고화질 썸네일 포스터 및 재생 버튼만 초기 렌더링\n• 종료/예정 경기에서 [🎬 하이라이트] 클릭 시 해당 영상으로 스크롤 이동 및 자동 로드\n• 초기 페이지 로딩 속도 0.5초 이내 유지 및 불필요한 네트워크 트래픽 90% 절감\n• 다크모드/라이트모드 완벽 대응 및 반응형 모바일 최적화")
 ]
 
 for idx, (ftitle, ffile, fdesc) in enumerate(fe_cards):
@@ -394,8 +394,8 @@ steps = [
     ("Step 1", "서버 초기화 및 캐시 로드", "• run.py 실행 시 Uvicorn ASGI 기동\n• cache/ 폴더 내 4대 스포츠 데이터 검증\n• 캐시 부재 시 백그라운드 크롤링 수행"),
     ("Step 2", "사용자 브라우저 접속 (SSR)", "• GET / 요청 수신 시 FastAPI 컨트롤러 작동\n• 캐시된 KBO/K리그/해외축구/MLB 데이터 바인딩\n• 상단 스코어보드/하단 영상 초기 HTML 전송"),
     ("Step 3", "클라이언트 데이터 Hydration", "• window.INITIAL_DATA에 전체 데이터 적재\n• localStorage에서 마이팀 구단 및 테마 복원\n• 마이팀 경기 최상단 우선 배치"),
-    ("Step 4", "동적 상태 필터링 (SPA)", "• [🔴 LIVE], [최근 결과], [금주 예정] 칩 클릭\n• status 플래그에 따라 카드 실시간 재배치\n• 해당 경기 없을 시 안내 메시지 렌더링"),
-    ("Step 5", "영상 재생 및 상호작용", "• 스코어보드 내 [하이라이트] 클릭 시 영상 이동\n• Facade 포스터 -> YouTube Iframe 동적 전환\n• 무거운 트래픽 지연 없이 즉시 스트리밍")
+    ("Step 4", "동적 상태 필터링 (SPA)", "• [🔴 LIVE], [최근 결과], [금주 예정] 칩 클릭\n• status 플래그에 따라 카드 실시간 재배치\n• LIVE 시 중계확인 버튼, 종료 시 하이라이트 버튼 표출"),
+    ("Step 5", "실시간 중계 & 영상 상호작용", "• [⚡ 실시간 중계확인]: 네이버 문자중계 모달 Iframe 팝업\n• [🎬 하이라이트]: 공식 영상 플레이어 이동 및 스트리밍\n• 외부 링크 새창 이동 지원")
 ]
 
 for idx, (snum, stitle, sdesc) in enumerate(steps):
@@ -435,13 +435,13 @@ s7 = create_base_slide("외부 데이터 소스 및 실시간 API 연동 명세"
 
 api_cards = [
     ("⚾ 네이버 스포츠 KBO API", "https://api-gw.sports.naver.com/schedule/games",
-     "• 연동 방식: HTTP GET, JSON 응답\n• 주요 파라미터: fields=basic,baseball&fromDate,toDate&size=100&upperCategoryId=kbaseball\n• 수집 항목: 실시간 이닝, statusCode(STARTED/RESULT/BEFORE), 승·패전 결정투수, 선발투수 예고\n• 개선 사항: size=100 적용 및 RESULT 상태 판별 수정으로 당일 LIVE 및 어제/내일 경기 완벽 분기"),
+     "• 연동 방식: HTTP GET, JSON 응답\n• 파라미터: upperCategoryId=kbaseball&fromDate,toDate&size=100\n• 실시간 항목: 실시간 이닝, statusCode(STARTED/RESULT/BEFORE), 승·패 결정투수, 선발투수 예고\n• 네이버 실시간 문자중계 URL (https://m.sports.naver.com/game/{gameId}/relay) 연동"),
     ("🧢 MLB Stats 공식 API", "https://statsapi.mlb.com/api/v1/schedule",
-     "• 연동 방식: HTTP GET, RESTful JSON 응답\n• 주요 파라미터: sportId=1&startDate,endDate&hydrate=linescore,decisions,probablePitcher\n• 수집 항목: 실시간 이닝 스코어보드, 승리(W)·패전(L)·세이브(S) 결정투수, 선발투수 매치업\n• 30개 구단 리그/디비전 순위 및 타자/투수 Top 5 리더보드 연동"),
-    ("⚽ K리그 공식 데이터 포털", "https://www.kleague.com/getScheduleList.do",
-     "• 연동 방식: HTTP POST, JSON 응답 (Referer 헤더 필수)\n• 주요 파라미터: leagueId(1 or 2), year, month\n• 주차 필터: 금주 일요일까지 예정된 경기만 '금주 예정' 표기, 지난주 월요일 이후 경기만 종료 표기\n• 수집 항목: 전반(1H)/후반(2H) 실시간 분 정보, 경기장, 중계채널, K1/K2 순위 및 득점순위"),
+     "• 연동 방식: HTTP GET, RESTful JSON 응답\n• 파라미터: sportId=1&startDate,endDate&hydrate=linescore,decisions,probablePitcher\n• 실시간 이닝 스코어보드, 승(W)·패(L)·세이브(S) 결정투수, 선발투수 매치업\n• 30개 구단 리그/디비전 순위 및 타자/투수 Top 5 리더보드 연동"),
+    ("⚽ 네이버 스포츠 K리그 & 공식 포털 API", "https://api-gw.sports.naver.com/schedule/games",
+     "• 연동 방식: HTTP GET (네이버 kfootball) + POST (K리그 공식 포털 getScheduleList.do)\n• 실시간 LIVE 동기화: 네이버 K리그 API로 실시간 분/점수/gameId 정밀 추출\n• 주차 필터: 금주 일요일까지 경기만 '금주 예정' 표기, 지난주 월요일 이후 경기만 종료 표기\n• 실시간 문자중계 팝업 모달 연동 및 25개 구단 엠블럼 매핑"),
     ("🌍 ESPN Soccer Scoreboard API", "https://site.web.api.espn.com/apis/site/v2/sports/soccer/{code}/scoreboard",
-     "• 연동 방식: HTTP GET, JSON 응답\n• 동적 캘린더 연동: 지난주부터 금주 주말까지의 핵심 매치일만 동적 추출하여 요청\n• 수집 항목: 실시간 스코어, 전·후반 진행시간(displayClock), 경기상태, 하이라이트 영상\n• 지원 리그: EPL, 라리가, 분데스리가, UCL, UEL 5개 리그 통합")
+     "• 연동 방식: HTTP GET, JSON 응답\n• KST 자동 변환: UTC 일정 데이터를 한국 표준시(UTC+9)로 보정하여 날짜/시간 정확도 확보\n• 동적 캘린더 연동: 지난주부터 금주 주말까지의 핵심 매치일만 동적 추출\n• 지원 리그: EPL, 라리가, 분데스리가, UCL, UEL 5개 리그 통합")
 ]
 
 for idx, (atitle, aurl, adesc) in enumerate(api_cards):

@@ -44,7 +44,7 @@ def apply_sheet_styling(ws, title_text, col_widths, headers, data_rows, status_c
     # 2. 부제목 / 설명
     ws.merge_cells("A2:G2" if len(headers) >= 7 else f"A2:{get_column_letter(len(headers))}2")
     sub_cell = ws["A2"]
-    sub_cell.value = f"프로젝트: SPORTS HUB (실시간 스포츠 종합 대시보드)  |  작성일자: 2026-09-19  |  버전: v2.1.0"
+    sub_cell.value = f"프로젝트: SPORTS HUB (실시간 스포츠 종합 대시보드)  |  작성일자: 2026-09-19  |  버전: v2.2.0"
     sub_cell.font = SUBTITLE_FONT
     sub_cell.alignment = Alignment(horizontal="left", vertical="center")
     ws.row_dimensions[2].height = 20
@@ -113,16 +113,16 @@ ws1.row_dimensions[2].height = 50
 
 overview_items = [
     ("프로젝트명", "SPORTS HUB - 실시간 스포츠 종합 순위 & 기록 대시보드"),
-    ("시스템 정의", "KBO 한국프로야구, K리그(1·2), 해외축구 5대리그, MLB 메이저리그 4대 스포츠의 실시간 스코어, 순위, 선수 기록, 공식 하이라이트 영상을 단일 웹 허브에서 통합 제공하는 올인원 대시보드"),
-    ("시스템 버전", "v2.1.0 (2026.09 업데이트)"),
+    ("시스템 정의", "KBO 한국프로야구, K리그(1·2), 해외축구 5대리그, MLB 메이저리그 4대 스포츠의 실시간 스코어, 순위, 선수 기록, 공식 하이라이트 영상 및 네이버스포츠 실시간 문자중계를 단일 웹 허브에서 통합 제공하는 올인원 대시보드"),
+    ("시스템 버전", "v2.2.0 (2026.09 업데이트)"),
     ("작성 일자", "2026년 09월 19일"),
     ("주요 대상 종목", "1) KBO 프로야구  2) K리그 1 / K리그 2  3) 해외축구 (EPL, 라리가, 분데스리가, UCL, UEL)  4) MLB 메이저리그"),
     ("아키텍처 구조", "FastAPI 비동기 웹 프레임워크 기반 SSR(Jinja2) + Vanilla JS 클라이언트 Hydration + 파일 기반 캐싱 레이어"),
     ("백엔드 기술 스택", "Python 3.14, FastAPI 0.115+, Uvicorn(ASGI), Jinja2 템플릿 엔진, Requests, BeautifulSoup4, LXML"),
-    ("프론트엔드 기술 스택", "TailwindCSS (CDN 기반 모던 스타일링), FontAwesome 6, Vanilla JavaScript (ES6+), YouTube Embed API"),
-    ("데이터 연동 소스", "네이버 스포츠 KBO API, K리그 공식 데이터 포털(getScheduleList.do), MLB Stats API, ESPN Soccer Scoreboard API, Goal.com"),
+    ("프론트엔드 기술 스택", "TailwindCSS (CDN 기반 모던 스타일링), FontAwesome 6, Vanilla JavaScript (ES6+), YouTube Embed API, Iframe Modal"),
+    ("데이터 연동 소스", "네이버 스포츠 KBO/K리그 API, K리그 공식 데이터 포털(getScheduleList.do), MLB Stats API, ESPN Soccer Scoreboard API, Goal.com"),
     ("캐싱 및 성능 최적화", "JSON 파일 기반 로컬 캐시(TTL 관리), 유튜브/영상 Facade(지연 로딩 포스터) 기법 적용으로 초기 로딩 속도 0.5초 이내 유지"),
-    ("최근 주요 개선사항", "1) 메인 화면 '상단 경기결과 & 실시간 스코어 / 하단 영상 플레이어' 레이아웃 전환\n2) KBO/MLB 실시간 이닝 및 결정투수(승/패/세이브), 선발투수 예고 수집\n3) K리그/해외축구 금주 기준 라이브/예정(시간) 및 지난주 이후 최근 결과 필터링\n4) 상태별 원클릭 필터 칩(전체, LIVE, 최근결과, 금주예정) 및 마이팀(선호구단) 연동"),
+    ("최근 주요 개선사항", "1) 실시간(LIVE) 진행 중인 경기 카드에 '실시간 중계확인' 버튼 동적 배치\n2) 클릭 시 네이버스포츠 실시간 문자중계 페이지가 인라인 모달로 즉시 렌더링(새 창 열기 포함)\n3) K리그 공식 상태코드(1S, 2S, HT, ET, PK) 및 네이버 kfootball 실시간 API 연동으로 라이브 스코어·진행 분·gameId 매핑\n4) 해외축구 UTC 시간의 한국 표준시(KST, UTC+9) 자동 변환 표기\n5) 메인 상단 스코어보드 / 하단 영상 플레이어 레이아웃 및 마이팀 개인화"),
     ("운영 및 배포 환경", "로컬(Uvicorn 로컬 호스트 8000번 포트), 클라우드 PaaS(Render.com Procfile / render.yaml 사전 구성)"),
     ("저장소 (Git)", "https://github.com/th0501park-tech/master2.git (main branch)")
 ]
@@ -161,12 +161,12 @@ prog_widths = [6, 28, 20, 24, 45, 20, 22, 16]
 prog_data = [
     (1, "run.py", "웹서버 엔트리포인트", "main", "Uvicorn 서버 인스턴스 기동 (로컬 127.0.0.1:8000 및 핫리로드 지원)", "환경변수(HOST, PORT)", "ASGI Server Process", "로컬 개발용"),
     (2, "app/main.py", "FastAPI 메인 컨트롤러", "index_page, health_check", "HTTP 요청 라우팅, 4대 스포츠 데이터 종합 수집, Jinja2 템플릿 SSR 렌더링", "HTTP Request (GET /)", "HTML 웹페이지 (SSR)", "FastAPI Core"),
-    (3, "app/services/kbo_service.py", "KBO 데이터 수집 엔진", "get_kbo_data\nfetch_kbo_recent_matches\nfetch_team_rankings\nfetch_player_rankings", "네이버 스포츠 API 연동: 실시간 이닝/스코어, 승·패전 결정투수, 당일/내일 선발투수 예고, 팀순위 및 타자/투수 리더보드", "force_refresh (bool)", "KBO Data Dict (JSON)", "경기상태 판별 최적화"),
-    (4, "app/services/kleague_service.py", "K리그 데이터 수집 엔진", "get_kleague_data\nfetch_kleague_recent_matches\nfetch_kleague_standings", "K리그 포털 연동: K1/K2 팀순위, 금주 예정 경기, 지난주 이후 최근 경기 결과, 전·후반 진행시간, 개인 득점/도움 순위", "league_id (1 or 2)", "KLeague Data Dict (JSON)", "금주/지난주 주차 필터"),
-    (5, "app/services/mlb_service.py", "MLB 데이터 수집 엔진", "get_mlb_data\nfetch_mlb_recent_matches\nfetch_mlb_standings", "MLB Stats API 연동: 30개 구단 순위, 실시간 이닝 스코어, 승·패·세이브 결정투수, 선발투수 예고, 타자/투수 개인기록", "force_refresh (bool)", "MLB Data Dict (JSON)", "Stats API hydrate 적용"),
-    (6, "app/services/overseas_soccer_service.py", "해외축구 데이터 수집 엔진", "get_overseas_soccer_data\nfetch_soccer_recent_matches\nfetch_standings_espn", "ESPN Scoreboard & 캘린더 연동: EPL, 라리가, 분데스리가, UCL, UEL 순위, 금주 예정 경기, 실시간 분(Clock) 정보, 최근 종료 경기", "espn_code (str)", "Overseas Soccer Dict (JSON)", "한글 팀명 사전 매핑"),
-    (7, "app/templates/index.html", "메인 대시보드 뷰 템플릿", "Jinja2 템플릿 레이아웃", "상단 경기결과 & 스코어보드 그리드, 하단 공식 영상 플레이어, 종목별 네비게이션 탭, 구단허브, 순위 테이블 구조 마크업", "FastAPI 전달 Context", "HTML 웹 브라우저 렌더링", "상하 레이아웃 전환"),
-    (8, "app/static/js/main.js", "클라이언트 SPA 제어 스크립트", "switchSport, setMatchFilter, renderKboMatches, toggleFavoriteTeam", "종목 탭 전환, 경기 상태별(전체/LIVE/최근/예정) 원클릭 필터링, 마이팀(선호구단) 로컬스토리지 저장 및 강조, 영상 Facade 재생", "사용자 클릭 이벤트", "DOM 동적 업데이트", "반응형 인터랙션"),
+    (3, "app/services/kbo_service.py", "KBO 데이터 수집 엔진", "get_kbo_data\nfetch_kbo_recent_matches\nfetch_team_rankings\nfetch_player_rankings", "네이버 스포츠 KBO API 연동: 실시간 이닝/스코어, 승·패전 결정투수, 선발투수 예고, gameId 매핑, 순위 및 리더보드", "force_refresh (bool)", "KBO Data Dict (JSON)", "네이버 gameId 연동"),
+    (4, "app/services/kleague_service.py", "K리그 데이터 수집 엔진", "get_kleague_data\nfetch_kleague_recent_matches\nfetch_naver_kfootball_map", "K리그 공식 포털 + 네이버 kfootball API: 공식 상태코드(1S/2S/HT/ET/PK) 실시간 분(Minute) 인식, 실시간 스코어, gameId 매핑", "league_id (1 or 2)", "KLeague Data Dict (JSON)", "네이버 kfootball 연동"),
+    (5, "app/services/mlb_service.py", "MLB 데이터 수집 엔진", "get_mlb_data\nfetch_mlb_recent_matches\nfetch_mlb_standings", "MLB Stats API 연동: 30개 구단 순위, 실시간 이닝 스코어, 승·패·세이브 결정투수, 선발투수 예고, game_id 매핑, 개인기록", "force_refresh (bool)", "MLB Data Dict (JSON)", "Stats API hydrate 적용"),
+    (6, "app/services/overseas_soccer_service.py", "해외축구 데이터 수집 엔진", "get_overseas_soccer_data\nfetch_soccer_recent_matches\nfetch_standings_espn", "ESPN Scoreboard & 캘린더 연동: 5대리그 순위, UTC->KST 한국시간 자동 변환, 실시간 분(Clock) 정보, 최근 종료 경기", "espn_code (str)", "Overseas Soccer Dict (JSON)", "KST 변환 & 팀명 한글화"),
+    (7, "app/templates/index.html", "메인 대시보드 뷰 템플릿", "Jinja2 템플릿 & 모달", "상단 경기결과 & 스코어보드 그리드, [실시간 중계확인] 버튼 분기, live-relay-modal(네이버 문자중계 뷰어), 하단 영상 플레이어", "FastAPI 전달 Context", "HTML 웹 브라우저 렌더링", "실시간 중계 모달 포함"),
+    (8, "app/static/js/main.js", "클라이언트 SPA 제어 스크립트", "switchSport, setMatchFilter, openLiveRelayModal, closeLiveRelayModal", "종목 탭 전환, 원클릭 상태 필터링, 마이팀 로컬스토리지 저장, 네이버스포츠 실시간 문자중계 모달 제어, 영상 Facade 재생", "사용자 클릭 이벤트", "DOM 동적 업데이트", "반응형 인터랙션"),
     (9, "app/static/css/style.css", "스타일시트 및 테마", "Tailwind 보조 커스텀 스타일", "경기 상태 필터 칩 액티브 스타일, 다크모드 대응, 라이브 뱃지 펄스 애니메이션, 마이팀 골드 테두리", "CSS Rules", "화면 시각 디자인", "다크/라이트 모드 지원"),
     (10, "cache/*.json", "로컬 데이터 캐시 엔진", "kbo, kleague, mlb, overseas", "네트워크 지연 방지 및 외부 API 호출 쿼터 절약을 위한 로컬 파일 기반 JSON 캐시 (TTL 5~15분)", "API Raw Response", "가공된 JSON 파일", "고속 로딩 보장")
 ]
@@ -183,13 +183,14 @@ flow_data = [
     ("1. 초기 기동", "서버 시작 및 캐시 준비", "Uvicorn / FastAPI (main.py)", "서버 구동 시 cache/ 디렉토리 내 4대 스포츠 캐시 파일 존재 여부 및 최신 여부 자동 검증", "run.py 실행", "캐시 준비 완료 로그", "캐시 없을 시 즉시 백그라운드 데이터 수집"),
     ("2. 클라이언트 요청", "메인 대시보드 페이지 요청", "사용자 브라우저", "사용자가 웹 브라우저를 통해 http://127.0.0.1:8000/ 접속", "HTTP GET /", "서버 요청 전달", "서버 미응답 시 500 에러 핸들링"),
     ("3. 서버 데이터 취합", "종합 스포츠 데이터 로드", "FastAPI (index_page 라우트)", "KBO, K리그, 해외축구, MLB 각 서비스 모듈을 병렬 호출하여 최신 캐시 데이터 로드", "get_*_data() 호출", "종합 딕셔너리 객체", "외부 API 실패 시 최근 캐시 데이터 fallback"),
-    ("4. SSR 초기 렌더링", "HTML 템플릿 바인딩", "Jinja2 템플릿 엔진", "index.html에 최신 경기 결과(상단) 및 하이라이트 영상(하단), 초기 KBO 순위 바인딩 후 전송", "Context Data + index.html", "완성된 HTML 스트림", "파싱 오류 방지 escape 처리"),
+    ("4. SSR 초기 렌더링", "HTML 템플릿 바인딩", "Jinja2 템플릿 엔진", "index.html에 최신 경기 결과(상단), LIVE 상태별 [실시간 중계확인]/[하이라이트] 버튼 분기, 하단 영상 바인딩 후 전송", "Context Data + index.html", "완성된 HTML 스트림", "파싱 오류 방지 escape 처리"),
     ("5. 클라이언트 동기화", "데이터 Hydration 및 세팅", "main.js (DOMContentLoaded)", "window.INITIAL_DATA에 서버 데이터 보관, 로컬스토리지에서 마이팀(선호 구단) 및 테마 상태 복원", "localStorage (myTeam, theme)", "마이팀 뱃지 및 테마 반영", "로컬스토리지 비어있을 시 기본값 설정"),
     ("6. 경기 상태 필터링", "실시간/최근/예정 필터링", "main.js (setMatchFilter)", "사용자가 [전체], [🔴 LIVE], [최근 결과], [금주 예정] 칩 클릭 시 status 플래그에 따라 카드 동적 렌더링", "currentMatchFilter ('live' 등)", "필터링된 스코어보드 갱신", "해당 경기 없을 시 '일정 없음' 안내 카드 표시"),
     ("7. 종목 및 리그 전환", "SPA 동적 콘텐츠 스위칭", "main.js (switchSport / switchSub)", "페이지 새로고침 없이 상단 탭 클릭 시 KBO, K리그(1/2), 해외축구(5대리그), MLB 화면 즉시 전환", "sportType, subType", "해당 종목 경기/순위/영상 표시", "데이터 부재 시 준비 중 안내"),
     ("8. 마이팀(구단) 연동", "선호 구단 등록 및 우선 노출", "main.js (toggleFavoriteTeam)", "카드 내 ★ 별표 클릭 시 선호 구단으로 등록, 해당 구단 경기를 최상단 정렬 및 골드 테두리 강조", "teamName, sportKey", "localStorage 저장 및 카드 재정렬", "언제든 별표 재클릭으로 해제 가능"),
-    ("9. 영상 지연 로딩", "Facade 기반 하이라이트 재생", "main.js (Facade & Iframe)", "페이지 로딩 시 무거운 Iframe 대신 고화질 썸네일 포스터만 표시, 재생 클릭 시 즉시 Iframe 로딩 및 자동재생", "클릭 이벤트", "YouTube / MP4 비디오 스트리밍", "유튜브 404 시 CDN 백업 포스터 대체"),
-    ("10. 주기적 데이터 갱신", "백그라운드 캐시 리프레시", "Background Scheduler / API", "경기 진행 시간대(라이브 경기 발생 시) 캐시 만료 주기에 맞춰 외부 API 최신 스코어 및 이닝 갱신", "Timer / Scheduler Event", "cache/*.json 갱신", "네트워크 단절 시 기존 캐시 보존")
+    ("9. 실시간 문자중계", "네이버스포츠 모달 렌더링", "main.js (openLiveRelayModal)", "LIVE 경기 카드의 [⚡ 실시간 중계확인] 클릭 시 네이버스포츠 실시간 문자중계 모달 즉시 팝업 (볼카운트/투구추적/이닝기록)", "game_id, team info", "Iframe 인라인 렌더링 및 새 창 링크", "새 창으로 보기 대체 링크 제공"),
+    ("10. 영상 지연 로딩", "Facade 기반 하이라이트 재생", "main.js (Facade & Iframe)", "종료 경기 카드의 [하이라이트] 클릭 시 Facade 포스터 -> YouTube Iframe 동적 전환 및 자동재생", "클릭 이벤트", "YouTube / MP4 비디오 스트리밍", "유튜브 404 시 CDN 백업 포스터 대체"),
+    ("11. 주기적 데이터 갱신", "백그라운드 캐시 리프레시", "Background Scheduler / API", "경기 진행 시간대(라이브 경기 발생 시) 캐시 만료 주기에 맞춰 외부 API 최신 스코어 및 이닝 갱신", "Timer / Scheduler Event", "cache/*.json 갱신", "네트워크 단절 시 기존 캐시 보존")
 ]
 apply_sheet_styling(ws3, "시스템 프로세스 흐름도 (System Process Flow)", flow_widths, flow_headers, flow_data)
 
@@ -251,11 +252,12 @@ ui_data = [
     ("SCR-01", "GNB 글로벌 헤더", "화면 최상단 (Sticky)", "서비스 로고(SPORTS HUB), 4대 종목 탭 버튼(KBO, K리그, 해외축구, MLB), 다크모드 토글 버튼", "종목 탭 클릭 시 해당 종목 섹션으로 전환, 다크모드 클릭 시 html 태그 dark 클래스 토글", "Tailwind blur 백드롭, 둥근 모서리, 활성 탭 블루 강조"),
     ("SCR-02", "마이팀 배너 & 필터", "헤더 하단", "선호 구단 안내 배너, [선호 구단 경기만 보기] 원클릭 필터 토글 버튼", "클릭 시 localStorage에 저장된 마이팀 경기만 필터링 노출, 미등록 시 안내 표시", "Amber-400 골드 컬러 테두리 및 뱃지 스타일"),
     ("SCR-03", "경기 결과 헤더 & 필터", "메인 콘텐츠 상단 (1순위)", "섹션 타이틀, 상태 필터 칩 버튼군 ([전체], [🔴 LIVE], [최근 결과], [금주/내일 예정])", "필터 칩 클릭 시 즉시 해당 상태의 경기 카드만 실시간 필터링 렌더링", ".match-filter-chip.active 스타일 적용, LIVE 칩 레드 강조"),
-    ("SCR-04", "경기 스코어보드 카드", "메인 콘텐츠 상단 그리드", "날짜/시간, 구장, 상태 뱃지, 홈/원정 엠블럼 및 팀명, 실시간 스코어, 결정투수/선발예고/축구시간 박스", "★ 클릭 시 마이팀 토글, [하이라이트] 클릭 시 하단 영상 플레이어로 자동 스크롤 및 영상 재생", "반응형 1~3열 그리드, LIVE 카드 레드 링 애니메이션"),
+    ("SCR-04", "경기 스코어보드 카드", "메인 콘텐츠 상단 그리드", "날짜/시간, 구장, 상태 뱃지, 홈/원정 엠블럼 및 팀명, 실시간 스코어, 결정투수/선발예고/축구시간 박스, 하이라이트/실시간 중계확인 버튼", "★ 클릭 시 마이팀 토글, LIVE 시 [실시간 중계확인] 클릭 -> 네이버 문자중계 모달 오픈, 종료 시 [하이라이트] 클릭 -> 영상 포커스", "반응형 1~3열 그리드, LIVE 카드 레드 링 애니메이션"),
     ("SCR-05", "공식 영상 플레이어", "메인 콘텐츠 하단 (2순위)", "YouTube / MP4 비디오 뷰어, Facade 포스터 썸네일, 대형 재생 버튼, 영상 타이틀, 출처 배지", "썸네일 클릭 시 즉시 인라인 Iframe 로딩 및 영상 재생 (트래픽 최적화)", "16:9 비율 유지, 다크 백그라운드, 풀스크린 지원"),
     ("SCR-06", "영상 추천 목록", "영상 플레이어 우측/하단", "최근 5~10개 공식 하이라이트 카드 리스트 (썸네일, 재생시간, 제목, 경기 날짜)", "카드 클릭 시 좌측 대형 플레이어에 해당 영상 즉시 로드 및 포커스", "마우스 호버 시 살짝 확대 효과, 모바일 가로/세로 유연 대응"),
     ("SCR-07", "구단별 허브 선택기", "순위 테이블 상단", "리그 소속 전 구단 원형/사각 엠블럼 버튼 리스트", "구단 클릭 시 해당 팀의 세부 성적, 소속 주요선수 득점/도움/ERA 랭킹 동적 표시", "선호 구단 등록된 팀은 별표 및 골드 테두리 자동 부여"),
-    ("SCR-08", "리그 종합 순위표", "하단 탭/섹션", "순위, 구단 엠블럼, 팀명, 경기수, 승/무/패, 승점/승률, 게임차, 최근 전적 뱃지", "선호 구단 행 자동 하이라이트 음영 처리, 승률/승점 컬럼 볼드 강조", "스트라이프 테이블, 모바일 가로 스크롤(overflow-x-auto)")
+    ("SCR-08", "리그 종합 순위표", "하단 탭/섹션", "순위, 구단 엠블럼, 팀명, 경기수, 승/무/패, 승점/승률, 게임차, 최근 전적 뱃지", "선호 구단 행 자동 하이라이트 음영 처리, 승률/승점 컬럼 볼드 강조", "스트라이프 테이블, 모바일 가로 스크롤(overflow-x-auto)"),
+    ("SCR-09", "네이버 실시간 문자중계 모달", "레이어 팝업 (Modal)", "LIVE 뱃지 헤더, 매치업 정보 타이틀, [새 창으로 보기] 링크 버튼, 닫기 버튼, Iframe 문자중계 뷰어, 로딩 스피너", "LIVE 경기 카드에서 [실시간 중계확인] 클릭 시 팝업, 볼카운트/투구추적 실시간 렌더링, ESC/배경 클릭 시 닫기", "fixed inset-0 z-50 백드롭 블러, 최대폭 max-w-4xl, 높이 90vh")
 ]
 apply_sheet_styling(ws6, "화면 및 UI/UX 상세 명세서 (UI/UX Specifications)", ui_widths, ui_headers, ui_data)
 
