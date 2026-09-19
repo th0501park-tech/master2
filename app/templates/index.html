@@ -1,0 +1,504 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="space-y-4 sm:space-y-6">
+
+    <!-- 상단 대시보드 상태 배너 & 3개 뷰 모드 컨트롤러 (모바일 완벽 반응형) -->
+    <div class="bg-white dark:bg-darkbg-800 rounded-2xl p-3.5 sm:p-5 border border-gray-200 dark:border-gray-800 shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4">
+        <div class="flex items-center justify-between sm:justify-start space-x-2.5">
+            <div class="flex items-center space-x-2">
+                <span id="sport-icon" class="text-xl sm:text-2xl">⚾</span>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <h1 id="sport-title" class="text-lg sm:text-2xl font-black tracking-tight text-gray-900 dark:text-white leading-none">
+                            2026 KBO 리그
+                        </h1>
+                        <span id="sport-badge" class="px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">
+                            정규시즌
+                        </span>
+                    </div>
+                    <p id="sport-updated-at" class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 mt-1 flex items-center space-x-1">
+                        <i class="fa-regular fa-clock text-[10px]"></i>
+                        <span>최종 갱신: {{ kbo.updated_at }}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3개 뷰 모드 탭 (팀 순위표 / 개인 순위 / 구단별 몰아보기) - 모바일 균등 3등분 -->
+        <div class="grid grid-cols-3 sm:flex items-center bg-gray-100 dark:bg-darkbg-900 p-1 rounded-xl border border-gray-200 dark:border-gray-800 self-stretch sm:self-auto text-center gap-1">
+            <button type="button" onclick="switchViewMode('standings')" id="view-btn-standings" class="view-mode-btn py-2 px-2 sm:px-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 active:scale-95">
+                <i class="fa-solid fa-list-ol text-xs"></i>
+                <span class="truncate">팀 순위</span>
+            </button>
+            <button type="button" onclick="switchViewMode('leaders')" id="view-btn-leaders" class="view-mode-btn py-2 px-2 sm:px-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 active:scale-95">
+                <i class="fa-solid fa-medal text-xs"></i>
+                <span class="truncate">개인 순위</span>
+            </button>
+            <button type="button" onclick="switchViewMode('teamhub')" id="view-btn-teamhub" class="view-mode-btn py-2 px-2 sm:px-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 active:scale-95">
+                <i class="fa-solid fa-layer-group text-xs"></i>
+                <span class="truncate">구단 몰아보기</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 1. KBO 섹션 -->
+    <!-- ========================================== -->
+    <div id="sport-section-kbo" class="sport-section space-y-4 sm:space-y-6">
+        
+        <!-- [1] KBO 팀 순위표 -->
+        <div id="kbo-view-standings" class="view-content">
+            <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+                <div class="px-4 py-3 sm:px-6 sm:py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center justify-between">
+                    <h2 class="text-sm sm:text-base font-bold text-gray-900 dark:text-white flex items-center space-x-1.5 sm:space-x-2">
+                        <span>🏆 2026 KBO 정규시즌 팀 순위표</span>
+                    </h2>
+                    <span class="text-[11px] sm:text-xs text-gray-400">1~5위 포스트시즌</span>
+                </div>
+                
+                <!-- 모바일 가로 스크롤 테이블 -->
+                <div class="overflow-x-auto mobile-scroll-container">
+                    <table class="w-full text-left border-collapse text-xs sm:text-sm whitespace-nowrap min-w-[580px] sm:min-w-full">
+                        <thead>
+                            <tr class="bg-gray-50/80 dark:bg-darkbg-900/60 text-[11px] sm:text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase border-b border-gray-100 dark:border-gray-800">
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-4 text-center w-10 sm:w-14">순위</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-4">구단</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">경기</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">승</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">패</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">무</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center font-bold text-blue-600 dark:text-blue-400">승률</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">게임차</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center hidden md:table-cell">최근10</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center hidden sm:table-cell">연속</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center hidden lg:table-cell">홈 전적</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center hidden lg:table-cell">원정 전적</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-4 text-center">몰아보기</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                            {% for t in kbo.teams %}
+                            <tr class="hover:bg-blue-50/40 dark:hover:bg-darkbg-700/50 transition-colors {% if t.rank <= 5 %}border-l-4 border-l-blue-500{% endif %}">
+                                <td class="py-2.5 px-2 sm:py-3.5 sm:px-4 text-center font-bold">
+                                    <span class="w-5 h-5 sm:w-6 sm:h-6 rounded-full inline-flex items-center justify-center text-[11px] sm:text-xs
+                                        {% if t.rank == 1 %}bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300 font-black
+                                        {% elif t.rank <= 3 %}bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300
+                                        {% elif t.rank <= 5 %}bg-indigo-50 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300
+                                        {% else %}text-gray-500 dark:text-gray-400{% endif %}">
+                                        {{ t.rank }}
+                                    </span>
+                                </td>
+                                <td class="py-2.5 px-2 sm:py-3.5 sm:px-4 font-semibold text-gray-900 dark:text-white">
+                                    <div class="flex items-center space-x-2 sm:space-x-3">
+                                        {% if t.emblem %}
+                                        <img src="{{ t.emblem }}" alt="{{ t.team }}" class="w-5 h-5 sm:w-7 sm:h-7 object-contain drop-shadow-sm" onerror="this.style.display='none'">
+                                        {% endif %}
+                                        <span class="hidden sm:inline">{{ t.fullName }}</span>
+                                        <span class="sm:hidden font-bold">{{ t.team }}</span>
+                                    </div>
+                                </td>
+                                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-gray-600 dark:text-gray-300">{{ t.games }}</td>
+                                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center font-bold text-gray-900 dark:text-white">{{ t.win }}</td>
+                                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-gray-600 dark:text-gray-300">{{ t.loss }}</td>
+                                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-gray-600 dark:text-gray-300">{{ t.draw }}</td>
+                                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center font-extrabold text-blue-600 dark:text-blue-400 text-xs sm:text-sm">{{ t.rate }}</td>
+                                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-gray-600 dark:text-gray-300">{{ t.game_diff }}</td>
+                                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-xs text-gray-500 dark:text-gray-400 hidden md:table-cell">{{ t.recent10 }}</td>
+                                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-xs hidden sm:table-cell">
+                                    <span class="px-1.5 py-0.5 rounded-full text-[11px] font-semibold {% if '승' in t.streak %}bg-red-50 text-red-600 dark:bg-red-950/60 dark:text-red-400{% else %}bg-gray-100 text-gray-600 dark:bg-darkbg-700 dark:text-gray-300{% endif %}">
+                                        {{ t.streak }}
+                                    </span>
+                                </td>
+                                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-xs text-gray-500 dark:text-gray-400 hidden lg:table-cell">{{ t.home }}</td>
+                                <td class="py-2.5 px-2 sm:py-3.5 sm:px-3 text-center text-xs text-gray-500 dark:text-gray-400 hidden lg:table-cell">{{ t.away }}</td>
+                                <td class="py-2.5 px-2 sm:py-3.5 sm:px-4 text-center">
+                                    <button type="button" onclick="selectTeamInHub('kbo', '{{ t.team }}')" class="px-2 py-1 text-[11px] sm:text-xs font-semibold rounded-lg bg-gray-100 hover:bg-blue-600 hover:text-white dark:bg-darkbg-700 dark:hover:bg-blue-600 text-gray-700 dark:text-gray-200 transition-colors active:scale-95">
+                                        선수기록 ➔
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- [2] KBO 개인 순위 (타자 / 투수 TOP 5) -->
+        <div id="kbo-view-leaders" class="view-content hidden space-y-6 sm:space-y-8">
+            <!-- 타자 부문 -->
+            <div>
+                <div class="flex items-center space-x-2 mb-3 sm:mb-4">
+                    <span class="p-1.5 sm:p-2 rounded-xl bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400">
+                        <i class="fa-solid fa-baseball-bat-ball text-base sm:text-lg"></i>
+                    </span>
+                    <h2 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">타자 부문 TOP 5</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
+                    {% for cat in kbo.hitters %}
+                    <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-3.5 sm:p-4 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between pb-2.5 border-b border-gray-100 dark:border-gray-700/60">
+                            <span class="font-bold text-gray-900 dark:text-white text-xs sm:text-sm">{{ cat.category }}</span>
+                            <span class="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 font-semibold">타자</span>
+                        </div>
+                        <!-- 1위 선수 하이라이트 -->
+                        {% if cat.first_player %}
+                        <div class="mt-2.5 p-2.5 sm:p-3 rounded-xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 flex items-center space-x-3">
+                            {% if cat.first_img %}
+                            <img src="{{ cat.first_img }}" alt="{{ cat.first_player.name }}" class="w-12 h-12 sm:w-14 sm:h-14 object-cover rounded-full border-2 border-amber-400 bg-white shadow-sm flex-shrink-0" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>'">
+                            {% else %}
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-base flex-shrink-0">1위</div>
+                            {% endif %}
+                            <div class="flex-grow min-w-0">
+                                <div class="flex items-center space-x-1.5 truncate">
+                                    <span class="text-[10px] sm:text-xs font-black px-1.5 py-0.5 rounded bg-amber-400 text-amber-950">1위</span>
+                                    <span class="font-bold text-gray-900 dark:text-white text-sm sm:text-base truncate">{{ cat.first_player.name }}</span>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">({{ cat.first_player.team }})</span>
+                                </div>
+                                <div class="text-base sm:text-lg font-extrabold text-amber-600 dark:text-amber-400 mt-0.5">{{ cat.first_player.value }}</div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <!-- 2~5위 리스트 -->
+                        <div class="mt-2.5 space-y-1 text-xs">
+                            {% for p in cat.ranks[1:] %}
+                            <div class="flex items-center justify-between py-1 px-1.5 rounded-lg hover:bg-gray-50 dark:hover:bg-darkbg-700/50">
+                                <div class="flex items-center space-x-2 truncate">
+                                    <span class="w-4 text-center font-bold text-gray-400 flex-shrink-0">{{ p.rank }}</span>
+                                    <span class="font-semibold text-gray-800 dark:text-gray-200 truncate">{{ p.name }}</span>
+                                    <span class="text-gray-400 text-[11px] flex-shrink-0">({{ p.team }})</span>
+                                </div>
+                                <span class="font-bold text-gray-700 dark:text-gray-300 ml-2 flex-shrink-0">{{ p.value }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- 투수 부문 -->
+            <div>
+                <div class="flex items-center space-x-2 mb-3 sm:mb-4">
+                    <span class="p-1.5 sm:p-2 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
+                        <i class="fa-solid fa-baseball text-base sm:text-lg"></i>
+                    </span>
+                    <h2 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">투수 부문 TOP 5</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
+                    {% for cat in kbo.pitchers %}
+                    <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-3.5 sm:p-4 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between pb-2.5 border-b border-gray-100 dark:border-gray-700/60">
+                            <span class="font-bold text-gray-900 dark:text-white text-xs sm:text-sm">{{ cat.category }}</span>
+                            <span class="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 font-semibold">투수</span>
+                        </div>
+                        <!-- 1위 선수 하이라이트 -->
+                        {% if cat.first_player %}
+                        <div class="mt-2.5 p-2.5 sm:p-3 rounded-xl bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 flex items-center space-x-3">
+                            {% if cat.first_img %}
+                            <img src="{{ cat.first_img }}" alt="{{ cat.first_player.name }}" class="w-12 h-12 sm:w-14 sm:h-14 object-cover rounded-full border-2 border-blue-400 bg-white shadow-sm flex-shrink-0" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>'">
+                            {% else %}
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-base flex-shrink-0">1위</div>
+                            {% endif %}
+                            <div class="flex-grow min-w-0">
+                                <div class="flex items-center space-x-1.5 truncate">
+                                    <span class="text-[10px] sm:text-xs font-black px-1.5 py-0.5 rounded bg-blue-500 text-white">1위</span>
+                                    <span class="font-bold text-gray-900 dark:text-white text-sm sm:text-base truncate">{{ cat.first_player.name }}</span>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">({{ cat.first_player.team }})</span>
+                                </div>
+                                <div class="text-base sm:text-lg font-extrabold text-blue-600 dark:text-blue-400 mt-0.5">{{ cat.first_player.value }}</div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <!-- 2~5위 리스트 -->
+                        <div class="mt-2.5 space-y-1 text-xs">
+                            {% for p in cat.ranks[1:] %}
+                            <div class="flex items-center justify-between py-1 px-1.5 rounded-lg hover:bg-gray-50 dark:hover:bg-darkbg-700/50">
+                                <div class="flex items-center space-x-2 truncate">
+                                    <span class="w-4 text-center font-bold text-gray-400 flex-shrink-0">{{ p.rank }}</span>
+                                    <span class="font-semibold text-gray-800 dark:text-gray-200 truncate">{{ p.name }}</span>
+                                    <span class="text-gray-400 text-[11px] flex-shrink-0">({{ p.team }})</span>
+                                </div>
+                                <span class="font-bold text-gray-700 dark:text-gray-300 ml-2 flex-shrink-0">{{ p.value }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- [3] KBO 구단별 몰아보기 (Team Hub) -->
+        <div id="kbo-view-teamhub" class="view-content hidden space-y-4 sm:space-y-6">
+            <!-- 10개 구단 선택 칩 그리드 -->
+            <div class="bg-white dark:bg-darkbg-800 rounded-2xl p-3.5 sm:p-4 border border-gray-200 dark:border-gray-800 shadow-sm">
+                <span class="text-xs font-bold text-gray-400 block mb-2.5">구단을 선택하세요</span>
+                <div class="grid grid-cols-5 sm:grid-cols-10 gap-1.5 sm:gap-2">
+                    {% for t in kbo.teams %}
+                    <button type="button" onclick="renderTeamHubDetails('kbo', '{{ t.team }}')" id="kbo-hub-btn-{{ t.team }}" 
+                            class="team-hub-selector p-1.5 sm:p-2 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-500 active:scale-95 flex flex-col items-center justify-center transition-all">
+                        <img src="{{ t.emblem }}" alt="{{ t.team }}" class="w-6 h-6 sm:w-8 sm:h-8 object-contain mb-1" onerror="this.style.display='none'">
+                        <span class="text-[10px] sm:text-xs font-bold text-gray-800 dark:text-gray-200 truncate w-full text-center">{{ t.team }}</span>
+                    </button>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- 선택된 구단 상세 성적 및 소속 선수 카드 -->
+            <div id="kbo-hub-detail-card" class="space-y-4 sm:space-y-6">
+                <!-- JS 동적 바인딩 -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 2. K리그 섹션 -->
+    <!-- ========================================== -->
+    <div id="sport-section-kleague" class="sport-section hidden space-y-4 sm:space-y-6">
+        <!-- K리그1 / K리그2 하위 서브탭 -->
+        <div class="flex items-center space-x-2 border-b border-gray-200 dark:border-gray-800 pb-2.5">
+            <button type="button" onclick="switchKLeagueSub('k1')" id="kleague-sub-btn-k1" class="kleague-sub-btn px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-bold bg-blue-600 text-white shadow-sm active:scale-95">
+                ⚽ K리그 1
+            </button>
+            <button type="button" onclick="switchKLeagueSub('k2')" id="kleague-sub-btn-k2" class="kleague-sub-btn px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-bold text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-darkbg-700 active:scale-95">
+                ⚽ K리그 2
+            </button>
+        </div>
+
+        <!-- K리그 뷰 모드 컨텐츠 -->
+        <div id="kleague-view-standings" class="view-content">
+            <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+                <div class="px-4 py-3 sm:px-6 sm:py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center justify-between">
+                    <h2 id="kleague-table-title" class="text-sm sm:text-base font-bold text-gray-900 dark:text-white">
+                        🏆 K리그 1 팀 순위표
+                    </h2>
+                    <span class="text-[11px] sm:text-xs text-gray-400">승점 = 승x3 + 무x1</span>
+                </div>
+                <div class="overflow-x-auto mobile-scroll-container">
+                    <table class="w-full text-left border-collapse text-xs sm:text-sm whitespace-nowrap min-w-[560px] sm:min-w-full">
+                        <thead>
+                            <tr class="bg-gray-50/80 dark:bg-darkbg-900/60 text-[11px] sm:text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase border-b border-gray-100 dark:border-gray-800">
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-4 text-center w-10 sm:w-14">순위</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-4">클럽</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">경기</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center font-extrabold text-blue-600 dark:text-blue-400">승점</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">승</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">무</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">패</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">득점</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">실점</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center font-bold">득실차</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center hidden md:table-cell">최근 5경기</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-4 text-center">몰아보기</th>
+                            </tr>
+                        </thead>
+                        <tbody id="kleague-table-body" class="divide-y divide-gray-100 dark:divide-gray-800">
+                            <!-- JS 바인딩 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- K리그 개인 순위 -->
+        <div id="kleague-view-leaders" class="view-content hidden space-y-4 sm:space-y-6">
+            <div id="kleague-leaders-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
+                <!-- JS 바인딩 -->
+            </div>
+        </div>
+
+        <!-- K리그 구단별 몰아보기 -->
+        <div id="kleague-view-teamhub" class="view-content hidden space-y-4 sm:space-y-6">
+            <div class="bg-white dark:bg-darkbg-800 rounded-2xl p-3.5 sm:p-4 border border-gray-200 dark:border-gray-800 shadow-sm">
+                <span class="text-xs font-bold text-gray-400 block mb-2.5">K리그 구단을 선택하세요</span>
+                <div id="kleague-hub-selectors" class="flex flex-wrap gap-1.5 sm:gap-2">
+                    <!-- 구단 엠블럼 버튼 -->
+                </div>
+            </div>
+            <div id="kleague-hub-detail-card" class="space-y-4 sm:space-y-6">
+                <!-- 선택된 구단 정보 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 3. 해외축구 섹션 -->
+    <!-- ========================================== -->
+    <div id="sport-section-overseas" class="sport-section hidden space-y-4 sm:space-y-6">
+        <!-- 5대 대회 서브탭 -->
+        <div class="flex items-center space-x-1.5 overflow-x-auto pb-2.5 border-b border-gray-200 dark:border-gray-800 no-scrollbar -mx-1 px-1">
+            {% for key, cfg in overseas.leagues.items() %}
+            <button type="button" onclick="switchOverseasSub('{{ key }}')" id="overseas-sub-btn-{{ key }}" 
+                    class="overseas-sub-btn whitespace-nowrap px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all active:scale-95 {% if loop.first %}bg-blue-600 text-white shadow-sm{% else %}text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-darkbg-700{% endif %}">
+                <i class="fa-solid {{ cfg.icon }} mr-1"></i>
+                <span>{{ cfg.shortName }}</span>
+            </button>
+            {% endfor %}
+        </div>
+
+        <!-- 해외축구 순위표 -->
+        <div id="overseas-view-standings" class="view-content">
+            <div class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+                <div class="px-4 py-3 sm:px-6 sm:py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center justify-between">
+                    <h2 id="overseas-table-title" class="text-sm sm:text-base font-bold text-gray-900 dark:text-white truncate">
+                        🏆 프리미어리그 순위표
+                    </h2>
+                    <span class="text-[11px] sm:text-xs text-gray-400 flex-shrink-0 ml-2">공식 Goal.com & ESPN</span>
+                </div>
+                <div class="overflow-x-auto mobile-scroll-container">
+                    <table class="w-full text-left border-collapse text-xs sm:text-sm whitespace-nowrap min-w-[560px] sm:min-w-full">
+                        <thead>
+                            <tr class="bg-gray-50/80 dark:bg-darkbg-900/60 text-[11px] sm:text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase border-b border-gray-100 dark:border-gray-800">
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-4 text-center w-10 sm:w-14">순위</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-4">팀</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">경기</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center font-extrabold text-blue-600 dark:text-blue-400">승점</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">승</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">무</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">패</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">득점</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">실점</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center font-bold">득실차</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-4 text-center">몰아보기</th>
+                            </tr>
+                        </thead>
+                        <tbody id="overseas-table-body" class="divide-y divide-gray-100 dark:divide-gray-800">
+                            <!-- JS 바인딩 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 해외축구 개인 순위 -->
+        <div id="overseas-view-leaders" class="view-content hidden space-y-4 sm:space-y-6">
+            <div id="overseas-leaders-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                <!-- JS 바인딩 -->
+            </div>
+        </div>
+
+        <!-- 해외축구 구단별 몰아보기 -->
+        <div id="overseas-view-teamhub" class="view-content hidden space-y-4 sm:space-y-6">
+            <div class="bg-white dark:bg-darkbg-800 rounded-2xl p-3.5 sm:p-4 border border-gray-200 dark:border-gray-800 shadow-sm">
+                <span class="text-xs font-bold text-gray-400 block mb-2.5">구단을 선택하세요</span>
+                <div id="overseas-hub-selectors" class="flex flex-wrap gap-1.5 sm:gap-2">
+                    <!-- 구단 로고 버튼 -->
+                </div>
+            </div>
+            <div id="overseas-hub-detail-card" class="space-y-4 sm:space-y-6">
+                <!-- 선택된 구단 정보 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 4. MLB 메이저리그 섹션 -->
+    <!-- ========================================== -->
+    <div id="sport-section-mlb" class="sport-section hidden space-y-4 sm:space-y-6">
+        <!-- MLB 하위 서브탭 -->
+        <div class="flex items-center space-x-2 border-b border-gray-200 dark:border-gray-800 pb-2.5">
+            <button type="button" onclick="switchMLBSub('overall')" id="mlb-sub-btn-overall" class="mlb-sub-btn px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-bold bg-blue-600 text-white shadow-sm active:scale-95">
+                🧢 30개 구단 전체 순위
+            </button>
+            <button type="button" onclick="switchMLBSub('divisions')" id="mlb-sub-btn-divisions" class="mlb-sub-btn px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-bold text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-darkbg-700 active:scale-95">
+                🌎 AL / NL 6개 지구별 순위
+            </button>
+        </div>
+
+        <!-- MLB 순위표 -->
+        <div id="mlb-view-standings" class="view-content space-y-4 sm:space-y-6">
+            <!-- 전체 순위표 -->
+            <div id="mlb-overall-table-container" class="bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+                <div class="px-4 py-3 sm:px-6 sm:py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center justify-between">
+                    <h2 class="text-sm sm:text-base font-bold text-gray-900 dark:text-white">
+                        🏆 MLB 30개 구단 전체 승률 순위표
+                    </h2>
+                    <span class="text-[11px] sm:text-xs text-gray-400">공식 MLB Stats API</span>
+                </div>
+                <div class="overflow-x-auto mobile-scroll-container">
+                    <table class="w-full text-left border-collapse text-xs sm:text-sm whitespace-nowrap min-w-[580px] sm:min-w-full">
+                        <thead>
+                            <tr class="bg-gray-50/80 dark:bg-darkbg-900/60 text-[11px] sm:text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase border-b border-gray-100 dark:border-gray-800">
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-4 text-center w-10 sm:w-14">순위</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-4">구단</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">지구</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">경기</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">승</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">패</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center font-extrabold text-blue-600 dark:text-blue-400">승률</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center">게임차</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center hidden md:table-cell">연속</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-3 text-center hidden md:table-cell">최근10</th>
+                                <th class="py-2.5 px-2 sm:py-3 sm:px-4 text-center">몰아보기</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mlb-overall-tbody" class="divide-y divide-gray-100 dark:divide-gray-800">
+                            <!-- JS 바인딩 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 지구별 순위표 (6개 지구) -->
+            <div id="mlb-divisions-container" class="hidden grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                <!-- 6개 지구 카드 -->
+            </div>
+        </div>
+
+        <!-- MLB 개인 순위 (타자 / 투수 리더보드) -->
+        <div id="mlb-view-leaders" class="view-content hidden space-y-6 sm:space-y-8">
+            <div>
+                <div class="flex items-center space-x-2 mb-3 sm:mb-4">
+                    <span class="p-1.5 sm:p-2 rounded-xl bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400">
+                        <i class="fa-solid fa-baseball-bat-ball text-base sm:text-lg"></i>
+                    </span>
+                    <h2 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">타자 부문 리더보드 TOP 5</h2>
+                </div>
+                <div id="mlb-hitters-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
+                    <!-- JS 바인딩 -->
+                </div>
+            </div>
+
+            <div>
+                <div class="flex items-center space-x-2 mb-3 sm:mb-4">
+                    <span class="p-1.5 sm:p-2 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
+                        <i class="fa-solid fa-baseball text-base sm:text-lg"></i>
+                    </span>
+                    <h2 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">투수 부문 리더보드 TOP 5</h2>
+                </div>
+                <div id="mlb-pitchers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
+                    <!-- JS 바인딩 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- MLB 구단별 몰아보기 -->
+        <div id="mlb-view-teamhub" class="view-content hidden space-y-4 sm:space-y-6">
+            <div class="bg-white dark:bg-darkbg-800 rounded-2xl p-3.5 sm:p-4 border border-gray-200 dark:border-gray-800 shadow-sm">
+                <span class="text-xs font-bold text-gray-400 block mb-2.5">MLB 30개 구단을 선택하세요</span>
+                <div id="mlb-hub-selectors" class="grid grid-cols-5 sm:grid-cols-10 gap-1.5 sm:gap-2">
+                    <!-- 30개 구단 로고 버튼 -->
+                </div>
+            </div>
+            <div id="mlb-hub-detail-card" class="space-y-4 sm:space-y-6">
+                <!-- 선택된 구단 정보 -->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- 초기 JSON 데이터 주입 -->
+<script>
+    window.INITIAL_DATA = {
+        activeTab: "{{ active_tab }}",
+        kbo: {{ kbo | tojson }},
+        kleague: {{ kleague | tojson }},
+        overseas: {{ overseas | tojson }},
+        mlb: {{ mlb | tojson }}
+    };
+</script>
+{% endblock %}

@@ -1,0 +1,3327 @@
+{
+  "sports": "kbo",
+  "title": "KBO 한국야구",
+  "updated_at": "2026-09-19 12:26:07",
+  "updated_at_iso": "2026-09-19T12:26:07.149179",
+  "teams": [
+    {
+      "rank": 1,
+      "team": "KT",
+      "fullName": "kt wiz",
+      "shortName": "KT",
+      "color": "#ec1a3a",
+      "bgColor": "#1e2022",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+      "games": 127,
+      "win": 76,
+      "loss": 47,
+      "draw": 4,
+      "rate": "0.618",
+      "game_diff": "0",
+      "recent10": "7승1무2패",
+      "streak": "1패",
+      "home": "39-1-22",
+      "away": "37-3-25"
+    },
+    {
+      "rank": 2,
+      "team": "삼성",
+      "fullName": "삼성 라이온즈",
+      "shortName": "삼성",
+      "color": "#074ca1",
+      "bgColor": "#e8f0fe",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+      "games": 129,
+      "win": 76,
+      "loss": 50,
+      "draw": 3,
+      "rate": "0.603",
+      "game_diff": "1.5",
+      "recent10": "6승0무4패",
+      "streak": "1승",
+      "home": "38-1-25",
+      "away": "38-2-25"
+    },
+    {
+      "rank": 3,
+      "team": "LG",
+      "fullName": "LG 트윈스",
+      "shortName": "LG",
+      "color": "#c30452",
+      "bgColor": "#fce8f0",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+      "games": 129,
+      "win": 73,
+      "loss": 55,
+      "draw": 1,
+      "rate": "0.570",
+      "game_diff": "5.5",
+      "recent10": "6승0무4패",
+      "streak": "5승",
+      "home": "38-0-27",
+      "away": "35-1-28"
+    },
+    {
+      "rank": 4,
+      "team": "KIA",
+      "fullName": "KIA 타이거즈",
+      "shortName": "KIA",
+      "color": "#ea0029",
+      "bgColor": "#fee8e8",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+      "games": 128,
+      "win": 69,
+      "loss": 57,
+      "draw": 2,
+      "rate": "0.548",
+      "game_diff": "8.5",
+      "recent10": "5승0무5패",
+      "streak": "1승",
+      "home": "39-2-24",
+      "away": "30-0-33"
+    },
+    {
+      "rank": 5,
+      "team": "두산",
+      "fullName": "두산 베어스",
+      "shortName": "두산",
+      "color": "#131230",
+      "bgColor": "#eef0f8",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+      "games": 130,
+      "win": 65,
+      "loss": 60,
+      "draw": 5,
+      "rate": "0.520",
+      "game_diff": "12",
+      "recent10": "4승1무5패",
+      "streak": "2승",
+      "home": "36-3-26",
+      "away": "29-2-34"
+    },
+    {
+      "rank": 6,
+      "team": "NC",
+      "fullName": "NC 다이노스",
+      "shortName": "NC",
+      "color": "#315288",
+      "bgColor": "#edf2f9",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/NC.png",
+      "games": 126,
+      "win": 59,
+      "loss": 65,
+      "draw": 2,
+      "rate": "0.476",
+      "game_diff": "17.5",
+      "recent10": "4승0무6패",
+      "streak": "5패",
+      "home": "29-0-35",
+      "away": "30-2-30"
+    },
+    {
+      "rank": 7,
+      "team": "SSG",
+      "fullName": "SSG 랜더스",
+      "shortName": "SSG",
+      "color": "#ce0e2d",
+      "bgColor": "#feebee",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+      "games": 131,
+      "win": 57,
+      "loss": 69,
+      "draw": 5,
+      "rate": "0.452",
+      "game_diff": "20.5",
+      "recent10": "7승0무3패",
+      "streak": "3승",
+      "home": "28-4-31",
+      "away": "29-1-38"
+    },
+    {
+      "rank": 8,
+      "team": "한화",
+      "fullName": "한화 이글스",
+      "shortName": "한화",
+      "color": "#ff6600",
+      "bgColor": "#fff3e8",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+      "games": 128,
+      "win": 54,
+      "loss": 70,
+      "draw": 4,
+      "rate": "0.435",
+      "game_diff": "22.5",
+      "recent10": "4승1무5패",
+      "streak": "5패",
+      "home": "25-3-36",
+      "away": "29-1-34"
+    },
+    {
+      "rank": 9,
+      "team": "롯데",
+      "fullName": "롯데 자이언츠",
+      "shortName": "롯데",
+      "color": "#041e42",
+      "bgColor": "#e8ecf4",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+      "games": 127,
+      "win": 54,
+      "loss": 71,
+      "draw": 2,
+      "rate": "0.432",
+      "game_diff": "23",
+      "recent10": "3승0무7패",
+      "streak": "1승",
+      "home": "24-0-38",
+      "away": "30-2-33"
+    },
+    {
+      "rank": 10,
+      "team": "키움",
+      "fullName": "키움 히어로즈",
+      "shortName": "키움",
+      "color": "#570514",
+      "bgColor": "#f7e8ea",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/WO.png",
+      "games": 133,
+      "win": 45,
+      "loss": 84,
+      "draw": 4,
+      "rate": "0.349",
+      "game_diff": "34",
+      "recent10": "3승1무6패",
+      "streak": "4패",
+      "home": "27-2-41",
+      "away": "18-2-43"
+    }
+  ],
+  "hitters": [
+    {
+      "category": "타율 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/62404.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "구자욱",
+        "team": "삼성",
+        "teamColor": "#074ca1",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+        "value": "0.363",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62404"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "구자욱",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "0.363",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62404"
+        },
+        {
+          "rank": 2,
+          "name": "레이예스",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "0.354",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+        },
+        {
+          "rank": 3,
+          "name": "오스틴",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "0.344",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "rank": 4,
+          "name": "최원준",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "0.339",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66606"
+        },
+        {
+          "rank": 5,
+          "name": "박성한",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "0.331",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=67893"
+        }
+      ]
+    },
+    {
+      "category": "홈런 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/52605.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "김도영",
+        "team": "KIA",
+        "teamColor": "#ea0029",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+        "value": "40",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "김도영",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "40",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "rank": 2,
+          "name": "오스틴",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "39",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "rank": 3,
+          "name": "힐리어드",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "36",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "rank": 4,
+          "name": "강백호",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "32",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=68050"
+        },
+        {
+          "rank": 5,
+          "name": "노시환",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "27",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=69737"
+        }
+      ]
+    },
+    {
+      "category": "타점 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/53123.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "오스틴",
+        "team": "LG",
+        "teamColor": "#c30452",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+        "value": "121",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "오스틴",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "121",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "rank": 2,
+          "name": "힐리어드",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "114",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "rank": 3,
+          "name": "디아즈",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "113",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54400"
+        },
+        {
+          "rank": 4,
+          "name": "강백호",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "109",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=68050"
+        },
+        {
+          "rank": 5,
+          "name": "김도영",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "102",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        }
+      ]
+    },
+    {
+      "category": "도루 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/62907.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "박민우",
+        "team": "NC",
+        "teamColor": "#315288",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/NC.png",
+        "value": "44",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62907"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "박민우",
+          "team": "NC",
+          "teamColor": "#315288",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/NC.png",
+          "value": "44",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62907"
+        },
+        {
+          "rank": 2,
+          "name": "황성빈",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "43",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=50500"
+        },
+        {
+          "rank": 3,
+          "name": "박해민",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "34",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62415"
+        },
+        {
+          "rank": 4,
+          "name": "박찬호",
+          "team": "두산",
+          "teamColor": "#131230",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+          "value": "31",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=64646"
+        },
+        {
+          "rank": 5,
+          "name": "김주원",
+          "team": "NC",
+          "teamColor": "#315288",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/NC.png",
+          "value": "30",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=51907"
+        }
+      ]
+    },
+    {
+      "category": "득점 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/53123.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "오스틴",
+        "team": "LG",
+        "teamColor": "#c30452",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+        "value": "106",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "오스틴",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "106",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "rank": 2,
+          "name": "김도영",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "106",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "rank": 3,
+          "name": "최원준",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "105",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66606"
+        },
+        {
+          "rank": 4,
+          "name": "힐리어드",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "98",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "rank": 5,
+          "name": "김지찬",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "94",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=50458"
+        }
+      ]
+    },
+    {
+      "category": "안타 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/54529.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "레이예스",
+        "team": "롯데",
+        "teamColor": "#041e42",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+        "value": "180",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "레이예스",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "180",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+        },
+        {
+          "rank": 2,
+          "name": "최원준",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "172",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66606"
+        },
+        {
+          "rank": 3,
+          "name": "오스틴",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "168",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "rank": 4,
+          "name": "박성한",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "160",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=67893"
+        },
+        {
+          "rank": 5,
+          "name": "디아즈",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "149",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54400"
+        }
+      ]
+    },
+    {
+      "category": "출루율 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/62404.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "구자욱",
+        "team": "삼성",
+        "teamColor": "#074ca1",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+        "value": "0.447",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62404"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "구자욱",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "0.447",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62404"
+        },
+        {
+          "rank": 2,
+          "name": "오스틴",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "0.435",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "rank": 3,
+          "name": "박성한",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "0.427",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=67893"
+        },
+        {
+          "rank": 4,
+          "name": "최원준",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "0.421",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66606"
+        },
+        {
+          "rank": 5,
+          "name": "김도영",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "0.414",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        }
+      ]
+    },
+    {
+      "category": "장타율 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/53123.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "오스틴",
+        "team": "LG",
+        "teamColor": "#c30452",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+        "value": "0.667",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "오스틴",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "0.667",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "rank": 2,
+          "name": "김도영",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "0.639",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "rank": 3,
+          "name": "힐리어드",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "0.574",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "rank": 4,
+          "name": "구자욱",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "0.560",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62404"
+        },
+        {
+          "rank": 5,
+          "name": "강백호",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "0.554",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=68050"
+        }
+      ]
+    },
+    {
+      "category": "2루타 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/54529.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "레이예스",
+        "team": "롯데",
+        "teamColor": "#041e42",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+        "value": "34",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "레이예스",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "34",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+        },
+        {
+          "rank": 2,
+          "name": "오스틴",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "33",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "rank": 3,
+          "name": "최원준",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "31",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66606"
+        },
+        {
+          "rank": 4,
+          "name": "디아즈",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "30",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54400"
+        },
+        {
+          "rank": 5,
+          "name": "카스트로",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "30",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56626"
+        }
+      ]
+    },
+    {
+      "category": "3루타 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/50500.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "황성빈",
+        "team": "롯데",
+        "teamColor": "#041e42",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+        "value": "11",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=50500"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "황성빈",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "11",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=50500"
+        },
+        {
+          "rank": 2,
+          "name": "정준재",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "7",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54812"
+        },
+        {
+          "rank": 3,
+          "name": "최지훈",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "7",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=50854"
+        },
+        {
+          "rank": 4,
+          "name": "류지혁",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "6",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62234"
+        },
+        {
+          "rank": 5,
+          "name": "박승규",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "6",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=69418"
+        }
+      ]
+    },
+    {
+      "category": "루타 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/53123.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "오스틴",
+        "team": "LG",
+        "teamColor": "#c30452",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+        "value": "326",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "오스틴",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "326",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "rank": 2,
+          "name": "김도영",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "288",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "rank": 3,
+          "name": "힐리어드",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "283",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "rank": 4,
+          "name": "레이예스",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "263",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+        },
+        {
+          "rank": 5,
+          "name": "강백호",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "248",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=68050"
+        }
+      ]
+    },
+    {
+      "category": "OPS TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/53123.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "오스틴",
+        "team": "LG",
+        "teamColor": "#c30452",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+        "value": "1.102",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "오스틴",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "1.102",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "rank": 2,
+          "name": "김도영",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "1.053",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "rank": 3,
+          "name": "구자욱",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "1.007",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62404"
+        },
+        {
+          "rank": 4,
+          "name": "힐리어드",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "0.943",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "rank": 5,
+          "name": "레이예스",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "0.924",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+        }
+      ]
+    },
+    {
+      "category": "타수 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/54529.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "레이예스",
+        "team": "롯데",
+        "teamColor": "#041e42",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+        "value": "508",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "레이예스",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "508",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+        },
+        {
+          "rank": 2,
+          "name": "최원준",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "507",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66606"
+        },
+        {
+          "rank": 3,
+          "name": "디아즈",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "499",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54400"
+        },
+        {
+          "rank": 4,
+          "name": "김현수",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "498",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=76290"
+        },
+        {
+          "rank": 5,
+          "name": "힐리어드",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "493",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        }
+      ]
+    },
+    {
+      "category": "볼넷 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/54730.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "페라자",
+        "team": "한화",
+        "teamColor": "#ff6600",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+        "value": "87",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54730"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "페라자",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "87",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54730"
+        },
+        {
+          "rank": 2,
+          "name": "박성한",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "81",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=67893"
+        },
+        {
+          "rank": 3,
+          "name": "김도영",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "77",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "rank": 4,
+          "name": "홍창기",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "74",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66108"
+        },
+        {
+          "rank": 5,
+          "name": "오스틴",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "73",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        }
+      ]
+    },
+    {
+      "category": "삼진 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/56034.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "힐리어드",
+        "team": "KT",
+        "teamColor": "#ec1a3a",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+        "value": "158",
+        "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "힐리어드",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "158",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "rank": 2,
+          "name": "김호령",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "140",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=65653"
+        },
+        {
+          "rank": 3,
+          "name": "노시환",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "139",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=69737"
+        },
+        {
+          "rank": 4,
+          "name": "김재환",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "139",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=78224"
+        },
+        {
+          "rank": 5,
+          "name": "나성범",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "139",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62947"
+        }
+      ]
+    }
+  ],
+  "pitchers": [
+    {
+      "category": "평균자책점 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/68220.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "곽빈",
+        "team": "두산",
+        "teamColor": "#131230",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+        "value": "2.26",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "곽빈",
+          "team": "두산",
+          "teamColor": "#131230",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+          "value": "2.26",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+        },
+        {
+          "rank": 2,
+          "name": "최민석",
+          "team": "두산",
+          "teamColor": "#131230",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+          "value": "2.73",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55268"
+        },
+        {
+          "rank": 3,
+          "name": "올러",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "2.80",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        },
+        {
+          "rank": 4,
+          "name": "류현진",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "3.62",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=76715"
+        },
+        {
+          "rank": 5,
+          "name": "고영표",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "3.65",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=64001"
+        }
+      ]
+    },
+    {
+      "category": "승리 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/61101.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "임찬규",
+        "team": "LG",
+        "teamColor": "#c30452",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+        "value": "14",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=61101"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "임찬규",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "14",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=61101"
+        },
+        {
+          "rank": 2,
+          "name": "최민석",
+          "team": "두산",
+          "teamColor": "#131230",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+          "value": "14",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55268"
+        },
+        {
+          "rank": 3,
+          "name": "톨허스트",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "12",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55130"
+        },
+        {
+          "rank": 4,
+          "name": "고영표",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "12",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=64001"
+        },
+        {
+          "rank": 5,
+          "name": "왕옌청",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "11",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56719"
+        }
+      ]
+    },
+    {
+      "category": "세이브 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/65062.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "김재윤",
+        "team": "삼성",
+        "teamColor": "#074ca1",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+        "value": "32",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=65062"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "김재윤",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "32",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=65062"
+        },
+        {
+          "rank": 2,
+          "name": "손주영",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "28",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=67143"
+        },
+        {
+          "rank": 3,
+          "name": "박영현",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "27",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=52060"
+        },
+        {
+          "rank": 4,
+          "name": "이영하",
+          "team": "두산",
+          "teamColor": "#131230",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+          "value": "22",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=66291"
+        },
+        {
+          "rank": 5,
+          "name": "조병현",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "20",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51897"
+        }
+      ]
+    },
+    {
+      "category": "승률 TOP5 (10승 이상)",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/55268.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "최민석",
+        "team": "두산",
+        "teamColor": "#131230",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+        "value": "0.778",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55268"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "최민석",
+          "team": "두산",
+          "teamColor": "#131230",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+          "value": "0.778",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55268"
+        },
+        {
+          "rank": 2,
+          "name": "임찬규",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "0.737",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=61101"
+        },
+        {
+          "rank": 3,
+          "name": "고영표",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "0.667",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=64001"
+        },
+        {
+          "rank": 4,
+          "name": "왕옌청",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "0.647",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56719"
+        },
+        {
+          "rank": 5,
+          "name": "양현종",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "0.647",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=77637"
+        }
+      ]
+    },
+    {
+      "category": "홀드 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/56011.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "스기모토",
+        "team": "KT",
+        "teamColor": "#ec1a3a",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+        "value": "23",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56011"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "스기모토",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "23",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56011"
+        },
+        {
+          "rank": 2,
+          "name": "이승민",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "21",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=50464"
+        },
+        {
+          "rank": 3,
+          "name": "우강훈",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "20",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51526"
+        },
+        {
+          "rank": 4,
+          "name": "김민",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "20",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68043"
+        },
+        {
+          "rank": 5,
+          "name": "김진성",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "18",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=75867"
+        }
+      ]
+    },
+    {
+      "category": "탈삼진 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/68220.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "곽빈",
+        "team": "두산",
+        "teamColor": "#131230",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+        "value": "186",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "곽빈",
+          "team": "두산",
+          "teamColor": "#131230",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+          "value": "186",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+        },
+        {
+          "rank": 2,
+          "name": "로드리게스",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "171",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56531"
+        },
+        {
+          "rank": 3,
+          "name": "올러",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "164",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        },
+        {
+          "rank": 4,
+          "name": "고영표",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "157",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=64001"
+        },
+        {
+          "rank": 5,
+          "name": "라일리",
+          "team": "NC",
+          "teamColor": "#315288",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/NC.png",
+          "value": "153",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55903"
+        }
+      ]
+    },
+    {
+      "category": "경기 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/54768.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "조동욱",
+        "team": "한화",
+        "teamColor": "#ff6600",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+        "value": "68",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=54768"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "조동욱",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "68",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=54768"
+        },
+        {
+          "rank": 2,
+          "name": "김민",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "68",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68043"
+        },
+        {
+          "rank": 3,
+          "name": "스기모토",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "67",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56011"
+        },
+        {
+          "rank": 4,
+          "name": "이승민",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "66",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=50464"
+        },
+        {
+          "rank": 5,
+          "name": "우강훈",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "62",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51526"
+        }
+      ]
+    },
+    {
+      "category": "패배 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/51264.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "최승용",
+        "team": "두산",
+        "teamColor": "#131230",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+        "value": "12",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51264"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "최승용",
+          "team": "두산",
+          "teamColor": "#131230",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+          "value": "12",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51264"
+        },
+        {
+          "rank": 2,
+          "name": "로드리게스",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "11",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56531"
+        },
+        {
+          "rank": 3,
+          "name": "화이트",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "10",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56724"
+        },
+        {
+          "rank": 4,
+          "name": "김건우",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "10",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51867"
+        },
+        {
+          "rank": 5,
+          "name": "타케다",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "10",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56823"
+        }
+      ]
+    },
+    {
+      "category": "이닝 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/54640.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "네일",
+        "team": "KIA",
+        "teamColor": "#ea0029",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+        "value": "157 2/3",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=54640"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "네일",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "157 2/3",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=54640"
+        },
+        {
+          "rank": 2,
+          "name": "알칸타라",
+          "team": "키움",
+          "teamColor": "#570514",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/WO.png",
+          "value": "155 2/3",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=69045"
+        },
+        {
+          "rank": 3,
+          "name": "곽빈",
+          "team": "두산",
+          "teamColor": "#131230",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+          "value": "155",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+        },
+        {
+          "rank": 4,
+          "name": "올러",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "154 1/3",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        },
+        {
+          "rank": 5,
+          "name": "로드리게스",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "151 1/3",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56531"
+        }
+      ]
+    },
+    {
+      "category": "볼넷 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/56318.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "박준현",
+        "team": "키움",
+        "teamColor": "#570514",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/WO.png",
+        "value": "69",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56318"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "박준현",
+          "team": "키움",
+          "teamColor": "#570514",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/WO.png",
+          "value": "69",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56318"
+        },
+        {
+          "rank": 2,
+          "name": "김건우",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "67",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51867"
+        },
+        {
+          "rank": 3,
+          "name": "왕옌청",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "58",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56719"
+        },
+        {
+          "rank": 4,
+          "name": "양현종",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "55",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=77637"
+        },
+        {
+          "rank": 5,
+          "name": "로드리게스",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "54",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56531"
+        }
+      ]
+    },
+    {
+      "category": "WHIP TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/55633.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "올러",
+        "team": "KIA",
+        "teamColor": "#ea0029",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+        "value": "1.02",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "올러",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "1.02",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        },
+        {
+          "rank": 2,
+          "name": "곽빈",
+          "team": "두산",
+          "teamColor": "#131230",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+          "value": "1.06",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+        },
+        {
+          "rank": 3,
+          "name": "알칸타라",
+          "team": "키움",
+          "teamColor": "#570514",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/WO.png",
+          "value": "1.11",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=69045"
+        },
+        {
+          "rank": 4,
+          "name": "고영표",
+          "team": "KT",
+          "teamColor": "#ec1a3a",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+          "value": "1.14",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=64001"
+        },
+        {
+          "rank": 5,
+          "name": "류현진",
+          "team": "한화",
+          "teamColor": "#ff6600",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+          "value": "1.15",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=76715"
+        }
+      ]
+    },
+    {
+      "category": "완투 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/56801.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "아빌라",
+        "team": "SSG",
+        "teamColor": "#ce0e2d",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+        "value": "1",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56801"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "아빌라",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56801"
+        },
+        {
+          "rank": 2,
+          "name": "양창섭",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68415"
+        },
+        {
+          "rank": 3,
+          "name": "토다",
+          "team": "NC",
+          "teamColor": "#315288",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/NC.png",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56911"
+        },
+        {
+          "rank": 4,
+          "name": "올러",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        }
+      ]
+    },
+    {
+      "category": "완봉 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/56801.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "아빌라",
+        "team": "SSG",
+        "teamColor": "#ce0e2d",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+        "value": "1",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56801"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "아빌라",
+          "team": "SSG",
+          "teamColor": "#ce0e2d",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56801"
+        },
+        {
+          "rank": 2,
+          "name": "양창섭",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68415"
+        },
+        {
+          "rank": 3,
+          "name": "올러",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        }
+      ]
+    },
+    {
+      "category": "QS TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/68220.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "곽빈",
+        "team": "두산",
+        "teamColor": "#131230",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+        "value": "19",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "곽빈",
+          "team": "두산",
+          "teamColor": "#131230",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+          "value": "19",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+        },
+        {
+          "rank": 2,
+          "name": "올러",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "18",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        },
+        {
+          "rank": 3,
+          "name": "네일",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "17",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=54640"
+        },
+        {
+          "rank": 4,
+          "name": "톨허스트",
+          "team": "LG",
+          "teamColor": "#c30452",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+          "value": "16",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55130"
+        },
+        {
+          "rank": 5,
+          "name": "후라도",
+          "team": "삼성",
+          "teamColor": "#074ca1",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+          "value": "15",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=53375"
+        }
+      ]
+    },
+    {
+      "category": "피안타율 TOP5",
+      "first_img": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/55633.jpg",
+      "first_player": {
+        "rank": 1,
+        "name": "올러",
+        "team": "KIA",
+        "teamColor": "#ea0029",
+        "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+        "value": "0.194",
+        "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+      },
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "올러",
+          "team": "KIA",
+          "teamColor": "#ea0029",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+          "value": "0.194",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        },
+        {
+          "rank": 2,
+          "name": "곽빈",
+          "team": "두산",
+          "teamColor": "#131230",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+          "value": "0.218",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+        },
+        {
+          "rank": 3,
+          "name": "최민석",
+          "team": "두산",
+          "teamColor": "#131230",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+          "value": "0.238",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55268"
+        },
+        {
+          "rank": 4,
+          "name": "김진욱",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "0.250",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51516"
+        },
+        {
+          "rank": 5,
+          "name": "로드리게스",
+          "team": "롯데",
+          "teamColor": "#041e42",
+          "teamEmblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+          "value": "0.253",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56531"
+        }
+      ]
+    }
+  ],
+  "team_hub": {
+    "KT": {
+      "team": {
+        "rank": 1,
+        "team": "KT",
+        "fullName": "kt wiz",
+        "shortName": "KT",
+        "color": "#ec1a3a",
+        "bgColor": "#1e2022",
+        "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png",
+        "games": 127,
+        "win": 76,
+        "loss": 47,
+        "draw": 4,
+        "rate": "0.618",
+        "game_diff": "0",
+        "recent10": "7승1무2패",
+        "streak": "1패",
+        "home": "39-1-22",
+        "away": "37-3-25"
+      },
+      "hitter_records": [
+        {
+          "category": "타율 TOP5",
+          "rank": 4,
+          "name": "최원준",
+          "value": "0.339",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66606"
+        },
+        {
+          "category": "홈런 TOP5",
+          "rank": 3,
+          "name": "힐리어드",
+          "value": "36",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "category": "타점 TOP5",
+          "rank": 2,
+          "name": "힐리어드",
+          "value": "114",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "category": "득점 TOP5",
+          "rank": 3,
+          "name": "최원준",
+          "value": "105",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66606"
+        },
+        {
+          "category": "득점 TOP5",
+          "rank": 4,
+          "name": "힐리어드",
+          "value": "98",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "category": "안타 TOP5",
+          "rank": 2,
+          "name": "최원준",
+          "value": "172",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66606"
+        },
+        {
+          "category": "출루율 TOP5",
+          "rank": 4,
+          "name": "최원준",
+          "value": "0.421",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66606"
+        },
+        {
+          "category": "장타율 TOP5",
+          "rank": 3,
+          "name": "힐리어드",
+          "value": "0.574",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "category": "2루타 TOP5",
+          "rank": 3,
+          "name": "최원준",
+          "value": "31",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66606"
+        },
+        {
+          "category": "루타 TOP5",
+          "rank": 3,
+          "name": "힐리어드",
+          "value": "283",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "category": "OPS TOP5",
+          "rank": 4,
+          "name": "힐리어드",
+          "value": "0.943",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "category": "타수 TOP5",
+          "rank": 2,
+          "name": "최원준",
+          "value": "507",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66606"
+        },
+        {
+          "category": "타수 TOP5",
+          "rank": 4,
+          "name": "김현수",
+          "value": "498",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=76290"
+        },
+        {
+          "category": "타수 TOP5",
+          "rank": 5,
+          "name": "힐리어드",
+          "value": "493",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        },
+        {
+          "category": "삼진 TOP5",
+          "rank": 1,
+          "name": "힐리어드",
+          "value": "158",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56034"
+        }
+      ],
+      "pitcher_records": [
+        {
+          "category": "평균자책점 TOP5",
+          "rank": 5,
+          "name": "고영표",
+          "value": "3.65",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=64001"
+        },
+        {
+          "category": "승리 TOP5",
+          "rank": 4,
+          "name": "고영표",
+          "value": "12",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=64001"
+        },
+        {
+          "category": "세이브 TOP5",
+          "rank": 3,
+          "name": "박영현",
+          "value": "27",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=52060"
+        },
+        {
+          "category": "승률 TOP5 (10승 이상)",
+          "rank": 3,
+          "name": "고영표",
+          "value": "0.667",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=64001"
+        },
+        {
+          "category": "홀드 TOP5",
+          "rank": 1,
+          "name": "스기모토",
+          "value": "23",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56011"
+        },
+        {
+          "category": "탈삼진 TOP5",
+          "rank": 4,
+          "name": "고영표",
+          "value": "157",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=64001"
+        },
+        {
+          "category": "경기 TOP5",
+          "rank": 3,
+          "name": "스기모토",
+          "value": "67",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56011"
+        },
+        {
+          "category": "WHIP TOP5",
+          "rank": 4,
+          "name": "고영표",
+          "value": "1.14",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=64001"
+        }
+      ]
+    },
+    "삼성": {
+      "team": {
+        "rank": 2,
+        "team": "삼성",
+        "fullName": "삼성 라이온즈",
+        "shortName": "삼성",
+        "color": "#074ca1",
+        "bgColor": "#e8f0fe",
+        "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png",
+        "games": 129,
+        "win": 76,
+        "loss": 50,
+        "draw": 3,
+        "rate": "0.603",
+        "game_diff": "1.5",
+        "recent10": "6승0무4패",
+        "streak": "1승",
+        "home": "38-1-25",
+        "away": "38-2-25"
+      },
+      "hitter_records": [
+        {
+          "category": "타율 TOP5",
+          "rank": 1,
+          "name": "구자욱",
+          "value": "0.363",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62404"
+        },
+        {
+          "category": "타점 TOP5",
+          "rank": 3,
+          "name": "디아즈",
+          "value": "113",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54400"
+        },
+        {
+          "category": "득점 TOP5",
+          "rank": 5,
+          "name": "김지찬",
+          "value": "94",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=50458"
+        },
+        {
+          "category": "안타 TOP5",
+          "rank": 5,
+          "name": "디아즈",
+          "value": "149",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54400"
+        },
+        {
+          "category": "출루율 TOP5",
+          "rank": 1,
+          "name": "구자욱",
+          "value": "0.447",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62404"
+        },
+        {
+          "category": "장타율 TOP5",
+          "rank": 4,
+          "name": "구자욱",
+          "value": "0.560",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62404"
+        },
+        {
+          "category": "2루타 TOP5",
+          "rank": 4,
+          "name": "디아즈",
+          "value": "30",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54400"
+        },
+        {
+          "category": "3루타 TOP5",
+          "rank": 4,
+          "name": "류지혁",
+          "value": "6",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62234"
+        },
+        {
+          "category": "3루타 TOP5",
+          "rank": 5,
+          "name": "박승규",
+          "value": "6",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=69418"
+        },
+        {
+          "category": "OPS TOP5",
+          "rank": 3,
+          "name": "구자욱",
+          "value": "1.007",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62404"
+        },
+        {
+          "category": "타수 TOP5",
+          "rank": 3,
+          "name": "디아즈",
+          "value": "499",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54400"
+        }
+      ],
+      "pitcher_records": [
+        {
+          "category": "세이브 TOP5",
+          "rank": 1,
+          "name": "김재윤",
+          "value": "32",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=65062"
+        },
+        {
+          "category": "홀드 TOP5",
+          "rank": 2,
+          "name": "이승민",
+          "value": "21",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=50464"
+        },
+        {
+          "category": "경기 TOP5",
+          "rank": 4,
+          "name": "이승민",
+          "value": "66",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=50464"
+        },
+        {
+          "category": "완투 TOP5",
+          "rank": 2,
+          "name": "양창섭",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68415"
+        },
+        {
+          "category": "완봉 TOP5",
+          "rank": 2,
+          "name": "양창섭",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68415"
+        },
+        {
+          "category": "QS TOP5",
+          "rank": 5,
+          "name": "후라도",
+          "value": "15",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=53375"
+        }
+      ]
+    },
+    "LG": {
+      "team": {
+        "rank": 3,
+        "team": "LG",
+        "fullName": "LG 트윈스",
+        "shortName": "LG",
+        "color": "#c30452",
+        "bgColor": "#fce8f0",
+        "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png",
+        "games": 129,
+        "win": 73,
+        "loss": 55,
+        "draw": 1,
+        "rate": "0.570",
+        "game_diff": "5.5",
+        "recent10": "6승0무4패",
+        "streak": "5승",
+        "home": "38-0-27",
+        "away": "35-1-28"
+      },
+      "hitter_records": [
+        {
+          "category": "타율 TOP5",
+          "rank": 3,
+          "name": "오스틴",
+          "value": "0.344",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "category": "홈런 TOP5",
+          "rank": 2,
+          "name": "오스틴",
+          "value": "39",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "category": "타점 TOP5",
+          "rank": 1,
+          "name": "오스틴",
+          "value": "121",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "category": "도루 TOP5",
+          "rank": 3,
+          "name": "박해민",
+          "value": "34",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62415"
+        },
+        {
+          "category": "득점 TOP5",
+          "rank": 1,
+          "name": "오스틴",
+          "value": "106",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "category": "안타 TOP5",
+          "rank": 3,
+          "name": "오스틴",
+          "value": "168",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "category": "출루율 TOP5",
+          "rank": 2,
+          "name": "오스틴",
+          "value": "0.435",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "category": "장타율 TOP5",
+          "rank": 1,
+          "name": "오스틴",
+          "value": "0.667",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "category": "2루타 TOP5",
+          "rank": 2,
+          "name": "오스틴",
+          "value": "33",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "category": "루타 TOP5",
+          "rank": 1,
+          "name": "오스틴",
+          "value": "326",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "category": "OPS TOP5",
+          "rank": 1,
+          "name": "오스틴",
+          "value": "1.102",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        },
+        {
+          "category": "볼넷 TOP5",
+          "rank": 4,
+          "name": "홍창기",
+          "value": "74",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=66108"
+        },
+        {
+          "category": "볼넷 TOP5",
+          "rank": 5,
+          "name": "오스틴",
+          "value": "73",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=53123"
+        }
+      ],
+      "pitcher_records": [
+        {
+          "category": "승리 TOP5",
+          "rank": 1,
+          "name": "임찬규",
+          "value": "14",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=61101"
+        },
+        {
+          "category": "승리 TOP5",
+          "rank": 3,
+          "name": "톨허스트",
+          "value": "12",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55130"
+        },
+        {
+          "category": "세이브 TOP5",
+          "rank": 2,
+          "name": "손주영",
+          "value": "28",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=67143"
+        },
+        {
+          "category": "승률 TOP5 (10승 이상)",
+          "rank": 2,
+          "name": "임찬규",
+          "value": "0.737",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=61101"
+        },
+        {
+          "category": "홀드 TOP5",
+          "rank": 3,
+          "name": "우강훈",
+          "value": "20",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51526"
+        },
+        {
+          "category": "홀드 TOP5",
+          "rank": 5,
+          "name": "김진성",
+          "value": "18",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=75867"
+        },
+        {
+          "category": "경기 TOP5",
+          "rank": 5,
+          "name": "우강훈",
+          "value": "62",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51526"
+        },
+        {
+          "category": "QS TOP5",
+          "rank": 4,
+          "name": "톨허스트",
+          "value": "16",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55130"
+        }
+      ]
+    },
+    "KIA": {
+      "team": {
+        "rank": 4,
+        "team": "KIA",
+        "fullName": "KIA 타이거즈",
+        "shortName": "KIA",
+        "color": "#ea0029",
+        "bgColor": "#fee8e8",
+        "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png",
+        "games": 128,
+        "win": 69,
+        "loss": 57,
+        "draw": 2,
+        "rate": "0.548",
+        "game_diff": "8.5",
+        "recent10": "5승0무5패",
+        "streak": "1승",
+        "home": "39-2-24",
+        "away": "30-0-33"
+      },
+      "hitter_records": [
+        {
+          "category": "홈런 TOP5",
+          "rank": 1,
+          "name": "김도영",
+          "value": "40",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "category": "타점 TOP5",
+          "rank": 5,
+          "name": "김도영",
+          "value": "102",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "category": "득점 TOP5",
+          "rank": 2,
+          "name": "김도영",
+          "value": "106",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "category": "출루율 TOP5",
+          "rank": 5,
+          "name": "김도영",
+          "value": "0.414",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "category": "장타율 TOP5",
+          "rank": 2,
+          "name": "김도영",
+          "value": "0.639",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "category": "2루타 TOP5",
+          "rank": 5,
+          "name": "카스트로",
+          "value": "30",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=56626"
+        },
+        {
+          "category": "루타 TOP5",
+          "rank": 2,
+          "name": "김도영",
+          "value": "288",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "category": "OPS TOP5",
+          "rank": 2,
+          "name": "김도영",
+          "value": "1.053",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "category": "볼넷 TOP5",
+          "rank": 3,
+          "name": "김도영",
+          "value": "77",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=52605"
+        },
+        {
+          "category": "삼진 TOP5",
+          "rank": 2,
+          "name": "김호령",
+          "value": "140",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=65653"
+        },
+        {
+          "category": "삼진 TOP5",
+          "rank": 5,
+          "name": "나성범",
+          "value": "139",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62947"
+        }
+      ],
+      "pitcher_records": [
+        {
+          "category": "평균자책점 TOP5",
+          "rank": 3,
+          "name": "올러",
+          "value": "2.80",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        },
+        {
+          "category": "승률 TOP5 (10승 이상)",
+          "rank": 5,
+          "name": "양현종",
+          "value": "0.647",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=77637"
+        },
+        {
+          "category": "탈삼진 TOP5",
+          "rank": 3,
+          "name": "올러",
+          "value": "164",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        },
+        {
+          "category": "이닝 TOP5",
+          "rank": 1,
+          "name": "네일",
+          "value": "157 2/3",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=54640"
+        },
+        {
+          "category": "이닝 TOP5",
+          "rank": 4,
+          "name": "올러",
+          "value": "154 1/3",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        },
+        {
+          "category": "볼넷 TOP5",
+          "rank": 4,
+          "name": "양현종",
+          "value": "55",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=77637"
+        },
+        {
+          "category": "WHIP TOP5",
+          "rank": 1,
+          "name": "올러",
+          "value": "1.02",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        },
+        {
+          "category": "완투 TOP5",
+          "rank": 4,
+          "name": "올러",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        },
+        {
+          "category": "완봉 TOP5",
+          "rank": 3,
+          "name": "올러",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        },
+        {
+          "category": "QS TOP5",
+          "rank": 2,
+          "name": "올러",
+          "value": "18",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        },
+        {
+          "category": "QS TOP5",
+          "rank": 3,
+          "name": "네일",
+          "value": "17",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=54640"
+        },
+        {
+          "category": "피안타율 TOP5",
+          "rank": 1,
+          "name": "올러",
+          "value": "0.194",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"
+        }
+      ]
+    },
+    "두산": {
+      "team": {
+        "rank": 5,
+        "team": "두산",
+        "fullName": "두산 베어스",
+        "shortName": "두산",
+        "color": "#131230",
+        "bgColor": "#eef0f8",
+        "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png",
+        "games": 130,
+        "win": 65,
+        "loss": 60,
+        "draw": 5,
+        "rate": "0.520",
+        "game_diff": "12",
+        "recent10": "4승1무5패",
+        "streak": "2승",
+        "home": "36-3-26",
+        "away": "29-2-34"
+      },
+      "hitter_records": [
+        {
+          "category": "도루 TOP5",
+          "rank": 4,
+          "name": "박찬호",
+          "value": "31",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=64646"
+        }
+      ],
+      "pitcher_records": [
+        {
+          "category": "평균자책점 TOP5",
+          "rank": 1,
+          "name": "곽빈",
+          "value": "2.26",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+        },
+        {
+          "category": "평균자책점 TOP5",
+          "rank": 2,
+          "name": "최민석",
+          "value": "2.73",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55268"
+        },
+        {
+          "category": "승리 TOP5",
+          "rank": 2,
+          "name": "최민석",
+          "value": "14",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55268"
+        },
+        {
+          "category": "세이브 TOP5",
+          "rank": 4,
+          "name": "이영하",
+          "value": "22",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=66291"
+        },
+        {
+          "category": "승률 TOP5 (10승 이상)",
+          "rank": 1,
+          "name": "최민석",
+          "value": "0.778",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55268"
+        },
+        {
+          "category": "탈삼진 TOP5",
+          "rank": 1,
+          "name": "곽빈",
+          "value": "186",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+        },
+        {
+          "category": "패배 TOP5",
+          "rank": 1,
+          "name": "최승용",
+          "value": "12",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51264"
+        },
+        {
+          "category": "이닝 TOP5",
+          "rank": 3,
+          "name": "곽빈",
+          "value": "155",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+        },
+        {
+          "category": "WHIP TOP5",
+          "rank": 2,
+          "name": "곽빈",
+          "value": "1.06",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+        },
+        {
+          "category": "QS TOP5",
+          "rank": 1,
+          "name": "곽빈",
+          "value": "19",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+        },
+        {
+          "category": "피안타율 TOP5",
+          "rank": 2,
+          "name": "곽빈",
+          "value": "0.218",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68220"
+        },
+        {
+          "category": "피안타율 TOP5",
+          "rank": 3,
+          "name": "최민석",
+          "value": "0.238",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55268"
+        }
+      ]
+    },
+    "NC": {
+      "team": {
+        "rank": 6,
+        "team": "NC",
+        "fullName": "NC 다이노스",
+        "shortName": "NC",
+        "color": "#315288",
+        "bgColor": "#edf2f9",
+        "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/NC.png",
+        "games": 126,
+        "win": 59,
+        "loss": 65,
+        "draw": 2,
+        "rate": "0.476",
+        "game_diff": "17.5",
+        "recent10": "4승0무6패",
+        "streak": "5패",
+        "home": "29-0-35",
+        "away": "30-2-30"
+      },
+      "hitter_records": [
+        {
+          "category": "도루 TOP5",
+          "rank": 1,
+          "name": "박민우",
+          "value": "44",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=62907"
+        },
+        {
+          "category": "도루 TOP5",
+          "rank": 5,
+          "name": "김주원",
+          "value": "30",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=51907"
+        }
+      ],
+      "pitcher_records": [
+        {
+          "category": "탈삼진 TOP5",
+          "rank": 5,
+          "name": "라일리",
+          "value": "153",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55903"
+        },
+        {
+          "category": "완투 TOP5",
+          "rank": 3,
+          "name": "토다",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56911"
+        }
+      ]
+    },
+    "SSG": {
+      "team": {
+        "rank": 7,
+        "team": "SSG",
+        "fullName": "SSG 랜더스",
+        "shortName": "SSG",
+        "color": "#ce0e2d",
+        "bgColor": "#feebee",
+        "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png",
+        "games": 131,
+        "win": 57,
+        "loss": 69,
+        "draw": 5,
+        "rate": "0.452",
+        "game_diff": "20.5",
+        "recent10": "7승0무3패",
+        "streak": "3승",
+        "home": "28-4-31",
+        "away": "29-1-38"
+      },
+      "hitter_records": [
+        {
+          "category": "타율 TOP5",
+          "rank": 5,
+          "name": "박성한",
+          "value": "0.331",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=67893"
+        },
+        {
+          "category": "안타 TOP5",
+          "rank": 4,
+          "name": "박성한",
+          "value": "160",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=67893"
+        },
+        {
+          "category": "출루율 TOP5",
+          "rank": 3,
+          "name": "박성한",
+          "value": "0.427",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=67893"
+        },
+        {
+          "category": "3루타 TOP5",
+          "rank": 2,
+          "name": "정준재",
+          "value": "7",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54812"
+        },
+        {
+          "category": "3루타 TOP5",
+          "rank": 3,
+          "name": "최지훈",
+          "value": "7",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=50854"
+        },
+        {
+          "category": "볼넷 TOP5",
+          "rank": 2,
+          "name": "박성한",
+          "value": "81",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=67893"
+        },
+        {
+          "category": "삼진 TOP5",
+          "rank": 4,
+          "name": "김재환",
+          "value": "139",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=78224"
+        }
+      ],
+      "pitcher_records": [
+        {
+          "category": "세이브 TOP5",
+          "rank": 5,
+          "name": "조병현",
+          "value": "20",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51897"
+        },
+        {
+          "category": "홀드 TOP5",
+          "rank": 4,
+          "name": "김민",
+          "value": "20",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68043"
+        },
+        {
+          "category": "경기 TOP5",
+          "rank": 2,
+          "name": "김민",
+          "value": "68",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68043"
+        },
+        {
+          "category": "패배 TOP5",
+          "rank": 4,
+          "name": "김건우",
+          "value": "10",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51867"
+        },
+        {
+          "category": "패배 TOP5",
+          "rank": 5,
+          "name": "타케다",
+          "value": "10",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56823"
+        },
+        {
+          "category": "볼넷 TOP5",
+          "rank": 2,
+          "name": "김건우",
+          "value": "67",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51867"
+        },
+        {
+          "category": "완투 TOP5",
+          "rank": 1,
+          "name": "아빌라",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56801"
+        },
+        {
+          "category": "완봉 TOP5",
+          "rank": 1,
+          "name": "아빌라",
+          "value": "1",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56801"
+        }
+      ]
+    },
+    "한화": {
+      "team": {
+        "rank": 8,
+        "team": "한화",
+        "fullName": "한화 이글스",
+        "shortName": "한화",
+        "color": "#ff6600",
+        "bgColor": "#fff3e8",
+        "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png",
+        "games": 128,
+        "win": 54,
+        "loss": 70,
+        "draw": 4,
+        "rate": "0.435",
+        "game_diff": "22.5",
+        "recent10": "4승1무5패",
+        "streak": "5패",
+        "home": "25-3-36",
+        "away": "29-1-34"
+      },
+      "hitter_records": [
+        {
+          "category": "홈런 TOP5",
+          "rank": 4,
+          "name": "강백호",
+          "value": "32",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=68050"
+        },
+        {
+          "category": "홈런 TOP5",
+          "rank": 5,
+          "name": "노시환",
+          "value": "27",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=69737"
+        },
+        {
+          "category": "타점 TOP5",
+          "rank": 4,
+          "name": "강백호",
+          "value": "109",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=68050"
+        },
+        {
+          "category": "장타율 TOP5",
+          "rank": 5,
+          "name": "강백호",
+          "value": "0.554",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=68050"
+        },
+        {
+          "category": "루타 TOP5",
+          "rank": 5,
+          "name": "강백호",
+          "value": "248",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=68050"
+        },
+        {
+          "category": "볼넷 TOP5",
+          "rank": 1,
+          "name": "페라자",
+          "value": "87",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54730"
+        },
+        {
+          "category": "삼진 TOP5",
+          "rank": 3,
+          "name": "노시환",
+          "value": "139",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=69737"
+        }
+      ],
+      "pitcher_records": [
+        {
+          "category": "평균자책점 TOP5",
+          "rank": 4,
+          "name": "류현진",
+          "value": "3.62",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=76715"
+        },
+        {
+          "category": "승리 TOP5",
+          "rank": 5,
+          "name": "왕옌청",
+          "value": "11",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56719"
+        },
+        {
+          "category": "승률 TOP5 (10승 이상)",
+          "rank": 4,
+          "name": "왕옌청",
+          "value": "0.647",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56719"
+        },
+        {
+          "category": "경기 TOP5",
+          "rank": 1,
+          "name": "조동욱",
+          "value": "68",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=54768"
+        },
+        {
+          "category": "패배 TOP5",
+          "rank": 3,
+          "name": "화이트",
+          "value": "10",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56724"
+        },
+        {
+          "category": "볼넷 TOP5",
+          "rank": 3,
+          "name": "왕옌청",
+          "value": "58",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56719"
+        },
+        {
+          "category": "WHIP TOP5",
+          "rank": 5,
+          "name": "류현진",
+          "value": "1.15",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=76715"
+        }
+      ]
+    },
+    "롯데": {
+      "team": {
+        "rank": 9,
+        "team": "롯데",
+        "fullName": "롯데 자이언츠",
+        "shortName": "롯데",
+        "color": "#041e42",
+        "bgColor": "#e8ecf4",
+        "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png",
+        "games": 127,
+        "win": 54,
+        "loss": 71,
+        "draw": 2,
+        "rate": "0.432",
+        "game_diff": "23",
+        "recent10": "3승0무7패",
+        "streak": "1승",
+        "home": "24-0-38",
+        "away": "30-2-33"
+      },
+      "hitter_records": [
+        {
+          "category": "타율 TOP5",
+          "rank": 2,
+          "name": "레이예스",
+          "value": "0.354",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+        },
+        {
+          "category": "도루 TOP5",
+          "rank": 2,
+          "name": "황성빈",
+          "value": "43",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=50500"
+        },
+        {
+          "category": "안타 TOP5",
+          "rank": 1,
+          "name": "레이예스",
+          "value": "180",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+        },
+        {
+          "category": "2루타 TOP5",
+          "rank": 1,
+          "name": "레이예스",
+          "value": "34",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+        },
+        {
+          "category": "3루타 TOP5",
+          "rank": 1,
+          "name": "황성빈",
+          "value": "11",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=50500"
+        },
+        {
+          "category": "루타 TOP5",
+          "rank": 4,
+          "name": "레이예스",
+          "value": "263",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+        },
+        {
+          "category": "OPS TOP5",
+          "rank": 5,
+          "name": "레이예스",
+          "value": "0.924",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+        },
+        {
+          "category": "타수 TOP5",
+          "rank": 1,
+          "name": "레이예스",
+          "value": "508",
+          "link": "https://www.koreabaseball.com/Record/Player/HitterDetail/Basic.aspx?playerId=54529"
+        }
+      ],
+      "pitcher_records": [
+        {
+          "category": "탈삼진 TOP5",
+          "rank": 2,
+          "name": "로드리게스",
+          "value": "171",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56531"
+        },
+        {
+          "category": "패배 TOP5",
+          "rank": 2,
+          "name": "로드리게스",
+          "value": "11",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56531"
+        },
+        {
+          "category": "이닝 TOP5",
+          "rank": 5,
+          "name": "로드리게스",
+          "value": "151 1/3",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56531"
+        },
+        {
+          "category": "볼넷 TOP5",
+          "rank": 5,
+          "name": "로드리게스",
+          "value": "54",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56531"
+        },
+        {
+          "category": "피안타율 TOP5",
+          "rank": 4,
+          "name": "김진욱",
+          "value": "0.250",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51516"
+        },
+        {
+          "category": "피안타율 TOP5",
+          "rank": 5,
+          "name": "로드리게스",
+          "value": "0.253",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56531"
+        }
+      ]
+    },
+    "키움": {
+      "team": {
+        "rank": 10,
+        "team": "키움",
+        "fullName": "키움 히어로즈",
+        "shortName": "키움",
+        "color": "#570514",
+        "bgColor": "#f7e8ea",
+        "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/WO.png",
+        "games": 133,
+        "win": 45,
+        "loss": 84,
+        "draw": 4,
+        "rate": "0.349",
+        "game_diff": "34",
+        "recent10": "3승1무6패",
+        "streak": "4패",
+        "home": "27-2-41",
+        "away": "18-2-43"
+      },
+      "hitter_records": [],
+      "pitcher_records": [
+        {
+          "category": "이닝 TOP5",
+          "rank": 2,
+          "name": "알칸타라",
+          "value": "155 2/3",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=69045"
+        },
+        {
+          "category": "볼넷 TOP5",
+          "rank": 1,
+          "name": "박준현",
+          "value": "69",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=56318"
+        },
+        {
+          "category": "WHIP TOP5",
+          "rank": 3,
+          "name": "알칸타라",
+          "value": "1.11",
+          "link": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=69045"
+        }
+      ]
+    }
+  },
+  "team_info": {
+    "KT": {
+      "fullName": "kt wiz",
+      "shortName": "KT",
+      "color": "#ec1a3a",
+      "bgColor": "#1e2022",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/KT.png"
+    },
+    "삼성": {
+      "fullName": "삼성 라이온즈",
+      "shortName": "삼성",
+      "color": "#074ca1",
+      "bgColor": "#e8f0fe",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/SS.png"
+    },
+    "LG": {
+      "fullName": "LG 트윈스",
+      "shortName": "LG",
+      "color": "#c30452",
+      "bgColor": "#fce8f0",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LG.png"
+    },
+    "KIA": {
+      "fullName": "KIA 타이거즈",
+      "shortName": "KIA",
+      "color": "#ea0029",
+      "bgColor": "#fee8e8",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/HT.png"
+    },
+    "두산": {
+      "fullName": "두산 베어스",
+      "shortName": "두산",
+      "color": "#131230",
+      "bgColor": "#eef0f8",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/OB.png"
+    },
+    "NC": {
+      "fullName": "NC 다이노스",
+      "shortName": "NC",
+      "color": "#315288",
+      "bgColor": "#edf2f9",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/NC.png"
+    },
+    "SSG": {
+      "fullName": "SSG 랜더스",
+      "shortName": "SSG",
+      "color": "#ce0e2d",
+      "bgColor": "#feebee",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2024/SK.png"
+    },
+    "한화": {
+      "fullName": "한화 이글스",
+      "shortName": "한화",
+      "color": "#ff6600",
+      "bgColor": "#fff3e8",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2025/HH.png"
+    },
+    "롯데": {
+      "fullName": "롯데 자이언츠",
+      "shortName": "롯데",
+      "color": "#041e42",
+      "bgColor": "#e8ecf4",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/LT.png"
+    },
+    "키움": {
+      "fullName": "키움 히어로즈",
+      "shortName": "키움",
+      "color": "#570514",
+      "bgColor": "#f7e8ea",
+      "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/WO.png"
+    }
+  }
+}

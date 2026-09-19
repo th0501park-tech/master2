@@ -1,0 +1,3257 @@
+{
+  "sports": "kleague",
+  "title": "K리그 (K LEAGUE)",
+  "updated_at": "2026-09-19 12:26:07",
+  "updated_at_iso": "2026-09-19T12:26:07.790910",
+  "k1": {
+    "name": "K리그 1",
+    "teams": [
+      {
+        "rank": 1,
+        "teamId": "K09",
+        "team": "서울",
+        "fullName": "FC 서울",
+        "color": "#C8102E",
+        "accent": "#000000",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+        "games": 29,
+        "points": 62,
+        "win": 19,
+        "draw": 5,
+        "loss": 5,
+        "goalsFor": 55,
+        "goalsAgainst": 23,
+        "goalDiff": 32,
+        "recent": [
+          "패",
+          "승",
+          "승",
+          "승",
+          "승"
+        ],
+        "homepage": "https://www.fcseoul.com/"
+      },
+      {
+        "rank": 2,
+        "teamId": "K01",
+        "team": "울산",
+        "fullName": "울산 HD FC",
+        "color": "#002B49",
+        "accent": "#F5A623",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/91/Ulsan_HD_FC_logo.svg/200px-Ulsan_HD_FC_logo.svg.png",
+        "games": 29,
+        "points": 47,
+        "win": 14,
+        "draw": 5,
+        "loss": 10,
+        "goalsFor": 44,
+        "goalsAgainst": 38,
+        "goalDiff": 6,
+        "recent": [
+          "승",
+          "무",
+          "승",
+          "패",
+          "패"
+        ],
+        "homepage": "https://www.uhdfc.com/fc/greetings.php"
+      },
+      {
+        "rank": 3,
+        "teamId": "K05",
+        "team": "전북",
+        "fullName": "전북 현대 모터스",
+        "color": "#00552E",
+        "accent": "#A3D867",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/2/2c/Jeonbuk_Hyundai_Motors_emblem.svg/200px-Jeonbuk_Hyundai_Motors_emblem.svg.png",
+        "games": 29,
+        "points": 43,
+        "win": 11,
+        "draw": 10,
+        "loss": 8,
+        "goalsFor": 36,
+        "goalsAgainst": 26,
+        "goalDiff": 10,
+        "recent": [
+          "무",
+          "승",
+          "무",
+          "무",
+          "승"
+        ],
+        "homepage": "https://www.hyundai-motorsfc.com"
+      },
+      {
+        "rank": 4,
+        "teamId": "K04",
+        "team": "제주",
+        "fullName": "제주 유나이티드",
+        "color": "#FF671F",
+        "accent": "#C8102E",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/d/d4/Jeju_United_FC_emblem.svg/200px-Jeju_United_FC_emblem.svg.png",
+        "games": 29,
+        "points": 43,
+        "win": 11,
+        "draw": 10,
+        "loss": 8,
+        "goalsFor": 34,
+        "goalsAgainst": 29,
+        "goalDiff": 5,
+        "recent": [
+          "승",
+          "무",
+          "승",
+          "패",
+          "무"
+        ],
+        "homepage": "https://www.jejuskfc.com/"
+      },
+      {
+        "rank": 5,
+        "teamId": "K21",
+        "team": "강원",
+        "fullName": "강원 FC",
+        "color": "#E55C00",
+        "accent": "#004534",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/7b/Gangwon_FC_logo.svg/200px-Gangwon_FC_logo.svg.png",
+        "games": 28,
+        "points": 42,
+        "win": 10,
+        "draw": 12,
+        "loss": 6,
+        "goalsFor": 36,
+        "goalsAgainst": 27,
+        "goalDiff": 9,
+        "recent": [
+          "무",
+          "승",
+          "무",
+          "무",
+          "패"
+        ],
+        "homepage": "https://www.gangwon-fc.com"
+      },
+      {
+        "rank": 6,
+        "teamId": "K10",
+        "team": "대전",
+        "fullName": "대전 하나 시티즌",
+        "color": "#006738",
+        "accent": "#862633",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/e/e0/Daejeon_Hana_Citizen_emblem.svg/200px-Daejeon_Hana_Citizen_emblem.svg.png",
+        "games": 29,
+        "points": 39,
+        "win": 10,
+        "draw": 9,
+        "loss": 10,
+        "goalsFor": 45,
+        "goalsAgainst": 36,
+        "goalDiff": 9,
+        "recent": [
+          "승",
+          "승",
+          "패",
+          "승",
+          "승"
+        ],
+        "homepage": "https://www.dhcfc.kr/"
+      },
+      {
+        "rank": 7,
+        "teamId": "K18",
+        "team": "인천",
+        "fullName": "인천 유나이티드",
+        "color": "#0047AB",
+        "accent": "#000000",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/b/be/Incheon_United_FC_emblem.svg/200px-Incheon_United_FC_emblem.svg.png",
+        "games": 28,
+        "points": 37,
+        "win": 10,
+        "draw": 7,
+        "loss": 11,
+        "goalsFor": 35,
+        "goalsAgainst": 32,
+        "goalDiff": 3,
+        "recent": [
+          "승",
+          "패",
+          "무",
+          "패",
+          "승"
+        ],
+        "homepage": "https://www.incheonutd.com"
+      },
+      {
+        "rank": 8,
+        "teamId": "K03",
+        "team": "포항",
+        "fullName": "포항 스틸러스",
+        "color": "#E31B23",
+        "accent": "#000000",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/2/23/Pohang_Steelers_logo.svg/200px-Pohang_Steelers_logo.svg.png",
+        "games": 29,
+        "points": 37,
+        "win": 10,
+        "draw": 7,
+        "loss": 12,
+        "goalsFor": 26,
+        "goalsAgainst": 33,
+        "goalDiff": -7,
+        "recent": [
+          "무",
+          "패",
+          "무",
+          "승",
+          "패"
+        ],
+        "homepage": "https://www.steelers.co.kr"
+      },
+      {
+        "rank": 9,
+        "teamId": "K27",
+        "team": "안양",
+        "fullName": "FC 안양",
+        "color": "#532E85",
+        "accent": "#E8AF27",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Anyang_logo.svg/200px-FC_Anyang_logo.svg.png",
+        "games": 29,
+        "points": 35,
+        "win": 8,
+        "draw": 11,
+        "loss": 10,
+        "goalsFor": 36,
+        "goalsAgainst": 46,
+        "goalDiff": -10,
+        "recent": [
+          "패",
+          "패",
+          "무",
+          "승",
+          "패"
+        ],
+        "homepage": "https://www.fc-anyang.com"
+      },
+      {
+        "rank": 10,
+        "teamId": "K26",
+        "team": "부천",
+        "fullName": "부천 FC 1995",
+        "color": "#BA0C2F",
+        "accent": "#000000",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/3/36/Bucheon_FC_1995_logo.svg/200px-Bucheon_FC_1995_logo.svg.png",
+        "games": 29,
+        "points": 32,
+        "win": 7,
+        "draw": 11,
+        "loss": 11,
+        "goalsFor": 31,
+        "goalsAgainst": 38,
+        "goalDiff": -7,
+        "recent": [
+          "패",
+          "패",
+          "무",
+          "패",
+          "승"
+        ],
+        "homepage": "https://www.bfc1995.com"
+      },
+      {
+        "rank": 11,
+        "teamId": "K35",
+        "team": "김천",
+        "fullName": "김천 상무 FC",
+        "color": "#BA0C2F",
+        "accent": "#0C2340",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/5/52/Gimcheon_Sangmu_FC_emblem.svg/200px-Gimcheon_Sangmu_FC_emblem.svg.png",
+        "games": 29,
+        "points": 30,
+        "win": 4,
+        "draw": 18,
+        "loss": 7,
+        "goalsFor": 28,
+        "goalsAgainst": 36,
+        "goalDiff": -8,
+        "recent": [
+          "무",
+          "무",
+          "패",
+          "무",
+          "무"
+        ],
+        "homepage": "https://gimcheonfc.com/"
+      },
+      {
+        "rank": 12,
+        "teamId": "K22",
+        "team": "광주",
+        "fullName": "광주 FC",
+        "color": "#FDB913",
+        "accent": "#C8102E",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/2/2a/Gwangju_FC_logo.svg/200px-Gwangju_FC_logo.svg.png",
+        "games": 29,
+        "points": 14,
+        "win": 1,
+        "draw": 11,
+        "loss": 17,
+        "goalsFor": 19,
+        "goalsAgainst": 61,
+        "goalDiff": -42,
+        "recent": [
+          "패",
+          "무",
+          "패",
+          "무",
+          "패"
+        ],
+        "homepage": "https://www.gwangjufc.com/"
+      }
+    ],
+    "players": [
+      {
+        "category": "득점 순위 (Top Scorers)",
+        "type": "GOAL",
+        "icon": "fa-futbol",
+        "first_player": {
+          "rank": 1,
+          "name": "야고",
+          "playerId": "20230315",
+          "team": "울산",
+          "teamColor": "#002B49",
+          "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/91/Ulsan_HD_FC_logo.svg/200px-Ulsan_HD_FC_logo.svg.png",
+          "backNo": 99,
+          "value": "13골 (22경기)",
+          "games": 22,
+          "perGame": "0.59"
+        },
+        "ranks": [
+          {
+            "rank": 1,
+            "name": "야고",
+            "playerId": "20230315",
+            "team": "울산",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/91/Ulsan_HD_FC_logo.svg/200px-Ulsan_HD_FC_logo.svg.png",
+            "backNo": 99,
+            "value": "13골 (22경기)",
+            "games": 22,
+            "perGame": "0.59"
+          },
+          {
+            "rank": 2,
+            "name": "무고사",
+            "playerId": "20180196",
+            "team": "인천",
+            "teamColor": "#0047AB",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/b/be/Incheon_United_FC_emblem.svg/200px-Incheon_United_FC_emblem.svg.png",
+            "backNo": 9,
+            "value": "12골 (25경기)",
+            "games": 25,
+            "perGame": "0.48"
+          },
+          {
+            "rank": 3,
+            "name": "클리말라",
+            "playerId": "20250331",
+            "team": "서울",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+            "backNo": 9,
+            "value": "12골 (26경기)",
+            "games": 26,
+            "perGame": "0.46"
+          },
+          {
+            "rank": 4,
+            "name": "마테우스",
+            "playerId": "20240078",
+            "team": "안양",
+            "teamColor": "#532E85",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Anyang_logo.svg/200px-FC_Anyang_logo.svg.png",
+            "backNo": 7,
+            "value": "11골 (27경기)",
+            "games": 27,
+            "perGame": "0.41"
+          },
+          {
+            "rank": 5,
+            "name": "이동경",
+            "playerId": "20180088",
+            "team": "울산",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/91/Ulsan_HD_FC_logo.svg/200px-Ulsan_HD_FC_logo.svg.png",
+            "backNo": 10,
+            "value": "10골 (28경기)",
+            "games": 28,
+            "perGame": "0.36"
+          },
+          {
+            "rank": 6,
+            "name": "갈레고",
+            "playerId": "20220353",
+            "team": "부천",
+            "teamColor": "#BA0C2F",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/3/36/Bucheon_FC_1995_logo.svg/200px-Bucheon_FC_1995_logo.svg.png",
+            "backNo": 11,
+            "value": "10골 (28경기)",
+            "games": 28,
+            "perGame": "0.36"
+          },
+          {
+            "rank": 7,
+            "name": "이호재",
+            "playerId": "20210161",
+            "team": "포항",
+            "teamColor": "#E31B23",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/2/23/Pohang_Steelers_logo.svg/200px-Pohang_Steelers_logo.svg.png",
+            "backNo": 19,
+            "value": "8골 (20경기)",
+            "games": 20,
+            "perGame": "0.4"
+          },
+          {
+            "rank": 8,
+            "name": "정재희",
+            "playerId": "20160178",
+            "team": "대전",
+            "teamColor": "#006738",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/e/e0/Daejeon_Hana_Citizen_emblem.svg/200px-Daejeon_Hana_Citizen_emblem.svg.png",
+            "backNo": 27,
+            "value": "8골 (22경기)",
+            "games": 22,
+            "perGame": "0.36"
+          },
+          {
+            "rank": 9,
+            "name": "아부달라",
+            "playerId": "20260043",
+            "team": "강원",
+            "teamColor": "#E55C00",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/7b/Gangwon_FC_logo.svg/200px-Gangwon_FC_logo.svg.png",
+            "backNo": 77,
+            "value": "8골 (25경기)",
+            "games": 25,
+            "perGame": "0.32"
+          },
+          {
+            "rank": 10,
+            "name": "김대원",
+            "playerId": "20160098",
+            "team": "강원",
+            "teamColor": "#E55C00",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/7b/Gangwon_FC_logo.svg/200px-Gangwon_FC_logo.svg.png",
+            "backNo": 7,
+            "value": "8골 (27경기)",
+            "games": 27,
+            "perGame": "0.3"
+          }
+        ]
+      },
+      {
+        "category": "도움 순위 (Top Assists)",
+        "type": "ASSIST",
+        "icon": "fa-hands-helping",
+        "first_player": {
+          "rank": 1,
+          "name": "이동경",
+          "playerId": "20180088",
+          "team": "울산",
+          "teamColor": "#002B49",
+          "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/91/Ulsan_HD_FC_logo.svg/200px-Ulsan_HD_FC_logo.svg.png",
+          "backNo": 10,
+          "value": "10도움 (28경기)",
+          "games": 28,
+          "perGame": "0.36"
+        },
+        "ranks": [
+          {
+            "rank": 1,
+            "name": "이동경",
+            "playerId": "20180088",
+            "team": "울산",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/91/Ulsan_HD_FC_logo.svg/200px-Ulsan_HD_FC_logo.svg.png",
+            "backNo": 10,
+            "value": "10도움 (28경기)",
+            "games": 28,
+            "perGame": "0.36"
+          },
+          {
+            "rank": 2,
+            "name": "김대원",
+            "playerId": "20160098",
+            "team": "강원",
+            "teamColor": "#E55C00",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/7b/Gangwon_FC_logo.svg/200px-Gangwon_FC_logo.svg.png",
+            "backNo": 7,
+            "value": "8도움 (27경기)",
+            "games": 27,
+            "perGame": "0.3"
+          },
+          {
+            "rank": 3,
+            "name": "이명재",
+            "playerId": "20140041",
+            "team": "대전",
+            "teamColor": "#006738",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/e/e0/Daejeon_Hana_Citizen_emblem.svg/200px-Daejeon_Hana_Citizen_emblem.svg.png",
+            "backNo": 16,
+            "value": "6도움 (22경기)",
+            "games": 22,
+            "perGame": "0.27"
+          },
+          {
+            "rank": 4,
+            "name": "문선민",
+            "playerId": "20170229",
+            "team": "서울",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+            "backNo": 27,
+            "value": "6도움 (27경기)",
+            "games": 27,
+            "perGame": "0.22"
+          },
+          {
+            "rank": 5,
+            "name": "정승원",
+            "playerId": "20160099",
+            "team": "서울",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+            "backNo": 7,
+            "value": "6도움 (29경기)",
+            "games": 29,
+            "perGame": "0.21"
+          },
+          {
+            "rank": 6,
+            "name": "바사니",
+            "playerId": "20230104",
+            "team": "부천",
+            "teamColor": "#BA0C2F",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/3/36/Bucheon_FC_1995_logo.svg/200px-Bucheon_FC_1995_logo.svg.png",
+            "backNo": 10,
+            "value": "5도움 (20경기)",
+            "games": 20,
+            "perGame": "0.25"
+          },
+          {
+            "rank": 7,
+            "name": "모재현",
+            "playerId": "20170164",
+            "team": "강원",
+            "teamColor": "#E55C00",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/7b/Gangwon_FC_logo.svg/200px-Gangwon_FC_logo.svg.png",
+            "backNo": 10,
+            "value": "5도움 (22경기)",
+            "games": 22,
+            "perGame": "0.23"
+          },
+          {
+            "rank": 8,
+            "name": "디오고",
+            "playerId": "20260062",
+            "team": "대전",
+            "teamColor": "#006738",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/e/e0/Daejeon_Hana_Citizen_emblem.svg/200px-Daejeon_Hana_Citizen_emblem.svg.png",
+            "backNo": 9,
+            "value": "5도움 (24경기)",
+            "games": 24,
+            "perGame": "0.21"
+          },
+          {
+            "rank": 9,
+            "name": "안데르손",
+            "playerId": "20240179",
+            "team": "서울",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+            "backNo": 10,
+            "value": "5도움 (24경기)",
+            "games": 24,
+            "perGame": "0.21"
+          },
+          {
+            "rank": 10,
+            "name": "마테우스",
+            "playerId": "20240078",
+            "team": "안양",
+            "teamColor": "#532E85",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Anyang_logo.svg/200px-FC_Anyang_logo.svg.png",
+            "backNo": 7,
+            "value": "5도움 (27경기)",
+            "games": 27,
+            "perGame": "0.19"
+          }
+        ]
+      },
+      {
+        "category": "공격포인트 순위 (Attacking Points)",
+        "type": "AP",
+        "icon": "fa-chart-line",
+        "first_player": {
+          "rank": 1,
+          "name": "이동경",
+          "playerId": "20180088",
+          "team": "울산",
+          "teamColor": "#002B49",
+          "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/91/Ulsan_HD_FC_logo.svg/200px-Ulsan_HD_FC_logo.svg.png",
+          "backNo": 10,
+          "value": "20P (10골 10도움)",
+          "games": 28,
+          "perGame": "0.71"
+        },
+        "ranks": [
+          {
+            "rank": 1,
+            "name": "이동경",
+            "playerId": "20180088",
+            "team": "울산",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/91/Ulsan_HD_FC_logo.svg/200px-Ulsan_HD_FC_logo.svg.png",
+            "backNo": 10,
+            "value": "20P (10골 10도움)",
+            "games": 28,
+            "perGame": "0.71"
+          },
+          {
+            "rank": 2,
+            "name": "김대원",
+            "playerId": "20160098",
+            "team": "강원",
+            "teamColor": "#E55C00",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/7b/Gangwon_FC_logo.svg/200px-Gangwon_FC_logo.svg.png",
+            "backNo": 7,
+            "value": "16P (8골 8도움)",
+            "games": 27,
+            "perGame": "0.59"
+          },
+          {
+            "rank": 2,
+            "name": "마테우스",
+            "playerId": "20240078",
+            "team": "안양",
+            "teamColor": "#532E85",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Anyang_logo.svg/200px-FC_Anyang_logo.svg.png",
+            "backNo": 7,
+            "value": "16P (11골 5도움)",
+            "games": 27,
+            "perGame": "0.59"
+          },
+          {
+            "rank": 4,
+            "name": "갈레고",
+            "playerId": "20220353",
+            "team": "부천",
+            "teamColor": "#BA0C2F",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/3/36/Bucheon_FC_1995_logo.svg/200px-Bucheon_FC_1995_logo.svg.png",
+            "backNo": 11,
+            "value": "14P (10골 4도움)",
+            "games": 28,
+            "perGame": "0.5"
+          },
+          {
+            "rank": 4,
+            "name": "정승원",
+            "playerId": "20160099",
+            "team": "서울",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+            "backNo": 7,
+            "value": "14P (8골 6도움)",
+            "games": 29,
+            "perGame": "0.48"
+          },
+          {
+            "rank": 6,
+            "name": "야고",
+            "playerId": "20230315",
+            "team": "울산",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/91/Ulsan_HD_FC_logo.svg/200px-Ulsan_HD_FC_logo.svg.png",
+            "backNo": 99,
+            "value": "13P (13골 0도움)",
+            "games": 22,
+            "perGame": "0.59"
+          },
+          {
+            "rank": 6,
+            "name": "무고사",
+            "playerId": "20180196",
+            "team": "인천",
+            "teamColor": "#0047AB",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/b/be/Incheon_United_FC_emblem.svg/200px-Incheon_United_FC_emblem.svg.png",
+            "backNo": 9,
+            "value": "13P (12골 1도움)",
+            "games": 25,
+            "perGame": "0.52"
+          },
+          {
+            "rank": 6,
+            "name": "클리말라",
+            "playerId": "20250331",
+            "team": "서울",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+            "backNo": 9,
+            "value": "13P (12골 1도움)",
+            "games": 26,
+            "perGame": "0.5"
+          },
+          {
+            "rank": 9,
+            "name": "이승우",
+            "playerId": "20220042",
+            "team": "전북",
+            "teamColor": "#00552E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/2/2c/Jeonbuk_Hyundai_Motors_emblem.svg/200px-Jeonbuk_Hyundai_Motors_emblem.svg.png",
+            "backNo": 10,
+            "value": "11P (8골 3도움)",
+            "games": 28,
+            "perGame": "0.39"
+          },
+          {
+            "rank": 10,
+            "name": "정재희",
+            "playerId": "20160178",
+            "team": "대전",
+            "teamColor": "#006738",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/e/e0/Daejeon_Hana_Citizen_emblem.svg/200px-Daejeon_Hana_Citizen_emblem.svg.png",
+            "backNo": 27,
+            "value": "10P (8골 2도움)",
+            "games": 22,
+            "perGame": "0.45"
+          }
+        ]
+      },
+      {
+        "category": "무실점 경기 (Clean Sheets)",
+        "type": "CLEAN",
+        "icon": "fa-shield-halved",
+        "first_player": {
+          "rank": 1,
+          "name": "구성윤",
+          "playerId": "20200301",
+          "team": "서울",
+          "teamColor": "#C8102E",
+          "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+          "backNo": 25,
+          "value": "13경기 무실점",
+          "games": 29,
+          "perGame": "0"
+        },
+        "ranks": [
+          {
+            "rank": 1,
+            "name": "구성윤",
+            "playerId": "20200301",
+            "team": "서울",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+            "backNo": 25,
+            "value": "13경기 무실점",
+            "games": 29,
+            "perGame": "0"
+          },
+          {
+            "rank": 1,
+            "name": "송범근",
+            "playerId": "20180025",
+            "team": "전북",
+            "teamColor": "#00552E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/2/2c/Jeonbuk_Hyundai_Motors_emblem.svg/200px-Jeonbuk_Hyundai_Motors_emblem.svg.png",
+            "backNo": 31,
+            "value": "13경기 무실점",
+            "games": 28,
+            "perGame": "0"
+          },
+          {
+            "rank": 3,
+            "name": "박청효",
+            "playerId": "20130134",
+            "team": "강원",
+            "teamColor": "#E55C00",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/7b/Gangwon_FC_logo.svg/200px-Gangwon_FC_logo.svg.png",
+            "backNo": 1,
+            "value": "12경기 무실점",
+            "games": 28,
+            "perGame": "0"
+          },
+          {
+            "rank": 4,
+            "name": "김동준",
+            "playerId": "20160156",
+            "team": "제주",
+            "teamColor": "#FF671F",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/d/d4/Jeju_United_FC_emblem.svg/200px-Jeju_United_FC_emblem.svg.png",
+            "backNo": 1,
+            "value": "10경기 무실점",
+            "games": 29,
+            "perGame": "0"
+          },
+          {
+            "rank": 5,
+            "name": "이창근",
+            "playerId": "20120148",
+            "team": "대전",
+            "teamColor": "#006738",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/e/e0/Daejeon_Hana_Citizen_emblem.svg/200px-Daejeon_Hana_Citizen_emblem.svg.png",
+            "backNo": 1,
+            "value": "8경기 무실점",
+            "games": 29,
+            "perGame": "0"
+          },
+          {
+            "rank": 6,
+            "name": "황인재",
+            "playerId": "20160079",
+            "team": "포항",
+            "teamColor": "#E31B23",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/2/23/Pohang_Steelers_logo.svg/200px-Pohang_Steelers_logo.svg.png",
+            "backNo": 21,
+            "value": "7경기 무실점",
+            "games": 18,
+            "perGame": "0"
+          },
+          {
+            "rank": 7,
+            "name": "백종범",
+            "playerId": "20190154",
+            "team": "김천",
+            "teamColor": "#BA0C2F",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/5/52/Gimcheon_Sangmu_FC_emblem.svg/200px-Gimcheon_Sangmu_FC_emblem.svg.png",
+            "backNo": 1,
+            "value": "6경기 무실점",
+            "games": 25,
+            "perGame": "0"
+          },
+          {
+            "rank": 7,
+            "name": "조현우",
+            "playerId": "20130156",
+            "team": "울산",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/91/Ulsan_HD_FC_logo.svg/200px-Ulsan_HD_FC_logo.svg.png",
+            "backNo": 21,
+            "value": "6경기 무실점",
+            "games": 29,
+            "perGame": "0"
+          },
+          {
+            "rank": 9,
+            "name": "김동헌",
+            "playerId": "20190064",
+            "team": "인천",
+            "teamColor": "#0047AB",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/b/be/Incheon_United_FC_emblem.svg/200px-Incheon_United_FC_emblem.svg.png",
+            "backNo": 1,
+            "value": "5경기 무실점",
+            "games": 24,
+            "perGame": "0"
+          },
+          {
+            "rank": 9,
+            "name": "김형근",
+            "playerId": "20160010",
+            "team": "부천",
+            "teamColor": "#BA0C2F",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/3/36/Bucheon_FC_1995_logo.svg/200px-Bucheon_FC_1995_logo.svg.png",
+            "backNo": 1,
+            "value": "5경기 무실점",
+            "games": 19,
+            "perGame": "0"
+          }
+        ]
+      }
+    ],
+    "team_hub": {
+      "서울": {
+        "team": {
+          "rank": 1,
+          "teamId": "K09",
+          "team": "서울",
+          "fullName": "FC 서울",
+          "color": "#C8102E",
+          "accent": "#000000",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+          "games": 29,
+          "points": 62,
+          "win": 19,
+          "draw": 5,
+          "loss": 5,
+          "goalsFor": 55,
+          "goalsAgainst": 23,
+          "goalDiff": 32,
+          "recent": [
+            "패",
+            "승",
+            "승",
+            "승",
+            "승"
+          ],
+          "homepage": "https://www.fcseoul.com/"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 3,
+            "name": "클리말라",
+            "value": "12골 (26경기)",
+            "backNo": 9
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 4,
+            "name": "문선민",
+            "value": "6도움 (27경기)",
+            "backNo": 27
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 5,
+            "name": "정승원",
+            "value": "6도움 (29경기)",
+            "backNo": 7
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 9,
+            "name": "안데르손",
+            "value": "5도움 (24경기)",
+            "backNo": 10
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 4,
+            "name": "정승원",
+            "value": "14P (8골 6도움)",
+            "backNo": 7
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 6,
+            "name": "클리말라",
+            "value": "13P (12골 1도움)",
+            "backNo": 9
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 1,
+            "name": "구성윤",
+            "value": "13경기 무실점",
+            "backNo": 25
+          }
+        ]
+      },
+      "울산": {
+        "team": {
+          "rank": 2,
+          "teamId": "K01",
+          "team": "울산",
+          "fullName": "울산 HD FC",
+          "color": "#002B49",
+          "accent": "#F5A623",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/91/Ulsan_HD_FC_logo.svg/200px-Ulsan_HD_FC_logo.svg.png",
+          "games": 29,
+          "points": 47,
+          "win": 14,
+          "draw": 5,
+          "loss": 10,
+          "goalsFor": 44,
+          "goalsAgainst": 38,
+          "goalDiff": 6,
+          "recent": [
+            "승",
+            "무",
+            "승",
+            "패",
+            "패"
+          ],
+          "homepage": "https://www.uhdfc.com/fc/greetings.php"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 1,
+            "name": "야고",
+            "value": "13골 (22경기)",
+            "backNo": 99
+          },
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 5,
+            "name": "이동경",
+            "value": "10골 (28경기)",
+            "backNo": 10
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 1,
+            "name": "이동경",
+            "value": "10도움 (28경기)",
+            "backNo": 10
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 1,
+            "name": "이동경",
+            "value": "20P (10골 10도움)",
+            "backNo": 10
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 6,
+            "name": "야고",
+            "value": "13P (13골 0도움)",
+            "backNo": 99
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 7,
+            "name": "조현우",
+            "value": "6경기 무실점",
+            "backNo": 21
+          }
+        ]
+      },
+      "전북": {
+        "team": {
+          "rank": 3,
+          "teamId": "K05",
+          "team": "전북",
+          "fullName": "전북 현대 모터스",
+          "color": "#00552E",
+          "accent": "#A3D867",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/2/2c/Jeonbuk_Hyundai_Motors_emblem.svg/200px-Jeonbuk_Hyundai_Motors_emblem.svg.png",
+          "games": 29,
+          "points": 43,
+          "win": 11,
+          "draw": 10,
+          "loss": 8,
+          "goalsFor": 36,
+          "goalsAgainst": 26,
+          "goalDiff": 10,
+          "recent": [
+            "무",
+            "승",
+            "무",
+            "무",
+            "승"
+          ],
+          "homepage": "https://www.hyundai-motorsfc.com"
+        },
+        "players": [
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 9,
+            "name": "이승우",
+            "value": "11P (8골 3도움)",
+            "backNo": 10
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 1,
+            "name": "송범근",
+            "value": "13경기 무실점",
+            "backNo": 31
+          }
+        ]
+      },
+      "제주": {
+        "team": {
+          "rank": 4,
+          "teamId": "K04",
+          "team": "제주",
+          "fullName": "제주 유나이티드",
+          "color": "#FF671F",
+          "accent": "#C8102E",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/d/d4/Jeju_United_FC_emblem.svg/200px-Jeju_United_FC_emblem.svg.png",
+          "games": 29,
+          "points": 43,
+          "win": 11,
+          "draw": 10,
+          "loss": 8,
+          "goalsFor": 34,
+          "goalsAgainst": 29,
+          "goalDiff": 5,
+          "recent": [
+            "승",
+            "무",
+            "승",
+            "패",
+            "무"
+          ],
+          "homepage": "https://www.jejuskfc.com/"
+        },
+        "players": [
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 4,
+            "name": "김동준",
+            "value": "10경기 무실점",
+            "backNo": 1
+          }
+        ]
+      },
+      "강원": {
+        "team": {
+          "rank": 5,
+          "teamId": "K21",
+          "team": "강원",
+          "fullName": "강원 FC",
+          "color": "#E55C00",
+          "accent": "#004534",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/7b/Gangwon_FC_logo.svg/200px-Gangwon_FC_logo.svg.png",
+          "games": 28,
+          "points": 42,
+          "win": 10,
+          "draw": 12,
+          "loss": 6,
+          "goalsFor": 36,
+          "goalsAgainst": 27,
+          "goalDiff": 9,
+          "recent": [
+            "무",
+            "승",
+            "무",
+            "무",
+            "패"
+          ],
+          "homepage": "https://www.gangwon-fc.com"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 9,
+            "name": "아부달라",
+            "value": "8골 (25경기)",
+            "backNo": 77
+          },
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 10,
+            "name": "김대원",
+            "value": "8골 (27경기)",
+            "backNo": 7
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 2,
+            "name": "김대원",
+            "value": "8도움 (27경기)",
+            "backNo": 7
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 7,
+            "name": "모재현",
+            "value": "5도움 (22경기)",
+            "backNo": 10
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 2,
+            "name": "김대원",
+            "value": "16P (8골 8도움)",
+            "backNo": 7
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 3,
+            "name": "박청효",
+            "value": "12경기 무실점",
+            "backNo": 1
+          }
+        ]
+      },
+      "대전": {
+        "team": {
+          "rank": 6,
+          "teamId": "K10",
+          "team": "대전",
+          "fullName": "대전 하나 시티즌",
+          "color": "#006738",
+          "accent": "#862633",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/e/e0/Daejeon_Hana_Citizen_emblem.svg/200px-Daejeon_Hana_Citizen_emblem.svg.png",
+          "games": 29,
+          "points": 39,
+          "win": 10,
+          "draw": 9,
+          "loss": 10,
+          "goalsFor": 45,
+          "goalsAgainst": 36,
+          "goalDiff": 9,
+          "recent": [
+            "승",
+            "승",
+            "패",
+            "승",
+            "승"
+          ],
+          "homepage": "https://www.dhcfc.kr/"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 8,
+            "name": "정재희",
+            "value": "8골 (22경기)",
+            "backNo": 27
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 3,
+            "name": "이명재",
+            "value": "6도움 (22경기)",
+            "backNo": 16
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 8,
+            "name": "디오고",
+            "value": "5도움 (24경기)",
+            "backNo": 9
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 10,
+            "name": "정재희",
+            "value": "10P (8골 2도움)",
+            "backNo": 27
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 5,
+            "name": "이창근",
+            "value": "8경기 무실점",
+            "backNo": 1
+          }
+        ]
+      },
+      "인천": {
+        "team": {
+          "rank": 7,
+          "teamId": "K18",
+          "team": "인천",
+          "fullName": "인천 유나이티드",
+          "color": "#0047AB",
+          "accent": "#000000",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/b/be/Incheon_United_FC_emblem.svg/200px-Incheon_United_FC_emblem.svg.png",
+          "games": 28,
+          "points": 37,
+          "win": 10,
+          "draw": 7,
+          "loss": 11,
+          "goalsFor": 35,
+          "goalsAgainst": 32,
+          "goalDiff": 3,
+          "recent": [
+            "승",
+            "패",
+            "무",
+            "패",
+            "승"
+          ],
+          "homepage": "https://www.incheonutd.com"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 2,
+            "name": "무고사",
+            "value": "12골 (25경기)",
+            "backNo": 9
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 6,
+            "name": "무고사",
+            "value": "13P (12골 1도움)",
+            "backNo": 9
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 9,
+            "name": "김동헌",
+            "value": "5경기 무실점",
+            "backNo": 1
+          }
+        ]
+      },
+      "포항": {
+        "team": {
+          "rank": 8,
+          "teamId": "K03",
+          "team": "포항",
+          "fullName": "포항 스틸러스",
+          "color": "#E31B23",
+          "accent": "#000000",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/2/23/Pohang_Steelers_logo.svg/200px-Pohang_Steelers_logo.svg.png",
+          "games": 29,
+          "points": 37,
+          "win": 10,
+          "draw": 7,
+          "loss": 12,
+          "goalsFor": 26,
+          "goalsAgainst": 33,
+          "goalDiff": -7,
+          "recent": [
+            "무",
+            "패",
+            "무",
+            "승",
+            "패"
+          ],
+          "homepage": "https://www.steelers.co.kr"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 7,
+            "name": "이호재",
+            "value": "8골 (20경기)",
+            "backNo": 19
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 6,
+            "name": "황인재",
+            "value": "7경기 무실점",
+            "backNo": 21
+          }
+        ]
+      },
+      "안양": {
+        "team": {
+          "rank": 9,
+          "teamId": "K27",
+          "team": "안양",
+          "fullName": "FC 안양",
+          "color": "#532E85",
+          "accent": "#E8AF27",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Anyang_logo.svg/200px-FC_Anyang_logo.svg.png",
+          "games": 29,
+          "points": 35,
+          "win": 8,
+          "draw": 11,
+          "loss": 10,
+          "goalsFor": 36,
+          "goalsAgainst": 46,
+          "goalDiff": -10,
+          "recent": [
+            "패",
+            "패",
+            "무",
+            "승",
+            "패"
+          ],
+          "homepage": "https://www.fc-anyang.com"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 4,
+            "name": "마테우스",
+            "value": "11골 (27경기)",
+            "backNo": 7
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 10,
+            "name": "마테우스",
+            "value": "5도움 (27경기)",
+            "backNo": 7
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 2,
+            "name": "마테우스",
+            "value": "16P (11골 5도움)",
+            "backNo": 7
+          }
+        ]
+      },
+      "부천": {
+        "team": {
+          "rank": 10,
+          "teamId": "K26",
+          "team": "부천",
+          "fullName": "부천 FC 1995",
+          "color": "#BA0C2F",
+          "accent": "#000000",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/3/36/Bucheon_FC_1995_logo.svg/200px-Bucheon_FC_1995_logo.svg.png",
+          "games": 29,
+          "points": 32,
+          "win": 7,
+          "draw": 11,
+          "loss": 11,
+          "goalsFor": 31,
+          "goalsAgainst": 38,
+          "goalDiff": -7,
+          "recent": [
+            "패",
+            "패",
+            "무",
+            "패",
+            "승"
+          ],
+          "homepage": "https://www.bfc1995.com"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 6,
+            "name": "갈레고",
+            "value": "10골 (28경기)",
+            "backNo": 11
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 6,
+            "name": "바사니",
+            "value": "5도움 (20경기)",
+            "backNo": 10
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 4,
+            "name": "갈레고",
+            "value": "14P (10골 4도움)",
+            "backNo": 11
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 9,
+            "name": "김형근",
+            "value": "5경기 무실점",
+            "backNo": 1
+          }
+        ]
+      },
+      "김천": {
+        "team": {
+          "rank": 11,
+          "teamId": "K35",
+          "team": "김천",
+          "fullName": "김천 상무 FC",
+          "color": "#BA0C2F",
+          "accent": "#0C2340",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/5/52/Gimcheon_Sangmu_FC_emblem.svg/200px-Gimcheon_Sangmu_FC_emblem.svg.png",
+          "games": 29,
+          "points": 30,
+          "win": 4,
+          "draw": 18,
+          "loss": 7,
+          "goalsFor": 28,
+          "goalsAgainst": 36,
+          "goalDiff": -8,
+          "recent": [
+            "무",
+            "무",
+            "패",
+            "무",
+            "무"
+          ],
+          "homepage": "https://gimcheonfc.com/"
+        },
+        "players": [
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 7,
+            "name": "백종범",
+            "value": "6경기 무실점",
+            "backNo": 1
+          }
+        ]
+      },
+      "광주": {
+        "team": {
+          "rank": 12,
+          "teamId": "K22",
+          "team": "광주",
+          "fullName": "광주 FC",
+          "color": "#FDB913",
+          "accent": "#C8102E",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/2/2a/Gwangju_FC_logo.svg/200px-Gwangju_FC_logo.svg.png",
+          "games": 29,
+          "points": 14,
+          "win": 1,
+          "draw": 11,
+          "loss": 17,
+          "goalsFor": 19,
+          "goalsAgainst": 61,
+          "goalDiff": -42,
+          "recent": [
+            "패",
+            "무",
+            "패",
+            "무",
+            "패"
+          ],
+          "homepage": "https://www.gwangjufc.com/"
+        },
+        "players": []
+      }
+    }
+  },
+  "k2": {
+    "name": "K리그 2",
+    "teams": [
+      {
+        "rank": 1,
+        "teamId": "K02",
+        "team": "수원",
+        "fullName": "수원 FC",
+        "color": "#002B49",
+        "accent": "#E31B23",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+        "games": 25,
+        "points": 53,
+        "win": 16,
+        "draw": 5,
+        "loss": 4,
+        "goalsFor": 39,
+        "goalsAgainst": 20,
+        "goalDiff": 19,
+        "recent": [
+          "승",
+          "승",
+          "승",
+          "무",
+          "승"
+        ],
+        "homepage": "https://www.bluewings.kr/"
+      },
+      {
+        "rank": 2,
+        "teamId": "K17",
+        "team": "대구",
+        "fullName": "대구 FC",
+        "color": "#76C5EE",
+        "accent": "#142548",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/1/14/Daegu_FC_emblem.svg/200px-Daegu_FC_emblem.svg.png",
+        "games": 25,
+        "points": 46,
+        "win": 13,
+        "draw": 7,
+        "loss": 5,
+        "goalsFor": 47,
+        "goalsAgainst": 33,
+        "goalDiff": 14,
+        "recent": [
+          "무",
+          "승",
+          "무",
+          "승",
+          "승"
+        ],
+        "homepage": "https://daegufc.co.kr"
+      },
+      {
+        "rank": 3,
+        "teamId": "K29",
+        "team": "수원FC",
+        "fullName": "수원 FC",
+        "color": "#002B49",
+        "accent": "#E31B23",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+        "games": 24,
+        "points": 45,
+        "win": 12,
+        "draw": 9,
+        "loss": 3,
+        "goalsFor": 47,
+        "goalsAgainst": 29,
+        "goalDiff": 18,
+        "recent": [
+          "무",
+          "승",
+          "승",
+          "무",
+          "승"
+        ],
+        "homepage": "https://www.suwonfc.com"
+      },
+      {
+        "rank": 4,
+        "teamId": "K31",
+        "team": "서울E",
+        "fullName": "FC 서울",
+        "color": "#C8102E",
+        "accent": "#000000",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+        "games": 25,
+        "points": 45,
+        "win": 13,
+        "draw": 6,
+        "loss": 6,
+        "goalsFor": 43,
+        "goalsAgainst": 29,
+        "goalDiff": 14,
+        "recent": [
+          "승",
+          "무",
+          "무",
+          "승",
+          "무"
+        ],
+        "homepage": "https://www.seoulelandfc.com"
+      },
+      {
+        "rank": 5,
+        "teamId": "K39",
+        "team": "화성",
+        "fullName": "화성",
+        "color": "#334155",
+        "accent": "#64748b",
+        "emblem": "",
+        "games": 25,
+        "points": 43,
+        "win": 12,
+        "draw": 7,
+        "loss": 6,
+        "goalsFor": 39,
+        "goalsAgainst": 25,
+        "goalDiff": 14,
+        "recent": [
+          "무",
+          "승",
+          "패",
+          "무",
+          "무"
+        ],
+        "homepage": "https://www.hwaseongfc.com/"
+      },
+      {
+        "rank": 6,
+        "teamId": "K06",
+        "team": "부산",
+        "fullName": "부산 아이파크",
+        "color": "#C8102E",
+        "accent": "#FFFFFF",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/4/4b/Busan_IPark_logo.svg/200px-Busan_IPark_logo.svg.png",
+        "games": 25,
+        "points": 41,
+        "win": 12,
+        "draw": 5,
+        "loss": 8,
+        "goalsFor": 41,
+        "goalsAgainst": 33,
+        "goalDiff": 8,
+        "recent": [
+          "패",
+          "패",
+          "무",
+          "무",
+          "패"
+        ],
+        "homepage": "https://www.busanipark.com"
+      },
+      {
+        "rank": 7,
+        "teamId": "K20",
+        "team": "경남",
+        "fullName": "경남 FC",
+        "color": "#C8102E",
+        "accent": "#FFFFFF",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/0/09/Gyeongnam_FC_logo.svg/200px-Gyeongnam_FC_logo.svg.png",
+        "games": 24,
+        "points": 33,
+        "win": 8,
+        "draw": 9,
+        "loss": 7,
+        "goalsFor": 31,
+        "goalsAgainst": 30,
+        "goalDiff": 1,
+        "recent": [
+          "승",
+          "무",
+          "무",
+          "패",
+          "무"
+        ],
+        "homepage": "http://www.gyeongnamfc.com"
+      },
+      {
+        "rank": 8,
+        "teamId": "K36",
+        "team": "김포",
+        "fullName": "김포 FC",
+        "color": "#0047AB",
+        "accent": "#FFC72C",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/1/1a/Gimpo_FC_logo.svg/200px-Gimpo_FC_logo.svg.png",
+        "games": 24,
+        "points": 32,
+        "win": 7,
+        "draw": 11,
+        "loss": 6,
+        "goalsFor": 30,
+        "goalsAgainst": 30,
+        "goalDiff": 0,
+        "recent": [
+          "패",
+          "패",
+          "무",
+          "승",
+          "무"
+        ],
+        "homepage": "https://www.gimpofc.com"
+      },
+      {
+        "rank": 9,
+        "teamId": "K34",
+        "team": "충남아산",
+        "fullName": "충남 아산 FC",
+        "color": "#003A70",
+        "accent": "#FDB913",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/8/8f/Chungnam_Asan_FC_emblem.svg/200px-Chungnam_Asan_FC_emblem.svg.png",
+        "games": 24,
+        "points": 31,
+        "win": 8,
+        "draw": 7,
+        "loss": 9,
+        "goalsFor": 31,
+        "goalsAgainst": 30,
+        "goalDiff": 1,
+        "recent": [
+          "패",
+          "승",
+          "패",
+          "무",
+          "승"
+        ],
+        "homepage": "https://www.asanfc.com"
+      },
+      {
+        "rank": 10,
+        "teamId": "K08",
+        "team": "성남",
+        "fullName": "성남 FC",
+        "color": "#1C1C1C",
+        "accent": "#A7A8AA",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/91/Seongnam_FC_emblem.svg/200px-Seongnam_FC_emblem.svg.png",
+        "games": 24,
+        "points": 30,
+        "win": 7,
+        "draw": 9,
+        "loss": 8,
+        "goalsFor": 26,
+        "goalsAgainst": 28,
+        "goalDiff": -2,
+        "recent": [
+          "승",
+          "무",
+          "승",
+          "패",
+          "승"
+        ],
+        "homepage": "https://seongnamfc.com/"
+      },
+      {
+        "rank": 11,
+        "teamId": "K42",
+        "team": "용인",
+        "fullName": "용인",
+        "color": "#334155",
+        "accent": "#64748b",
+        "emblem": "",
+        "games": 24,
+        "points": 26,
+        "win": 5,
+        "draw": 11,
+        "loss": 8,
+        "goalsFor": 31,
+        "goalsAgainst": 35,
+        "goalDiff": -4,
+        "recent": [
+          "무",
+          "승",
+          "패",
+          "승",
+          "무"
+        ],
+        "homepage": "https://www.yonginfc.co.kr/"
+      },
+      {
+        "rank": 12,
+        "teamId": "K37",
+        "team": "충북청주",
+        "fullName": "충북 청주 FC",
+        "color": "#002B49",
+        "accent": "#C8102E",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/e/e3/Chungbuk_Cheongju_FC_logo.svg/200px-Chungbuk_Cheongju_FC_logo.svg.png",
+        "games": 25,
+        "points": 26,
+        "win": 4,
+        "draw": 14,
+        "loss": 7,
+        "goalsFor": 28,
+        "goalsAgainst": 39,
+        "goalDiff": -11,
+        "recent": [
+          "패",
+          "패",
+          "무",
+          "승",
+          "패"
+        ],
+        "homepage": "https://chfc.kr/"
+      },
+      {
+        "rank": 13,
+        "teamId": "K40",
+        "team": "파주",
+        "fullName": "파주",
+        "color": "#334155",
+        "accent": "#64748b",
+        "emblem": "",
+        "games": 24,
+        "points": 26,
+        "win": 7,
+        "draw": 5,
+        "loss": 12,
+        "goalsFor": 22,
+        "goalsAgainst": 28,
+        "goalDiff": -6,
+        "recent": [
+          "패",
+          "무",
+          "승",
+          "패",
+          "승"
+        ],
+        "homepage": "https://www.pajufrontier.com/"
+      },
+      {
+        "rank": 14,
+        "teamId": "K38",
+        "team": "천안",
+        "fullName": "천안 시티 FC",
+        "color": "#76C5EE",
+        "accent": "#002B49",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/1/1d/Cheonan_City_FC_logo.svg/200px-Cheonan_City_FC_logo.svg.png",
+        "games": 25,
+        "points": 23,
+        "win": 4,
+        "draw": 11,
+        "loss": 10,
+        "goalsFor": 29,
+        "goalsAgainst": 34,
+        "goalDiff": -5,
+        "recent": [
+          "무",
+          "패",
+          "패",
+          "무",
+          "패"
+        ],
+        "homepage": "https://cheonancityfc.kr/"
+      },
+      {
+        "rank": 15,
+        "teamId": "K32",
+        "team": "안산",
+        "fullName": "안산 그리너스 FC",
+        "color": "#006738",
+        "accent": "#FDB913",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/6/62/Ansan_Greeners_FC_emblem.svg/200px-Ansan_Greeners_FC_emblem.svg.png",
+        "games": 25,
+        "points": 22,
+        "win": 6,
+        "draw": 4,
+        "loss": 15,
+        "goalsFor": 25,
+        "goalsAgainst": 46,
+        "goalDiff": -21,
+        "recent": [
+          "승",
+          "패",
+          "패",
+          "패",
+          "무"
+        ],
+        "homepage": "https://www.greenersfc.com/"
+      },
+      {
+        "rank": 16,
+        "teamId": "K07",
+        "team": "전남",
+        "fullName": "전남 드래곤즈",
+        "color": "#FFC72C",
+        "accent": "#000000",
+        "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/4/4e/Jeonnam_Dragons_emblem.svg/200px-Jeonnam_Dragons_emblem.svg.png",
+        "games": 24,
+        "points": 21,
+        "win": 4,
+        "draw": 9,
+        "loss": 11,
+        "goalsFor": 28,
+        "goalsAgainst": 40,
+        "goalDiff": -12,
+        "recent": [
+          "무",
+          "승",
+          "승",
+          "패",
+          "패"
+        ],
+        "homepage": "https://www.dragons.co.kr"
+      },
+      {
+        "rank": 17,
+        "teamId": "K41",
+        "team": "김해",
+        "fullName": "김해",
+        "color": "#334155",
+        "accent": "#64748b",
+        "emblem": "",
+        "games": 24,
+        "points": 13,
+        "win": 2,
+        "draw": 7,
+        "loss": 15,
+        "goalsFor": 19,
+        "goalsAgainst": 47,
+        "goalDiff": -28,
+        "recent": [
+          "무",
+          "패",
+          "패",
+          "무",
+          "패"
+        ],
+        "homepage": "https://gimhaefc2008.com/"
+      }
+    ],
+    "players": [
+      {
+        "category": "득점 순위 (Top Scorers)",
+        "type": "GOAL",
+        "icon": "fa-futbol",
+        "first_player": {
+          "rank": 1,
+          "name": "프리조",
+          "playerId": "20260098",
+          "team": "수원FC",
+          "teamColor": "#002B49",
+          "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+          "backNo": 10,
+          "value": "13골 (23경기)",
+          "games": 23,
+          "perGame": "0.57"
+        },
+        "ranks": [
+          {
+            "rank": 1,
+            "name": "프리조",
+            "playerId": "20260098",
+            "team": "수원FC",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+            "backNo": 10,
+            "value": "13골 (23경기)",
+            "games": 23,
+            "perGame": "0.57"
+          },
+          {
+            "rank": 2,
+            "name": "가르시아",
+            "playerId": "20260194",
+            "team": "충북청주",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/e/e3/Chungbuk_Cheongju_FC_logo.svg/200px-Chungbuk_Cheongju_FC_logo.svg.png",
+            "backNo": 11,
+            "value": "13골 (25경기)",
+            "games": 25,
+            "perGame": "0.52"
+          },
+          {
+            "rank": 3,
+            "name": "루이스",
+            "playerId": "20230147",
+            "team": "수원",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+            "backNo": 70,
+            "value": "12골 (24경기)",
+            "games": 24,
+            "perGame": "0.5"
+          },
+          {
+            "rank": 4,
+            "name": "플라나",
+            "playerId": "20220086",
+            "team": "화성",
+            "teamColor": "#334155",
+            "teamEmblem": "",
+            "backNo": 11,
+            "value": "11골 (25경기)",
+            "games": 25,
+            "perGame": "0.44"
+          },
+          {
+            "rank": 5,
+            "name": "박재용",
+            "playerId": "20220035",
+            "team": "서울E",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+            "backNo": 16,
+            "value": "9골 (24경기)",
+            "games": 24,
+            "perGame": "0.38"
+          },
+          {
+            "rank": 6,
+            "name": "에드가",
+            "playerId": "20180294",
+            "team": "대구",
+            "teamColor": "#76C5EE",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/1/14/Daegu_FC_emblem.svg/200px-Daegu_FC_emblem.svg.png",
+            "backNo": 9,
+            "value": "8골 (13경기)",
+            "games": 13,
+            "perGame": "0.62"
+          },
+          {
+            "rank": 7,
+            "name": "페트로프",
+            "playerId": "20260136",
+            "team": "화성",
+            "teamColor": "#334155",
+            "teamEmblem": "",
+            "backNo": 9,
+            "value": "8골 (20경기)",
+            "games": 20,
+            "perGame": "0.4"
+          },
+          {
+            "rank": 8,
+            "name": "김현오",
+            "playerId": "20250108",
+            "team": "경남",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/0/09/Gyeongnam_FC_logo.svg/200px-Gyeongnam_FC_logo.svg.png",
+            "backNo": 90,
+            "value": "8골 (21경기)",
+            "games": 21,
+            "perGame": "0.38"
+          },
+          {
+            "rank": 9,
+            "name": "하정우",
+            "playerId": "20240227",
+            "team": "수원FC",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+            "backNo": 99,
+            "value": "8골 (23경기)",
+            "games": 23,
+            "perGame": "0.35"
+          },
+          {
+            "rank": 10,
+            "name": "에울레르",
+            "playerId": "20250192",
+            "team": "서울E",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+            "backNo": 7,
+            "value": "8골 (24경기)",
+            "games": 24,
+            "perGame": "0.33"
+          }
+        ]
+      },
+      {
+        "category": "도움 순위 (Top Assists)",
+        "type": "ASSIST",
+        "icon": "fa-hands-helping",
+        "first_player": {
+          "rank": 1,
+          "name": "세라핌",
+          "playerId": "20250222",
+          "team": "대구",
+          "teamColor": "#76C5EE",
+          "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/1/14/Daegu_FC_emblem.svg/200px-Daegu_FC_emblem.svg.png",
+          "backNo": 10,
+          "value": "10도움 (25경기)",
+          "games": 25,
+          "perGame": "0.4"
+        },
+        "ranks": [
+          {
+            "rank": 1,
+            "name": "세라핌",
+            "playerId": "20250222",
+            "team": "대구",
+            "teamColor": "#76C5EE",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/1/14/Daegu_FC_emblem.svg/200px-Daegu_FC_emblem.svg.png",
+            "backNo": 10,
+            "value": "10도움 (25경기)",
+            "games": 25,
+            "perGame": "0.4"
+          },
+          {
+            "rank": 2,
+            "name": "플라나",
+            "playerId": "20220086",
+            "team": "화성",
+            "teamColor": "#334155",
+            "teamEmblem": "",
+            "backNo": 11,
+            "value": "9도움 (25경기)",
+            "games": 25,
+            "perGame": "0.36"
+          },
+          {
+            "rank": 3,
+            "name": "반데이라",
+            "playerId": "20260195",
+            "team": "충북청주",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/e/e3/Chungbuk_Cheongju_FC_logo.svg/200px-Chungbuk_Cheongju_FC_logo.svg.png",
+            "backNo": 25,
+            "value": "7도움 (19경기)",
+            "games": 19,
+            "perGame": "0.37"
+          },
+          {
+            "rank": 4,
+            "name": "프리조",
+            "playerId": "20260098",
+            "team": "수원FC",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+            "backNo": 10,
+            "value": "6도움 (23경기)",
+            "games": 23,
+            "perGame": "0.26"
+          },
+          {
+            "rank": 5,
+            "name": "김보섭",
+            "playerId": "20170171",
+            "team": "용인",
+            "teamColor": "#334155",
+            "teamEmblem": "",
+            "backNo": 27,
+            "value": "6도움 (24경기)",
+            "games": 24,
+            "perGame": "0.25"
+          },
+          {
+            "rank": 6,
+            "name": "발디비아",
+            "playerId": "20230119",
+            "team": "전남",
+            "teamColor": "#FFC72C",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/4/4e/Jeonnam_Dragons_emblem.svg/200px-Jeonnam_Dragons_emblem.svg.png",
+            "backNo": 10,
+            "value": "6도움 (24경기)",
+            "games": 24,
+            "perGame": "0.25"
+          },
+          {
+            "rank": 7,
+            "name": "세징야",
+            "playerId": "20160237",
+            "team": "대구",
+            "teamColor": "#76C5EE",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/1/14/Daegu_FC_emblem.svg/200px-Daegu_FC_emblem.svg.png",
+            "backNo": 11,
+            "value": "5도움 (14경기)",
+            "games": 14,
+            "perGame": "0.36"
+          },
+          {
+            "rank": 8,
+            "name": "김범수",
+            "playerId": "20220324",
+            "team": "전남",
+            "teamColor": "#FFC72C",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/4/4e/Jeonnam_Dragons_emblem.svg/200px-Jeonnam_Dragons_emblem.svg.png",
+            "backNo": 17,
+            "value": "5도움 (22경기)",
+            "games": 22,
+            "perGame": "0.23"
+          },
+          {
+            "rank": 9,
+            "name": "가브리엘",
+            "playerId": "20230158",
+            "team": "부산",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/4/4b/Busan_IPark_logo.svg/200px-Busan_IPark_logo.svg.png",
+            "backNo": 10,
+            "value": "5도움 (23경기)",
+            "games": 23,
+            "perGame": "0.22"
+          },
+          {
+            "rank": 10,
+            "name": "이건희",
+            "playerId": "20240152",
+            "team": "수원",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+            "backNo": 27,
+            "value": "5도움 (23경기)",
+            "games": 23,
+            "perGame": "0.22"
+          }
+        ]
+      },
+      {
+        "category": "공격포인트 순위 (Attacking Points)",
+        "type": "AP",
+        "icon": "fa-chart-line",
+        "first_player": {
+          "rank": 1,
+          "name": "플라나",
+          "playerId": "20220086",
+          "team": "화성",
+          "teamColor": "#334155",
+          "teamEmblem": "",
+          "backNo": 11,
+          "value": "20P (11골 9도움)",
+          "games": 25,
+          "perGame": "0.8"
+        },
+        "ranks": [
+          {
+            "rank": 1,
+            "name": "플라나",
+            "playerId": "20220086",
+            "team": "화성",
+            "teamColor": "#334155",
+            "teamEmblem": "",
+            "backNo": 11,
+            "value": "20P (11골 9도움)",
+            "games": 25,
+            "perGame": "0.8"
+          },
+          {
+            "rank": 2,
+            "name": "프리조",
+            "playerId": "20260098",
+            "team": "수원FC",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+            "backNo": 10,
+            "value": "19P (13골 6도움)",
+            "games": 23,
+            "perGame": "0.83"
+          },
+          {
+            "rank": 3,
+            "name": "세라핌",
+            "playerId": "20250222",
+            "team": "대구",
+            "teamColor": "#76C5EE",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/1/14/Daegu_FC_emblem.svg/200px-Daegu_FC_emblem.svg.png",
+            "backNo": 10,
+            "value": "18P (8골 10도움)",
+            "games": 25,
+            "perGame": "0.72"
+          },
+          {
+            "rank": 4,
+            "name": "루이스",
+            "playerId": "20230147",
+            "team": "수원",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+            "backNo": 70,
+            "value": "13P (12골 1도움)",
+            "games": 24,
+            "perGame": "0.54"
+          },
+          {
+            "rank": 4,
+            "name": "박재용",
+            "playerId": "20220035",
+            "team": "서울E",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+            "backNo": 16,
+            "value": "13P (9골 4도움)",
+            "games": 24,
+            "perGame": "0.54"
+          },
+          {
+            "rank": 4,
+            "name": "에울레르",
+            "playerId": "20250192",
+            "team": "서울E",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+            "backNo": 7,
+            "value": "13P (8골 5도움)",
+            "games": 24,
+            "perGame": "0.54"
+          },
+          {
+            "rank": 4,
+            "name": "가르시아",
+            "playerId": "20260194",
+            "team": "충북청주",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/e/e3/Chungbuk_Cheongju_FC_logo.svg/200px-Chungbuk_Cheongju_FC_logo.svg.png",
+            "backNo": 11,
+            "value": "13P (13골 0도움)",
+            "games": 25,
+            "perGame": "0.52"
+          },
+          {
+            "rank": 8,
+            "name": "가브리엘",
+            "playerId": "20230158",
+            "team": "부산",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/4/4b/Busan_IPark_logo.svg/200px-Busan_IPark_logo.svg.png",
+            "backNo": 10,
+            "value": "12P (7골 5도움)",
+            "games": 23,
+            "perGame": "0.52"
+          },
+          {
+            "rank": 8,
+            "name": "발디비아",
+            "playerId": "20230119",
+            "team": "전남",
+            "teamColor": "#FFC72C",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/4/4e/Jeonnam_Dragons_emblem.svg/200px-Jeonnam_Dragons_emblem.svg.png",
+            "backNo": 10,
+            "value": "12P (6골 6도움)",
+            "games": 24,
+            "perGame": "0.5"
+          },
+          {
+            "rank": 8,
+            "name": "크리스찬",
+            "playerId": "20260270",
+            "team": "부산",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/4/4b/Busan_IPark_logo.svg/200px-Busan_IPark_logo.svg.png",
+            "backNo": 99,
+            "value": "12P (8골 4도움)",
+            "games": 24,
+            "perGame": "0.5"
+          }
+        ]
+      },
+      {
+        "category": "무실점 경기 (Clean Sheets)",
+        "type": "CLEAN",
+        "icon": "fa-shield-halved",
+        "first_player": {
+          "rank": 1,
+          "name": "김준홍",
+          "playerId": "20210291",
+          "team": "수원",
+          "teamColor": "#002B49",
+          "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+          "backNo": 30,
+          "value": "10경기 무실점",
+          "games": 21,
+          "perGame": "0"
+        },
+        "ranks": [
+          {
+            "rank": 1,
+            "name": "김준홍",
+            "playerId": "20210291",
+            "team": "수원",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+            "backNo": 30,
+            "value": "10경기 무실점",
+            "games": 21,
+            "perGame": "0"
+          },
+          {
+            "rank": 2,
+            "name": "김승건",
+            "playerId": "20250166",
+            "team": "화성",
+            "teamColor": "#334155",
+            "teamEmblem": "",
+            "backNo": 1,
+            "value": "9경기 무실점",
+            "games": 23,
+            "perGame": "0"
+          },
+          {
+            "rank": 3,
+            "name": "한태희",
+            "playerId": "20230051",
+            "team": "대구",
+            "teamColor": "#76C5EE",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/1/14/Daegu_FC_emblem.svg/200px-Daegu_FC_emblem.svg.png",
+            "backNo": 31,
+            "value": "8경기 무실점",
+            "games": 24,
+            "perGame": "0"
+          },
+          {
+            "rank": 4,
+            "name": "민성준",
+            "playerId": "20200019",
+            "team": "서울E",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+            "backNo": 1,
+            "value": "7경기 무실점",
+            "games": 25,
+            "perGame": "0"
+          },
+          {
+            "rank": 5,
+            "name": "구상민",
+            "playerId": "20160006",
+            "team": "부산",
+            "teamColor": "#C8102E",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/4/4b/Busan_IPark_logo.svg/200px-Busan_IPark_logo.svg.png",
+            "backNo": 1,
+            "value": "6경기 무실점",
+            "games": 25,
+            "perGame": "0"
+          },
+          {
+            "rank": 5,
+            "name": "신송훈",
+            "playerId": "20210152",
+            "team": "충남아산",
+            "teamColor": "#003A70",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/8/8f/Chungnam_Asan_FC_emblem.svg/200px-Chungnam_Asan_FC_emblem.svg.png",
+            "backNo": 18,
+            "value": "6경기 무실점",
+            "games": 24,
+            "perGame": "0"
+          },
+          {
+            "rank": 7,
+            "name": "황성민",
+            "playerId": "20130349",
+            "team": "용인",
+            "teamColor": "#334155",
+            "teamEmblem": "",
+            "backNo": 21,
+            "value": "5경기 무실점",
+            "games": 18,
+            "perGame": "0"
+          },
+          {
+            "rank": 8,
+            "name": "김민승",
+            "playerId": "20230255",
+            "team": "파주",
+            "teamColor": "#334155",
+            "teamEmblem": "",
+            "backNo": 13,
+            "value": "4경기 무실점",
+            "games": 13,
+            "perGame": "0"
+          },
+          {
+            "rank": 8,
+            "name": "박대한",
+            "playerId": "20170179",
+            "team": "천안",
+            "teamColor": "#76C5EE",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/1/1d/Cheonan_City_FC_logo.svg/200px-Cheonan_City_FC_logo.svg.png",
+            "backNo": 21,
+            "value": "4경기 무실점",
+            "games": 15,
+            "perGame": "0"
+          },
+          {
+            "rank": 8,
+            "name": "양한빈",
+            "playerId": "20100156",
+            "team": "수원FC",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+            "backNo": 21,
+            "value": "4경기 무실점",
+            "games": 21,
+            "perGame": "0"
+          }
+        ]
+      }
+    ],
+    "team_hub": {
+      "수원": {
+        "team": {
+          "rank": 1,
+          "teamId": "K02",
+          "team": "수원",
+          "fullName": "수원 FC",
+          "color": "#002B49",
+          "accent": "#E31B23",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+          "games": 25,
+          "points": 53,
+          "win": 16,
+          "draw": 5,
+          "loss": 4,
+          "goalsFor": 39,
+          "goalsAgainst": 20,
+          "goalDiff": 19,
+          "recent": [
+            "승",
+            "승",
+            "승",
+            "무",
+            "승"
+          ],
+          "homepage": "https://www.bluewings.kr/"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 3,
+            "name": "루이스",
+            "value": "12골 (24경기)",
+            "backNo": 70
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 10,
+            "name": "이건희",
+            "value": "5도움 (23경기)",
+            "backNo": 27
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 4,
+            "name": "루이스",
+            "value": "13P (12골 1도움)",
+            "backNo": 70
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 1,
+            "name": "김준홍",
+            "value": "10경기 무실점",
+            "backNo": 30
+          }
+        ]
+      },
+      "대구": {
+        "team": {
+          "rank": 2,
+          "teamId": "K17",
+          "team": "대구",
+          "fullName": "대구 FC",
+          "color": "#76C5EE",
+          "accent": "#142548",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/1/14/Daegu_FC_emblem.svg/200px-Daegu_FC_emblem.svg.png",
+          "games": 25,
+          "points": 46,
+          "win": 13,
+          "draw": 7,
+          "loss": 5,
+          "goalsFor": 47,
+          "goalsAgainst": 33,
+          "goalDiff": 14,
+          "recent": [
+            "무",
+            "승",
+            "무",
+            "승",
+            "승"
+          ],
+          "homepage": "https://daegufc.co.kr"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 6,
+            "name": "에드가",
+            "value": "8골 (13경기)",
+            "backNo": 9
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 1,
+            "name": "세라핌",
+            "value": "10도움 (25경기)",
+            "backNo": 10
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 7,
+            "name": "세징야",
+            "value": "5도움 (14경기)",
+            "backNo": 11
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 3,
+            "name": "세라핌",
+            "value": "18P (8골 10도움)",
+            "backNo": 10
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 3,
+            "name": "한태희",
+            "value": "8경기 무실점",
+            "backNo": 31
+          }
+        ]
+      },
+      "수원FC": {
+        "team": {
+          "rank": 3,
+          "teamId": "K29",
+          "team": "수원FC",
+          "fullName": "수원 FC",
+          "color": "#002B49",
+          "accent": "#E31B23",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/7/74/Suwon_FC_logo.svg/200px-Suwon_FC_logo.svg.png",
+          "games": 24,
+          "points": 45,
+          "win": 12,
+          "draw": 9,
+          "loss": 3,
+          "goalsFor": 47,
+          "goalsAgainst": 29,
+          "goalDiff": 18,
+          "recent": [
+            "무",
+            "승",
+            "승",
+            "무",
+            "승"
+          ],
+          "homepage": "https://www.suwonfc.com"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 1,
+            "name": "프리조",
+            "value": "13골 (23경기)",
+            "backNo": 10
+          },
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 9,
+            "name": "하정우",
+            "value": "8골 (23경기)",
+            "backNo": 99
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 4,
+            "name": "프리조",
+            "value": "6도움 (23경기)",
+            "backNo": 10
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 2,
+            "name": "프리조",
+            "value": "19P (13골 6도움)",
+            "backNo": 10
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 8,
+            "name": "양한빈",
+            "value": "4경기 무실점",
+            "backNo": 21
+          }
+        ]
+      },
+      "서울E": {
+        "team": {
+          "rank": 4,
+          "teamId": "K31",
+          "team": "서울E",
+          "fullName": "FC 서울",
+          "color": "#C8102E",
+          "accent": "#000000",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/c/cd/FC_Seoul_emblem.svg/200px-FC_Seoul_emblem.svg.png",
+          "games": 25,
+          "points": 45,
+          "win": 13,
+          "draw": 6,
+          "loss": 6,
+          "goalsFor": 43,
+          "goalsAgainst": 29,
+          "goalDiff": 14,
+          "recent": [
+            "승",
+            "무",
+            "무",
+            "승",
+            "무"
+          ],
+          "homepage": "https://www.seoulelandfc.com"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 5,
+            "name": "박재용",
+            "value": "9골 (24경기)",
+            "backNo": 16
+          },
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 10,
+            "name": "에울레르",
+            "value": "8골 (24경기)",
+            "backNo": 7
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 4,
+            "name": "박재용",
+            "value": "13P (9골 4도움)",
+            "backNo": 16
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 4,
+            "name": "에울레르",
+            "value": "13P (8골 5도움)",
+            "backNo": 7
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 4,
+            "name": "민성준",
+            "value": "7경기 무실점",
+            "backNo": 1
+          }
+        ]
+      },
+      "화성": {
+        "team": {
+          "rank": 5,
+          "teamId": "K39",
+          "team": "화성",
+          "fullName": "화성",
+          "color": "#334155",
+          "accent": "#64748b",
+          "emblem": "",
+          "games": 25,
+          "points": 43,
+          "win": 12,
+          "draw": 7,
+          "loss": 6,
+          "goalsFor": 39,
+          "goalsAgainst": 25,
+          "goalDiff": 14,
+          "recent": [
+            "무",
+            "승",
+            "패",
+            "무",
+            "무"
+          ],
+          "homepage": "https://www.hwaseongfc.com/"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 4,
+            "name": "플라나",
+            "value": "11골 (25경기)",
+            "backNo": 11
+          },
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 7,
+            "name": "페트로프",
+            "value": "8골 (20경기)",
+            "backNo": 9
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 2,
+            "name": "플라나",
+            "value": "9도움 (25경기)",
+            "backNo": 11
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 1,
+            "name": "플라나",
+            "value": "20P (11골 9도움)",
+            "backNo": 11
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 2,
+            "name": "김승건",
+            "value": "9경기 무실점",
+            "backNo": 1
+          }
+        ]
+      },
+      "부산": {
+        "team": {
+          "rank": 6,
+          "teamId": "K06",
+          "team": "부산",
+          "fullName": "부산 아이파크",
+          "color": "#C8102E",
+          "accent": "#FFFFFF",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/4/4b/Busan_IPark_logo.svg/200px-Busan_IPark_logo.svg.png",
+          "games": 25,
+          "points": 41,
+          "win": 12,
+          "draw": 5,
+          "loss": 8,
+          "goalsFor": 41,
+          "goalsAgainst": 33,
+          "goalDiff": 8,
+          "recent": [
+            "패",
+            "패",
+            "무",
+            "무",
+            "패"
+          ],
+          "homepage": "https://www.busanipark.com"
+        },
+        "players": [
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 9,
+            "name": "가브리엘",
+            "value": "5도움 (23경기)",
+            "backNo": 10
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 8,
+            "name": "가브리엘",
+            "value": "12P (7골 5도움)",
+            "backNo": 10
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 8,
+            "name": "크리스찬",
+            "value": "12P (8골 4도움)",
+            "backNo": 99
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 5,
+            "name": "구상민",
+            "value": "6경기 무실점",
+            "backNo": 1
+          }
+        ]
+      },
+      "경남": {
+        "team": {
+          "rank": 7,
+          "teamId": "K20",
+          "team": "경남",
+          "fullName": "경남 FC",
+          "color": "#C8102E",
+          "accent": "#FFFFFF",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/0/09/Gyeongnam_FC_logo.svg/200px-Gyeongnam_FC_logo.svg.png",
+          "games": 24,
+          "points": 33,
+          "win": 8,
+          "draw": 9,
+          "loss": 7,
+          "goalsFor": 31,
+          "goalsAgainst": 30,
+          "goalDiff": 1,
+          "recent": [
+            "승",
+            "무",
+            "무",
+            "패",
+            "무"
+          ],
+          "homepage": "http://www.gyeongnamfc.com"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 8,
+            "name": "김현오",
+            "value": "8골 (21경기)",
+            "backNo": 90
+          }
+        ]
+      },
+      "김포": {
+        "team": {
+          "rank": 8,
+          "teamId": "K36",
+          "team": "김포",
+          "fullName": "김포 FC",
+          "color": "#0047AB",
+          "accent": "#FFC72C",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/1/1a/Gimpo_FC_logo.svg/200px-Gimpo_FC_logo.svg.png",
+          "games": 24,
+          "points": 32,
+          "win": 7,
+          "draw": 11,
+          "loss": 6,
+          "goalsFor": 30,
+          "goalsAgainst": 30,
+          "goalDiff": 0,
+          "recent": [
+            "패",
+            "패",
+            "무",
+            "승",
+            "무"
+          ],
+          "homepage": "https://www.gimpofc.com"
+        },
+        "players": []
+      },
+      "충남아산": {
+        "team": {
+          "rank": 9,
+          "teamId": "K34",
+          "team": "충남아산",
+          "fullName": "충남 아산 FC",
+          "color": "#003A70",
+          "accent": "#FDB913",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/8/8f/Chungnam_Asan_FC_emblem.svg/200px-Chungnam_Asan_FC_emblem.svg.png",
+          "games": 24,
+          "points": 31,
+          "win": 8,
+          "draw": 7,
+          "loss": 9,
+          "goalsFor": 31,
+          "goalsAgainst": 30,
+          "goalDiff": 1,
+          "recent": [
+            "패",
+            "승",
+            "패",
+            "무",
+            "승"
+          ],
+          "homepage": "https://www.asanfc.com"
+        },
+        "players": [
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 5,
+            "name": "신송훈",
+            "value": "6경기 무실점",
+            "backNo": 18
+          }
+        ]
+      },
+      "성남": {
+        "team": {
+          "rank": 10,
+          "teamId": "K08",
+          "team": "성남",
+          "fullName": "성남 FC",
+          "color": "#1C1C1C",
+          "accent": "#A7A8AA",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/91/Seongnam_FC_emblem.svg/200px-Seongnam_FC_emblem.svg.png",
+          "games": 24,
+          "points": 30,
+          "win": 7,
+          "draw": 9,
+          "loss": 8,
+          "goalsFor": 26,
+          "goalsAgainst": 28,
+          "goalDiff": -2,
+          "recent": [
+            "승",
+            "무",
+            "승",
+            "패",
+            "승"
+          ],
+          "homepage": "https://seongnamfc.com/"
+        },
+        "players": []
+      },
+      "용인": {
+        "team": {
+          "rank": 11,
+          "teamId": "K42",
+          "team": "용인",
+          "fullName": "용인",
+          "color": "#334155",
+          "accent": "#64748b",
+          "emblem": "",
+          "games": 24,
+          "points": 26,
+          "win": 5,
+          "draw": 11,
+          "loss": 8,
+          "goalsFor": 31,
+          "goalsAgainst": 35,
+          "goalDiff": -4,
+          "recent": [
+            "무",
+            "승",
+            "패",
+            "승",
+            "무"
+          ],
+          "homepage": "https://www.yonginfc.co.kr/"
+        },
+        "players": [
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 5,
+            "name": "김보섭",
+            "value": "6도움 (24경기)",
+            "backNo": 27
+          },
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 7,
+            "name": "황성민",
+            "value": "5경기 무실점",
+            "backNo": 21
+          }
+        ]
+      },
+      "충북청주": {
+        "team": {
+          "rank": 12,
+          "teamId": "K37",
+          "team": "충북청주",
+          "fullName": "충북 청주 FC",
+          "color": "#002B49",
+          "accent": "#C8102E",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/e/e3/Chungbuk_Cheongju_FC_logo.svg/200px-Chungbuk_Cheongju_FC_logo.svg.png",
+          "games": 25,
+          "points": 26,
+          "win": 4,
+          "draw": 14,
+          "loss": 7,
+          "goalsFor": 28,
+          "goalsAgainst": 39,
+          "goalDiff": -11,
+          "recent": [
+            "패",
+            "패",
+            "무",
+            "승",
+            "패"
+          ],
+          "homepage": "https://chfc.kr/"
+        },
+        "players": [
+          {
+            "category": "득점 순위 (Top Scorers)",
+            "rank": 2,
+            "name": "가르시아",
+            "value": "13골 (25경기)",
+            "backNo": 11
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 3,
+            "name": "반데이라",
+            "value": "7도움 (19경기)",
+            "backNo": 25
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 4,
+            "name": "가르시아",
+            "value": "13P (13골 0도움)",
+            "backNo": 11
+          }
+        ]
+      },
+      "파주": {
+        "team": {
+          "rank": 13,
+          "teamId": "K40",
+          "team": "파주",
+          "fullName": "파주",
+          "color": "#334155",
+          "accent": "#64748b",
+          "emblem": "",
+          "games": 24,
+          "points": 26,
+          "win": 7,
+          "draw": 5,
+          "loss": 12,
+          "goalsFor": 22,
+          "goalsAgainst": 28,
+          "goalDiff": -6,
+          "recent": [
+            "패",
+            "무",
+            "승",
+            "패",
+            "승"
+          ],
+          "homepage": "https://www.pajufrontier.com/"
+        },
+        "players": [
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 8,
+            "name": "김민승",
+            "value": "4경기 무실점",
+            "backNo": 13
+          }
+        ]
+      },
+      "천안": {
+        "team": {
+          "rank": 14,
+          "teamId": "K38",
+          "team": "천안",
+          "fullName": "천안 시티 FC",
+          "color": "#76C5EE",
+          "accent": "#002B49",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/1/1d/Cheonan_City_FC_logo.svg/200px-Cheonan_City_FC_logo.svg.png",
+          "games": 25,
+          "points": 23,
+          "win": 4,
+          "draw": 11,
+          "loss": 10,
+          "goalsFor": 29,
+          "goalsAgainst": 34,
+          "goalDiff": -5,
+          "recent": [
+            "무",
+            "패",
+            "패",
+            "무",
+            "패"
+          ],
+          "homepage": "https://cheonancityfc.kr/"
+        },
+        "players": [
+          {
+            "category": "무실점 경기 (Clean Sheets)",
+            "rank": 8,
+            "name": "박대한",
+            "value": "4경기 무실점",
+            "backNo": 21
+          }
+        ]
+      },
+      "안산": {
+        "team": {
+          "rank": 15,
+          "teamId": "K32",
+          "team": "안산",
+          "fullName": "안산 그리너스 FC",
+          "color": "#006738",
+          "accent": "#FDB913",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/6/62/Ansan_Greeners_FC_emblem.svg/200px-Ansan_Greeners_FC_emblem.svg.png",
+          "games": 25,
+          "points": 22,
+          "win": 6,
+          "draw": 4,
+          "loss": 15,
+          "goalsFor": 25,
+          "goalsAgainst": 46,
+          "goalDiff": -21,
+          "recent": [
+            "승",
+            "패",
+            "패",
+            "패",
+            "무"
+          ],
+          "homepage": "https://www.greenersfc.com/"
+        },
+        "players": []
+      },
+      "전남": {
+        "team": {
+          "rank": 16,
+          "teamId": "K07",
+          "team": "전남",
+          "fullName": "전남 드래곤즈",
+          "color": "#FFC72C",
+          "accent": "#000000",
+          "emblem": "https://upload.wikimedia.org/wikipedia/ko/thumb/4/4e/Jeonnam_Dragons_emblem.svg/200px-Jeonnam_Dragons_emblem.svg.png",
+          "games": 24,
+          "points": 21,
+          "win": 4,
+          "draw": 9,
+          "loss": 11,
+          "goalsFor": 28,
+          "goalsAgainst": 40,
+          "goalDiff": -12,
+          "recent": [
+            "무",
+            "승",
+            "승",
+            "패",
+            "패"
+          ],
+          "homepage": "https://www.dragons.co.kr"
+        },
+        "players": [
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 6,
+            "name": "발디비아",
+            "value": "6도움 (24경기)",
+            "backNo": 10
+          },
+          {
+            "category": "도움 순위 (Top Assists)",
+            "rank": 8,
+            "name": "김범수",
+            "value": "5도움 (22경기)",
+            "backNo": 17
+          },
+          {
+            "category": "공격포인트 순위 (Attacking Points)",
+            "rank": 8,
+            "name": "발디비아",
+            "value": "12P (6골 6도움)",
+            "backNo": 10
+          }
+        ]
+      },
+      "김해": {
+        "team": {
+          "rank": 17,
+          "teamId": "K41",
+          "team": "김해",
+          "fullName": "김해",
+          "color": "#334155",
+          "accent": "#64748b",
+          "emblem": "",
+          "games": 24,
+          "points": 13,
+          "win": 2,
+          "draw": 7,
+          "loss": 15,
+          "goalsFor": 19,
+          "goalsAgainst": 47,
+          "goalDiff": -28,
+          "recent": [
+            "무",
+            "패",
+            "패",
+            "무",
+            "패"
+          ],
+          "homepage": "https://gimhaefc2008.com/"
+        },
+        "players": []
+      }
+    }
+  }
+}

@@ -1,0 +1,6001 @@
+{
+  "sports": "overseas",
+  "title": "해외 축구 (Overseas Football)",
+  "updated_at": "2026-09-19 12:26:17",
+  "updated_at_iso": "2026-09-19T12:26:17.376625",
+  "leagues": {
+    "epl": {
+      "key": "epl",
+      "name": "프리미어리그 (Premier League)",
+      "shortName": "EPL",
+      "country": "잉글랜드",
+      "color": "#38003c",
+      "icon": "fa-crown",
+      "teams": [
+        {
+          "rank": 1,
+          "team": "아스널",
+          "fullName": "아스널",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/W1-BFEctS5BlEkf0u_ld3.png",
+          "games": 4,
+          "points": 12,
+          "win": 4,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 8,
+          "goalsAgainst": 1,
+          "goalDiff": 7,
+          "recent": [
+            "승",
+            "승",
+            "승",
+            "승"
+          ]
+        },
+        {
+          "rank": 2,
+          "team": "맨체스터 시티",
+          "fullName": "맨체스터 시티",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/YaWwRy_S6TKMuwJHBvDbR.png",
+          "games": 4,
+          "points": 12,
+          "win": 4,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 8,
+          "goalsAgainst": 2,
+          "goalDiff": 6,
+          "recent": [
+            "승",
+            "승",
+            "승",
+            "승"
+          ]
+        },
+        {
+          "rank": 3,
+          "team": "브렌트포드",
+          "fullName": "브렌트포드",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/zIuTQ00RiiL1vS9A2Uhv8.png",
+          "games": 5,
+          "points": 9,
+          "win": 2,
+          "draw": 3,
+          "loss": 0,
+          "goalsFor": 10,
+          "goalsAgainst": 4,
+          "goalDiff": 6,
+          "recent": [
+            "승",
+            "무",
+            "무",
+            "무",
+            "승"
+          ]
+        },
+        {
+          "rank": 4,
+          "team": "리즈 유나이티드",
+          "fullName": "리즈 유나이티드",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/aHnEa_wImk48agGWeQmpX.png",
+          "games": 4,
+          "points": 8,
+          "win": 2,
+          "draw": 2,
+          "loss": 0,
+          "goalsFor": 7,
+          "goalsAgainst": 3,
+          "goalDiff": 4,
+          "recent": [
+            "승",
+            "무",
+            "무",
+            "승"
+          ]
+        },
+        {
+          "rank": 5,
+          "team": "헐 시티",
+          "fullName": "헐 시티",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/CIbMqRusYuY1igSiiTwCp.png",
+          "games": 4,
+          "points": 8,
+          "win": 2,
+          "draw": 2,
+          "loss": 0,
+          "goalsFor": 5,
+          "goalsAgainst": 2,
+          "goalDiff": 3,
+          "recent": [
+            "무",
+            "무",
+            "승",
+            "승"
+          ]
+        },
+        {
+          "rank": 6,
+          "team": "브라이튼 & 호프 알비온",
+          "fullName": "브라이튼 & 호프 알비온",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/WiirpxPm2UOiRN90nCKOM.png",
+          "games": 4,
+          "points": 7,
+          "win": 2,
+          "draw": 1,
+          "loss": 1,
+          "goalsFor": 13,
+          "goalsAgainst": 5,
+          "goalDiff": 8,
+          "recent": [
+            "승",
+            "무",
+            "패",
+            "승"
+          ]
+        },
+        {
+          "rank": 7,
+          "team": "첼시",
+          "fullName": "첼시",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/w5N6rBTPf_J_brPwrNIOG.png",
+          "games": 5,
+          "points": 7,
+          "win": 2,
+          "draw": 1,
+          "loss": 2,
+          "goalsFor": 10,
+          "goalsAgainst": 12,
+          "goalDiff": -2,
+          "recent": [
+            "패",
+            "무",
+            "패",
+            "승",
+            "승"
+          ]
+        },
+        {
+          "rank": 8,
+          "team": "리버풀",
+          "fullName": "리버풀",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/5pqbkK17JBIe7kMzOPSdr.png",
+          "games": 4,
+          "points": 6,
+          "win": 1,
+          "draw": 3,
+          "loss": 0,
+          "goalsFor": 6,
+          "goalsAgainst": 4,
+          "goalDiff": 2,
+          "recent": [
+            "무",
+            "승",
+            "무",
+            "무"
+          ]
+        },
+        {
+          "rank": 9,
+          "team": "에버튼",
+          "fullName": "에버튼",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/KpdwLlfU5HTu0Xg7fXxof.png",
+          "games": 4,
+          "points": 6,
+          "win": 1,
+          "draw": 3,
+          "loss": 0,
+          "goalsFor": 5,
+          "goalsAgainst": 3,
+          "goalDiff": 2,
+          "recent": [
+            "무",
+            "무",
+            "무",
+            "승"
+          ]
+        },
+        {
+          "rank": 10,
+          "team": "입스위치 타운",
+          "fullName": "입스위치 타운",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/zrA_YgKgSHz-G7qbhWYG-.png",
+          "games": 4,
+          "points": 6,
+          "win": 2,
+          "draw": 0,
+          "loss": 2,
+          "goalsFor": 7,
+          "goalsAgainst": 10,
+          "goalDiff": -3,
+          "recent": [
+            "승",
+            "패",
+            "패",
+            "승"
+          ]
+        },
+        {
+          "rank": 11,
+          "team": "노팅햄 포레스트",
+          "fullName": "노팅햄 포레스트",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/BNAy0MWCqOxdSF4SLgCPK.png",
+          "games": 4,
+          "points": 5,
+          "win": 1,
+          "draw": 2,
+          "loss": 1,
+          "goalsFor": 4,
+          "goalsAgainst": 4,
+          "goalDiff": 0,
+          "recent": [
+            "승",
+            "무",
+            "무",
+            "패"
+          ]
+        },
+        {
+          "rank": 12,
+          "team": "뉴캐슬 유나이티드",
+          "fullName": "뉴캐슬 유나이티드",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/1iD-fvEOrJtrHuYnqjZ2y.png",
+          "games": 4,
+          "points": 5,
+          "win": 1,
+          "draw": 2,
+          "loss": 1,
+          "goalsFor": 7,
+          "goalsAgainst": 8,
+          "goalDiff": -1,
+          "recent": [
+            "패",
+            "무",
+            "승",
+            "무"
+          ]
+        },
+        {
+          "rank": 13,
+          "team": "맨체스터 유나이티드",
+          "fullName": "맨체스터 유나이티드",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/StOWHY8QeOZ7MplXkp2KC.png",
+          "games": 4,
+          "points": 4,
+          "win": 1,
+          "draw": 1,
+          "loss": 2,
+          "goalsFor": 7,
+          "goalsAgainst": 7,
+          "goalDiff": 0,
+          "recent": [
+            "패",
+            "무",
+            "승",
+            "패"
+          ]
+        },
+        {
+          "rank": 14,
+          "team": "선덜랜드",
+          "fullName": "선덜랜드",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/hRMDFkwiIhvjfGNfMkNk_.png",
+          "games": 4,
+          "points": 4,
+          "win": 1,
+          "draw": 1,
+          "loss": 2,
+          "goalsFor": 3,
+          "goalsAgainst": 5,
+          "goalDiff": -2,
+          "recent": [
+            "패",
+            "무",
+            "승",
+            "패"
+          ]
+        },
+        {
+          "rank": 15,
+          "team": "AFC 본머스",
+          "fullName": "AFC 본머스",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/FS7UO4BdZPMJrL5MlqxyL.png",
+          "games": 4,
+          "points": 3,
+          "win": 0,
+          "draw": 3,
+          "loss": 1,
+          "goalsFor": 6,
+          "goalsAgainst": 7,
+          "goalDiff": -1,
+          "recent": [
+            "무",
+            "무",
+            "무",
+            "패"
+          ]
+        },
+        {
+          "rank": 16,
+          "team": "크리스털 팰리스",
+          "fullName": "크리스털 팰리스",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/fkqJeAhCc1RGGGO8bTZwl.png",
+          "games": 4,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 3,
+          "goalsFor": 6,
+          "goalsAgainst": 11,
+          "goalDiff": -5,
+          "recent": [
+            "패",
+            "승",
+            "패",
+            "패"
+          ]
+        },
+        {
+          "rank": 17,
+          "team": "토트넘 홋스퍼",
+          "fullName": "토트넘 홋스퍼",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/KmdeSyXZ0p1BvszXZCBzu.png",
+          "games": 4,
+          "points": 2,
+          "win": 0,
+          "draw": 2,
+          "loss": 2,
+          "goalsFor": 0,
+          "goalsAgainst": 5,
+          "goalDiff": -5,
+          "recent": [
+            "무",
+            "무",
+            "패",
+            "패"
+          ]
+        },
+        {
+          "rank": 18,
+          "team": "풀햄",
+          "fullName": "풀햄",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/LX9q9cnrBN2TnIu8byLFT.png",
+          "games": 4,
+          "points": 1,
+          "win": 0,
+          "draw": 1,
+          "loss": 3,
+          "goalsFor": 4,
+          "goalsAgainst": 7,
+          "goalDiff": -3,
+          "recent": [
+            "무",
+            "패",
+            "패",
+            "패"
+          ]
+        },
+        {
+          "rank": 19,
+          "team": "아스톤 빌라",
+          "fullName": "아스톤 빌라",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/qgf3Tx9R3nphdWIS9SgyB.png",
+          "games": 4,
+          "points": 1,
+          "win": 0,
+          "draw": 1,
+          "loss": 3,
+          "goalsFor": 1,
+          "goalsAgainst": 7,
+          "goalDiff": -6,
+          "recent": [
+            "패",
+            "무",
+            "패",
+            "패"
+          ]
+        },
+        {
+          "rank": 20,
+          "team": "코벤트리 시티",
+          "fullName": "코벤트리 시티",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/W59RF9GwRrQAX4YSSlzQQ.png",
+          "games": 4,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 4,
+          "goalsFor": 0,
+          "goalsAgainst": 10,
+          "goalDiff": -10,
+          "recent": [
+            "패",
+            "패",
+            "패",
+            "패"
+          ]
+        }
+      ],
+      "players": [
+        {
+          "category": "득점 순위 (Top Scorers)",
+          "icon": "fa-futbol",
+          "first_player": {
+            "rank": 1,
+            "name": "Erling Haaland",
+            "team": "맨체스터 시티",
+            "teamEng": "Manchester City",
+            "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+            "headshot": "",
+            "value": "4.0개 (Matches: 4, Goals: 4)",
+            "numeric_val": 4.0
+          },
+          "ranks": [
+            {
+              "rank": 1,
+              "name": "Erling Haaland",
+              "team": "맨체스터 시티",
+              "teamEng": "Manchester City",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+              "headshot": "",
+              "value": "4.0개 (Matches: 4, Goals: 4)",
+              "numeric_val": 4.0
+            },
+            {
+              "rank": 2,
+              "name": "João Pedro",
+              "team": "첼시",
+              "teamEng": "Chelsea",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 4, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 3,
+              "name": "Bruno Fernandes",
+              "team": "맨체스터 유나이티드",
+              "teamEng": "Manchester United",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 4, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 4,
+              "name": "Kevin Schade",
+              "team": "브렌트포드",
+              "teamEng": "Brentford",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/337.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 4, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 5,
+              "name": "Marcus Tavernier",
+              "team": "본머스",
+              "teamEng": "AFC Bournemouth",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 4, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 6,
+              "name": "Morgan Rogers",
+              "team": "첼시",
+              "teamEng": "Chelsea",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 4, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 7,
+              "name": "Bukayo Saka",
+              "team": "아스널",
+              "teamEng": "Arsenal",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 4, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 8,
+              "name": "Alexander Isak",
+              "team": "리버풀",
+              "teamEng": "Liverpool",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 4, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 9,
+              "name": "Leif Davis",
+              "team": "입스위치",
+              "teamEng": "Ipswich Town",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/373.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 10,
+              "name": "Bryan Mbeumo",
+              "team": "맨체스터 유나이티드",
+              "teamEng": "Manchester United",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 11,
+              "name": "Vitaly Janelt",
+              "team": "브렌트포드",
+              "teamEng": "Brentford",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/337.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 12,
+              "name": "Pascal Gross",
+              "team": "브라이튼",
+              "teamEng": "Brighton & Hove Albion",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 13,
+              "name": "Cole Palmer",
+              "team": "첼시",
+              "teamEng": "Chelsea",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 14,
+              "name": "Kai Havertz",
+              "team": "아스널",
+              "teamEng": "Arsenal",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 15,
+              "name": "Josh King",
+              "team": "풀럼",
+              "teamEng": "Fulham",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/370.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Goals: 2)",
+              "numeric_val": 2.0
+            }
+          ]
+        },
+        {
+          "category": "도움 순위 (Top Assists)",
+          "icon": "fa-hands-helping",
+          "first_player": {
+            "rank": 1,
+            "name": "João Pedro",
+            "team": "첼시",
+            "teamEng": "Chelsea",
+            "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+            "headshot": "",
+            "value": "3.0개 (Matches: 4, Assists: 3)",
+            "numeric_val": 3.0
+          },
+          "ranks": [
+            {
+              "rank": 1,
+              "name": "João Pedro",
+              "team": "첼시",
+              "teamEng": "Chelsea",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 4, Assists: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 2,
+              "name": "Daichi Kamada",
+              "team": "크리스탈 팰리스",
+              "teamEng": "Crystal Palace",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 4, Assists: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 3,
+              "name": "Evanilson",
+              "team": "본머스",
+              "teamEng": "AFC Bournemouth",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 4, Assists: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 4,
+              "name": "Cody Gakpo",
+              "team": "리버풀",
+              "teamEng": "Liverpool",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
+              "headshot": "https://a.espncdn.com/i/headshots/soccer/players/full/249524.png",
+              "value": "3.0개 (Matches: 4, Assists: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 5,
+              "name": "Antoine Semenyo",
+              "team": "맨체스터 시티",
+              "teamEng": "Manchester City",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 6,
+              "name": "Morgan Gibbs-White",
+              "team": "노팅엄 포레스트",
+              "teamEng": "Nottingham Forest",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 7,
+              "name": "Pascal Gross",
+              "team": "브라이튼",
+              "teamEng": "Brighton & Hove Albion",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 8,
+              "name": "Cole Palmer",
+              "team": "첼시",
+              "teamEng": "Chelsea",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 9,
+              "name": "Julio Enciso",
+              "team": "입스위치",
+              "teamEng": "Ipswich Town",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/373.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 10,
+              "name": "Maxim De Cuyper",
+              "team": "브라이튼",
+              "teamEng": "Brighton & Hove Albion",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 11,
+              "name": "Riccardo Calafiori",
+              "team": "아스널",
+              "teamEng": "Arsenal",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 12,
+              "name": "Declan Rice",
+              "team": "아스널",
+              "teamEng": "Arsenal",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 13,
+              "name": "Jorrel Hato",
+              "team": "첼시",
+              "teamEng": "Chelsea",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+              "headshot": "https://a.espncdn.com/i/headshots/soccer/players/full/353951.png",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 14,
+              "name": "Rayan Cherki",
+              "team": "맨체스터 시티",
+              "teamEng": "Manchester City",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 15,
+              "name": "Phil Foden",
+              "team": "맨체스터 시티",
+              "teamEng": "Manchester City",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "numeric_val": 2.0
+            }
+          ]
+        }
+      ],
+      "team_hub": {
+        "아스널": {
+          "team": {
+            "rank": 1,
+            "team": "아스널",
+            "fullName": "아스널",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/W1-BFEctS5BlEkf0u_ld3.png",
+            "games": 4,
+            "points": 12,
+            "win": 4,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 8,
+            "goalsAgainst": 1,
+            "goalDiff": 7,
+            "recent": [
+              "승",
+              "승",
+              "승",
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 7,
+              "name": "Bukayo Saka",
+              "value": "3.0개 (Matches: 4, Goals: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 14,
+              "name": "Kai Havertz",
+              "value": "2.0개 (Matches: 4, Goals: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 11,
+              "name": "Riccardo Calafiori",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 12,
+              "name": "Declan Rice",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "headshot": ""
+            }
+          ]
+        },
+        "맨체스터 시티": {
+          "team": {
+            "rank": 2,
+            "team": "맨체스터 시티",
+            "fullName": "맨체스터 시티",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/YaWwRy_S6TKMuwJHBvDbR.png",
+            "games": 4,
+            "points": 12,
+            "win": 4,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 8,
+            "goalsAgainst": 2,
+            "goalDiff": 6,
+            "recent": [
+              "승",
+              "승",
+              "승",
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 1,
+              "name": "Erling Haaland",
+              "value": "4.0개 (Matches: 4, Goals: 4)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 5,
+              "name": "Antoine Semenyo",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 14,
+              "name": "Rayan Cherki",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 15,
+              "name": "Phil Foden",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "headshot": ""
+            }
+          ]
+        },
+        "브렌트포드": {
+          "team": {
+            "rank": 3,
+            "team": "브렌트포드",
+            "fullName": "브렌트포드",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/zIuTQ00RiiL1vS9A2Uhv8.png",
+            "games": 5,
+            "points": 9,
+            "win": 2,
+            "draw": 3,
+            "loss": 0,
+            "goalsFor": 10,
+            "goalsAgainst": 4,
+            "goalDiff": 6,
+            "recent": [
+              "승",
+              "무",
+              "무",
+              "무",
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 4,
+              "name": "Kevin Schade",
+              "value": "3.0개 (Matches: 4, Goals: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 11,
+              "name": "Vitaly Janelt",
+              "value": "2.0개 (Matches: 4, Goals: 2)",
+              "headshot": ""
+            }
+          ]
+        },
+        "리즈 유나이티드": {
+          "team": {
+            "rank": 4,
+            "team": "리즈 유나이티드",
+            "fullName": "리즈 유나이티드",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/aHnEa_wImk48agGWeQmpX.png",
+            "games": 4,
+            "points": 8,
+            "win": 2,
+            "draw": 2,
+            "loss": 0,
+            "goalsFor": 7,
+            "goalsAgainst": 3,
+            "goalDiff": 4,
+            "recent": [
+              "승",
+              "무",
+              "무",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "헐 시티": {
+          "team": {
+            "rank": 5,
+            "team": "헐 시티",
+            "fullName": "헐 시티",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/CIbMqRusYuY1igSiiTwCp.png",
+            "games": 4,
+            "points": 8,
+            "win": 2,
+            "draw": 2,
+            "loss": 0,
+            "goalsFor": 5,
+            "goalsAgainst": 2,
+            "goalDiff": 3,
+            "recent": [
+              "무",
+              "무",
+              "승",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "브라이튼 & 호프 알비온": {
+          "team": {
+            "rank": 6,
+            "team": "브라이튼 & 호프 알비온",
+            "fullName": "브라이튼 & 호프 알비온",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/WiirpxPm2UOiRN90nCKOM.png",
+            "games": 4,
+            "points": 7,
+            "win": 2,
+            "draw": 1,
+            "loss": 1,
+            "goalsFor": 13,
+            "goalsAgainst": 5,
+            "goalDiff": 8,
+            "recent": [
+              "승",
+              "무",
+              "패",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "첼시": {
+          "team": {
+            "rank": 7,
+            "team": "첼시",
+            "fullName": "첼시",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/w5N6rBTPf_J_brPwrNIOG.png",
+            "games": 5,
+            "points": 7,
+            "win": 2,
+            "draw": 1,
+            "loss": 2,
+            "goalsFor": 10,
+            "goalsAgainst": 12,
+            "goalDiff": -2,
+            "recent": [
+              "패",
+              "무",
+              "패",
+              "승",
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 2,
+              "name": "João Pedro",
+              "value": "3.0개 (Matches: 4, Goals: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 6,
+              "name": "Morgan Rogers",
+              "value": "3.0개 (Matches: 4, Goals: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 13,
+              "name": "Cole Palmer",
+              "value": "2.0개 (Matches: 4, Goals: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 1,
+              "name": "João Pedro",
+              "value": "3.0개 (Matches: 4, Assists: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 8,
+              "name": "Cole Palmer",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 13,
+              "name": "Jorrel Hato",
+              "value": "2.0개 (Matches: 4, Assists: 2)",
+              "headshot": "https://a.espncdn.com/i/headshots/soccer/players/full/353951.png"
+            }
+          ]
+        },
+        "리버풀": {
+          "team": {
+            "rank": 8,
+            "team": "리버풀",
+            "fullName": "리버풀",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/5pqbkK17JBIe7kMzOPSdr.png",
+            "games": 4,
+            "points": 6,
+            "win": 1,
+            "draw": 3,
+            "loss": 0,
+            "goalsFor": 6,
+            "goalsAgainst": 4,
+            "goalDiff": 2,
+            "recent": [
+              "무",
+              "승",
+              "무",
+              "무"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 8,
+              "name": "Alexander Isak",
+              "value": "3.0개 (Matches: 4, Goals: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 4,
+              "name": "Cody Gakpo",
+              "value": "3.0개 (Matches: 4, Assists: 3)",
+              "headshot": "https://a.espncdn.com/i/headshots/soccer/players/full/249524.png"
+            }
+          ]
+        },
+        "에버튼": {
+          "team": {
+            "rank": 9,
+            "team": "에버튼",
+            "fullName": "에버튼",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/KpdwLlfU5HTu0Xg7fXxof.png",
+            "games": 4,
+            "points": 6,
+            "win": 1,
+            "draw": 3,
+            "loss": 0,
+            "goalsFor": 5,
+            "goalsAgainst": 3,
+            "goalDiff": 2,
+            "recent": [
+              "무",
+              "무",
+              "무",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "입스위치 타운": {
+          "team": {
+            "rank": 10,
+            "team": "입스위치 타운",
+            "fullName": "입스위치 타운",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/zrA_YgKgSHz-G7qbhWYG-.png",
+            "games": 4,
+            "points": 6,
+            "win": 2,
+            "draw": 0,
+            "loss": 2,
+            "goalsFor": 7,
+            "goalsAgainst": 10,
+            "goalDiff": -3,
+            "recent": [
+              "승",
+              "패",
+              "패",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "노팅햄 포레스트": {
+          "team": {
+            "rank": 11,
+            "team": "노팅햄 포레스트",
+            "fullName": "노팅햄 포레스트",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/BNAy0MWCqOxdSF4SLgCPK.png",
+            "games": 4,
+            "points": 5,
+            "win": 1,
+            "draw": 2,
+            "loss": 1,
+            "goalsFor": 4,
+            "goalsAgainst": 4,
+            "goalDiff": 0,
+            "recent": [
+              "승",
+              "무",
+              "무",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "뉴캐슬 유나이티드": {
+          "team": {
+            "rank": 12,
+            "team": "뉴캐슬 유나이티드",
+            "fullName": "뉴캐슬 유나이티드",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/1iD-fvEOrJtrHuYnqjZ2y.png",
+            "games": 4,
+            "points": 5,
+            "win": 1,
+            "draw": 2,
+            "loss": 1,
+            "goalsFor": 7,
+            "goalsAgainst": 8,
+            "goalDiff": -1,
+            "recent": [
+              "패",
+              "무",
+              "승",
+              "무"
+            ]
+          },
+          "players": []
+        },
+        "맨체스터 유나이티드": {
+          "team": {
+            "rank": 13,
+            "team": "맨체스터 유나이티드",
+            "fullName": "맨체스터 유나이티드",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/StOWHY8QeOZ7MplXkp2KC.png",
+            "games": 4,
+            "points": 4,
+            "win": 1,
+            "draw": 1,
+            "loss": 2,
+            "goalsFor": 7,
+            "goalsAgainst": 7,
+            "goalDiff": 0,
+            "recent": [
+              "패",
+              "무",
+              "승",
+              "패"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 3,
+              "name": "Bruno Fernandes",
+              "value": "3.0개 (Matches: 4, Goals: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 10,
+              "name": "Bryan Mbeumo",
+              "value": "2.0개 (Matches: 4, Goals: 2)",
+              "headshot": ""
+            }
+          ]
+        },
+        "선덜랜드": {
+          "team": {
+            "rank": 14,
+            "team": "선덜랜드",
+            "fullName": "선덜랜드",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/hRMDFkwiIhvjfGNfMkNk_.png",
+            "games": 4,
+            "points": 4,
+            "win": 1,
+            "draw": 1,
+            "loss": 2,
+            "goalsFor": 3,
+            "goalsAgainst": 5,
+            "goalDiff": -2,
+            "recent": [
+              "패",
+              "무",
+              "승",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "AFC 본머스": {
+          "team": {
+            "rank": 15,
+            "team": "AFC 본머스",
+            "fullName": "AFC 본머스",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/FS7UO4BdZPMJrL5MlqxyL.png",
+            "games": 4,
+            "points": 3,
+            "win": 0,
+            "draw": 3,
+            "loss": 1,
+            "goalsFor": 6,
+            "goalsAgainst": 7,
+            "goalDiff": -1,
+            "recent": [
+              "무",
+              "무",
+              "무",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "크리스털 팰리스": {
+          "team": {
+            "rank": 16,
+            "team": "크리스털 팰리스",
+            "fullName": "크리스털 팰리스",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/fkqJeAhCc1RGGGO8bTZwl.png",
+            "games": 4,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 3,
+            "goalsFor": 6,
+            "goalsAgainst": 11,
+            "goalDiff": -5,
+            "recent": [
+              "패",
+              "승",
+              "패",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "토트넘 홋스퍼": {
+          "team": {
+            "rank": 17,
+            "team": "토트넘 홋스퍼",
+            "fullName": "토트넘 홋스퍼",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/KmdeSyXZ0p1BvszXZCBzu.png",
+            "games": 4,
+            "points": 2,
+            "win": 0,
+            "draw": 2,
+            "loss": 2,
+            "goalsFor": 0,
+            "goalsAgainst": 5,
+            "goalDiff": -5,
+            "recent": [
+              "무",
+              "무",
+              "패",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "풀햄": {
+          "team": {
+            "rank": 18,
+            "team": "풀햄",
+            "fullName": "풀햄",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/LX9q9cnrBN2TnIu8byLFT.png",
+            "games": 4,
+            "points": 1,
+            "win": 0,
+            "draw": 1,
+            "loss": 3,
+            "goalsFor": 4,
+            "goalsAgainst": 7,
+            "goalDiff": -3,
+            "recent": [
+              "무",
+              "패",
+              "패",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "아스톤 빌라": {
+          "team": {
+            "rank": 19,
+            "team": "아스톤 빌라",
+            "fullName": "아스톤 빌라",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/qgf3Tx9R3nphdWIS9SgyB.png",
+            "games": 4,
+            "points": 1,
+            "win": 0,
+            "draw": 1,
+            "loss": 3,
+            "goalsFor": 1,
+            "goalsAgainst": 7,
+            "goalDiff": -6,
+            "recent": [
+              "패",
+              "무",
+              "패",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "코벤트리 시티": {
+          "team": {
+            "rank": 20,
+            "team": "코벤트리 시티",
+            "fullName": "코벤트리 시티",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/W59RF9GwRrQAX4YSSlzQQ.png",
+            "games": 4,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 4,
+            "goalsFor": 0,
+            "goalsAgainst": 10,
+            "goalDiff": -10,
+            "recent": [
+              "패",
+              "패",
+              "패",
+              "패"
+            ]
+          },
+          "players": []
+        }
+      }
+    },
+    "laliga": {
+      "key": "laliga",
+      "name": "라리가 (LaLiga)",
+      "shortName": "LaLiga",
+      "country": "스페인",
+      "color": "#ee8707",
+      "icon": "fa-shield-halved",
+      "teams": [
+        {
+          "rank": 1,
+          "team": "바르셀로나",
+          "fullName": "바르셀로나",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/eu0z1bZDA3gqIhdn-rHli.png",
+          "games": 6,
+          "points": 18,
+          "win": 6,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 28,
+          "goalsAgainst": 6,
+          "goalDiff": 22,
+          "recent": [
+            "승",
+            "승",
+            "승",
+            "승",
+            "승"
+          ]
+        },
+        {
+          "rank": 2,
+          "team": "레알 마드리드",
+          "fullName": "레알 마드리드",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/VOlkxOIoXAXF_11lYJ_Ve.png",
+          "games": 6,
+          "points": 15,
+          "win": 5,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 17,
+          "goalsAgainst": 6,
+          "goalDiff": 11,
+          "recent": [
+            "승",
+            "승",
+            "패",
+            "승",
+            "승"
+          ]
+        },
+        {
+          "rank": 3,
+          "team": "레알 베티스",
+          "fullName": "레알 베티스",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/gezsEknLaMwmk3X3Zcc76.png",
+          "games": 6,
+          "points": 15,
+          "win": 5,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 8,
+          "goalsAgainst": 6,
+          "goalDiff": 2,
+          "recent": [
+            "승",
+            "승",
+            "승",
+            "패",
+            "승"
+          ]
+        },
+        {
+          "rank": 4,
+          "team": "아틀레티코 마드리드",
+          "fullName": "아틀레티코 마드리드",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/xWY4as7vKsiitaDE-lmIe.png",
+          "games": 6,
+          "points": 13,
+          "win": 4,
+          "draw": 1,
+          "loss": 1,
+          "goalsFor": 14,
+          "goalsAgainst": 6,
+          "goalDiff": 8,
+          "recent": [
+            "승",
+            "승",
+            "패",
+            "승",
+            "무"
+          ]
+        },
+        {
+          "rank": 5,
+          "team": "세비야",
+          "fullName": "세비야",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/crn6HYOO9QzfqMRAUuGIF.png",
+          "games": 6,
+          "points": 13,
+          "win": 4,
+          "draw": 1,
+          "loss": 1,
+          "goalsFor": 9,
+          "goalsAgainst": 6,
+          "goalDiff": 3,
+          "recent": [
+            "승",
+            "승",
+            "무",
+            "패",
+            "승"
+          ]
+        },
+        {
+          "rank": 6,
+          "team": "알라베스",
+          "fullName": "알라베스",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/dqC3XtzsGeXe3c53Qqrn-.png",
+          "games": 6,
+          "points": 10,
+          "win": 3,
+          "draw": 1,
+          "loss": 2,
+          "goalsFor": 11,
+          "goalsAgainst": 6,
+          "goalDiff": 5,
+          "recent": [
+            "패",
+            "패",
+            "승",
+            "승",
+            "무"
+          ]
+        },
+        {
+          "rank": 7,
+          "team": "데포르티보 라 코루냐",
+          "fullName": "데포르티보 라 코루냐",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/dzWI12lwIaS-1ly_2d227.png",
+          "games": 6,
+          "points": 9,
+          "win": 2,
+          "draw": 3,
+          "loss": 1,
+          "goalsFor": 9,
+          "goalsAgainst": 7,
+          "goalDiff": 2,
+          "recent": [
+            "패",
+            "무",
+            "승",
+            "승",
+            "무"
+          ]
+        },
+        {
+          "rank": 8,
+          "team": "아틀레틱 빌바오",
+          "fullName": "아틀레틱 빌바오",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/7h4N4ZU17VQqx1GNJwuvF.png",
+          "games": 5,
+          "points": 7,
+          "win": 2,
+          "draw": 1,
+          "loss": 2,
+          "goalsFor": 7,
+          "goalsAgainst": 6,
+          "goalDiff": 1,
+          "recent": [
+            "무",
+            "승",
+            "승",
+            "패",
+            "패"
+          ]
+        },
+        {
+          "rank": 9,
+          "team": "에스파뇰",
+          "fullName": "에스파뇰",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/yXPQ9R0js1ZPr5Od9cch8.png",
+          "games": 7,
+          "points": 7,
+          "win": 2,
+          "draw": 1,
+          "loss": 4,
+          "goalsFor": 10,
+          "goalsAgainst": 10,
+          "goalDiff": 0,
+          "recent": [
+            "패",
+            "패",
+            "승",
+            "무",
+            "패"
+          ]
+        },
+        {
+          "rank": 10,
+          "team": "라싱 산탄데르",
+          "fullName": "라싱 산탄데르",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/xH6IjV1TfoWF9SBtc7QTS.png",
+          "games": 6,
+          "points": 7,
+          "win": 2,
+          "draw": 1,
+          "loss": 3,
+          "goalsFor": 11,
+          "goalsAgainst": 16,
+          "goalDiff": -5,
+          "recent": [
+            "패",
+            "승",
+            "패",
+            "승",
+            "패"
+          ]
+        },
+        {
+          "rank": 11,
+          "team": "바예카노",
+          "fullName": "바예카노",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/ac0Y7wzVbv4IwqRAt0tX_.png",
+          "games": 6,
+          "points": 7,
+          "win": 2,
+          "draw": 1,
+          "loss": 3,
+          "goalsFor": 10,
+          "goalsAgainst": 15,
+          "goalDiff": -5,
+          "recent": [
+            "승",
+            "패",
+            "승",
+            "패",
+            "무"
+          ]
+        },
+        {
+          "rank": 12,
+          "team": "레알 소시에다드",
+          "fullName": "레알 소시에다드",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/N79j9O-sTkXZNhc9UZUsX.png",
+          "games": 6,
+          "points": 7,
+          "win": 2,
+          "draw": 1,
+          "loss": 3,
+          "goalsFor": 6,
+          "goalsAgainst": 11,
+          "goalDiff": -5,
+          "recent": [
+            "패",
+            "승",
+            "무",
+            "승",
+            "패"
+          ]
+        },
+        {
+          "rank": 13,
+          "team": "오사수나",
+          "fullName": "오사수나",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/NqdsiG8yecUZjhG0HtEWx.png",
+          "games": 6,
+          "points": 7,
+          "win": 2,
+          "draw": 1,
+          "loss": 3,
+          "goalsFor": 5,
+          "goalsAgainst": 12,
+          "goalDiff": -7,
+          "recent": [
+            "패",
+            "패",
+            "패",
+            "승",
+            "승"
+          ]
+        },
+        {
+          "rank": 14,
+          "team": "비야레알",
+          "fullName": "비야레알",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/Wq9oBgwBzFNsQIFp7begY.png",
+          "games": 6,
+          "points": 5,
+          "win": 1,
+          "draw": 2,
+          "loss": 3,
+          "goalsFor": 10,
+          "goalsAgainst": 11,
+          "goalDiff": -1,
+          "recent": [
+            "승",
+            "패",
+            "패",
+            "패",
+            "무"
+          ]
+        },
+        {
+          "rank": 15,
+          "team": "레반테",
+          "fullName": "레반테",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/O-dLKNu7kxdqPWfH2EpDy.png",
+          "games": 5,
+          "points": 5,
+          "win": 1,
+          "draw": 2,
+          "loss": 2,
+          "goalsFor": 7,
+          "goalsAgainst": 9,
+          "goalDiff": -2,
+          "recent": [
+            "패",
+            "무",
+            "승",
+            "무",
+            "패"
+          ]
+        },
+        {
+          "rank": 16,
+          "team": "헤타페",
+          "fullName": "헤타페",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/xsRs2Zwslz_cx1dUGc-En.png",
+          "games": 6,
+          "points": 5,
+          "win": 1,
+          "draw": 2,
+          "loss": 3,
+          "goalsFor": 3,
+          "goalsAgainst": 7,
+          "goalDiff": -4,
+          "recent": [
+            "패",
+            "무",
+            "무",
+            "패",
+            "승"
+          ]
+        },
+        {
+          "rank": 17,
+          "team": "엘체",
+          "fullName": "엘체",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/At7wHXEtvayILK0zMoHM7.png",
+          "games": 7,
+          "points": 5,
+          "win": 1,
+          "draw": 2,
+          "loss": 4,
+          "goalsFor": 11,
+          "goalsAgainst": 17,
+          "goalDiff": -6,
+          "recent": [
+            "승",
+            "패",
+            "무",
+            "패",
+            "패"
+          ]
+        },
+        {
+          "rank": 18,
+          "team": "셀타 비고",
+          "fullName": "셀타 비고",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/FTgkUPD0PmbUD4tk9KLzC.png",
+          "games": 6,
+          "points": 4,
+          "win": 0,
+          "draw": 4,
+          "loss": 2,
+          "goalsFor": 3,
+          "goalsAgainst": 6,
+          "goalDiff": -3,
+          "recent": [
+            "무",
+            "무",
+            "무",
+            "패",
+            "패"
+          ]
+        },
+        {
+          "rank": 19,
+          "team": "발렌시아",
+          "fullName": "발렌시아",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/GBjhrfqF1SgdL1HLfI-7z.png",
+          "games": 6,
+          "points": 4,
+          "win": 1,
+          "draw": 1,
+          "loss": 4,
+          "goalsFor": 2,
+          "goalsAgainst": 10,
+          "goalDiff": -8,
+          "recent": [
+            "승",
+            "패",
+            "패",
+            "패",
+            "패"
+          ]
+        },
+        {
+          "rank": 20,
+          "team": "말라가",
+          "fullName": "말라가",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/N9ip4ws6bBGlRkUQc-Vvr.png",
+          "games": 6,
+          "points": 3,
+          "win": 0,
+          "draw": 3,
+          "loss": 3,
+          "goalsFor": 3,
+          "goalsAgainst": 11,
+          "goalDiff": -8,
+          "recent": [
+            "패",
+            "무",
+            "무",
+            "패",
+            "무"
+          ]
+        }
+      ],
+      "players": [
+        {
+          "category": "득점 순위 (Top Scorers)",
+          "icon": "fa-futbol",
+          "first_player": {
+            "rank": 1,
+            "name": "Raphinha",
+            "team": "바르셀로나",
+            "teamEng": "Barcelona",
+            "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+            "headshot": "",
+            "value": "9.0개 (Matches: 6, Goals: 9)",
+            "numeric_val": 9.0
+          },
+          "ranks": [
+            {
+              "rank": 1,
+              "name": "Raphinha",
+              "team": "바르셀로나",
+              "teamEng": "Barcelona",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+              "headshot": "",
+              "value": "9.0개 (Matches: 6, Goals: 9)",
+              "numeric_val": 9.0
+            },
+            {
+              "rank": 2,
+              "name": "Kylian Mbappé",
+              "team": "레알 마드리드",
+              "teamEng": "Real Madrid",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
+              "headshot": "",
+              "value": "7.0개 (Matches: 6, Goals: 7)",
+              "numeric_val": 7.0
+            },
+            {
+              "rank": 3,
+              "name": "Lamine Yamal",
+              "team": "바르셀로나",
+              "teamEng": "Barcelona",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+              "headshot": "",
+              "value": "7.0개 (Matches: 6, Goals: 7)",
+              "numeric_val": 7.0
+            },
+            {
+              "rank": 4,
+              "name": "Roberto Fernández",
+              "team": "Espanyol",
+              "teamEng": "Espanyol",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/88.png",
+              "headshot": "",
+              "value": "6.0개 (Matches: 6, Goals: 6)",
+              "numeric_val": 6.0
+            },
+            {
+              "rank": 5,
+              "name": "Sergio Camello",
+              "team": "Rayo Vallecano",
+              "teamEng": "Rayo Vallecano",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/101.png",
+              "headshot": "",
+              "value": "6.0개 (Matches: 6, Goals: 6)",
+              "numeric_val": 6.0
+            },
+            {
+              "rank": 6,
+              "name": "Yassir Zabiri",
+              "team": "Racing Santander",
+              "teamEng": "Racing Santander",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
+              "headshot": "",
+              "value": "6.0개 (Matches: 6, Goals: 6)",
+              "numeric_val": 6.0
+            },
+            {
+              "rank": 7,
+              "name": "Pierre-Emerick Aubameyang",
+              "team": "Deportivo",
+              "teamEng": "Deportivo",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/90.png",
+              "headshot": "",
+              "value": "5.0개 (Matches: 6, Goals: 5)",
+              "numeric_val": 5.0
+            },
+            {
+              "rank": 8,
+              "name": "Ante Budimir",
+              "team": "Osasuna",
+              "teamEng": "Osasuna",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/97.png",
+              "headshot": "",
+              "value": "4.0개 (Matches: 6, Goals: 4)",
+              "numeric_val": 4.0
+            },
+            {
+              "rank": 9,
+              "name": "Álex Baena",
+              "team": "아틀레티코 마드리드",
+              "teamEng": "Atlético Madrid",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
+              "headshot": "",
+              "value": "4.0개 (Matches: 6, Goals: 4)",
+              "numeric_val": 4.0
+            },
+            {
+              "rank": 10,
+              "name": "Lucas Boyé",
+              "team": "Alavés",
+              "teamEng": "Alavés",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
+              "headshot": "",
+              "value": "4.0개 (Matches: 5, Goals: 4)",
+              "numeric_val": 4.0
+            },
+            {
+              "rank": 11,
+              "name": "Fermín López",
+              "team": "바르셀로나",
+              "teamEng": "Barcelona",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+              "headshot": "",
+              "value": "4.0개 (Matches: 5, Goals: 4)",
+              "numeric_val": 4.0
+            },
+            {
+              "rank": 12,
+              "name": "Jude Bellingham",
+              "team": "레알 마드리드",
+              "teamEng": "Real Madrid",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 6, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 13,
+              "name": "Pape Gueye",
+              "team": "비야레알",
+              "teamEng": "Villarreal",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 6, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 14,
+              "name": "Fer Niño",
+              "team": "Elche",
+              "teamEng": "Elche",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/3751.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 6, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 15,
+              "name": "Mariano Díaz",
+              "team": "Alavés",
+              "teamEng": "Alavés",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 6, Goals: 3)",
+              "numeric_val": 3.0
+            }
+          ]
+        },
+        {
+          "category": "도움 순위 (Top Assists)",
+          "icon": "fa-hands-helping",
+          "first_player": {
+            "rank": 1,
+            "name": "Javi Hernandez",
+            "team": "Espanyol",
+            "teamEng": "Espanyol",
+            "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/88.png",
+            "headshot": "",
+            "value": "4.0개 (Matches: 6, Assists: 4)",
+            "numeric_val": 4.0
+          },
+          "ranks": [
+            {
+              "rank": 1,
+              "name": "Javi Hernandez",
+              "team": "Espanyol",
+              "teamEng": "Espanyol",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/88.png",
+              "headshot": "",
+              "value": "4.0개 (Matches: 6, Assists: 4)",
+              "numeric_val": 4.0
+            },
+            {
+              "rank": 2,
+              "name": "Anthony Gordon",
+              "team": "바르셀로나",
+              "teamEng": "Barcelona",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+              "headshot": "",
+              "value": "4.0개 (Matches: 5, Assists: 4)",
+              "numeric_val": 4.0
+            },
+            {
+              "rank": 3,
+              "name": "Vinícius Júnior",
+              "team": "레알 마드리드",
+              "teamEng": "Real Madrid",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 6, Assists: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 4,
+              "name": "Raphinha",
+              "team": "바르셀로나",
+              "teamEng": "Barcelona",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 6, Assists: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 5,
+              "name": "Ángel Pérez",
+              "team": "Alavés",
+              "teamEng": "Alavés",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 6, Assists: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 6,
+              "name": "Unai López",
+              "team": "Rayo Vallecano",
+              "teamEng": "Rayo Vallecano",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/101.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 6, Assists: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 7,
+              "name": "Mariano Díaz",
+              "team": "Alavés",
+              "teamEng": "Alavés",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 6, Assists: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 8,
+              "name": "Dani Olmo",
+              "team": "바르셀로나",
+              "teamEng": "Barcelona",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 6, Assists: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 9,
+              "name": "Kylian Mbappé",
+              "team": "레알 마드리드",
+              "teamEng": "Real Madrid",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 6, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 10,
+              "name": "Pierre-Emerick Aubameyang",
+              "team": "Deportivo",
+              "teamEng": "Deportivo",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/90.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 6, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 11,
+              "name": "Lamine Yamal",
+              "team": "바르셀로나",
+              "teamEng": "Barcelona",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 6, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 12,
+              "name": "Dávid Hancko",
+              "team": "아틀레티코 마드리드",
+              "teamEng": "Atlético Madrid",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
+              "headshot": "https://a.espncdn.com/i/headshots/soccer/players/full/257786.png",
+              "value": "2.0개 (Matches: 6, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 13,
+              "name": "Iñigo Vicente",
+              "team": "Racing Santander",
+              "teamEng": "Racing Santander",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 6, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 14,
+              "name": "Jude Bellingham",
+              "team": "레알 마드리드",
+              "teamEng": "Real Madrid",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 6, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 15,
+              "name": "Álvaro García",
+              "team": "Rayo Vallecano",
+              "teamEng": "Rayo Vallecano",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/101.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 6, Assists: 2)",
+              "numeric_val": 2.0
+            }
+          ]
+        }
+      ],
+      "team_hub": {
+        "바르셀로나": {
+          "team": {
+            "rank": 1,
+            "team": "바르셀로나",
+            "fullName": "바르셀로나",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/eu0z1bZDA3gqIhdn-rHli.png",
+            "games": 6,
+            "points": 18,
+            "win": 6,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 28,
+            "goalsAgainst": 6,
+            "goalDiff": 22,
+            "recent": [
+              "승",
+              "승",
+              "승",
+              "승",
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 1,
+              "name": "Raphinha",
+              "value": "9.0개 (Matches: 6, Goals: 9)",
+              "headshot": ""
+            },
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 3,
+              "name": "Lamine Yamal",
+              "value": "7.0개 (Matches: 6, Goals: 7)",
+              "headshot": ""
+            },
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 11,
+              "name": "Fermín López",
+              "value": "4.0개 (Matches: 5, Goals: 4)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 2,
+              "name": "Anthony Gordon",
+              "value": "4.0개 (Matches: 5, Assists: 4)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 4,
+              "name": "Raphinha",
+              "value": "3.0개 (Matches: 6, Assists: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 8,
+              "name": "Dani Olmo",
+              "value": "3.0개 (Matches: 6, Assists: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 11,
+              "name": "Lamine Yamal",
+              "value": "2.0개 (Matches: 6, Assists: 2)",
+              "headshot": ""
+            }
+          ]
+        },
+        "레알 마드리드": {
+          "team": {
+            "rank": 2,
+            "team": "레알 마드리드",
+            "fullName": "레알 마드리드",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/VOlkxOIoXAXF_11lYJ_Ve.png",
+            "games": 6,
+            "points": 15,
+            "win": 5,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 17,
+            "goalsAgainst": 6,
+            "goalDiff": 11,
+            "recent": [
+              "승",
+              "승",
+              "패",
+              "승",
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 2,
+              "name": "Kylian Mbappé",
+              "value": "7.0개 (Matches: 6, Goals: 7)",
+              "headshot": ""
+            },
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 12,
+              "name": "Jude Bellingham",
+              "value": "3.0개 (Matches: 6, Goals: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 3,
+              "name": "Vinícius Júnior",
+              "value": "3.0개 (Matches: 6, Assists: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 9,
+              "name": "Kylian Mbappé",
+              "value": "2.0개 (Matches: 6, Assists: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 14,
+              "name": "Jude Bellingham",
+              "value": "2.0개 (Matches: 6, Assists: 2)",
+              "headshot": ""
+            }
+          ]
+        },
+        "레알 베티스": {
+          "team": {
+            "rank": 3,
+            "team": "레알 베티스",
+            "fullName": "레알 베티스",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/gezsEknLaMwmk3X3Zcc76.png",
+            "games": 6,
+            "points": 15,
+            "win": 5,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 8,
+            "goalsAgainst": 6,
+            "goalDiff": 2,
+            "recent": [
+              "승",
+              "승",
+              "승",
+              "패",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "아틀레티코 마드리드": {
+          "team": {
+            "rank": 4,
+            "team": "아틀레티코 마드리드",
+            "fullName": "아틀레티코 마드리드",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/xWY4as7vKsiitaDE-lmIe.png",
+            "games": 6,
+            "points": 13,
+            "win": 4,
+            "draw": 1,
+            "loss": 1,
+            "goalsFor": 14,
+            "goalsAgainst": 6,
+            "goalDiff": 8,
+            "recent": [
+              "승",
+              "승",
+              "패",
+              "승",
+              "무"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 9,
+              "name": "Álex Baena",
+              "value": "4.0개 (Matches: 6, Goals: 4)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 12,
+              "name": "Dávid Hancko",
+              "value": "2.0개 (Matches: 6, Assists: 2)",
+              "headshot": "https://a.espncdn.com/i/headshots/soccer/players/full/257786.png"
+            }
+          ]
+        },
+        "세비야": {
+          "team": {
+            "rank": 5,
+            "team": "세비야",
+            "fullName": "세비야",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/crn6HYOO9QzfqMRAUuGIF.png",
+            "games": 6,
+            "points": 13,
+            "win": 4,
+            "draw": 1,
+            "loss": 1,
+            "goalsFor": 9,
+            "goalsAgainst": 6,
+            "goalDiff": 3,
+            "recent": [
+              "승",
+              "승",
+              "무",
+              "패",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "알라베스": {
+          "team": {
+            "rank": 6,
+            "team": "알라베스",
+            "fullName": "알라베스",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/dqC3XtzsGeXe3c53Qqrn-.png",
+            "games": 6,
+            "points": 10,
+            "win": 3,
+            "draw": 1,
+            "loss": 2,
+            "goalsFor": 11,
+            "goalsAgainst": 6,
+            "goalDiff": 5,
+            "recent": [
+              "패",
+              "패",
+              "승",
+              "승",
+              "무"
+            ]
+          },
+          "players": []
+        },
+        "데포르티보 라 코루냐": {
+          "team": {
+            "rank": 7,
+            "team": "데포르티보 라 코루냐",
+            "fullName": "데포르티보 라 코루냐",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/dzWI12lwIaS-1ly_2d227.png",
+            "games": 6,
+            "points": 9,
+            "win": 2,
+            "draw": 3,
+            "loss": 1,
+            "goalsFor": 9,
+            "goalsAgainst": 7,
+            "goalDiff": 2,
+            "recent": [
+              "패",
+              "무",
+              "승",
+              "승",
+              "무"
+            ]
+          },
+          "players": []
+        },
+        "아틀레틱 빌바오": {
+          "team": {
+            "rank": 8,
+            "team": "아틀레틱 빌바오",
+            "fullName": "아틀레틱 빌바오",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/7h4N4ZU17VQqx1GNJwuvF.png",
+            "games": 5,
+            "points": 7,
+            "win": 2,
+            "draw": 1,
+            "loss": 2,
+            "goalsFor": 7,
+            "goalsAgainst": 6,
+            "goalDiff": 1,
+            "recent": [
+              "무",
+              "승",
+              "승",
+              "패",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "에스파뇰": {
+          "team": {
+            "rank": 9,
+            "team": "에스파뇰",
+            "fullName": "에스파뇰",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/yXPQ9R0js1ZPr5Od9cch8.png",
+            "games": 7,
+            "points": 7,
+            "win": 2,
+            "draw": 1,
+            "loss": 4,
+            "goalsFor": 10,
+            "goalsAgainst": 10,
+            "goalDiff": 0,
+            "recent": [
+              "패",
+              "패",
+              "승",
+              "무",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "라싱 산탄데르": {
+          "team": {
+            "rank": 10,
+            "team": "라싱 산탄데르",
+            "fullName": "라싱 산탄데르",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/xH6IjV1TfoWF9SBtc7QTS.png",
+            "games": 6,
+            "points": 7,
+            "win": 2,
+            "draw": 1,
+            "loss": 3,
+            "goalsFor": 11,
+            "goalsAgainst": 16,
+            "goalDiff": -5,
+            "recent": [
+              "패",
+              "승",
+              "패",
+              "승",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "바예카노": {
+          "team": {
+            "rank": 11,
+            "team": "바예카노",
+            "fullName": "바예카노",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/ac0Y7wzVbv4IwqRAt0tX_.png",
+            "games": 6,
+            "points": 7,
+            "win": 2,
+            "draw": 1,
+            "loss": 3,
+            "goalsFor": 10,
+            "goalsAgainst": 15,
+            "goalDiff": -5,
+            "recent": [
+              "승",
+              "패",
+              "승",
+              "패",
+              "무"
+            ]
+          },
+          "players": []
+        },
+        "레알 소시에다드": {
+          "team": {
+            "rank": 12,
+            "team": "레알 소시에다드",
+            "fullName": "레알 소시에다드",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/N79j9O-sTkXZNhc9UZUsX.png",
+            "games": 6,
+            "points": 7,
+            "win": 2,
+            "draw": 1,
+            "loss": 3,
+            "goalsFor": 6,
+            "goalsAgainst": 11,
+            "goalDiff": -5,
+            "recent": [
+              "패",
+              "승",
+              "무",
+              "승",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "오사수나": {
+          "team": {
+            "rank": 13,
+            "team": "오사수나",
+            "fullName": "오사수나",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/NqdsiG8yecUZjhG0HtEWx.png",
+            "games": 6,
+            "points": 7,
+            "win": 2,
+            "draw": 1,
+            "loss": 3,
+            "goalsFor": 5,
+            "goalsAgainst": 12,
+            "goalDiff": -7,
+            "recent": [
+              "패",
+              "패",
+              "패",
+              "승",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "비야레알": {
+          "team": {
+            "rank": 14,
+            "team": "비야레알",
+            "fullName": "비야레알",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/Wq9oBgwBzFNsQIFp7begY.png",
+            "games": 6,
+            "points": 5,
+            "win": 1,
+            "draw": 2,
+            "loss": 3,
+            "goalsFor": 10,
+            "goalsAgainst": 11,
+            "goalDiff": -1,
+            "recent": [
+              "승",
+              "패",
+              "패",
+              "패",
+              "무"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 13,
+              "name": "Pape Gueye",
+              "value": "3.0개 (Matches: 6, Goals: 3)",
+              "headshot": ""
+            }
+          ]
+        },
+        "레반테": {
+          "team": {
+            "rank": 15,
+            "team": "레반테",
+            "fullName": "레반테",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/O-dLKNu7kxdqPWfH2EpDy.png",
+            "games": 5,
+            "points": 5,
+            "win": 1,
+            "draw": 2,
+            "loss": 2,
+            "goalsFor": 7,
+            "goalsAgainst": 9,
+            "goalDiff": -2,
+            "recent": [
+              "패",
+              "무",
+              "승",
+              "무",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "헤타페": {
+          "team": {
+            "rank": 16,
+            "team": "헤타페",
+            "fullName": "헤타페",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/xsRs2Zwslz_cx1dUGc-En.png",
+            "games": 6,
+            "points": 5,
+            "win": 1,
+            "draw": 2,
+            "loss": 3,
+            "goalsFor": 3,
+            "goalsAgainst": 7,
+            "goalDiff": -4,
+            "recent": [
+              "패",
+              "무",
+              "무",
+              "패",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "엘체": {
+          "team": {
+            "rank": 17,
+            "team": "엘체",
+            "fullName": "엘체",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/At7wHXEtvayILK0zMoHM7.png",
+            "games": 7,
+            "points": 5,
+            "win": 1,
+            "draw": 2,
+            "loss": 4,
+            "goalsFor": 11,
+            "goalsAgainst": 17,
+            "goalDiff": -6,
+            "recent": [
+              "승",
+              "패",
+              "무",
+              "패",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "셀타 비고": {
+          "team": {
+            "rank": 18,
+            "team": "셀타 비고",
+            "fullName": "셀타 비고",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/FTgkUPD0PmbUD4tk9KLzC.png",
+            "games": 6,
+            "points": 4,
+            "win": 0,
+            "draw": 4,
+            "loss": 2,
+            "goalsFor": 3,
+            "goalsAgainst": 6,
+            "goalDiff": -3,
+            "recent": [
+              "무",
+              "무",
+              "무",
+              "패",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "발렌시아": {
+          "team": {
+            "rank": 19,
+            "team": "발렌시아",
+            "fullName": "발렌시아",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/GBjhrfqF1SgdL1HLfI-7z.png",
+            "games": 6,
+            "points": 4,
+            "win": 1,
+            "draw": 1,
+            "loss": 4,
+            "goalsFor": 2,
+            "goalsAgainst": 10,
+            "goalDiff": -8,
+            "recent": [
+              "승",
+              "패",
+              "패",
+              "패",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "말라가": {
+          "team": {
+            "rank": 20,
+            "team": "말라가",
+            "fullName": "말라가",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/N9ip4ws6bBGlRkUQc-Vvr.png",
+            "games": 6,
+            "points": 3,
+            "win": 0,
+            "draw": 3,
+            "loss": 3,
+            "goalsFor": 3,
+            "goalsAgainst": 11,
+            "goalDiff": -8,
+            "recent": [
+              "패",
+              "무",
+              "무",
+              "패",
+              "무"
+            ]
+          },
+          "players": []
+        }
+      }
+    },
+    "bundesliga": {
+      "key": "bundesliga",
+      "name": "분데스리가 (Bundesliga)",
+      "shortName": "Bundesliga",
+      "country": "독일",
+      "color": "#d20515",
+      "icon": "fa-futbol",
+      "teams": [
+        {
+          "rank": 1,
+          "team": "바이에른 뮌헨",
+          "fullName": "바이에른 뮌헨",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/2TlMSJkWTGqMX2lPN7Cgd.png",
+          "games": 4,
+          "points": 10,
+          "win": 3,
+          "draw": 1,
+          "loss": 0,
+          "goalsFor": 14,
+          "goalsAgainst": 2,
+          "goalDiff": 12,
+          "recent": [
+            "승",
+            "승",
+            "무",
+            "승"
+          ]
+        },
+        {
+          "rank": 2,
+          "team": "프라이부르크",
+          "fullName": "프라이부르크",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/mmLX2coDWVHnrrt376Otc.png",
+          "games": 3,
+          "points": 9,
+          "win": 3,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 10,
+          "goalsAgainst": 1,
+          "goalDiff": 9,
+          "recent": [
+            "승",
+            "승",
+            "승"
+          ]
+        },
+        {
+          "rank": 3,
+          "team": "보루시아 도르트문트",
+          "fullName": "보루시아 도르트문트",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/EmDXkZ5B61SrXUUTUPV3X.png",
+          "games": 3,
+          "points": 9,
+          "win": 3,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 8,
+          "goalsAgainst": 2,
+          "goalDiff": 6,
+          "recent": [
+            "승",
+            "승",
+            "승"
+          ]
+        },
+        {
+          "rank": 4,
+          "team": "아우크스부르크",
+          "fullName": "아우크스부르크",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/Cym9JdkRpXALz4AJUjd8e.png",
+          "games": 3,
+          "points": 7,
+          "win": 2,
+          "draw": 1,
+          "loss": 0,
+          "goalsFor": 9,
+          "goalsAgainst": 3,
+          "goalDiff": 6,
+          "recent": [
+            "무",
+            "승",
+            "승"
+          ]
+        },
+        {
+          "rank": 5,
+          "team": "RB 라이프치히",
+          "fullName": "RB 라이프치히",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/0GckKHYTdGCldV4jrlIc1.png",
+          "games": 3,
+          "points": 6,
+          "win": 2,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 9,
+          "goalsAgainst": 3,
+          "goalDiff": 6,
+          "recent": [
+            "승",
+            "패",
+            "승"
+          ]
+        },
+        {
+          "rank": 6,
+          "team": "Elversberg",
+          "fullName": "Elversberg",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/iLZSMG8Oc30AomkBDV7fp.png",
+          "games": 3,
+          "points": 6,
+          "win": 2,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 8,
+          "goalsAgainst": 7,
+          "goalDiff": 1,
+          "recent": [
+            "패",
+            "승",
+            "승"
+          ]
+        },
+        {
+          "rank": 7,
+          "team": "바이어 레버쿠젠",
+          "fullName": "바이어 레버쿠젠",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/jEUaq-mmqK2hKxbzCjsUh.png",
+          "games": 3,
+          "points": 4,
+          "win": 1,
+          "draw": 1,
+          "loss": 1,
+          "goalsFor": 8,
+          "goalsAgainst": 5,
+          "goalDiff": 3,
+          "recent": [
+            "무",
+            "승",
+            "패"
+          ]
+        },
+        {
+          "rank": 8,
+          "team": "마인츠 05",
+          "fullName": "마인츠 05",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/f2-8qfj2bk5S0vTBEEa9G.png",
+          "games": 3,
+          "points": 4,
+          "win": 1,
+          "draw": 1,
+          "loss": 1,
+          "goalsFor": 6,
+          "goalsAgainst": 3,
+          "goalDiff": 3,
+          "recent": [
+            "패",
+            "승",
+            "무"
+          ]
+        },
+        {
+          "rank": 9,
+          "team": "아인트라흐트 프랑크푸르트",
+          "fullName": "아인트라흐트 프랑크푸르트",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/2Myurk0GUKAA2rF21Tx4Z.png",
+          "games": 3,
+          "points": 4,
+          "win": 1,
+          "draw": 1,
+          "loss": 1,
+          "goalsFor": 7,
+          "goalsAgainst": 8,
+          "goalDiff": -1,
+          "recent": [
+            "승",
+            "패",
+            "무"
+          ]
+        },
+        {
+          "rank": 10,
+          "team": "베르더 브레멘",
+          "fullName": "베르더 브레멘",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/QvXc_LEra3PfYsmFMp9pH.png",
+          "games": 3,
+          "points": 4,
+          "win": 1,
+          "draw": 1,
+          "loss": 1,
+          "goalsFor": 5,
+          "goalsAgainst": 6,
+          "goalDiff": -1,
+          "recent": [
+            "무",
+            "승",
+            "패"
+          ]
+        },
+        {
+          "rank": 11,
+          "team": "샬케 04",
+          "fullName": "샬케 04",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/MJmLo-A0RXtnjZxKJWml6.png",
+          "games": 3,
+          "points": 4,
+          "win": 1,
+          "draw": 1,
+          "loss": 1,
+          "goalsFor": 3,
+          "goalsAgainst": 4,
+          "goalDiff": -1,
+          "recent": [
+            "승",
+            "무",
+            "패"
+          ]
+        },
+        {
+          "rank": 12,
+          "team": "쾰른",
+          "fullName": "쾰른",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/ElZxB_J96MBe8X1MIVM9K.png",
+          "games": 3,
+          "points": 4,
+          "win": 1,
+          "draw": 1,
+          "loss": 1,
+          "goalsFor": 5,
+          "goalsAgainst": 7,
+          "goalDiff": -2,
+          "recent": [
+            "무",
+            "패",
+            "승"
+          ]
+        },
+        {
+          "rank": 13,
+          "team": "호펜하임",
+          "fullName": "호펜하임",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/1K9pUTQXHjmhK2eBCZumq.png",
+          "games": 3,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 2,
+          "goalsFor": 6,
+          "goalsAgainst": 7,
+          "goalDiff": -1,
+          "recent": [
+            "승",
+            "패",
+            "패"
+          ]
+        },
+        {
+          "rank": 14,
+          "team": "슈투트가르트",
+          "fullName": "슈투트가르트",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/wISHHM98darM05uz5rA-K.png",
+          "games": 3,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 2,
+          "goalsFor": 6,
+          "goalsAgainst": 8,
+          "goalDiff": -2,
+          "recent": [
+            "패",
+            "승",
+            "패"
+          ]
+        },
+        {
+          "rank": 15,
+          "team": "파더보른",
+          "fullName": "파더보른",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/Py3fY4UyMK_7xUDJlmU4t.png",
+          "games": 3,
+          "points": 1,
+          "win": 0,
+          "draw": 1,
+          "loss": 2,
+          "goalsFor": 0,
+          "goalsAgainst": 4,
+          "goalDiff": -4,
+          "recent": [
+            "패",
+            "패",
+            "무"
+          ]
+        },
+        {
+          "rank": 16,
+          "team": "Union Berlin",
+          "fullName": "Union Berlin",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/L23XBxLVG-r2wXOUzV1QT.png",
+          "games": 4,
+          "points": 1,
+          "win": 0,
+          "draw": 1,
+          "loss": 3,
+          "goalsFor": 4,
+          "goalsAgainst": 17,
+          "goalDiff": -13,
+          "recent": [
+            "패",
+            "패",
+            "패",
+            "무"
+          ]
+        },
+        {
+          "rank": 17,
+          "team": "보루시아 뮌헨글라트바흐",
+          "fullName": "보루시아 뮌헨글라트바흐",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/HM49b4dKNaIgkvz6V2U4U.png",
+          "games": 3,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 3,
+          "goalsFor": 3,
+          "goalsAgainst": 12,
+          "goalDiff": -9,
+          "recent": [
+            "패",
+            "패",
+            "패"
+          ]
+        },
+        {
+          "rank": 18,
+          "team": "함부르크 SV",
+          "fullName": "함부르크 SV",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/G7u0-FKJsANMgyoQvFcx9.png",
+          "games": 3,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 3,
+          "goalsFor": 0,
+          "goalsAgainst": 12,
+          "goalDiff": -12,
+          "recent": [
+            "패",
+            "패",
+            "패"
+          ]
+        }
+      ],
+      "players": [
+        {
+          "category": "득점 순위 (Top Scorers)",
+          "icon": "fa-futbol",
+          "first_player": {
+            "rank": 1,
+            "name": "Phillip Tietz",
+            "team": "마인츠",
+            "teamEng": "Mainz",
+            "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/2950.png",
+            "headshot": "",
+            "value": "3.0개 (Matches: 3, Goals: 3)",
+            "numeric_val": 3.0
+          },
+          "ranks": [
+            {
+              "rank": 1,
+              "name": "Phillip Tietz",
+              "team": "마인츠",
+              "teamEng": "Mainz",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/2950.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 3, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 2,
+              "name": "Igor Matanovic",
+              "team": "프라이부르크",
+              "teamEng": "SC Freiburg",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/126.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 3, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 3,
+              "name": "Yuito Suzuki",
+              "team": "프라이부르크",
+              "teamEng": "SC Freiburg",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/126.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 3, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 4,
+              "name": "Michael Gregoritsch",
+              "team": "FC Augsburg",
+              "teamEng": "FC Augsburg",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/3841.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 3, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 5,
+              "name": "Younes Ebnoutalib",
+              "team": "프랑크푸르트",
+              "teamEng": "Eintracht Frankfurt",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/125.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 3, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 6,
+              "name": "Patrik Schick",
+              "team": "레버쿠젠",
+              "teamEng": "Bayer Leverkusen",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 3, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 7,
+              "name": "Maurice Krattenmacher",
+              "team": "SV Elversberg",
+              "teamEng": "SV Elversberg",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/10388.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 3, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 8,
+              "name": "Maximilian Eggestein",
+              "team": "프라이부르크",
+              "teamEng": "SC Freiburg",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/126.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 9,
+              "name": "Serhou Guirassy",
+              "team": "도르트문트",
+              "teamEng": "Borussia Dortmund",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/124.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 10,
+              "name": "Yannick Engelhardt",
+              "team": "프라이부르크",
+              "teamEng": "SC Freiburg",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/126.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 11,
+              "name": "Josha Vagnoman",
+              "team": "슈투트가르트",
+              "teamEng": "VfB Stuttgart",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 12,
+              "name": "Antonio Nusa",
+              "team": "라이프치히",
+              "teamEng": "RB Leipzig",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/11420.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 13,
+              "name": "David Mokwa",
+              "team": "SV Elversberg",
+              "teamEng": "SV Elversberg",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/10388.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 14,
+              "name": "Can Uzun",
+              "team": "프랑크푸르트",
+              "teamEng": "Eintracht Frankfurt",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/125.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 15,
+              "name": "Jonathan Burkardt",
+              "team": "프랑크푸르트",
+              "teamEng": "Eintracht Frankfurt",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/125.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Goals: 2)",
+              "numeric_val": 2.0
+            }
+          ]
+        },
+        {
+          "category": "도움 순위 (Top Assists)",
+          "icon": "fa-hands-helping",
+          "first_player": {
+            "rank": 1,
+            "name": "Matthias Ginter",
+            "team": "프라이부르크",
+            "teamEng": "SC Freiburg",
+            "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/126.png",
+            "headshot": "",
+            "value": "3.0개 (Matches: 3, Assists: 3)",
+            "numeric_val": 3.0
+          },
+          "ranks": [
+            {
+              "rank": 1,
+              "name": "Matthias Ginter",
+              "team": "프라이부르크",
+              "teamEng": "SC Freiburg",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/126.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 3, Assists: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 2,
+              "name": "Adam Daghim",
+              "team": "TSG Hoffenheim",
+              "teamEng": "TSG Hoffenheim",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/7911.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 3,
+              "name": "Serhou Guirassy",
+              "team": "도르트문트",
+              "teamEng": "Borussia Dortmund",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/124.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 4,
+              "name": "Marco Grüll",
+              "team": "Werder Bremen",
+              "teamEng": "Werder Bremen",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/137.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 5,
+              "name": "Fabian Rieder",
+              "team": "FC Augsburg",
+              "teamEng": "FC Augsburg",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/3841.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 6,
+              "name": "Miguel Gutiérrez",
+              "team": "레버쿠젠",
+              "teamEng": "Bayer Leverkusen",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 7,
+              "name": "Josip Juranovic",
+              "team": "1. FC Union Berlin",
+              "teamEng": "1. FC Union Berlin",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/598.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 8,
+              "name": "Antonio Nusa",
+              "team": "라이프치히",
+              "teamEng": "RB Leipzig",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/11420.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 9,
+              "name": "Vladimír Coufal",
+              "team": "TSG Hoffenheim",
+              "teamEng": "TSG Hoffenheim",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/7911.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 10,
+              "name": "Sheraldo Becker",
+              "team": "마인츠",
+              "teamEng": "Mainz",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/2950.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 11,
+              "name": "Joshua Kimmich",
+              "team": "바이에른 뮌헨",
+              "teamEng": "Bayern Munich",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 12,
+              "name": "Tidiam Gomis",
+              "team": "라이프치히",
+              "teamEng": "RB Leipzig",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/11420.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 13,
+              "name": "Bambasé Conté",
+              "team": "TSG Hoffenheim",
+              "teamEng": "TSG Hoffenheim",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/7911.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 14,
+              "name": "Franck Honorat",
+              "team": "Borussia Mönchengladbach",
+              "teamEng": "Borussia Mönchengladbach",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/268.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 15,
+              "name": "Ismael Saibari",
+              "team": "바이에른 뮌헨",
+              "teamEng": "Bayern Munich",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+              "headshot": "https://a.espncdn.com/i/headshots/soccer/players/full/304572.png",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "numeric_val": 2.0
+            }
+          ]
+        }
+      ],
+      "team_hub": {
+        "바이에른 뮌헨": {
+          "team": {
+            "rank": 1,
+            "team": "바이에른 뮌헨",
+            "fullName": "바이에른 뮌헨",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/2TlMSJkWTGqMX2lPN7Cgd.png",
+            "games": 4,
+            "points": 10,
+            "win": 3,
+            "draw": 1,
+            "loss": 0,
+            "goalsFor": 14,
+            "goalsAgainst": 2,
+            "goalDiff": 12,
+            "recent": [
+              "승",
+              "승",
+              "무",
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 11,
+              "name": "Joshua Kimmich",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 15,
+              "name": "Ismael Saibari",
+              "value": "2.0개 (Matches: 3, Assists: 2)",
+              "headshot": "https://a.espncdn.com/i/headshots/soccer/players/full/304572.png"
+            }
+          ]
+        },
+        "프라이부르크": {
+          "team": {
+            "rank": 2,
+            "team": "프라이부르크",
+            "fullName": "프라이부르크",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/mmLX2coDWVHnrrt376Otc.png",
+            "games": 3,
+            "points": 9,
+            "win": 3,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 10,
+            "goalsAgainst": 1,
+            "goalDiff": 9,
+            "recent": [
+              "승",
+              "승",
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 2,
+              "name": "Igor Matanovic",
+              "value": "3.0개 (Matches: 3, Goals: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 3,
+              "name": "Yuito Suzuki",
+              "value": "3.0개 (Matches: 3, Goals: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 8,
+              "name": "Maximilian Eggestein",
+              "value": "2.0개 (Matches: 3, Goals: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 10,
+              "name": "Yannick Engelhardt",
+              "value": "2.0개 (Matches: 3, Goals: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 1,
+              "name": "Matthias Ginter",
+              "value": "3.0개 (Matches: 3, Assists: 3)",
+              "headshot": ""
+            }
+          ]
+        },
+        "보루시아 도르트문트": {
+          "team": {
+            "rank": 3,
+            "team": "보루시아 도르트문트",
+            "fullName": "보루시아 도르트문트",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/EmDXkZ5B61SrXUUTUPV3X.png",
+            "games": 3,
+            "points": 9,
+            "win": 3,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 8,
+            "goalsAgainst": 2,
+            "goalDiff": 6,
+            "recent": [
+              "승",
+              "승",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "아우크스부르크": {
+          "team": {
+            "rank": 4,
+            "team": "아우크스부르크",
+            "fullName": "아우크스부르크",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/Cym9JdkRpXALz4AJUjd8e.png",
+            "games": 3,
+            "points": 7,
+            "win": 2,
+            "draw": 1,
+            "loss": 0,
+            "goalsFor": 9,
+            "goalsAgainst": 3,
+            "goalDiff": 6,
+            "recent": [
+              "무",
+              "승",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "RB 라이프치히": {
+          "team": {
+            "rank": 5,
+            "team": "RB 라이프치히",
+            "fullName": "RB 라이프치히",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/0GckKHYTdGCldV4jrlIc1.png",
+            "games": 3,
+            "points": 6,
+            "win": 2,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 9,
+            "goalsAgainst": 3,
+            "goalDiff": 6,
+            "recent": [
+              "승",
+              "패",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "Elversberg": {
+          "team": {
+            "rank": 6,
+            "team": "Elversberg",
+            "fullName": "Elversberg",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/iLZSMG8Oc30AomkBDV7fp.png",
+            "games": 3,
+            "points": 6,
+            "win": 2,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 8,
+            "goalsAgainst": 7,
+            "goalDiff": 1,
+            "recent": [
+              "패",
+              "승",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "바이어 레버쿠젠": {
+          "team": {
+            "rank": 7,
+            "team": "바이어 레버쿠젠",
+            "fullName": "바이어 레버쿠젠",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/jEUaq-mmqK2hKxbzCjsUh.png",
+            "games": 3,
+            "points": 4,
+            "win": 1,
+            "draw": 1,
+            "loss": 1,
+            "goalsFor": 8,
+            "goalsAgainst": 5,
+            "goalDiff": 3,
+            "recent": [
+              "무",
+              "승",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "마인츠 05": {
+          "team": {
+            "rank": 8,
+            "team": "마인츠 05",
+            "fullName": "마인츠 05",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/f2-8qfj2bk5S0vTBEEa9G.png",
+            "games": 3,
+            "points": 4,
+            "win": 1,
+            "draw": 1,
+            "loss": 1,
+            "goalsFor": 6,
+            "goalsAgainst": 3,
+            "goalDiff": 3,
+            "recent": [
+              "패",
+              "승",
+              "무"
+            ]
+          },
+          "players": []
+        },
+        "아인트라흐트 프랑크푸르트": {
+          "team": {
+            "rank": 9,
+            "team": "아인트라흐트 프랑크푸르트",
+            "fullName": "아인트라흐트 프랑크푸르트",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/2Myurk0GUKAA2rF21Tx4Z.png",
+            "games": 3,
+            "points": 4,
+            "win": 1,
+            "draw": 1,
+            "loss": 1,
+            "goalsFor": 7,
+            "goalsAgainst": 8,
+            "goalDiff": -1,
+            "recent": [
+              "승",
+              "패",
+              "무"
+            ]
+          },
+          "players": []
+        },
+        "베르더 브레멘": {
+          "team": {
+            "rank": 10,
+            "team": "베르더 브레멘",
+            "fullName": "베르더 브레멘",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/QvXc_LEra3PfYsmFMp9pH.png",
+            "games": 3,
+            "points": 4,
+            "win": 1,
+            "draw": 1,
+            "loss": 1,
+            "goalsFor": 5,
+            "goalsAgainst": 6,
+            "goalDiff": -1,
+            "recent": [
+              "무",
+              "승",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "샬케 04": {
+          "team": {
+            "rank": 11,
+            "team": "샬케 04",
+            "fullName": "샬케 04",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/MJmLo-A0RXtnjZxKJWml6.png",
+            "games": 3,
+            "points": 4,
+            "win": 1,
+            "draw": 1,
+            "loss": 1,
+            "goalsFor": 3,
+            "goalsAgainst": 4,
+            "goalDiff": -1,
+            "recent": [
+              "승",
+              "무",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "쾰른": {
+          "team": {
+            "rank": 12,
+            "team": "쾰른",
+            "fullName": "쾰른",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/ElZxB_J96MBe8X1MIVM9K.png",
+            "games": 3,
+            "points": 4,
+            "win": 1,
+            "draw": 1,
+            "loss": 1,
+            "goalsFor": 5,
+            "goalsAgainst": 7,
+            "goalDiff": -2,
+            "recent": [
+              "무",
+              "패",
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "호펜하임": {
+          "team": {
+            "rank": 13,
+            "team": "호펜하임",
+            "fullName": "호펜하임",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/1K9pUTQXHjmhK2eBCZumq.png",
+            "games": 3,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 2,
+            "goalsFor": 6,
+            "goalsAgainst": 7,
+            "goalDiff": -1,
+            "recent": [
+              "승",
+              "패",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "슈투트가르트": {
+          "team": {
+            "rank": 14,
+            "team": "슈투트가르트",
+            "fullName": "슈투트가르트",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/wISHHM98darM05uz5rA-K.png",
+            "games": 3,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 2,
+            "goalsFor": 6,
+            "goalsAgainst": 8,
+            "goalDiff": -2,
+            "recent": [
+              "패",
+              "승",
+              "패"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 11,
+              "name": "Josha Vagnoman",
+              "value": "2.0개 (Matches: 3, Goals: 2)",
+              "headshot": ""
+            }
+          ]
+        },
+        "파더보른": {
+          "team": {
+            "rank": 15,
+            "team": "파더보른",
+            "fullName": "파더보른",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/Py3fY4UyMK_7xUDJlmU4t.png",
+            "games": 3,
+            "points": 1,
+            "win": 0,
+            "draw": 1,
+            "loss": 2,
+            "goalsFor": 0,
+            "goalsAgainst": 4,
+            "goalDiff": -4,
+            "recent": [
+              "패",
+              "패",
+              "무"
+            ]
+          },
+          "players": []
+        },
+        "Union Berlin": {
+          "team": {
+            "rank": 16,
+            "team": "Union Berlin",
+            "fullName": "Union Berlin",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/L23XBxLVG-r2wXOUzV1QT.png",
+            "games": 4,
+            "points": 1,
+            "win": 0,
+            "draw": 1,
+            "loss": 3,
+            "goalsFor": 4,
+            "goalsAgainst": 17,
+            "goalDiff": -13,
+            "recent": [
+              "패",
+              "패",
+              "패",
+              "무"
+            ]
+          },
+          "players": []
+        },
+        "보루시아 뮌헨글라트바흐": {
+          "team": {
+            "rank": 17,
+            "team": "보루시아 뮌헨글라트바흐",
+            "fullName": "보루시아 뮌헨글라트바흐",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/HM49b4dKNaIgkvz6V2U4U.png",
+            "games": 3,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 3,
+            "goalsFor": 3,
+            "goalsAgainst": 12,
+            "goalDiff": -9,
+            "recent": [
+              "패",
+              "패",
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "함부르크 SV": {
+          "team": {
+            "rank": 18,
+            "team": "함부르크 SV",
+            "fullName": "함부르크 SV",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/G7u0-FKJsANMgyoQvFcx9.png",
+            "games": 3,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 3,
+            "goalsFor": 0,
+            "goalsAgainst": 12,
+            "goalDiff": -12,
+            "recent": [
+              "패",
+              "패",
+              "패"
+            ]
+          },
+          "players": []
+        }
+      }
+    },
+    "ucl": {
+      "key": "ucl",
+      "name": "UEFA 챔피언스리그 (Champions League)",
+      "shortName": "UCL",
+      "country": "유럽",
+      "color": "#001489",
+      "icon": "fa-star",
+      "teams": [
+        {
+          "rank": 1,
+          "team": "PSG",
+          "fullName": "PSG",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/Gt8F5QmiB3gbYqX46lCUq.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 6,
+          "goalsAgainst": 1,
+          "goalDiff": 5,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 2,
+          "team": "바이에른 뮌헨",
+          "fullName": "바이에른 뮌헨",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/2TlMSJkWTGqMX2lPN7Cgd.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 5,
+          "goalsAgainst": 0,
+          "goalDiff": 5,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 3,
+          "team": "바르셀로나",
+          "fullName": "바르셀로나",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/eu0z1bZDA3gqIhdn-rHli.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 5,
+          "goalsAgainst": 1,
+          "goalDiff": 4,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 4,
+          "team": "맨체스터 유나이티드",
+          "fullName": "맨체스터 유나이티드",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/StOWHY8QeOZ7MplXkp2KC.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 4,
+          "goalsAgainst": 0,
+          "goalDiff": 4,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 5,
+          "team": "코모",
+          "fullName": "코모",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/3rB5oJN66n2Qa0XbuR9v8.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 4,
+          "goalsAgainst": 1,
+          "goalDiff": 3,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 6,
+          "team": "슈투트가르트",
+          "fullName": "슈투트가르트",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/wISHHM98darM05uz5rA-K.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 3,
+          "goalsAgainst": 1,
+          "goalDiff": 2,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 6,
+          "team": "스포르팅 CP",
+          "fullName": "스포르팅 CP",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/0kdOpU-I5oBF-d1aBr7fd.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 3,
+          "goalsAgainst": 1,
+          "goalDiff": 2,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 8,
+          "team": "맨체스터 시티",
+          "fullName": "맨체스터 시티",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/YaWwRy_S6TKMuwJHBvDbR.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 2,
+          "goalsAgainst": 0,
+          "goalDiff": 2,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 9,
+          "team": "랑스",
+          "fullName": "랑스",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/bBPYfU7vmkcTl-q4NtFj2.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 3,
+          "goalsAgainst": 2,
+          "goalDiff": 1,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 9,
+          "team": "레알 베티스",
+          "fullName": "레알 베티스",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/gezsEknLaMwmk3X3Zcc76.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 3,
+          "goalsAgainst": 2,
+          "goalDiff": 1,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 9,
+          "team": "아스톤 빌라",
+          "fullName": "아스톤 빌라",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/qgf3Tx9R3nphdWIS9SgyB.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 3,
+          "goalsAgainst": 2,
+          "goalDiff": 1,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 12,
+          "team": "보루시아 도르트문트",
+          "fullName": "보루시아 도르트문트",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/EmDXkZ5B61SrXUUTUPV3X.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 3,
+          "goalsAgainst": 2,
+          "goalDiff": 1,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 13,
+          "team": "레알 마드리드",
+          "fullName": "레알 마드리드",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/VOlkxOIoXAXF_11lYJ_Ve.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 2,
+          "goalsAgainst": 1,
+          "goalDiff": 1,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 13,
+          "team": "리버풀",
+          "fullName": "리버풀",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/5pqbkK17JBIe7kMzOPSdr.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 2,
+          "goalsAgainst": 1,
+          "goalDiff": 1,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 15,
+          "team": "아스널",
+          "fullName": "아스널",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/W1-BFEctS5BlEkf0u_ld3.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 1,
+          "goalsAgainst": 0,
+          "goalDiff": 1,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 16,
+          "team": "AEK 아테네",
+          "fullName": "AEK 아테네",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/3sEEZes8KdSncvPiQsKQC.png",
+          "games": 1,
+          "points": 3,
+          "win": 1,
+          "draw": 0,
+          "loss": 0,
+          "goalsFor": 1,
+          "goalsAgainst": 0,
+          "goalDiff": 1,
+          "recent": [
+            "승"
+          ]
+        },
+        {
+          "rank": 17,
+          "team": "로마",
+          "fullName": "로마",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/fqxU8GBeoLw0gLDZvhELq.png",
+          "games": 1,
+          "points": 1,
+          "win": 0,
+          "draw": 1,
+          "loss": 0,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
+          "goalDiff": 0,
+          "recent": [
+            "무"
+          ]
+        },
+        {
+          "rank": 17,
+          "team": "샤크타르 도네츠크",
+          "fullName": "샤크타르 도네츠크",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/jZLyNXTuZ0CUYXDBSeHDn.png",
+          "games": 1,
+          "points": 1,
+          "win": 0,
+          "draw": 1,
+          "loss": 0,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
+          "goalDiff": 0,
+          "recent": [
+            "무"
+          ]
+        },
+        {
+          "rank": 19,
+          "team": "PSV 아인트호벤",
+          "fullName": "PSV 아인트호벤",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/dz7iJVaQ-OmykCM9NpxQV.png",
+          "games": 1,
+          "points": 1,
+          "win": 0,
+          "draw": 1,
+          "loss": 0,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
+          "goalDiff": 0,
+          "recent": [
+            "무"
+          ]
+        },
+        {
+          "rank": 19,
+          "team": "페네르바흐체",
+          "fullName": "페네르바흐체",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/_exgztvNgcpD9d4fNWmAS.png",
+          "games": 1,
+          "points": 1,
+          "win": 0,
+          "draw": 1,
+          "loss": 0,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
+          "goalDiff": 0,
+          "recent": [
+            "무"
+          ]
+        },
+        {
+          "rank": 21,
+          "team": "비야레알",
+          "fullName": "비야레알",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/Wq9oBgwBzFNsQIFp7begY.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 2,
+          "goalsAgainst": 3,
+          "goalDiff": -1,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 22,
+          "team": "클럽 브뤼허",
+          "fullName": "클럽 브뤼허",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/P7IMTnd7DyvKabTxDNOdQ.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 2,
+          "goalsAgainst": 3,
+          "goalDiff": -1,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 22,
+          "team": "슬라비아 프라하",
+          "fullName": "슬라비아 프라하",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/VKbRDYN3uOPopTT0wEI1U.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 2,
+          "goalsAgainst": 3,
+          "goalDiff": -1,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 22,
+          "team": "릴",
+          "fullName": "릴",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/nphkDirYGP1JFaopFVqQy.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 2,
+          "goalsAgainst": 3,
+          "goalDiff": -1,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 25,
+          "team": "인터 밀란",
+          "fullName": "인터 밀란",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/QMLrilrNtKpq2UmCOH9FK.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 2,
+          "goalDiff": -1,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 25,
+          "team": "아틀레티코 마드리드",
+          "fullName": "아틀레티코 마드리드",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/xWY4as7vKsiitaDE-lmIe.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 2,
+          "goalDiff": -1,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 27,
+          "team": "LASK 린츠",
+          "fullName": "LASK 린츠",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/tIaGAkXv91QnIZZAr_ULH.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 0,
+          "goalsAgainst": 1,
+          "goalDiff": -1,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 27,
+          "team": "SSC 나폴리",
+          "fullName": "SSC 나폴리",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/vimlg4EDai73oNjZ6xow0.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 0,
+          "goalsAgainst": 1,
+          "goalDiff": -1,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 29,
+          "team": "갈라타사라이",
+          "fullName": "갈라타사라이",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/3-2NYgRA5dm1M_VdeXR4q.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 3,
+          "goalDiff": -2,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 29,
+          "team": "Viking",
+          "fullName": "Viking",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/5B8vjBfwUVOmSH0djLu9g.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 3,
+          "goalDiff": -2,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 31,
+          "team": "FC 포르투",
+          "fullName": "FC 포르투",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/5q7vuByZ8XO_L7ZuEeep2.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 0,
+          "goalsAgainst": 2,
+          "goalDiff": -2,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 32,
+          "team": "RB 라이프치히",
+          "fullName": "RB 라이프치히",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/0GckKHYTdGCldV4jrlIc1.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 4,
+          "goalDiff": -3,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 33,
+          "team": "페예누르트",
+          "fullName": "페예누르트",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/oFQJvuN4b8qeEHcuFsdoB.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 5,
+          "goalDiff": -4,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 34,
+          "team": "Sabah FK",
+          "fullName": "Sabah FK",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/Luk2rd1kqP58m5TW3yJM4.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 0,
+          "goalsAgainst": 4,
+          "goalDiff": -4,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 35,
+          "team": "슬로반 브라티슬라바",
+          "fullName": "슬로반 브라티슬라바",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/cyQkrp9pY4wqZh8ZfDj6A.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 6,
+          "goalDiff": -5,
+          "recent": [
+            "패"
+          ]
+        },
+        {
+          "rank": 36,
+          "team": "Bodoe/Glimt",
+          "fullName": "Bodoe/Glimt",
+          "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/zjkWCnFAxFmiPJF2siIgb.png",
+          "games": 1,
+          "points": 0,
+          "win": 0,
+          "draw": 0,
+          "loss": 1,
+          "goalsFor": 0,
+          "goalsAgainst": 5,
+          "goalDiff": -5,
+          "recent": [
+            "패"
+          ]
+        }
+      ],
+      "players": [
+        {
+          "category": "득점 순위 (Top Scorers)",
+          "icon": "fa-futbol",
+          "first_player": {
+            "rank": 1,
+            "name": "Ferran Torres",
+            "team": "파리 생제르맹",
+            "teamEng": "Paris Saint-Germain",
+            "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
+            "headshot": "",
+            "value": "3.0개 (Matches: 1, Goals: 3)",
+            "numeric_val": 3.0
+          },
+          "ranks": [
+            {
+              "rank": 1,
+              "name": "Ferran Torres",
+              "team": "파리 생제르맹",
+              "teamEng": "Paris Saint-Germain",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 1, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 2,
+              "name": "Ermedin Demirovic",
+              "team": "슈투트가르트",
+              "teamEng": "VfB Stuttgart",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+              "headshot": "",
+              "value": "3.0개 (Matches: 1, Goals: 3)",
+              "numeric_val": 3.0
+            },
+            {
+              "rank": 3,
+              "name": "Danijel Sturm",
+              "team": "Slavia Prague",
+              "teamEng": "Slavia Prague",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/494.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 4,
+              "name": "Michael Olise",
+              "team": "바이에른 뮌헨",
+              "teamEng": "Bayern Munich",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 5,
+              "name": "Erling Haaland",
+              "team": "맨체스터 시티",
+              "teamEng": "Manchester City",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 6,
+              "name": "Serhou Guirassy",
+              "team": "도르트문트",
+              "teamEng": "Borussia Dortmund",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/124.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 7,
+              "name": "Marc Bartra",
+              "team": "레알 베티스",
+              "teamEng": "Real Betis",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/244.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 8,
+              "name": "Raphinha",
+              "team": "바르셀로나",
+              "teamEng": "Barcelona",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 9,
+              "name": "Ousmane Dembélé",
+              "team": "파리 생제르맹",
+              "teamEng": "Paris Saint-Germain",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 10,
+              "name": "Lamine Yamal",
+              "team": "바르셀로나",
+              "teamEng": "Barcelona",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 11,
+              "name": "Alexsandro",
+              "team": "Lille",
+              "teamEng": "Lille",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/166.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 12,
+              "name": "Nicolo Tresoldi",
+              "team": "Club Brugge",
+              "teamEng": "Club Brugge",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/570.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 13,
+              "name": "Archie Brown",
+              "team": "Fenerbahce",
+              "teamEng": "Fenerbahce",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 14,
+              "name": "Santiago Mouriño",
+              "team": "비야레알",
+              "teamEng": "Villarreal",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 15,
+              "name": "Suleiman Camara",
+              "team": "Slovan Bratislava",
+              "teamEng": "Slovan Bratislava",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/521.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            }
+          ]
+        },
+        {
+          "category": "도움 순위 (Top Assists)",
+          "icon": "fa-hands-helping",
+          "first_player": {
+            "rank": 1,
+            "name": "Lamine Yamal",
+            "team": "바르셀로나",
+            "teamEng": "Barcelona",
+            "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+            "headshot": "",
+            "value": "2.0개 (Matches: 1, Assists: 2)",
+            "numeric_val": 2.0
+          },
+          "ranks": [
+            {
+              "rank": 1,
+              "name": "Lamine Yamal",
+              "team": "바르셀로나",
+              "teamEng": "Barcelona",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 2,
+              "name": "Nico Paz",
+              "team": "Como",
+              "teamEng": "Como",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/2572.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 3,
+              "name": "Deniz Undav",
+              "team": "슈투트가르트",
+              "teamEng": "VfB Stuttgart",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 4,
+              "name": "Pau Torres",
+              "team": "애스턴 빌라",
+              "teamEng": "Aston Villa",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 5,
+              "name": "Ousmane Dembélé",
+              "team": "파리 생제르맹",
+              "teamEng": "Paris Saint-Germain",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 6,
+              "name": "Maghnes Akliouche",
+              "team": "파리 생제르맹",
+              "teamEng": "Paris Saint-Germain",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 7,
+              "name": "João Gomes",
+              "team": "애스턴 빌라",
+              "teamEng": "Aston Villa",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 8,
+              "name": "Georges Mikautadze",
+              "team": "비야레알",
+              "teamEng": "Villarreal",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 9,
+              "name": "Angelo Stiller",
+              "team": "슈투트가르트",
+              "teamEng": "VfB Stuttgart",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 10,
+              "name": "Michael Olise",
+              "team": "바이에른 뮌헨",
+              "teamEng": "Bayern Munich",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 11,
+              "name": "Enzo Fernández",
+              "team": "맨체스터 시티",
+              "teamEng": "Manchester City",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 12,
+              "name": "Julián Álvarez",
+              "team": "아틀레티코 마드리드",
+              "teamEng": "Atlético Madrid",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 13,
+              "name": "Mason Greenwood",
+              "team": "Fenerbahce",
+              "teamEng": "Fenerbahce",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 14,
+              "name": "Ronald Araújo",
+              "team": "리버풀",
+              "teamEng": "Liverpool",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 15,
+              "name": "Armando Obispo",
+              "team": "PSV Eindhoven",
+              "teamEng": "PSV Eindhoven",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/148.png",
+              "headshot": "https://a.espncdn.com/i/headshots/soccer/players/full/245918.png",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            }
+          ]
+        }
+      ],
+      "team_hub": {
+        "PSG": {
+          "team": {
+            "rank": 1,
+            "team": "PSG",
+            "fullName": "PSG",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/Gt8F5QmiB3gbYqX46lCUq.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 6,
+            "goalsAgainst": 1,
+            "goalDiff": 5,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "바이에른 뮌헨": {
+          "team": {
+            "rank": 2,
+            "team": "바이에른 뮌헨",
+            "fullName": "바이에른 뮌헨",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/2TlMSJkWTGqMX2lPN7Cgd.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 5,
+            "goalsAgainst": 0,
+            "goalDiff": 5,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 4,
+              "name": "Michael Olise",
+              "value": "2.0개 (Matches: 1, Goals: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 10,
+              "name": "Michael Olise",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "headshot": ""
+            }
+          ]
+        },
+        "바르셀로나": {
+          "team": {
+            "rank": 3,
+            "team": "바르셀로나",
+            "fullName": "바르셀로나",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/eu0z1bZDA3gqIhdn-rHli.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 5,
+            "goalsAgainst": 1,
+            "goalDiff": 4,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 8,
+              "name": "Raphinha",
+              "value": "2.0개 (Matches: 1, Goals: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 10,
+              "name": "Lamine Yamal",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 1,
+              "name": "Lamine Yamal",
+              "value": "2.0개 (Matches: 1, Assists: 2)",
+              "headshot": ""
+            }
+          ]
+        },
+        "맨체스터 유나이티드": {
+          "team": {
+            "rank": 4,
+            "team": "맨체스터 유나이티드",
+            "fullName": "맨체스터 유나이티드",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/StOWHY8QeOZ7MplXkp2KC.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 0,
+            "goalDiff": 4,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "코모": {
+          "team": {
+            "rank": 5,
+            "team": "코모",
+            "fullName": "코모",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/3rB5oJN66n2Qa0XbuR9v8.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 1,
+            "goalDiff": 3,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "슈투트가르트": {
+          "team": {
+            "rank": 6,
+            "team": "슈투트가르트",
+            "fullName": "슈투트가르트",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/wISHHM98darM05uz5rA-K.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 1,
+            "goalDiff": 2,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 2,
+              "name": "Ermedin Demirovic",
+              "value": "3.0개 (Matches: 1, Goals: 3)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 3,
+              "name": "Deniz Undav",
+              "value": "2.0개 (Matches: 1, Assists: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 9,
+              "name": "Angelo Stiller",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "headshot": ""
+            }
+          ]
+        },
+        "스포르팅 CP": {
+          "team": {
+            "rank": 6,
+            "team": "스포르팅 CP",
+            "fullName": "스포르팅 CP",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/0kdOpU-I5oBF-d1aBr7fd.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 1,
+            "goalDiff": 2,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "맨체스터 시티": {
+          "team": {
+            "rank": 8,
+            "team": "맨체스터 시티",
+            "fullName": "맨체스터 시티",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/YaWwRy_S6TKMuwJHBvDbR.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 2,
+            "goalsAgainst": 0,
+            "goalDiff": 2,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 5,
+              "name": "Erling Haaland",
+              "value": "2.0개 (Matches: 1, Goals: 2)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 11,
+              "name": "Enzo Fernández",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "headshot": ""
+            }
+          ]
+        },
+        "랑스": {
+          "team": {
+            "rank": 9,
+            "team": "랑스",
+            "fullName": "랑스",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/bBPYfU7vmkcTl-q4NtFj2.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "goalDiff": 1,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "레알 베티스": {
+          "team": {
+            "rank": 9,
+            "team": "레알 베티스",
+            "fullName": "레알 베티스",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/gezsEknLaMwmk3X3Zcc76.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "goalDiff": 1,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 7,
+              "name": "Marc Bartra",
+              "value": "2.0개 (Matches: 1, Goals: 2)",
+              "headshot": ""
+            }
+          ]
+        },
+        "아스톤 빌라": {
+          "team": {
+            "rank": 9,
+            "team": "아스톤 빌라",
+            "fullName": "아스톤 빌라",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/qgf3Tx9R3nphdWIS9SgyB.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "goalDiff": 1,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "보루시아 도르트문트": {
+          "team": {
+            "rank": 12,
+            "team": "보루시아 도르트문트",
+            "fullName": "보루시아 도르트문트",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/EmDXkZ5B61SrXUUTUPV3X.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "goalDiff": 1,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "레알 마드리드": {
+          "team": {
+            "rank": 13,
+            "team": "레알 마드리드",
+            "fullName": "레알 마드리드",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/VOlkxOIoXAXF_11lYJ_Ve.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "goalDiff": 1,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "리버풀": {
+          "team": {
+            "rank": 13,
+            "team": "리버풀",
+            "fullName": "리버풀",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/5pqbkK17JBIe7kMzOPSdr.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "goalDiff": 1,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": [
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 14,
+              "name": "Ronald Araújo",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "headshot": ""
+            }
+          ]
+        },
+        "아스널": {
+          "team": {
+            "rank": 15,
+            "team": "아스널",
+            "fullName": "아스널",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/W1-BFEctS5BlEkf0u_ld3.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 0,
+            "goalDiff": 1,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "AEK 아테네": {
+          "team": {
+            "rank": 16,
+            "team": "AEK 아테네",
+            "fullName": "AEK 아테네",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/3sEEZes8KdSncvPiQsKQC.png",
+            "games": 1,
+            "points": 3,
+            "win": 1,
+            "draw": 0,
+            "loss": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 0,
+            "goalDiff": 1,
+            "recent": [
+              "승"
+            ]
+          },
+          "players": []
+        },
+        "로마": {
+          "team": {
+            "rank": 17,
+            "team": "로마",
+            "fullName": "로마",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/fqxU8GBeoLw0gLDZvhELq.png",
+            "games": 1,
+            "points": 1,
+            "win": 0,
+            "draw": 1,
+            "loss": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "goalDiff": 0,
+            "recent": [
+              "무"
+            ]
+          },
+          "players": []
+        },
+        "샤크타르 도네츠크": {
+          "team": {
+            "rank": 17,
+            "team": "샤크타르 도네츠크",
+            "fullName": "샤크타르 도네츠크",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/jZLyNXTuZ0CUYXDBSeHDn.png",
+            "games": 1,
+            "points": 1,
+            "win": 0,
+            "draw": 1,
+            "loss": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "goalDiff": 0,
+            "recent": [
+              "무"
+            ]
+          },
+          "players": []
+        },
+        "PSV 아인트호벤": {
+          "team": {
+            "rank": 19,
+            "team": "PSV 아인트호벤",
+            "fullName": "PSV 아인트호벤",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/dz7iJVaQ-OmykCM9NpxQV.png",
+            "games": 1,
+            "points": 1,
+            "win": 0,
+            "draw": 1,
+            "loss": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "goalDiff": 0,
+            "recent": [
+              "무"
+            ]
+          },
+          "players": []
+        },
+        "페네르바흐체": {
+          "team": {
+            "rank": 19,
+            "team": "페네르바흐체",
+            "fullName": "페네르바흐체",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/_exgztvNgcpD9d4fNWmAS.png",
+            "games": 1,
+            "points": 1,
+            "win": 0,
+            "draw": 1,
+            "loss": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "goalDiff": 0,
+            "recent": [
+              "무"
+            ]
+          },
+          "players": []
+        },
+        "비야레알": {
+          "team": {
+            "rank": 21,
+            "team": "비야레알",
+            "fullName": "비야레알",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/Wq9oBgwBzFNsQIFp7begY.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "goalDiff": -1,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": [
+            {
+              "category": "득점 순위 (Top Scorers)",
+              "rank": 14,
+              "name": "Santiago Mouriño",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "headshot": ""
+            },
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 8,
+              "name": "Georges Mikautadze",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "headshot": ""
+            }
+          ]
+        },
+        "클럽 브뤼허": {
+          "team": {
+            "rank": 22,
+            "team": "클럽 브뤼허",
+            "fullName": "클럽 브뤼허",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/P7IMTnd7DyvKabTxDNOdQ.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "goalDiff": -1,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "슬라비아 프라하": {
+          "team": {
+            "rank": 22,
+            "team": "슬라비아 프라하",
+            "fullName": "슬라비아 프라하",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/VKbRDYN3uOPopTT0wEI1U.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "goalDiff": -1,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "릴": {
+          "team": {
+            "rank": 22,
+            "team": "릴",
+            "fullName": "릴",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/nphkDirYGP1JFaopFVqQy.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "goalDiff": -1,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "인터 밀란": {
+          "team": {
+            "rank": 25,
+            "team": "인터 밀란",
+            "fullName": "인터 밀란",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/QMLrilrNtKpq2UmCOH9FK.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "goalDiff": -1,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "아틀레티코 마드리드": {
+          "team": {
+            "rank": 25,
+            "team": "아틀레티코 마드리드",
+            "fullName": "아틀레티코 마드리드",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/xWY4as7vKsiitaDE-lmIe.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "goalDiff": -1,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": [
+            {
+              "category": "도움 순위 (Top Assists)",
+              "rank": 12,
+              "name": "Julián Álvarez",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "headshot": ""
+            }
+          ]
+        },
+        "LASK 린츠": {
+          "team": {
+            "rank": 27,
+            "team": "LASK 린츠",
+            "fullName": "LASK 린츠",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/tIaGAkXv91QnIZZAr_ULH.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 0,
+            "goalsAgainst": 1,
+            "goalDiff": -1,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "SSC 나폴리": {
+          "team": {
+            "rank": 27,
+            "team": "SSC 나폴리",
+            "fullName": "SSC 나폴리",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/vimlg4EDai73oNjZ6xow0.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 0,
+            "goalsAgainst": 1,
+            "goalDiff": -1,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "갈라타사라이": {
+          "team": {
+            "rank": 29,
+            "team": "갈라타사라이",
+            "fullName": "갈라타사라이",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/3-2NYgRA5dm1M_VdeXR4q.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 3,
+            "goalDiff": -2,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "Viking": {
+          "team": {
+            "rank": 29,
+            "team": "Viking",
+            "fullName": "Viking",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/5B8vjBfwUVOmSH0djLu9g.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 3,
+            "goalDiff": -2,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "FC 포르투": {
+          "team": {
+            "rank": 31,
+            "team": "FC 포르투",
+            "fullName": "FC 포르투",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/5q7vuByZ8XO_L7ZuEeep2.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "goalDiff": -2,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "RB 라이프치히": {
+          "team": {
+            "rank": 32,
+            "team": "RB 라이프치히",
+            "fullName": "RB 라이프치히",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/0GckKHYTdGCldV4jrlIc1.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 4,
+            "goalDiff": -3,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "페예누르트": {
+          "team": {
+            "rank": 33,
+            "team": "페예누르트",
+            "fullName": "페예누르트",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/oFQJvuN4b8qeEHcuFsdoB.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 5,
+            "goalDiff": -4,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "Sabah FK": {
+          "team": {
+            "rank": 34,
+            "team": "Sabah FK",
+            "fullName": "Sabah FK",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/Luk2rd1kqP58m5TW3yJM4.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 0,
+            "goalsAgainst": 4,
+            "goalDiff": -4,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "슬로반 브라티슬라바": {
+          "team": {
+            "rank": 35,
+            "team": "슬로반 브라티슬라바",
+            "fullName": "슬로반 브라티슬라바",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/cyQkrp9pY4wqZh8ZfDj6A.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 6,
+            "goalDiff": -5,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        },
+        "Bodoe/Glimt": {
+          "team": {
+            "rank": 36,
+            "team": "Bodoe/Glimt",
+            "fullName": "Bodoe/Glimt",
+            "emblem": "https://cdn.sportfeeds.io/sdl/images/team/crest/medium/zjkWCnFAxFmiPJF2siIgb.png",
+            "games": 1,
+            "points": 0,
+            "win": 0,
+            "draw": 0,
+            "loss": 1,
+            "goalsFor": 0,
+            "goalsAgainst": 5,
+            "goalDiff": -5,
+            "recent": [
+              "패"
+            ]
+          },
+          "players": []
+        }
+      }
+    },
+    "uel": {
+      "key": "uel",
+      "name": "UEFA 유로파리그 (Europa League)",
+      "shortName": "UEL",
+      "country": "유럽",
+      "color": "#f68e1e",
+      "icon": "fa-trophy",
+      "teams": [],
+      "players": [
+        {
+          "category": "득점 순위 (Top Scorers)",
+          "icon": "fa-futbol",
+          "first_player": {
+            "rank": 1,
+            "name": "Tobias Guddal",
+            "team": "Sparta Prague",
+            "teamEng": "Sparta Prague",
+            "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/433.png",
+            "headshot": "",
+            "value": "2.0개 (Matches: 1, Goals: 2)",
+            "numeric_val": 2.0
+          },
+          "ranks": [
+            {
+              "rank": 1,
+              "name": "Tobias Guddal",
+              "team": "Sparta Prague",
+              "teamEng": "Sparta Prague",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/433.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Goals: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 2,
+              "name": "Kajetan Szmyt",
+              "team": "Jagiellonia Bialystok",
+              "teamEng": "Jagiellonia Bialystok",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/11505.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 3,
+              "name": "Alejandro Alfaro",
+              "team": "Torreense",
+              "teamEng": "Torreense",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/21615.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 4,
+              "name": "Yéremy Pino",
+              "team": "크리스탈 팰리스",
+              "teamEng": "Crystal Palace",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 5,
+              "name": "Enzo Le Fée",
+              "team": "Sunderland",
+              "teamEng": "Sunderland",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 6,
+              "name": "Zeki Çelik",
+              "team": "유벤투스",
+              "teamEng": "Juventus",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 7,
+              "name": "Sergio Gómez",
+              "team": "레알 소시에다드",
+              "teamEng": "Real Sociedad",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/89.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 8,
+              "name": "Keito Nakamura",
+              "team": "Lyon",
+              "teamEng": "Lyon",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/167.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 9,
+              "name": "Kristoffer Zachariassen",
+              "team": "Ferencvaros",
+              "teamEng": "Ferencvaros",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/622.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 10,
+              "name": "Bruno Wilson",
+              "team": "ARARAT-ARMENIA",
+              "teamEng": "ARARAT-ARMENIA",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/20024.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 11,
+              "name": "Facundo Medina",
+              "team": "레버쿠젠",
+              "teamEng": "Bayer Leverkusen",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 12,
+              "name": "Dodi Lukébakio",
+              "team": "Benfica",
+              "teamEng": "Benfica",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/1929.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 13,
+              "name": "Amir Murillo",
+              "team": "Besiktas",
+              "teamEng": "Besiktas",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
+              "headshot": "https://a.espncdn.com/i/headshots/soccer/players/full/216420.png",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 14,
+              "name": "Jure Balkovec",
+              "team": "Omonia Nicosia",
+              "teamEng": "Omonia Nicosia",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/617.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 15,
+              "name": "Haris Tabakovic",
+              "team": "RB Salzburg",
+              "teamEng": "RB Salzburg",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/2790.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Goals: 1)",
+              "numeric_val": 1.0
+            }
+          ]
+        },
+        {
+          "category": "도움 순위 (Top Assists)",
+          "icon": "fa-hands-helping",
+          "first_player": {
+            "rank": 1,
+            "name": "Junior Olaitan",
+            "team": "Besiktas",
+            "teamEng": "Besiktas",
+            "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
+            "headshot": "",
+            "value": "2.0개 (Matches: 1, Assists: 2)",
+            "numeric_val": 2.0
+          },
+          "ranks": [
+            {
+              "rank": 1,
+              "name": "Junior Olaitan",
+              "team": "Besiktas",
+              "teamEng": "Besiktas",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 2,
+              "name": "Orkun Kökçü",
+              "team": "Besiktas",
+              "teamEng": "Besiktas",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
+              "headshot": "https://a.espncdn.com/i/headshots/soccer/players/full/272700.png",
+              "value": "2.0개 (Matches: 1, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 3,
+              "name": "Bamidele Isa Yusuf",
+              "team": "Ferencvaros",
+              "teamEng": "Ferencvaros",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/622.png",
+              "headshot": "",
+              "value": "2.0개 (Matches: 1, Assists: 2)",
+              "numeric_val": 2.0
+            },
+            {
+              "rank": 4,
+              "name": "Luken Beitia",
+              "team": "레알 소시에다드",
+              "teamEng": "Real Sociedad",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/89.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 5,
+              "name": "Ali Maamar",
+              "team": "Anderlecht",
+              "teamEng": "Anderlecht",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/441.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 6,
+              "name": "Massiré Sylla",
+              "team": "Union St.-Gilloise",
+              "teamEng": "Union St.-Gilloise",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/5807.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 7,
+              "name": "Besfort Zeneli",
+              "team": "Union St.-Gilloise",
+              "teamEng": "Union St.-Gilloise",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/5807.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 8,
+              "name": "Adam Wharton",
+              "team": "크리스탈 팰리스",
+              "teamEng": "Crystal Palace",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 9,
+              "name": "Josimar Alcócer",
+              "team": "Sparta Prague",
+              "teamEng": "Sparta Prague",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/433.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 10,
+              "name": "Alex Scott",
+              "team": "본머스",
+              "teamEng": "AFC Bournemouth",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 11,
+              "name": "Louis Patris",
+              "team": "Union St.-Gilloise",
+              "teamEng": "Union St.-Gilloise",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/5807.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 12,
+              "name": "Adrien Truffert",
+              "team": "본머스",
+              "teamEng": "AFC Bournemouth",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 13,
+              "name": "Himad Abdelli",
+              "team": "Marseille",
+              "teamEng": "Marseille",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/176.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 14,
+              "name": "Kamil Grabara",
+              "team": "유벤투스",
+              "teamEng": "Juventus",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            },
+            {
+              "rank": 15,
+              "name": "Vá",
+              "team": "Lillestrom",
+              "teamEng": "Lillestrom",
+              "teamEmblem": "https://a.espncdn.com/i/teamlogos/soccer/500/987.png",
+              "headshot": "",
+              "value": "1.0개 (Matches: 1, Assists: 1)",
+              "numeric_val": 1.0
+            }
+          ]
+        }
+      ],
+      "team_hub": {}
+    }
+  }
+}

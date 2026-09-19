@@ -1,0 +1,2983 @@
+{
+  "sports": "mlb",
+  "title": "MLB 메이저리그 (Major League Baseball)",
+  "updated_at": "2026-09-19 12:26:18",
+  "updated_at_iso": "2026-09-19T12:26:18.885556",
+  "divisions": [
+    {
+      "divisionId": 201,
+      "divisionName": "AL 동부 (AL East)",
+      "league": "아메리칸 리그",
+      "teams": [
+        {
+          "rank": 1,
+          "teamId": 139,
+          "team": "템파베이 레이스",
+          "teamEng": "Rays",
+          "color": "#092C5C",
+          "emblem": "https://www.mlbstatic.com/team-logos/139.svg",
+          "games": 153,
+          "win": 93,
+          "loss": 60,
+          "rate": ".608",
+          "game_diff": "-",
+          "runDiff": 78,
+          "streak": "L1",
+          "recent10": "8-2",
+          "league": "아메리칸 리그",
+          "division": "AL 동부 (AL East)",
+          "overallRank": 2
+        },
+        {
+          "rank": 2,
+          "teamId": 147,
+          "team": "뉴욕 양키스",
+          "teamEng": "Yankees",
+          "color": "#0C2340",
+          "emblem": "https://www.mlbstatic.com/team-logos/147.svg",
+          "games": 152,
+          "win": 88,
+          "loss": 64,
+          "rate": ".579",
+          "game_diff": "4.5",
+          "runDiff": 136,
+          "streak": "L1",
+          "recent10": "7-3",
+          "league": "아메리칸 리그",
+          "division": "AL 동부 (AL East)",
+          "overallRank": 5
+        },
+        {
+          "rank": 3,
+          "teamId": 111,
+          "team": "보스턴 레드삭스",
+          "teamEng": "Red Sox",
+          "color": "#BD3039",
+          "emblem": "https://www.mlbstatic.com/team-logos/111.svg",
+          "games": 154,
+          "win": 84,
+          "loss": 70,
+          "rate": ".545",
+          "game_diff": "9.5",
+          "runDiff": 85,
+          "streak": "W2",
+          "recent10": "5-5",
+          "league": "아메리칸 리그",
+          "division": "AL 동부 (AL East)",
+          "overallRank": 9
+        },
+        {
+          "rank": 4,
+          "teamId": 141,
+          "team": "토론토 블루제이스",
+          "teamEng": "Blue Jays",
+          "color": "#134A8E",
+          "emblem": "https://www.mlbstatic.com/team-logos/141.svg",
+          "games": 154,
+          "win": 76,
+          "loss": 78,
+          "rate": ".494",
+          "game_diff": "17.5",
+          "runDiff": -43,
+          "streak": "L1",
+          "recent10": "4-6",
+          "league": "아메리칸 리그",
+          "division": "AL 동부 (AL East)",
+          "overallRank": 17
+        },
+        {
+          "rank": 5,
+          "teamId": 110,
+          "team": "볼티모어 오리올스",
+          "teamEng": "Orioles",
+          "color": "#DF4601",
+          "emblem": "https://www.mlbstatic.com/team-logos/110.svg",
+          "games": 154,
+          "win": 75,
+          "loss": 79,
+          "rate": ".487",
+          "game_diff": "18.5",
+          "runDiff": -27,
+          "streak": "L1",
+          "recent10": "6-4",
+          "league": "아메리칸 리그",
+          "division": "AL 동부 (AL East)",
+          "overallRank": 18
+        }
+      ]
+    },
+    {
+      "divisionId": 202,
+      "divisionName": "AL 중부 (AL Central)",
+      "league": "아메리칸 리그",
+      "teams": [
+        {
+          "rank": 1,
+          "teamId": 114,
+          "team": "신시내티 레즈",
+          "teamEng": "Guardians",
+          "color": "#C6011F",
+          "emblem": "https://www.mlbstatic.com/team-logos/114.svg",
+          "games": 154,
+          "win": 79,
+          "loss": 75,
+          "rate": ".513",
+          "game_diff": "-",
+          "runDiff": -5,
+          "streak": "W3",
+          "recent10": "6-4",
+          "league": "아메리칸 리그",
+          "division": "AL 중부 (AL Central)",
+          "overallRank": 11
+        },
+        {
+          "rank": 2,
+          "teamId": 145,
+          "team": "시카고 화이트삭스",
+          "teamEng": "White Sox",
+          "color": "#27251F",
+          "emblem": "https://www.mlbstatic.com/team-logos/145.svg",
+          "games": 154,
+          "win": 78,
+          "loss": 76,
+          "rate": ".506",
+          "game_diff": "1.0",
+          "runDiff": 33,
+          "streak": "L1",
+          "recent10": "3-7",
+          "league": "아메리칸 리그",
+          "division": "AL 중부 (AL Central)",
+          "overallRank": 12
+        },
+        {
+          "rank": 3,
+          "teamId": 116,
+          "team": "콜로라도 로키스",
+          "teamEng": "Tigers",
+          "color": "#333366",
+          "emblem": "https://www.mlbstatic.com/team-logos/116.svg",
+          "games": 154,
+          "win": 73,
+          "loss": 81,
+          "rate": ".474",
+          "game_diff": "6.0",
+          "runDiff": 77,
+          "streak": "W1",
+          "recent10": "7-3",
+          "league": "아메리칸 리그",
+          "division": "AL 중부 (AL Central)",
+          "overallRank": 20
+        },
+        {
+          "rank": 4,
+          "teamId": 142,
+          "team": "미네소타 트윈스",
+          "teamEng": "Twins",
+          "color": "#002B5C",
+          "emblem": "https://www.mlbstatic.com/team-logos/142.svg",
+          "games": 153,
+          "win": 71,
+          "loss": 82,
+          "rate": ".464",
+          "game_diff": "7.5",
+          "runDiff": -74,
+          "streak": "L1",
+          "recent10": "3-7",
+          "league": "아메리칸 리그",
+          "division": "AL 중부 (AL Central)",
+          "overallRank": 24
+        },
+        {
+          "rank": 5,
+          "teamId": 118,
+          "team": "캔자스시티 로열스",
+          "teamEng": "Royals",
+          "color": "#004687",
+          "emblem": "https://www.mlbstatic.com/team-logos/118.svg",
+          "games": 154,
+          "win": 67,
+          "loss": 87,
+          "rate": ".435",
+          "game_diff": "12.0",
+          "runDiff": -100,
+          "streak": "L2",
+          "recent10": "3-7",
+          "league": "아메리칸 리그",
+          "division": "AL 중부 (AL Central)",
+          "overallRank": 26
+        }
+      ]
+    },
+    {
+      "divisionId": 200,
+      "divisionName": "AL 서부 (AL West)",
+      "league": "아메리칸 리그",
+      "teams": [
+        {
+          "rank": 1,
+          "teamId": 117,
+          "team": "디트로이트 타이거스",
+          "teamEng": "Astros",
+          "color": "#0C2340",
+          "emblem": "https://www.mlbstatic.com/team-logos/117.svg",
+          "games": 154,
+          "win": 77,
+          "loss": 77,
+          "rate": ".500",
+          "game_diff": "-",
+          "runDiff": -54,
+          "streak": "L1",
+          "recent10": "4-6",
+          "league": "아메리칸 리그",
+          "division": "AL 서부 (AL West)",
+          "overallRank": 13
+        },
+        {
+          "rank": 2,
+          "teamId": 140,
+          "team": "텍사스 레인저스",
+          "teamEng": "Rangers",
+          "color": "#003278",
+          "emblem": "https://www.mlbstatic.com/team-logos/140.svg",
+          "games": 154,
+          "win": 77,
+          "loss": 77,
+          "rate": ".500",
+          "game_diff": "-",
+          "runDiff": -33,
+          "streak": "W1",
+          "recent10": "6-4",
+          "league": "아메리칸 리그",
+          "division": "AL 서부 (AL West)",
+          "overallRank": 14
+        },
+        {
+          "rank": 3,
+          "teamId": 136,
+          "team": "시애틀 매리너스",
+          "teamEng": "Mariners",
+          "color": "#0C2340",
+          "emblem": "https://www.mlbstatic.com/team-logos/136.svg",
+          "games": 154,
+          "win": 72,
+          "loss": 82,
+          "rate": ".468",
+          "game_diff": "5.0",
+          "runDiff": -55,
+          "streak": "W2",
+          "recent10": "5-5",
+          "league": "아메리칸 리그",
+          "division": "AL 서부 (AL West)",
+          "overallRank": 21
+        },
+        {
+          "rank": 4,
+          "teamId": 133,
+          "team": "오클랜드 애슬레틱스",
+          "teamEng": "Athletics",
+          "color": "#003831",
+          "emblem": "https://www.mlbstatic.com/team-logos/133.svg",
+          "games": 154,
+          "win": 61,
+          "loss": 93,
+          "rate": ".396",
+          "game_diff": "16.0",
+          "runDiff": -216,
+          "streak": "L4",
+          "recent10": "4-6",
+          "league": "아메리칸 리그",
+          "division": "AL 서부 (AL West)",
+          "overallRank": 28
+        },
+        {
+          "rank": 5,
+          "teamId": 108,
+          "team": "LA 에인절스",
+          "teamEng": "Angels",
+          "color": "#BA0021",
+          "emblem": "https://www.mlbstatic.com/team-logos/108.svg",
+          "games": 153,
+          "win": 59,
+          "loss": 94,
+          "rate": ".386",
+          "game_diff": "17.5",
+          "runDiff": -77,
+          "streak": "W1",
+          "recent10": "5-5",
+          "league": "아메리칸 리그",
+          "division": "AL 서부 (AL West)",
+          "overallRank": 29
+        }
+      ]
+    },
+    {
+      "divisionId": 204,
+      "divisionName": "NL 동부 (NL East)",
+      "league": "내셔널 리그",
+      "teams": [
+        {
+          "rank": 1,
+          "teamId": 144,
+          "team": "애틀랜타 브레이브스",
+          "teamEng": "Braves",
+          "color": "#CE1141",
+          "emblem": "https://www.mlbstatic.com/team-logos/144.svg",
+          "games": 154,
+          "win": 90,
+          "loss": 64,
+          "rate": ".584",
+          "game_diff": "-",
+          "runDiff": 115,
+          "streak": "W1",
+          "recent10": "5-5",
+          "league": "내셔널 리그",
+          "division": "NL 동부 (NL East)",
+          "overallRank": 4
+        },
+        {
+          "rank": 2,
+          "teamId": 143,
+          "team": "필라델피아 필리스",
+          "teamEng": "Phillies",
+          "color": "#E81828",
+          "emblem": "https://www.mlbstatic.com/team-logos/143.svg",
+          "games": 154,
+          "win": 85,
+          "loss": 69,
+          "rate": ".552",
+          "game_diff": "5.0",
+          "runDiff": 31,
+          "streak": "L1",
+          "recent10": "4-6",
+          "league": "내셔널 리그",
+          "division": "NL 동부 (NL East)",
+          "overallRank": 6
+        },
+        {
+          "rank": 3,
+          "teamId": 146,
+          "team": "마이애미 말린스",
+          "teamEng": "Marlins",
+          "color": "#00A3E0",
+          "emblem": "https://www.mlbstatic.com/team-logos/146.svg",
+          "games": 153,
+          "win": 76,
+          "loss": 77,
+          "rate": ".497",
+          "game_diff": "13.5",
+          "runDiff": 8,
+          "streak": "W2",
+          "recent10": "5-5",
+          "league": "내셔널 리그",
+          "division": "NL 동부 (NL East)",
+          "overallRank": 16
+        },
+        {
+          "rank": 4,
+          "teamId": 120,
+          "team": "워싱턴 내셔널스",
+          "teamEng": "Nationals",
+          "color": "#AB0003",
+          "emblem": "https://www.mlbstatic.com/team-logos/120.svg",
+          "games": 154,
+          "win": 72,
+          "loss": 82,
+          "rate": ".468",
+          "game_diff": "18.0",
+          "runDiff": 11,
+          "streak": "W1",
+          "recent10": "5-5",
+          "league": "내셔널 리그",
+          "division": "NL 동부 (NL East)",
+          "overallRank": 22
+        },
+        {
+          "rank": 5,
+          "teamId": 121,
+          "team": "뉴욕 메츠",
+          "teamEng": "Mets",
+          "color": "#002D72",
+          "emblem": "https://www.mlbstatic.com/team-logos/121.svg",
+          "games": 154,
+          "win": 70,
+          "loss": 84,
+          "rate": ".455",
+          "game_diff": "20.0",
+          "runDiff": -43,
+          "streak": "W1",
+          "recent10": "4-6",
+          "league": "내셔널 리그",
+          "division": "NL 동부 (NL East)",
+          "overallRank": 25
+        }
+      ]
+    },
+    {
+      "divisionId": 205,
+      "divisionName": "NL 중부 (NL Central)",
+      "league": "내셔널 리그",
+      "teams": [
+        {
+          "rank": 1,
+          "teamId": 158,
+          "team": "밀워키 브루어스",
+          "teamEng": "Brewers",
+          "color": "#12284B",
+          "emblem": "https://www.mlbstatic.com/team-logos/158.svg",
+          "games": 154,
+          "win": 96,
+          "loss": 58,
+          "rate": ".623",
+          "game_diff": "-",
+          "runDiff": 198,
+          "streak": "W1",
+          "recent10": "8-2",
+          "league": "내셔널 리그",
+          "division": "NL 중부 (NL Central)",
+          "overallRank": 1
+        },
+        {
+          "rank": 2,
+          "teamId": 112,
+          "team": "시카고 컵스",
+          "teamEng": "Cubs",
+          "color": "#0E3386",
+          "emblem": "https://www.mlbstatic.com/team-logos/112.svg",
+          "games": 154,
+          "win": 85,
+          "loss": 69,
+          "rate": ".552",
+          "game_diff": "11.0",
+          "runDiff": 141,
+          "streak": "L1",
+          "recent10": "4-6",
+          "league": "내셔널 리그",
+          "division": "NL 중부 (NL Central)",
+          "overallRank": 7
+        },
+        {
+          "rank": 3,
+          "teamId": 134,
+          "team": "피츠버그 파이리츠",
+          "teamEng": "Pirates",
+          "color": "#FDB827",
+          "emblem": "https://www.mlbstatic.com/team-logos/134.svg",
+          "games": 154,
+          "win": 77,
+          "loss": 77,
+          "rate": ".500",
+          "game_diff": "19.0",
+          "runDiff": 27,
+          "streak": "W2",
+          "recent10": "6-4",
+          "league": "내셔널 리그",
+          "division": "NL 중부 (NL Central)",
+          "overallRank": 15
+        },
+        {
+          "rank": 4,
+          "teamId": 138,
+          "team": "세인트루이스 카디널스",
+          "teamEng": "Cardinals",
+          "color": "#C41E3A",
+          "emblem": "https://www.mlbstatic.com/team-logos/138.svg",
+          "games": 154,
+          "win": 75,
+          "loss": 79,
+          "rate": ".487",
+          "game_diff": "21.0",
+          "runDiff": -22,
+          "streak": "L3",
+          "recent10": "3-7",
+          "league": "내셔널 리그",
+          "division": "NL 중부 (NL Central)",
+          "overallRank": 19
+        },
+        {
+          "rank": 5,
+          "teamId": 113,
+          "team": "시카고 화이트삭스",
+          "teamEng": "Reds",
+          "color": "#27251F",
+          "emblem": "https://www.mlbstatic.com/team-logos/113.svg",
+          "games": 154,
+          "win": 72,
+          "loss": 82,
+          "rate": ".468",
+          "game_diff": "24.0",
+          "runDiff": -152,
+          "streak": "W1",
+          "recent10": "3-7",
+          "league": "내셔널 리그",
+          "division": "NL 중부 (NL Central)",
+          "overallRank": 23
+        }
+      ]
+    },
+    {
+      "divisionId": 203,
+      "divisionName": "NL 서부 (NL West)",
+      "league": "내셔널 리그",
+      "teams": [
+        {
+          "rank": 1,
+          "teamId": 119,
+          "team": "LA 다저스",
+          "teamEng": "Dodgers",
+          "color": "#005A9C",
+          "emblem": "https://www.mlbstatic.com/team-logos/119.svg",
+          "games": 153,
+          "win": 93,
+          "loss": 60,
+          "rate": ".608",
+          "game_diff": "-",
+          "runDiff": 179,
+          "streak": "W1",
+          "recent10": "7-3",
+          "league": "내셔널 리그",
+          "division": "NL 서부 (NL West)",
+          "overallRank": 3
+        },
+        {
+          "rank": 2,
+          "teamId": 135,
+          "team": "샌디에이고 파드리스",
+          "teamEng": "Padres",
+          "color": "#2F241D",
+          "emblem": "https://www.mlbstatic.com/team-logos/135.svg",
+          "games": 153,
+          "win": 84,
+          "loss": 69,
+          "rate": ".549",
+          "game_diff": "9.0",
+          "runDiff": 30,
+          "streak": "W2",
+          "recent10": "9-1",
+          "league": "내셔널 리그",
+          "division": "NL 서부 (NL West)",
+          "overallRank": 8
+        },
+        {
+          "rank": 3,
+          "teamId": 109,
+          "team": "애리조나 다이아몬드백스",
+          "teamEng": "D-backs",
+          "color": "#A71930",
+          "emblem": "https://www.mlbstatic.com/team-logos/109.svg",
+          "games": 153,
+          "win": 80,
+          "loss": 73,
+          "rate": ".523",
+          "game_diff": "13.0",
+          "runDiff": 0,
+          "streak": "L2",
+          "recent10": "5-5",
+          "league": "내셔널 리그",
+          "division": "NL 서부 (NL West)",
+          "overallRank": 10
+        },
+        {
+          "rank": 4,
+          "teamId": 137,
+          "team": "샌프란시스코 자이언츠",
+          "teamEng": "Giants",
+          "color": "#FD5A1E",
+          "emblem": "https://www.mlbstatic.com/team-logos/137.svg",
+          "games": 153,
+          "win": 64,
+          "loss": 89,
+          "rate": ".418",
+          "game_diff": "29.0",
+          "runDiff": -70,
+          "streak": "W2",
+          "recent10": "5-5",
+          "league": "내셔널 리그",
+          "division": "NL 서부 (NL West)",
+          "overallRank": 27
+        },
+        {
+          "rank": 5,
+          "teamId": 115,
+          "team": "클리블랜드 가디언스",
+          "teamEng": "Rockies",
+          "color": "#E31937",
+          "emblem": "https://www.mlbstatic.com/team-logos/115.svg",
+          "games": 154,
+          "win": 56,
+          "loss": 98,
+          "rate": ".364",
+          "game_diff": "37.5",
+          "runDiff": -178,
+          "streak": "L3",
+          "recent10": "1-9",
+          "league": "내셔널 리그",
+          "division": "NL 서부 (NL West)",
+          "overallRank": 30
+        }
+      ]
+    }
+  ],
+  "all_teams": [
+    {
+      "rank": 1,
+      "teamId": 158,
+      "team": "밀워키 브루어스",
+      "teamEng": "Brewers",
+      "color": "#12284B",
+      "emblem": "https://www.mlbstatic.com/team-logos/158.svg",
+      "games": 154,
+      "win": 96,
+      "loss": 58,
+      "rate": ".623",
+      "game_diff": "-",
+      "runDiff": 198,
+      "streak": "W1",
+      "recent10": "8-2",
+      "league": "내셔널 리그",
+      "division": "NL 중부 (NL Central)",
+      "overallRank": 1
+    },
+    {
+      "rank": 1,
+      "teamId": 139,
+      "team": "템파베이 레이스",
+      "teamEng": "Rays",
+      "color": "#092C5C",
+      "emblem": "https://www.mlbstatic.com/team-logos/139.svg",
+      "games": 153,
+      "win": 93,
+      "loss": 60,
+      "rate": ".608",
+      "game_diff": "-",
+      "runDiff": 78,
+      "streak": "L1",
+      "recent10": "8-2",
+      "league": "아메리칸 리그",
+      "division": "AL 동부 (AL East)",
+      "overallRank": 2
+    },
+    {
+      "rank": 1,
+      "teamId": 119,
+      "team": "LA 다저스",
+      "teamEng": "Dodgers",
+      "color": "#005A9C",
+      "emblem": "https://www.mlbstatic.com/team-logos/119.svg",
+      "games": 153,
+      "win": 93,
+      "loss": 60,
+      "rate": ".608",
+      "game_diff": "-",
+      "runDiff": 179,
+      "streak": "W1",
+      "recent10": "7-3",
+      "league": "내셔널 리그",
+      "division": "NL 서부 (NL West)",
+      "overallRank": 3
+    },
+    {
+      "rank": 1,
+      "teamId": 144,
+      "team": "애틀랜타 브레이브스",
+      "teamEng": "Braves",
+      "color": "#CE1141",
+      "emblem": "https://www.mlbstatic.com/team-logos/144.svg",
+      "games": 154,
+      "win": 90,
+      "loss": 64,
+      "rate": ".584",
+      "game_diff": "-",
+      "runDiff": 115,
+      "streak": "W1",
+      "recent10": "5-5",
+      "league": "내셔널 리그",
+      "division": "NL 동부 (NL East)",
+      "overallRank": 4
+    },
+    {
+      "rank": 2,
+      "teamId": 147,
+      "team": "뉴욕 양키스",
+      "teamEng": "Yankees",
+      "color": "#0C2340",
+      "emblem": "https://www.mlbstatic.com/team-logos/147.svg",
+      "games": 152,
+      "win": 88,
+      "loss": 64,
+      "rate": ".579",
+      "game_diff": "4.5",
+      "runDiff": 136,
+      "streak": "L1",
+      "recent10": "7-3",
+      "league": "아메리칸 리그",
+      "division": "AL 동부 (AL East)",
+      "overallRank": 5
+    },
+    {
+      "rank": 2,
+      "teamId": 143,
+      "team": "필라델피아 필리스",
+      "teamEng": "Phillies",
+      "color": "#E81828",
+      "emblem": "https://www.mlbstatic.com/team-logos/143.svg",
+      "games": 154,
+      "win": 85,
+      "loss": 69,
+      "rate": ".552",
+      "game_diff": "5.0",
+      "runDiff": 31,
+      "streak": "L1",
+      "recent10": "4-6",
+      "league": "내셔널 리그",
+      "division": "NL 동부 (NL East)",
+      "overallRank": 6
+    },
+    {
+      "rank": 2,
+      "teamId": 112,
+      "team": "시카고 컵스",
+      "teamEng": "Cubs",
+      "color": "#0E3386",
+      "emblem": "https://www.mlbstatic.com/team-logos/112.svg",
+      "games": 154,
+      "win": 85,
+      "loss": 69,
+      "rate": ".552",
+      "game_diff": "11.0",
+      "runDiff": 141,
+      "streak": "L1",
+      "recent10": "4-6",
+      "league": "내셔널 리그",
+      "division": "NL 중부 (NL Central)",
+      "overallRank": 7
+    },
+    {
+      "rank": 2,
+      "teamId": 135,
+      "team": "샌디에이고 파드리스",
+      "teamEng": "Padres",
+      "color": "#2F241D",
+      "emblem": "https://www.mlbstatic.com/team-logos/135.svg",
+      "games": 153,
+      "win": 84,
+      "loss": 69,
+      "rate": ".549",
+      "game_diff": "9.0",
+      "runDiff": 30,
+      "streak": "W2",
+      "recent10": "9-1",
+      "league": "내셔널 리그",
+      "division": "NL 서부 (NL West)",
+      "overallRank": 8
+    },
+    {
+      "rank": 3,
+      "teamId": 111,
+      "team": "보스턴 레드삭스",
+      "teamEng": "Red Sox",
+      "color": "#BD3039",
+      "emblem": "https://www.mlbstatic.com/team-logos/111.svg",
+      "games": 154,
+      "win": 84,
+      "loss": 70,
+      "rate": ".545",
+      "game_diff": "9.5",
+      "runDiff": 85,
+      "streak": "W2",
+      "recent10": "5-5",
+      "league": "아메리칸 리그",
+      "division": "AL 동부 (AL East)",
+      "overallRank": 9
+    },
+    {
+      "rank": 3,
+      "teamId": 109,
+      "team": "애리조나 다이아몬드백스",
+      "teamEng": "D-backs",
+      "color": "#A71930",
+      "emblem": "https://www.mlbstatic.com/team-logos/109.svg",
+      "games": 153,
+      "win": 80,
+      "loss": 73,
+      "rate": ".523",
+      "game_diff": "13.0",
+      "runDiff": 0,
+      "streak": "L2",
+      "recent10": "5-5",
+      "league": "내셔널 리그",
+      "division": "NL 서부 (NL West)",
+      "overallRank": 10
+    },
+    {
+      "rank": 1,
+      "teamId": 114,
+      "team": "신시내티 레즈",
+      "teamEng": "Guardians",
+      "color": "#C6011F",
+      "emblem": "https://www.mlbstatic.com/team-logos/114.svg",
+      "games": 154,
+      "win": 79,
+      "loss": 75,
+      "rate": ".513",
+      "game_diff": "-",
+      "runDiff": -5,
+      "streak": "W3",
+      "recent10": "6-4",
+      "league": "아메리칸 리그",
+      "division": "AL 중부 (AL Central)",
+      "overallRank": 11
+    },
+    {
+      "rank": 2,
+      "teamId": 145,
+      "team": "시카고 화이트삭스",
+      "teamEng": "White Sox",
+      "color": "#27251F",
+      "emblem": "https://www.mlbstatic.com/team-logos/145.svg",
+      "games": 154,
+      "win": 78,
+      "loss": 76,
+      "rate": ".506",
+      "game_diff": "1.0",
+      "runDiff": 33,
+      "streak": "L1",
+      "recent10": "3-7",
+      "league": "아메리칸 리그",
+      "division": "AL 중부 (AL Central)",
+      "overallRank": 12
+    },
+    {
+      "rank": 1,
+      "teamId": 117,
+      "team": "디트로이트 타이거스",
+      "teamEng": "Astros",
+      "color": "#0C2340",
+      "emblem": "https://www.mlbstatic.com/team-logos/117.svg",
+      "games": 154,
+      "win": 77,
+      "loss": 77,
+      "rate": ".500",
+      "game_diff": "-",
+      "runDiff": -54,
+      "streak": "L1",
+      "recent10": "4-6",
+      "league": "아메리칸 리그",
+      "division": "AL 서부 (AL West)",
+      "overallRank": 13
+    },
+    {
+      "rank": 2,
+      "teamId": 140,
+      "team": "텍사스 레인저스",
+      "teamEng": "Rangers",
+      "color": "#003278",
+      "emblem": "https://www.mlbstatic.com/team-logos/140.svg",
+      "games": 154,
+      "win": 77,
+      "loss": 77,
+      "rate": ".500",
+      "game_diff": "-",
+      "runDiff": -33,
+      "streak": "W1",
+      "recent10": "6-4",
+      "league": "아메리칸 리그",
+      "division": "AL 서부 (AL West)",
+      "overallRank": 14
+    },
+    {
+      "rank": 3,
+      "teamId": 134,
+      "team": "피츠버그 파이리츠",
+      "teamEng": "Pirates",
+      "color": "#FDB827",
+      "emblem": "https://www.mlbstatic.com/team-logos/134.svg",
+      "games": 154,
+      "win": 77,
+      "loss": 77,
+      "rate": ".500",
+      "game_diff": "19.0",
+      "runDiff": 27,
+      "streak": "W2",
+      "recent10": "6-4",
+      "league": "내셔널 리그",
+      "division": "NL 중부 (NL Central)",
+      "overallRank": 15
+    },
+    {
+      "rank": 3,
+      "teamId": 146,
+      "team": "마이애미 말린스",
+      "teamEng": "Marlins",
+      "color": "#00A3E0",
+      "emblem": "https://www.mlbstatic.com/team-logos/146.svg",
+      "games": 153,
+      "win": 76,
+      "loss": 77,
+      "rate": ".497",
+      "game_diff": "13.5",
+      "runDiff": 8,
+      "streak": "W2",
+      "recent10": "5-5",
+      "league": "내셔널 리그",
+      "division": "NL 동부 (NL East)",
+      "overallRank": 16
+    },
+    {
+      "rank": 4,
+      "teamId": 141,
+      "team": "토론토 블루제이스",
+      "teamEng": "Blue Jays",
+      "color": "#134A8E",
+      "emblem": "https://www.mlbstatic.com/team-logos/141.svg",
+      "games": 154,
+      "win": 76,
+      "loss": 78,
+      "rate": ".494",
+      "game_diff": "17.5",
+      "runDiff": -43,
+      "streak": "L1",
+      "recent10": "4-6",
+      "league": "아메리칸 리그",
+      "division": "AL 동부 (AL East)",
+      "overallRank": 17
+    },
+    {
+      "rank": 5,
+      "teamId": 110,
+      "team": "볼티모어 오리올스",
+      "teamEng": "Orioles",
+      "color": "#DF4601",
+      "emblem": "https://www.mlbstatic.com/team-logos/110.svg",
+      "games": 154,
+      "win": 75,
+      "loss": 79,
+      "rate": ".487",
+      "game_diff": "18.5",
+      "runDiff": -27,
+      "streak": "L1",
+      "recent10": "6-4",
+      "league": "아메리칸 리그",
+      "division": "AL 동부 (AL East)",
+      "overallRank": 18
+    },
+    {
+      "rank": 4,
+      "teamId": 138,
+      "team": "세인트루이스 카디널스",
+      "teamEng": "Cardinals",
+      "color": "#C41E3A",
+      "emblem": "https://www.mlbstatic.com/team-logos/138.svg",
+      "games": 154,
+      "win": 75,
+      "loss": 79,
+      "rate": ".487",
+      "game_diff": "21.0",
+      "runDiff": -22,
+      "streak": "L3",
+      "recent10": "3-7",
+      "league": "내셔널 리그",
+      "division": "NL 중부 (NL Central)",
+      "overallRank": 19
+    },
+    {
+      "rank": 3,
+      "teamId": 116,
+      "team": "콜로라도 로키스",
+      "teamEng": "Tigers",
+      "color": "#333366",
+      "emblem": "https://www.mlbstatic.com/team-logos/116.svg",
+      "games": 154,
+      "win": 73,
+      "loss": 81,
+      "rate": ".474",
+      "game_diff": "6.0",
+      "runDiff": 77,
+      "streak": "W1",
+      "recent10": "7-3",
+      "league": "아메리칸 리그",
+      "division": "AL 중부 (AL Central)",
+      "overallRank": 20
+    },
+    {
+      "rank": 3,
+      "teamId": 136,
+      "team": "시애틀 매리너스",
+      "teamEng": "Mariners",
+      "color": "#0C2340",
+      "emblem": "https://www.mlbstatic.com/team-logos/136.svg",
+      "games": 154,
+      "win": 72,
+      "loss": 82,
+      "rate": ".468",
+      "game_diff": "5.0",
+      "runDiff": -55,
+      "streak": "W2",
+      "recent10": "5-5",
+      "league": "아메리칸 리그",
+      "division": "AL 서부 (AL West)",
+      "overallRank": 21
+    },
+    {
+      "rank": 4,
+      "teamId": 120,
+      "team": "워싱턴 내셔널스",
+      "teamEng": "Nationals",
+      "color": "#AB0003",
+      "emblem": "https://www.mlbstatic.com/team-logos/120.svg",
+      "games": 154,
+      "win": 72,
+      "loss": 82,
+      "rate": ".468",
+      "game_diff": "18.0",
+      "runDiff": 11,
+      "streak": "W1",
+      "recent10": "5-5",
+      "league": "내셔널 리그",
+      "division": "NL 동부 (NL East)",
+      "overallRank": 22
+    },
+    {
+      "rank": 5,
+      "teamId": 113,
+      "team": "시카고 화이트삭스",
+      "teamEng": "Reds",
+      "color": "#27251F",
+      "emblem": "https://www.mlbstatic.com/team-logos/113.svg",
+      "games": 154,
+      "win": 72,
+      "loss": 82,
+      "rate": ".468",
+      "game_diff": "24.0",
+      "runDiff": -152,
+      "streak": "W1",
+      "recent10": "3-7",
+      "league": "내셔널 리그",
+      "division": "NL 중부 (NL Central)",
+      "overallRank": 23
+    },
+    {
+      "rank": 4,
+      "teamId": 142,
+      "team": "미네소타 트윈스",
+      "teamEng": "Twins",
+      "color": "#002B5C",
+      "emblem": "https://www.mlbstatic.com/team-logos/142.svg",
+      "games": 153,
+      "win": 71,
+      "loss": 82,
+      "rate": ".464",
+      "game_diff": "7.5",
+      "runDiff": -74,
+      "streak": "L1",
+      "recent10": "3-7",
+      "league": "아메리칸 리그",
+      "division": "AL 중부 (AL Central)",
+      "overallRank": 24
+    },
+    {
+      "rank": 5,
+      "teamId": 121,
+      "team": "뉴욕 메츠",
+      "teamEng": "Mets",
+      "color": "#002D72",
+      "emblem": "https://www.mlbstatic.com/team-logos/121.svg",
+      "games": 154,
+      "win": 70,
+      "loss": 84,
+      "rate": ".455",
+      "game_diff": "20.0",
+      "runDiff": -43,
+      "streak": "W1",
+      "recent10": "4-6",
+      "league": "내셔널 리그",
+      "division": "NL 동부 (NL East)",
+      "overallRank": 25
+    },
+    {
+      "rank": 5,
+      "teamId": 118,
+      "team": "캔자스시티 로열스",
+      "teamEng": "Royals",
+      "color": "#004687",
+      "emblem": "https://www.mlbstatic.com/team-logos/118.svg",
+      "games": 154,
+      "win": 67,
+      "loss": 87,
+      "rate": ".435",
+      "game_diff": "12.0",
+      "runDiff": -100,
+      "streak": "L2",
+      "recent10": "3-7",
+      "league": "아메리칸 리그",
+      "division": "AL 중부 (AL Central)",
+      "overallRank": 26
+    },
+    {
+      "rank": 4,
+      "teamId": 137,
+      "team": "샌프란시스코 자이언츠",
+      "teamEng": "Giants",
+      "color": "#FD5A1E",
+      "emblem": "https://www.mlbstatic.com/team-logos/137.svg",
+      "games": 153,
+      "win": 64,
+      "loss": 89,
+      "rate": ".418",
+      "game_diff": "29.0",
+      "runDiff": -70,
+      "streak": "W2",
+      "recent10": "5-5",
+      "league": "내셔널 리그",
+      "division": "NL 서부 (NL West)",
+      "overallRank": 27
+    },
+    {
+      "rank": 4,
+      "teamId": 133,
+      "team": "오클랜드 애슬레틱스",
+      "teamEng": "Athletics",
+      "color": "#003831",
+      "emblem": "https://www.mlbstatic.com/team-logos/133.svg",
+      "games": 154,
+      "win": 61,
+      "loss": 93,
+      "rate": ".396",
+      "game_diff": "16.0",
+      "runDiff": -216,
+      "streak": "L4",
+      "recent10": "4-6",
+      "league": "아메리칸 리그",
+      "division": "AL 서부 (AL West)",
+      "overallRank": 28
+    },
+    {
+      "rank": 5,
+      "teamId": 108,
+      "team": "LA 에인절스",
+      "teamEng": "Angels",
+      "color": "#BA0021",
+      "emblem": "https://www.mlbstatic.com/team-logos/108.svg",
+      "games": 153,
+      "win": 59,
+      "loss": 94,
+      "rate": ".386",
+      "game_diff": "17.5",
+      "runDiff": -77,
+      "streak": "W1",
+      "recent10": "5-5",
+      "league": "아메리칸 리그",
+      "division": "AL 서부 (AL West)",
+      "overallRank": 29
+    },
+    {
+      "rank": 5,
+      "teamId": 115,
+      "team": "클리블랜드 가디언스",
+      "teamEng": "Rockies",
+      "color": "#E31937",
+      "emblem": "https://www.mlbstatic.com/team-logos/115.svg",
+      "games": 154,
+      "win": 56,
+      "loss": 98,
+      "rate": ".364",
+      "game_diff": "37.5",
+      "runDiff": -178,
+      "streak": "L3",
+      "recent10": "1-9",
+      "league": "내셔널 리그",
+      "division": "NL 서부 (NL West)",
+      "overallRank": 30
+    }
+  ],
+  "hitters": [
+    {
+      "category": "홈런 (Home Runs)",
+      "icon": "fa-baseball-bat-ball",
+      "first_player": {
+        "rank": 1,
+        "name": "Shota Imanaga",
+        "playerId": 684007,
+        "team": "시카고 컵스",
+        "teamEng": "Chicago Cubs",
+        "teamColor": "#0E3386",
+        "teamEmblem": "https://www.mlbstatic.com/team-logos/112.svg",
+        "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/684007/headshot/67/current",
+        "value": "34"
+      },
+      "first_img": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/684007/headshot/67/current",
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "Shota Imanaga",
+          "playerId": 684007,
+          "team": "시카고 컵스",
+          "teamEng": "Chicago Cubs",
+          "teamColor": "#0E3386",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/112.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/684007/headshot/67/current",
+          "value": "34"
+        },
+        {
+          "rank": 2,
+          "name": "Aaron Nola",
+          "playerId": 605400,
+          "team": "필라델피아 필리스",
+          "teamEng": "Philadelphia Phillies",
+          "teamColor": "#E81828",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/143.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/605400/headshot/67/current",
+          "value": "34"
+        },
+        {
+          "rank": 3,
+          "name": "Jeffrey Springs",
+          "playerId": 605488,
+          "team": "오클랜드 애슬레틱스",
+          "teamEng": "Athletics",
+          "teamColor": "#003831",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/133.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/605488/headshot/67/current",
+          "value": "33"
+        },
+        {
+          "rank": 4,
+          "name": "Brady Singer",
+          "playerId": 663903,
+          "team": "시카고 화이트삭스",
+          "teamEng": "Cincinnati Reds",
+          "teamColor": "#27251F",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/113.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/663903/headshot/67/current",
+          "value": "31"
+        },
+        {
+          "rank": 5,
+          "name": "Tomoyuki Sugano",
+          "playerId": 608372,
+          "team": "클리블랜드 가디언스",
+          "teamEng": "Colorado Rockies",
+          "teamColor": "#E31937",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/115.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/608372/headshot/67/current",
+          "value": "31"
+        }
+      ]
+    },
+    {
+      "category": "타율 (Batting Average)",
+      "icon": "fa-bullseye",
+      "first_player": {
+        "rank": 1,
+        "name": "Jacob Misiorowski",
+        "playerId": 694819,
+        "team": "밀워키 브루어스",
+        "teamEng": "Milwaukee Brewers",
+        "teamColor": "#12284B",
+        "teamEmblem": "https://www.mlbstatic.com/team-logos/158.svg",
+        "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/694819/headshot/67/current",
+        "value": ".160"
+      },
+      "first_img": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/694819/headshot/67/current",
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "Jacob Misiorowski",
+          "playerId": 694819,
+          "team": "밀워키 브루어스",
+          "teamEng": "Milwaukee Brewers",
+          "teamColor": "#12284B",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/158.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/694819/headshot/67/current",
+          "value": ".160"
+        },
+        {
+          "rank": 2,
+          "name": "Dylan Cease",
+          "playerId": 656302,
+          "team": "토론토 블루제이스",
+          "teamEng": "Toronto Blue Jays",
+          "teamColor": "#134A8E",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/141.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656302/headshot/67/current",
+          "value": ".180"
+        },
+        {
+          "rank": 3,
+          "name": "Yoshinobu Yamamoto",
+          "playerId": 808967,
+          "team": "LA 다저스",
+          "teamEng": "Los Angeles Dodgers",
+          "teamColor": "#005A9C",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/119.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/808967/headshot/67/current",
+          "value": ".180"
+        },
+        {
+          "rank": 4,
+          "name": "Cam Schlittler",
+          "playerId": 693645,
+          "team": "뉴욕 양키스",
+          "teamEng": "New York Yankees",
+          "teamColor": "#0C2340",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/147.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/693645/headshot/67/current",
+          "value": ".185"
+        },
+        {
+          "rank": 5,
+          "name": "Drew Rasmussen",
+          "playerId": 656876,
+          "team": "템파베이 레이스",
+          "teamEng": "Tampa Bay Rays",
+          "teamColor": "#092C5C",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/139.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656876/headshot/67/current",
+          "value": ".205"
+        }
+      ]
+    },
+    {
+      "category": "타점 (RBI)",
+      "icon": "fa-award",
+      "first_player": {
+        "rank": 1,
+        "name": "Alec Burleson",
+        "playerId": 676475,
+        "team": "세인트루이스 카디널스",
+        "teamEng": "St. Louis Cardinals",
+        "teamColor": "#C41E3A",
+        "teamEmblem": "https://www.mlbstatic.com/team-logos/138.svg",
+        "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/676475/headshot/67/current",
+        "value": "111"
+      },
+      "first_img": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/676475/headshot/67/current",
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "Alec Burleson",
+          "playerId": 676475,
+          "team": "세인트루이스 카디널스",
+          "teamEng": "St. Louis Cardinals",
+          "teamColor": "#C41E3A",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/138.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/676475/headshot/67/current",
+          "value": "111"
+        },
+        {
+          "rank": 2,
+          "name": "Sal Stewart",
+          "playerId": 701398,
+          "team": "시카고 화이트삭스",
+          "teamEng": "Cincinnati Reds",
+          "teamColor": "#27251F",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/113.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/701398/headshot/67/current",
+          "value": "110"
+        },
+        {
+          "rank": 3,
+          "name": "Pete Alonso",
+          "playerId": 624413,
+          "team": "볼티모어 오리올스",
+          "teamEng": "Baltimore Orioles",
+          "teamColor": "#DF4601",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/110.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/624413/headshot/67/current",
+          "value": "105"
+        },
+        {
+          "rank": 4,
+          "name": "Pete Crow-Armstrong",
+          "playerId": 691718,
+          "team": "시카고 컵스",
+          "teamEng": "Chicago Cubs",
+          "teamColor": "#0E3386",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/112.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/691718/headshot/67/current",
+          "value": "105"
+        },
+        {
+          "rank": 5,
+          "name": "Jordan Walker",
+          "playerId": 691023,
+          "team": "세인트루이스 카디널스",
+          "teamEng": "St. Louis Cardinals",
+          "teamColor": "#C41E3A",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/138.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/691023/headshot/67/current",
+          "value": "100"
+        }
+      ]
+    },
+    {
+      "category": "안타 (Hits)",
+      "icon": "fa-baseball",
+      "first_player": {
+        "rank": 1,
+        "name": "Sandy Alcantara",
+        "playerId": 645261,
+        "team": "마이애미 말린스",
+        "teamEng": "Miami Marlins",
+        "teamColor": "#00A3E0",
+        "teamEmblem": "https://www.mlbstatic.com/team-logos/146.svg",
+        "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/645261/headshot/67/current",
+        "value": "195"
+      },
+      "first_img": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/645261/headshot/67/current",
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "Sandy Alcantara",
+          "playerId": 645261,
+          "team": "마이애미 말린스",
+          "teamEng": "Miami Marlins",
+          "teamColor": "#00A3E0",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/146.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/645261/headshot/67/current",
+          "value": "195"
+        },
+        {
+          "rank": 2,
+          "name": "Seth Lugo",
+          "playerId": 607625,
+          "team": "캔자스시티 로열스",
+          "teamEng": "Kansas City Royals",
+          "teamColor": "#004687",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/118.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/607625/headshot/67/current",
+          "value": "193"
+        },
+        {
+          "rank": 3,
+          "name": "Cristopher Sánchez",
+          "playerId": 650911,
+          "team": "필라델피아 필리스",
+          "teamEng": "Philadelphia Phillies",
+          "teamColor": "#E81828",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/143.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/650911/headshot/67/current",
+          "value": "193"
+        },
+        {
+          "rank": 4,
+          "name": "George Kirby",
+          "playerId": 669923,
+          "team": "시애틀 매리너스",
+          "teamEng": "Seattle Mariners",
+          "teamColor": "#0C2340",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/136.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/669923/headshot/67/current",
+          "value": "191"
+        },
+        {
+          "rank": 5,
+          "name": "Michael Lorenzen",
+          "playerId": 547179,
+          "team": "토론토 블루제이스",
+          "teamEng": "Toronto Blue Jays",
+          "teamColor": "#134A8E",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/141.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/547179/headshot/67/current",
+          "value": "186"
+        }
+      ]
+    },
+    {
+      "category": "도루 (Stolen Bases)",
+      "icon": "fa-person-running",
+      "first_player": {
+        "rank": 1,
+        "name": "Dylan Cease",
+        "playerId": 656302,
+        "team": "토론토 블루제이스",
+        "teamEng": "Toronto Blue Jays",
+        "teamColor": "#134A8E",
+        "teamEmblem": "https://www.mlbstatic.com/team-logos/141.svg",
+        "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656302/headshot/67/current",
+        "value": "33"
+      },
+      "first_img": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656302/headshot/67/current",
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "Dylan Cease",
+          "playerId": 656302,
+          "team": "토론토 블루제이스",
+          "teamEng": "Toronto Blue Jays",
+          "teamColor": "#134A8E",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/141.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656302/headshot/67/current",
+          "value": "33"
+        },
+        {
+          "rank": 2,
+          "name": "Eury Pérez",
+          "playerId": 691587,
+          "team": "마이애미 말린스",
+          "teamEng": "Miami Marlins",
+          "teamColor": "#00A3E0",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/146.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/691587/headshot/67/current",
+          "value": "29"
+        },
+        {
+          "rank": 3,
+          "name": "Matthew Liberatore",
+          "playerId": 669461,
+          "team": "세인트루이스 카디널스",
+          "teamEng": "St. Louis Cardinals",
+          "teamColor": "#C41E3A",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/138.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/669461/headshot/67/current",
+          "value": "24"
+        },
+        {
+          "rank": 4,
+          "name": "Andrew Abbott",
+          "playerId": 671096,
+          "team": "시카고 화이트삭스",
+          "teamEng": "Cincinnati Reds",
+          "teamColor": "#27251F",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/113.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/671096/headshot/67/current",
+          "value": "23"
+        },
+        {
+          "rank": 5,
+          "name": "Sean Burke",
+          "playerId": 680732,
+          "team": "시카고 화이트삭스",
+          "teamEng": "Chicago White Sox",
+          "teamColor": "#27251F",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/145.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/680732/headshot/67/current",
+          "value": "23"
+        }
+      ]
+    },
+    {
+      "category": "OPS (출루율+장타율)",
+      "icon": "fa-fire",
+      "first_player": {
+        "rank": 1,
+        "name": "Yordan Alvarez",
+        "playerId": 670541,
+        "team": "디트로이트 타이거스",
+        "teamEng": "Houston Astros",
+        "teamColor": "#0C2340",
+        "teamEmblem": "https://www.mlbstatic.com/team-logos/117.svg",
+        "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/670541/headshot/67/current",
+        "value": "1.031"
+      },
+      "first_img": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/670541/headshot/67/current",
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "Yordan Alvarez",
+          "playerId": 670541,
+          "team": "디트로이트 타이거스",
+          "teamEng": "Houston Astros",
+          "teamColor": "#0C2340",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/117.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/670541/headshot/67/current",
+          "value": "1.031"
+        },
+        {
+          "rank": 2,
+          "name": "Pete Crow-Armstrong",
+          "playerId": 691718,
+          "team": "시카고 컵스",
+          "teamEng": "Chicago Cubs",
+          "teamColor": "#0E3386",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/112.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/691718/headshot/67/current",
+          "value": ".948"
+        },
+        {
+          "rank": 3,
+          "name": "James Wood",
+          "playerId": 695578,
+          "team": "워싱턴 내셔널스",
+          "teamEng": "Washington Nationals",
+          "teamColor": "#AB0003",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/120.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/695578/headshot/67/current",
+          "value": ".911"
+        },
+        {
+          "rank": 4,
+          "name": "Willson Contreras",
+          "playerId": 575929,
+          "team": "보스턴 레드삭스",
+          "teamEng": "Boston Red Sox",
+          "teamColor": "#BD3039",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/111.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/575929/headshot/67/current",
+          "value": ".905"
+        },
+        {
+          "rank": 5,
+          "name": "Shohei Ohtani",
+          "playerId": 660271,
+          "team": "LA 다저스",
+          "teamEng": "Los Angeles Dodgers",
+          "teamColor": "#005A9C",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/119.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/660271/headshot/67/current",
+          "value": ".902"
+        }
+      ]
+    }
+  ],
+  "pitchers": [
+    {
+      "category": "평균자책점 (ERA)",
+      "icon": "fa-shield-halved",
+      "first_player": {
+        "rank": 1,
+        "name": "Jacob Misiorowski",
+        "playerId": 694819,
+        "team": "밀워키 브루어스",
+        "teamEng": "Milwaukee Brewers",
+        "teamColor": "#12284B",
+        "teamEmblem": "https://www.mlbstatic.com/team-logos/158.svg",
+        "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/694819/headshot/67/current",
+        "value": "1.89"
+      },
+      "first_img": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/694819/headshot/67/current",
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "Jacob Misiorowski",
+          "playerId": 694819,
+          "team": "밀워키 브루어스",
+          "teamEng": "Milwaukee Brewers",
+          "teamColor": "#12284B",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/158.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/694819/headshot/67/current",
+          "value": "1.89"
+        },
+        {
+          "rank": 2,
+          "name": "Cam Schlittler",
+          "playerId": 693645,
+          "team": "뉴욕 양키스",
+          "teamEng": "New York Yankees",
+          "teamColor": "#0C2340",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/147.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/693645/headshot/67/current",
+          "value": "1.95"
+        },
+        {
+          "rank": 3,
+          "name": "Chris Sale",
+          "playerId": 519242,
+          "team": "애틀랜타 브레이브스",
+          "teamEng": "Atlanta Braves",
+          "teamColor": "#CE1141",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/144.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/519242/headshot/67/current",
+          "value": "2.18"
+        },
+        {
+          "rank": 4,
+          "name": "Dylan Cease",
+          "playerId": 656302,
+          "team": "토론토 블루제이스",
+          "teamEng": "Toronto Blue Jays",
+          "teamColor": "#134A8E",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/141.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656302/headshot/67/current",
+          "value": "2.40"
+        },
+        {
+          "rank": 5,
+          "name": "Yoshinobu Yamamoto",
+          "playerId": 808967,
+          "team": "LA 다저스",
+          "teamEng": "Los Angeles Dodgers",
+          "teamColor": "#005A9C",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/119.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/808967/headshot/67/current",
+          "value": "2.51"
+        }
+      ]
+    },
+    {
+      "category": "다승 (Wins)",
+      "icon": "fa-trophy",
+      "first_player": {
+        "rank": 1,
+        "name": "Sonny Gray",
+        "playerId": 543243,
+        "team": "보스턴 레드삭스",
+        "teamEng": "Boston Red Sox",
+        "teamColor": "#BD3039",
+        "teamEmblem": "https://www.mlbstatic.com/team-logos/111.svg",
+        "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/543243/headshot/67/current",
+        "value": "17"
+      },
+      "first_img": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/543243/headshot/67/current",
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "Sonny Gray",
+          "playerId": 543243,
+          "team": "보스턴 레드삭스",
+          "teamEng": "Boston Red Sox",
+          "teamColor": "#BD3039",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/111.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/543243/headshot/67/current",
+          "value": "17"
+        },
+        {
+          "rank": 2,
+          "name": "Cristopher Sánchez",
+          "playerId": 650911,
+          "team": "필라델피아 필리스",
+          "teamEng": "Philadelphia Phillies",
+          "teamColor": "#E81828",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/143.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/650911/headshot/67/current",
+          "value": "17"
+        },
+        {
+          "rank": 3,
+          "name": "Chase Burns",
+          "playerId": 695505,
+          "team": "시카고 화이트삭스",
+          "teamEng": "Cincinnati Reds",
+          "teamColor": "#27251F",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/113.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/695505/headshot/67/current",
+          "value": "15"
+        },
+        {
+          "rank": 4,
+          "name": "Foster Griffin",
+          "playerId": 656492,
+          "team": "신시내티 레즈",
+          "teamEng": "Cleveland Guardians",
+          "teamColor": "#C6011F",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/114.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656492/headshot/67/current",
+          "value": "15"
+        },
+        {
+          "rank": 5,
+          "name": "Nick Martinez",
+          "playerId": 607259,
+          "team": "템파베이 레이스",
+          "teamEng": "Tampa Bay Rays",
+          "teamColor": "#092C5C",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/139.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/607259/headshot/67/current",
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "category": "탈삼진 (Strikeouts)",
+      "icon": "fa-bolt",
+      "first_player": {
+        "rank": 1,
+        "name": "Kyle Schwarber",
+        "playerId": 656941,
+        "team": "필라델피아 필리스",
+        "teamEng": "Philadelphia Phillies",
+        "teamColor": "#E81828",
+        "teamEmblem": "https://www.mlbstatic.com/team-logos/143.svg",
+        "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656941/headshot/67/current",
+        "value": "214"
+      },
+      "first_img": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656941/headshot/67/current",
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "Kyle Schwarber",
+          "playerId": 656941,
+          "team": "필라델피아 필리스",
+          "teamEng": "Philadelphia Phillies",
+          "teamColor": "#E81828",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/143.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656941/headshot/67/current",
+          "value": "214"
+        },
+        {
+          "rank": 2,
+          "name": "Colson Montgomery",
+          "playerId": 695657,
+          "team": "시카고 화이트삭스",
+          "teamEng": "Chicago White Sox",
+          "teamColor": "#27251F",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/145.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/695657/headshot/67/current",
+          "value": "213"
+        },
+        {
+          "rank": 3,
+          "name": "Zach Neto",
+          "playerId": 687263,
+          "team": "LA 에인절스",
+          "teamEng": "Los Angeles Angels",
+          "teamColor": "#BA0021",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/108.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/687263/headshot/67/current",
+          "value": "204"
+        },
+        {
+          "rank": 4,
+          "name": "Austin Riley",
+          "playerId": 663586,
+          "team": "애틀랜타 브레이브스",
+          "teamEng": "Atlanta Braves",
+          "teamColor": "#CE1141",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/144.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/663586/headshot/67/current",
+          "value": "193"
+        },
+        {
+          "rank": 5,
+          "name": "Munetaka Murakami",
+          "playerId": 808959,
+          "team": "시카고 화이트삭스",
+          "teamEng": "Chicago White Sox",
+          "teamColor": "#27251F",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/145.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/808959/headshot/67/current",
+          "value": "185"
+        }
+      ]
+    },
+    {
+      "category": "세이브 (Saves)",
+      "icon": "fa-lock",
+      "first_player": {
+        "rank": 1,
+        "name": "Bryan Baker",
+        "playerId": 641329,
+        "team": "템파베이 레이스",
+        "teamEng": "Tampa Bay Rays",
+        "teamColor": "#092C5C",
+        "teamEmblem": "https://www.mlbstatic.com/team-logos/139.svg",
+        "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/641329/headshot/67/current",
+        "value": "40"
+      },
+      "first_img": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/641329/headshot/67/current",
+      "ranks": [
+        {
+          "rank": 1,
+          "name": "Bryan Baker",
+          "playerId": 641329,
+          "team": "템파베이 레이스",
+          "teamEng": "Tampa Bay Rays",
+          "teamColor": "#092C5C",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/139.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/641329/headshot/67/current",
+          "value": "40"
+        },
+        {
+          "rank": 2,
+          "name": "Cade Smith",
+          "playerId": 671922,
+          "team": "신시내티 레즈",
+          "teamEng": "Cleveland Guardians",
+          "teamColor": "#C6011F",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/114.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/671922/headshot/67/current",
+          "value": "38"
+        },
+        {
+          "rank": 3,
+          "name": "Mason Miller",
+          "playerId": 695243,
+          "team": "샌디에이고 파드리스",
+          "teamEng": "San Diego Padres",
+          "teamColor": "#2F241D",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/135.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/695243/headshot/67/current",
+          "value": "37"
+        },
+        {
+          "rank": 4,
+          "name": "Riley O'Brien",
+          "playerId": 676617,
+          "team": "세인트루이스 카디널스",
+          "teamEng": "St. Louis Cardinals",
+          "teamColor": "#C41E3A",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/138.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/676617/headshot/67/current",
+          "value": "37"
+        },
+        {
+          "rank": 5,
+          "name": "David Bednar",
+          "playerId": 670280,
+          "team": "뉴욕 양키스",
+          "teamEng": "New York Yankees",
+          "teamColor": "#0C2340",
+          "teamEmblem": "https://www.mlbstatic.com/team-logos/147.svg",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/670280/headshot/67/current",
+          "value": "34"
+        }
+      ]
+    },
+    {
+      "category": "WHIP (이닝당 출루허용)",
+      "icon": "fa-gauge-high",
+      "first_player": null,
+      "first_img": "",
+      "ranks": []
+    }
+  ],
+  "team_hub": {
+    "밀워키 브루어스": {
+      "team": {
+        "rank": 1,
+        "teamId": 158,
+        "team": "밀워키 브루어스",
+        "teamEng": "Brewers",
+        "color": "#12284B",
+        "emblem": "https://www.mlbstatic.com/team-logos/158.svg",
+        "games": 154,
+        "win": 96,
+        "loss": 58,
+        "rate": ".623",
+        "game_diff": "-",
+        "runDiff": 198,
+        "streak": "W1",
+        "recent10": "8-2",
+        "league": "내셔널 리그",
+        "division": "NL 중부 (NL Central)",
+        "overallRank": 1
+      },
+      "hitters": [
+        {
+          "category": "타율 (Batting Average)",
+          "rank": 1,
+          "name": "Jacob Misiorowski",
+          "value": ".160",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/694819/headshot/67/current"
+        }
+      ],
+      "pitchers": [
+        {
+          "category": "평균자책점 (ERA)",
+          "rank": 1,
+          "name": "Jacob Misiorowski",
+          "value": "1.89",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/694819/headshot/67/current"
+        }
+      ]
+    },
+    "템파베이 레이스": {
+      "team": {
+        "rank": 1,
+        "teamId": 139,
+        "team": "템파베이 레이스",
+        "teamEng": "Rays",
+        "color": "#092C5C",
+        "emblem": "https://www.mlbstatic.com/team-logos/139.svg",
+        "games": 153,
+        "win": 93,
+        "loss": 60,
+        "rate": ".608",
+        "game_diff": "-",
+        "runDiff": 78,
+        "streak": "L1",
+        "recent10": "8-2",
+        "league": "아메리칸 리그",
+        "division": "AL 동부 (AL East)",
+        "overallRank": 2
+      },
+      "hitters": [
+        {
+          "category": "타율 (Batting Average)",
+          "rank": 5,
+          "name": "Drew Rasmussen",
+          "value": ".205",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656876/headshot/67/current"
+        }
+      ],
+      "pitchers": [
+        {
+          "category": "다승 (Wins)",
+          "rank": 5,
+          "name": "Nick Martinez",
+          "value": "15",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/607259/headshot/67/current"
+        },
+        {
+          "category": "세이브 (Saves)",
+          "rank": 1,
+          "name": "Bryan Baker",
+          "value": "40",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/641329/headshot/67/current"
+        }
+      ]
+    },
+    "LA 다저스": {
+      "team": {
+        "rank": 1,
+        "teamId": 119,
+        "team": "LA 다저스",
+        "teamEng": "Dodgers",
+        "color": "#005A9C",
+        "emblem": "https://www.mlbstatic.com/team-logos/119.svg",
+        "games": 153,
+        "win": 93,
+        "loss": 60,
+        "rate": ".608",
+        "game_diff": "-",
+        "runDiff": 179,
+        "streak": "W1",
+        "recent10": "7-3",
+        "league": "내셔널 리그",
+        "division": "NL 서부 (NL West)",
+        "overallRank": 3
+      },
+      "hitters": [
+        {
+          "category": "타율 (Batting Average)",
+          "rank": 3,
+          "name": "Yoshinobu Yamamoto",
+          "value": ".180",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/808967/headshot/67/current"
+        },
+        {
+          "category": "OPS (출루율+장타율)",
+          "rank": 5,
+          "name": "Shohei Ohtani",
+          "value": ".902",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/660271/headshot/67/current"
+        }
+      ],
+      "pitchers": [
+        {
+          "category": "평균자책점 (ERA)",
+          "rank": 5,
+          "name": "Yoshinobu Yamamoto",
+          "value": "2.51",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/808967/headshot/67/current"
+        }
+      ]
+    },
+    "애틀랜타 브레이브스": {
+      "team": {
+        "rank": 1,
+        "teamId": 144,
+        "team": "애틀랜타 브레이브스",
+        "teamEng": "Braves",
+        "color": "#CE1141",
+        "emblem": "https://www.mlbstatic.com/team-logos/144.svg",
+        "games": 154,
+        "win": 90,
+        "loss": 64,
+        "rate": ".584",
+        "game_diff": "-",
+        "runDiff": 115,
+        "streak": "W1",
+        "recent10": "5-5",
+        "league": "내셔널 리그",
+        "division": "NL 동부 (NL East)",
+        "overallRank": 4
+      },
+      "hitters": [],
+      "pitchers": [
+        {
+          "category": "평균자책점 (ERA)",
+          "rank": 3,
+          "name": "Chris Sale",
+          "value": "2.18",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/519242/headshot/67/current"
+        },
+        {
+          "category": "탈삼진 (Strikeouts)",
+          "rank": 4,
+          "name": "Austin Riley",
+          "value": "193",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/663586/headshot/67/current"
+        }
+      ]
+    },
+    "뉴욕 양키스": {
+      "team": {
+        "rank": 2,
+        "teamId": 147,
+        "team": "뉴욕 양키스",
+        "teamEng": "Yankees",
+        "color": "#0C2340",
+        "emblem": "https://www.mlbstatic.com/team-logos/147.svg",
+        "games": 152,
+        "win": 88,
+        "loss": 64,
+        "rate": ".579",
+        "game_diff": "4.5",
+        "runDiff": 136,
+        "streak": "L1",
+        "recent10": "7-3",
+        "league": "아메리칸 리그",
+        "division": "AL 동부 (AL East)",
+        "overallRank": 5
+      },
+      "hitters": [
+        {
+          "category": "타율 (Batting Average)",
+          "rank": 4,
+          "name": "Cam Schlittler",
+          "value": ".185",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/693645/headshot/67/current"
+        }
+      ],
+      "pitchers": [
+        {
+          "category": "평균자책점 (ERA)",
+          "rank": 2,
+          "name": "Cam Schlittler",
+          "value": "1.95",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/693645/headshot/67/current"
+        },
+        {
+          "category": "세이브 (Saves)",
+          "rank": 5,
+          "name": "David Bednar",
+          "value": "34",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/670280/headshot/67/current"
+        }
+      ]
+    },
+    "필라델피아 필리스": {
+      "team": {
+        "rank": 2,
+        "teamId": 143,
+        "team": "필라델피아 필리스",
+        "teamEng": "Phillies",
+        "color": "#E81828",
+        "emblem": "https://www.mlbstatic.com/team-logos/143.svg",
+        "games": 154,
+        "win": 85,
+        "loss": 69,
+        "rate": ".552",
+        "game_diff": "5.0",
+        "runDiff": 31,
+        "streak": "L1",
+        "recent10": "4-6",
+        "league": "내셔널 리그",
+        "division": "NL 동부 (NL East)",
+        "overallRank": 6
+      },
+      "hitters": [
+        {
+          "category": "홈런 (Home Runs)",
+          "rank": 2,
+          "name": "Aaron Nola",
+          "value": "34",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/605400/headshot/67/current"
+        },
+        {
+          "category": "안타 (Hits)",
+          "rank": 3,
+          "name": "Cristopher Sánchez",
+          "value": "193",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/650911/headshot/67/current"
+        }
+      ],
+      "pitchers": [
+        {
+          "category": "다승 (Wins)",
+          "rank": 2,
+          "name": "Cristopher Sánchez",
+          "value": "17",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/650911/headshot/67/current"
+        },
+        {
+          "category": "탈삼진 (Strikeouts)",
+          "rank": 1,
+          "name": "Kyle Schwarber",
+          "value": "214",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656941/headshot/67/current"
+        }
+      ]
+    },
+    "시카고 컵스": {
+      "team": {
+        "rank": 2,
+        "teamId": 112,
+        "team": "시카고 컵스",
+        "teamEng": "Cubs",
+        "color": "#0E3386",
+        "emblem": "https://www.mlbstatic.com/team-logos/112.svg",
+        "games": 154,
+        "win": 85,
+        "loss": 69,
+        "rate": ".552",
+        "game_diff": "11.0",
+        "runDiff": 141,
+        "streak": "L1",
+        "recent10": "4-6",
+        "league": "내셔널 리그",
+        "division": "NL 중부 (NL Central)",
+        "overallRank": 7
+      },
+      "hitters": [
+        {
+          "category": "홈런 (Home Runs)",
+          "rank": 1,
+          "name": "Shota Imanaga",
+          "value": "34",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/684007/headshot/67/current"
+        },
+        {
+          "category": "타점 (RBI)",
+          "rank": 4,
+          "name": "Pete Crow-Armstrong",
+          "value": "105",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/691718/headshot/67/current"
+        },
+        {
+          "category": "OPS (출루율+장타율)",
+          "rank": 2,
+          "name": "Pete Crow-Armstrong",
+          "value": ".948",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/691718/headshot/67/current"
+        }
+      ],
+      "pitchers": []
+    },
+    "샌디에이고 파드리스": {
+      "team": {
+        "rank": 2,
+        "teamId": 135,
+        "team": "샌디에이고 파드리스",
+        "teamEng": "Padres",
+        "color": "#2F241D",
+        "emblem": "https://www.mlbstatic.com/team-logos/135.svg",
+        "games": 153,
+        "win": 84,
+        "loss": 69,
+        "rate": ".549",
+        "game_diff": "9.0",
+        "runDiff": 30,
+        "streak": "W2",
+        "recent10": "9-1",
+        "league": "내셔널 리그",
+        "division": "NL 서부 (NL West)",
+        "overallRank": 8
+      },
+      "hitters": [],
+      "pitchers": [
+        {
+          "category": "세이브 (Saves)",
+          "rank": 3,
+          "name": "Mason Miller",
+          "value": "37",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/695243/headshot/67/current"
+        }
+      ]
+    },
+    "보스턴 레드삭스": {
+      "team": {
+        "rank": 3,
+        "teamId": 111,
+        "team": "보스턴 레드삭스",
+        "teamEng": "Red Sox",
+        "color": "#BD3039",
+        "emblem": "https://www.mlbstatic.com/team-logos/111.svg",
+        "games": 154,
+        "win": 84,
+        "loss": 70,
+        "rate": ".545",
+        "game_diff": "9.5",
+        "runDiff": 85,
+        "streak": "W2",
+        "recent10": "5-5",
+        "league": "아메리칸 리그",
+        "division": "AL 동부 (AL East)",
+        "overallRank": 9
+      },
+      "hitters": [
+        {
+          "category": "OPS (출루율+장타율)",
+          "rank": 4,
+          "name": "Willson Contreras",
+          "value": ".905",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/575929/headshot/67/current"
+        }
+      ],
+      "pitchers": [
+        {
+          "category": "다승 (Wins)",
+          "rank": 1,
+          "name": "Sonny Gray",
+          "value": "17",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/543243/headshot/67/current"
+        }
+      ]
+    },
+    "애리조나 다이아몬드백스": {
+      "team": {
+        "rank": 3,
+        "teamId": 109,
+        "team": "애리조나 다이아몬드백스",
+        "teamEng": "D-backs",
+        "color": "#A71930",
+        "emblem": "https://www.mlbstatic.com/team-logos/109.svg",
+        "games": 153,
+        "win": 80,
+        "loss": 73,
+        "rate": ".523",
+        "game_diff": "13.0",
+        "runDiff": 0,
+        "streak": "L2",
+        "recent10": "5-5",
+        "league": "내셔널 리그",
+        "division": "NL 서부 (NL West)",
+        "overallRank": 10
+      },
+      "hitters": [],
+      "pitchers": []
+    },
+    "신시내티 레즈": {
+      "team": {
+        "rank": 1,
+        "teamId": 114,
+        "team": "신시내티 레즈",
+        "teamEng": "Guardians",
+        "color": "#C6011F",
+        "emblem": "https://www.mlbstatic.com/team-logos/114.svg",
+        "games": 154,
+        "win": 79,
+        "loss": 75,
+        "rate": ".513",
+        "game_diff": "-",
+        "runDiff": -5,
+        "streak": "W3",
+        "recent10": "6-4",
+        "league": "아메리칸 리그",
+        "division": "AL 중부 (AL Central)",
+        "overallRank": 11
+      },
+      "hitters": [],
+      "pitchers": [
+        {
+          "category": "다승 (Wins)",
+          "rank": 4,
+          "name": "Foster Griffin",
+          "value": "15",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656492/headshot/67/current"
+        },
+        {
+          "category": "세이브 (Saves)",
+          "rank": 2,
+          "name": "Cade Smith",
+          "value": "38",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/671922/headshot/67/current"
+        }
+      ]
+    },
+    "시카고 화이트삭스": {
+      "team": {
+        "rank": 5,
+        "teamId": 113,
+        "team": "시카고 화이트삭스",
+        "teamEng": "Reds",
+        "color": "#27251F",
+        "emblem": "https://www.mlbstatic.com/team-logos/113.svg",
+        "games": 154,
+        "win": 72,
+        "loss": 82,
+        "rate": ".468",
+        "game_diff": "24.0",
+        "runDiff": -152,
+        "streak": "W1",
+        "recent10": "3-7",
+        "league": "내셔널 리그",
+        "division": "NL 중부 (NL Central)",
+        "overallRank": 23
+      },
+      "hitters": [
+        {
+          "category": "홈런 (Home Runs)",
+          "rank": 4,
+          "name": "Brady Singer",
+          "value": "31",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/663903/headshot/67/current"
+        },
+        {
+          "category": "타점 (RBI)",
+          "rank": 2,
+          "name": "Sal Stewart",
+          "value": "110",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/701398/headshot/67/current"
+        },
+        {
+          "category": "도루 (Stolen Bases)",
+          "rank": 4,
+          "name": "Andrew Abbott",
+          "value": "23",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/671096/headshot/67/current"
+        },
+        {
+          "category": "도루 (Stolen Bases)",
+          "rank": 5,
+          "name": "Sean Burke",
+          "value": "23",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/680732/headshot/67/current"
+        }
+      ],
+      "pitchers": [
+        {
+          "category": "다승 (Wins)",
+          "rank": 3,
+          "name": "Chase Burns",
+          "value": "15",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/695505/headshot/67/current"
+        },
+        {
+          "category": "탈삼진 (Strikeouts)",
+          "rank": 2,
+          "name": "Colson Montgomery",
+          "value": "213",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/695657/headshot/67/current"
+        },
+        {
+          "category": "탈삼진 (Strikeouts)",
+          "rank": 5,
+          "name": "Munetaka Murakami",
+          "value": "185",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/808959/headshot/67/current"
+        }
+      ]
+    },
+    "디트로이트 타이거스": {
+      "team": {
+        "rank": 1,
+        "teamId": 117,
+        "team": "디트로이트 타이거스",
+        "teamEng": "Astros",
+        "color": "#0C2340",
+        "emblem": "https://www.mlbstatic.com/team-logos/117.svg",
+        "games": 154,
+        "win": 77,
+        "loss": 77,
+        "rate": ".500",
+        "game_diff": "-",
+        "runDiff": -54,
+        "streak": "L1",
+        "recent10": "4-6",
+        "league": "아메리칸 리그",
+        "division": "AL 서부 (AL West)",
+        "overallRank": 13
+      },
+      "hitters": [
+        {
+          "category": "OPS (출루율+장타율)",
+          "rank": 1,
+          "name": "Yordan Alvarez",
+          "value": "1.031",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/670541/headshot/67/current"
+        }
+      ],
+      "pitchers": []
+    },
+    "텍사스 레인저스": {
+      "team": {
+        "rank": 2,
+        "teamId": 140,
+        "team": "텍사스 레인저스",
+        "teamEng": "Rangers",
+        "color": "#003278",
+        "emblem": "https://www.mlbstatic.com/team-logos/140.svg",
+        "games": 154,
+        "win": 77,
+        "loss": 77,
+        "rate": ".500",
+        "game_diff": "-",
+        "runDiff": -33,
+        "streak": "W1",
+        "recent10": "6-4",
+        "league": "아메리칸 리그",
+        "division": "AL 서부 (AL West)",
+        "overallRank": 14
+      },
+      "hitters": [],
+      "pitchers": []
+    },
+    "피츠버그 파이리츠": {
+      "team": {
+        "rank": 3,
+        "teamId": 134,
+        "team": "피츠버그 파이리츠",
+        "teamEng": "Pirates",
+        "color": "#FDB827",
+        "emblem": "https://www.mlbstatic.com/team-logos/134.svg",
+        "games": 154,
+        "win": 77,
+        "loss": 77,
+        "rate": ".500",
+        "game_diff": "19.0",
+        "runDiff": 27,
+        "streak": "W2",
+        "recent10": "6-4",
+        "league": "내셔널 리그",
+        "division": "NL 중부 (NL Central)",
+        "overallRank": 15
+      },
+      "hitters": [],
+      "pitchers": []
+    },
+    "마이애미 말린스": {
+      "team": {
+        "rank": 3,
+        "teamId": 146,
+        "team": "마이애미 말린스",
+        "teamEng": "Marlins",
+        "color": "#00A3E0",
+        "emblem": "https://www.mlbstatic.com/team-logos/146.svg",
+        "games": 153,
+        "win": 76,
+        "loss": 77,
+        "rate": ".497",
+        "game_diff": "13.5",
+        "runDiff": 8,
+        "streak": "W2",
+        "recent10": "5-5",
+        "league": "내셔널 리그",
+        "division": "NL 동부 (NL East)",
+        "overallRank": 16
+      },
+      "hitters": [
+        {
+          "category": "안타 (Hits)",
+          "rank": 1,
+          "name": "Sandy Alcantara",
+          "value": "195",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/645261/headshot/67/current"
+        },
+        {
+          "category": "도루 (Stolen Bases)",
+          "rank": 2,
+          "name": "Eury Pérez",
+          "value": "29",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/691587/headshot/67/current"
+        }
+      ],
+      "pitchers": []
+    },
+    "토론토 블루제이스": {
+      "team": {
+        "rank": 4,
+        "teamId": 141,
+        "team": "토론토 블루제이스",
+        "teamEng": "Blue Jays",
+        "color": "#134A8E",
+        "emblem": "https://www.mlbstatic.com/team-logos/141.svg",
+        "games": 154,
+        "win": 76,
+        "loss": 78,
+        "rate": ".494",
+        "game_diff": "17.5",
+        "runDiff": -43,
+        "streak": "L1",
+        "recent10": "4-6",
+        "league": "아메리칸 리그",
+        "division": "AL 동부 (AL East)",
+        "overallRank": 17
+      },
+      "hitters": [
+        {
+          "category": "타율 (Batting Average)",
+          "rank": 2,
+          "name": "Dylan Cease",
+          "value": ".180",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656302/headshot/67/current"
+        },
+        {
+          "category": "안타 (Hits)",
+          "rank": 5,
+          "name": "Michael Lorenzen",
+          "value": "186",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/547179/headshot/67/current"
+        },
+        {
+          "category": "도루 (Stolen Bases)",
+          "rank": 1,
+          "name": "Dylan Cease",
+          "value": "33",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656302/headshot/67/current"
+        }
+      ],
+      "pitchers": [
+        {
+          "category": "평균자책점 (ERA)",
+          "rank": 4,
+          "name": "Dylan Cease",
+          "value": "2.40",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/656302/headshot/67/current"
+        }
+      ]
+    },
+    "볼티모어 오리올스": {
+      "team": {
+        "rank": 5,
+        "teamId": 110,
+        "team": "볼티모어 오리올스",
+        "teamEng": "Orioles",
+        "color": "#DF4601",
+        "emblem": "https://www.mlbstatic.com/team-logos/110.svg",
+        "games": 154,
+        "win": 75,
+        "loss": 79,
+        "rate": ".487",
+        "game_diff": "18.5",
+        "runDiff": -27,
+        "streak": "L1",
+        "recent10": "6-4",
+        "league": "아메리칸 리그",
+        "division": "AL 동부 (AL East)",
+        "overallRank": 18
+      },
+      "hitters": [
+        {
+          "category": "타점 (RBI)",
+          "rank": 3,
+          "name": "Pete Alonso",
+          "value": "105",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/624413/headshot/67/current"
+        }
+      ],
+      "pitchers": []
+    },
+    "세인트루이스 카디널스": {
+      "team": {
+        "rank": 4,
+        "teamId": 138,
+        "team": "세인트루이스 카디널스",
+        "teamEng": "Cardinals",
+        "color": "#C41E3A",
+        "emblem": "https://www.mlbstatic.com/team-logos/138.svg",
+        "games": 154,
+        "win": 75,
+        "loss": 79,
+        "rate": ".487",
+        "game_diff": "21.0",
+        "runDiff": -22,
+        "streak": "L3",
+        "recent10": "3-7",
+        "league": "내셔널 리그",
+        "division": "NL 중부 (NL Central)",
+        "overallRank": 19
+      },
+      "hitters": [
+        {
+          "category": "타점 (RBI)",
+          "rank": 1,
+          "name": "Alec Burleson",
+          "value": "111",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/676475/headshot/67/current"
+        },
+        {
+          "category": "타점 (RBI)",
+          "rank": 5,
+          "name": "Jordan Walker",
+          "value": "100",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/691023/headshot/67/current"
+        },
+        {
+          "category": "도루 (Stolen Bases)",
+          "rank": 3,
+          "name": "Matthew Liberatore",
+          "value": "24",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/669461/headshot/67/current"
+        }
+      ],
+      "pitchers": [
+        {
+          "category": "세이브 (Saves)",
+          "rank": 4,
+          "name": "Riley O'Brien",
+          "value": "37",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/676617/headshot/67/current"
+        }
+      ]
+    },
+    "콜로라도 로키스": {
+      "team": {
+        "rank": 3,
+        "teamId": 116,
+        "team": "콜로라도 로키스",
+        "teamEng": "Tigers",
+        "color": "#333366",
+        "emblem": "https://www.mlbstatic.com/team-logos/116.svg",
+        "games": 154,
+        "win": 73,
+        "loss": 81,
+        "rate": ".474",
+        "game_diff": "6.0",
+        "runDiff": 77,
+        "streak": "W1",
+        "recent10": "7-3",
+        "league": "아메리칸 리그",
+        "division": "AL 중부 (AL Central)",
+        "overallRank": 20
+      },
+      "hitters": [],
+      "pitchers": []
+    },
+    "시애틀 매리너스": {
+      "team": {
+        "rank": 3,
+        "teamId": 136,
+        "team": "시애틀 매리너스",
+        "teamEng": "Mariners",
+        "color": "#0C2340",
+        "emblem": "https://www.mlbstatic.com/team-logos/136.svg",
+        "games": 154,
+        "win": 72,
+        "loss": 82,
+        "rate": ".468",
+        "game_diff": "5.0",
+        "runDiff": -55,
+        "streak": "W2",
+        "recent10": "5-5",
+        "league": "아메리칸 리그",
+        "division": "AL 서부 (AL West)",
+        "overallRank": 21
+      },
+      "hitters": [
+        {
+          "category": "안타 (Hits)",
+          "rank": 4,
+          "name": "George Kirby",
+          "value": "191",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/669923/headshot/67/current"
+        }
+      ],
+      "pitchers": []
+    },
+    "워싱턴 내셔널스": {
+      "team": {
+        "rank": 4,
+        "teamId": 120,
+        "team": "워싱턴 내셔널스",
+        "teamEng": "Nationals",
+        "color": "#AB0003",
+        "emblem": "https://www.mlbstatic.com/team-logos/120.svg",
+        "games": 154,
+        "win": 72,
+        "loss": 82,
+        "rate": ".468",
+        "game_diff": "18.0",
+        "runDiff": 11,
+        "streak": "W1",
+        "recent10": "5-5",
+        "league": "내셔널 리그",
+        "division": "NL 동부 (NL East)",
+        "overallRank": 22
+      },
+      "hitters": [
+        {
+          "category": "OPS (출루율+장타율)",
+          "rank": 3,
+          "name": "James Wood",
+          "value": ".911",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/695578/headshot/67/current"
+        }
+      ],
+      "pitchers": []
+    },
+    "미네소타 트윈스": {
+      "team": {
+        "rank": 4,
+        "teamId": 142,
+        "team": "미네소타 트윈스",
+        "teamEng": "Twins",
+        "color": "#002B5C",
+        "emblem": "https://www.mlbstatic.com/team-logos/142.svg",
+        "games": 153,
+        "win": 71,
+        "loss": 82,
+        "rate": ".464",
+        "game_diff": "7.5",
+        "runDiff": -74,
+        "streak": "L1",
+        "recent10": "3-7",
+        "league": "아메리칸 리그",
+        "division": "AL 중부 (AL Central)",
+        "overallRank": 24
+      },
+      "hitters": [],
+      "pitchers": []
+    },
+    "뉴욕 메츠": {
+      "team": {
+        "rank": 5,
+        "teamId": 121,
+        "team": "뉴욕 메츠",
+        "teamEng": "Mets",
+        "color": "#002D72",
+        "emblem": "https://www.mlbstatic.com/team-logos/121.svg",
+        "games": 154,
+        "win": 70,
+        "loss": 84,
+        "rate": ".455",
+        "game_diff": "20.0",
+        "runDiff": -43,
+        "streak": "W1",
+        "recent10": "4-6",
+        "league": "내셔널 리그",
+        "division": "NL 동부 (NL East)",
+        "overallRank": 25
+      },
+      "hitters": [],
+      "pitchers": []
+    },
+    "캔자스시티 로열스": {
+      "team": {
+        "rank": 5,
+        "teamId": 118,
+        "team": "캔자스시티 로열스",
+        "teamEng": "Royals",
+        "color": "#004687",
+        "emblem": "https://www.mlbstatic.com/team-logos/118.svg",
+        "games": 154,
+        "win": 67,
+        "loss": 87,
+        "rate": ".435",
+        "game_diff": "12.0",
+        "runDiff": -100,
+        "streak": "L2",
+        "recent10": "3-7",
+        "league": "아메리칸 리그",
+        "division": "AL 중부 (AL Central)",
+        "overallRank": 26
+      },
+      "hitters": [
+        {
+          "category": "안타 (Hits)",
+          "rank": 2,
+          "name": "Seth Lugo",
+          "value": "193",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/607625/headshot/67/current"
+        }
+      ],
+      "pitchers": []
+    },
+    "샌프란시스코 자이언츠": {
+      "team": {
+        "rank": 4,
+        "teamId": 137,
+        "team": "샌프란시스코 자이언츠",
+        "teamEng": "Giants",
+        "color": "#FD5A1E",
+        "emblem": "https://www.mlbstatic.com/team-logos/137.svg",
+        "games": 153,
+        "win": 64,
+        "loss": 89,
+        "rate": ".418",
+        "game_diff": "29.0",
+        "runDiff": -70,
+        "streak": "W2",
+        "recent10": "5-5",
+        "league": "내셔널 리그",
+        "division": "NL 서부 (NL West)",
+        "overallRank": 27
+      },
+      "hitters": [],
+      "pitchers": []
+    },
+    "오클랜드 애슬레틱스": {
+      "team": {
+        "rank": 4,
+        "teamId": 133,
+        "team": "오클랜드 애슬레틱스",
+        "teamEng": "Athletics",
+        "color": "#003831",
+        "emblem": "https://www.mlbstatic.com/team-logos/133.svg",
+        "games": 154,
+        "win": 61,
+        "loss": 93,
+        "rate": ".396",
+        "game_diff": "16.0",
+        "runDiff": -216,
+        "streak": "L4",
+        "recent10": "4-6",
+        "league": "아메리칸 리그",
+        "division": "AL 서부 (AL West)",
+        "overallRank": 28
+      },
+      "hitters": [
+        {
+          "category": "홈런 (Home Runs)",
+          "rank": 3,
+          "name": "Jeffrey Springs",
+          "value": "33",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/605488/headshot/67/current"
+        }
+      ],
+      "pitchers": []
+    },
+    "LA 에인절스": {
+      "team": {
+        "rank": 5,
+        "teamId": 108,
+        "team": "LA 에인절스",
+        "teamEng": "Angels",
+        "color": "#BA0021",
+        "emblem": "https://www.mlbstatic.com/team-logos/108.svg",
+        "games": 153,
+        "win": 59,
+        "loss": 94,
+        "rate": ".386",
+        "game_diff": "17.5",
+        "runDiff": -77,
+        "streak": "W1",
+        "recent10": "5-5",
+        "league": "아메리칸 리그",
+        "division": "AL 서부 (AL West)",
+        "overallRank": 29
+      },
+      "hitters": [],
+      "pitchers": [
+        {
+          "category": "탈삼진 (Strikeouts)",
+          "rank": 3,
+          "name": "Zach Neto",
+          "value": "204",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/687263/headshot/67/current"
+        }
+      ]
+    },
+    "클리블랜드 가디언스": {
+      "team": {
+        "rank": 5,
+        "teamId": 115,
+        "team": "클리블랜드 가디언스",
+        "teamEng": "Rockies",
+        "color": "#E31937",
+        "emblem": "https://www.mlbstatic.com/team-logos/115.svg",
+        "games": 154,
+        "win": 56,
+        "loss": 98,
+        "rate": ".364",
+        "game_diff": "37.5",
+        "runDiff": -178,
+        "streak": "L3",
+        "recent10": "1-9",
+        "league": "내셔널 리그",
+        "division": "NL 서부 (NL West)",
+        "overallRank": 30
+      },
+      "hitters": [
+        {
+          "category": "홈런 (Home Runs)",
+          "rank": 5,
+          "name": "Tomoyuki Sugano",
+          "value": "31",
+          "photo": "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/608372/headshot/67/current"
+        }
+      ],
+      "pitchers": []
+    }
+  }
+}

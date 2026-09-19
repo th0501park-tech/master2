@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>{% block title %}SPORTS HUB - 실시간 스포츠 종합 순위 & 기록{% endblock %}</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏆</text></svg>">
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    screens: {
+                        'xs': '480px',
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        },
+                        darkbg: {
+                            950: '#070b12',
+                            900: '#0b0f19',
+                            800: '#111827',
+                            700: '#1f2937',
+                            600: '#374151'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-darkbg-900 dark:text-gray-100 min-h-screen flex flex-col font-sans transition-colors duration-200 antialiased pb-20 md:pb-0">
+
+    <!-- 글로벌 상단 네비게이션 -->
+    <header class="sticky top-0 z-40 bg-white/95 dark:bg-darkbg-800/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm transition-colors">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-14 sm:h-16">
+                <!-- 로고 & 브랜딩 -->
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <a href="/" class="flex items-center space-x-2 group">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-amber-500 flex items-center justify-center text-white text-base sm:text-xl shadow-md group-hover:scale-105 transition-transform">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-lg sm:text-xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 dark:from-blue-400 dark:via-indigo-300 dark:to-purple-400 leading-tight">
+                                SPORTS HUB
+                            </span>
+                            <span class="text-[9px] sm:text-[10px] text-gray-400 font-semibold uppercase tracking-wider hidden xs:inline-block">
+                                Realtime Dashboard
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- 4대 스포츠 메인 탭 (데스크톱 전용) -->
+                <nav class="hidden md:flex items-center space-x-1 bg-gray-100/80 dark:bg-darkbg-900/80 p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800">
+                    <button type="button" onclick="switchMainSport('kbo')" id="nav-btn-kbo" class="main-nav-btn px-4 py-2 rounded-xl text-sm font-bold transition-all flex items-center space-x-2">
+                        <span>⚾</span>
+                        <span>KBO 야구</span>
+                    </button>
+                    <button type="button" onclick="switchMainSport('kleague')" id="nav-btn-kleague" class="main-nav-btn px-4 py-2 rounded-xl text-sm font-bold transition-all flex items-center space-x-2">
+                        <span>⚽</span>
+                        <span>K리그</span>
+                    </button>
+                    <button type="button" onclick="switchMainSport('overseas')" id="nav-btn-overseas" class="main-nav-btn px-4 py-2 rounded-xl text-sm font-bold transition-all flex items-center space-x-2">
+                        <span>🌍</span>
+                        <span>해외축구</span>
+                    </button>
+                    <button type="button" onclick="switchMainSport('mlb')" id="nav-btn-mlb" class="main-nav-btn px-4 py-2 rounded-xl text-sm font-bold transition-all flex items-center space-x-2">
+                        <span>🧢</span>
+                        <span>MLB 메이저리그</span>
+                    </button>
+                </nav>
+
+                <!-- 우측 제어 툴바 (검색, 새로고침, 테마) -->
+                <div class="flex items-center space-x-1.5 sm:space-x-2">
+                    <!-- 통합 검색 열기 버튼 -->
+                    <button type="button" onclick="openSearchModal()" title="통합 검색" 
+                            class="p-2 sm:p-2.5 rounded-xl text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-darkbg-700 active:scale-95 transition-all">
+                        <i class="fa-solid fa-magnifying-glass text-base sm:text-lg"></i>
+                    </button>
+
+                    <!-- 실시간 새로고침 버튼 -->
+                    <button type="button" id="refresh-btn" onclick="refreshCurrentSport()" title="공식 데이터 실시간 새로고침" 
+                            class="relative px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs font-semibold shadow-sm flex items-center space-x-1.5 transition-all">
+                        <i id="refresh-icon" class="fa-solid fa-arrows-rotate text-xs sm:text-sm"></i>
+                        <span class="hidden sm:inline">새로고침</span>
+                    </button>
+
+                    <!-- 다크모드 토글 버튼 -->
+                    <button type="button" id="theme-toggle" onclick="toggleTheme()" title="다크/라이트 모드" 
+                            class="p-2 sm:p-2.5 rounded-xl text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-darkbg-700 active:scale-95 transition-all">
+                        <i id="theme-icon" class="fa-solid fa-moon text-base sm:text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 모바일용 상단 서브 스크롤 네비게이션 바 -->
+            <div class="md:hidden flex items-center space-x-1.5 overflow-x-auto py-2 no-scrollbar border-t border-gray-100 dark:border-gray-800/80 -mx-3 px-3">
+                <button type="button" onclick="switchMainSport('kbo')" id="m-nav-btn-kbo" class="m-main-nav-btn whitespace-nowrap px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1">
+                    <span>⚾</span>
+                    <span>KBO 야구</span>
+                </button>
+                <button type="button" onclick="switchMainSport('kleague')" id="m-nav-btn-kleague" class="m-main-nav-btn whitespace-nowrap px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1">
+                    <span>⚽</span>
+                    <span>K리그</span>
+                </button>
+                <button type="button" onclick="switchMainSport('overseas')" id="m-nav-btn-overseas" class="m-main-nav-btn whitespace-nowrap px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1">
+                    <span>🌍</span>
+                    <span>해외축구</span>
+                </button>
+                <button type="button" onclick="switchMainSport('mlb')" id="m-nav-btn-mlb" class="m-main-nav-btn whitespace-nowrap px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1">
+                    <span>🧢</span>
+                    <span>MLB</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <main class="flex-grow max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- 모바일 하단 네비게이션 바 (Mobile Bottom Tab Bar) -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-darkbg-800/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 shadow-lg px-2 py-1.5 flex items-center justify-around">
+        <button type="button" onclick="switchMainSport('kbo')" id="b-nav-btn-kbo" class="b-main-nav-btn flex-1 py-1.5 flex flex-col items-center justify-center text-center rounded-xl transition-all">
+            <span class="text-base leading-none mb-1">⚾</span>
+            <span class="text-[11px] font-bold">KBO</span>
+        </button>
+        <button type="button" onclick="switchMainSport('kleague')" id="b-nav-btn-kleague" class="b-main-nav-btn flex-1 py-1.5 flex flex-col items-center justify-center text-center rounded-xl transition-all">
+            <span class="text-base leading-none mb-1">⚽</span>
+            <span class="text-[11px] font-bold">K리그</span>
+        </button>
+        <button type="button" onclick="switchMainSport('overseas')" id="b-nav-btn-overseas" class="b-main-nav-btn flex-1 py-1.5 flex flex-col items-center justify-center text-center rounded-xl transition-all">
+            <span class="text-base leading-none mb-1">🌍</span>
+            <span class="text-[11px] font-bold">해외축구</span>
+        </button>
+        <button type="button" onclick="switchMainSport('mlb')" id="b-nav-btn-mlb" class="b-main-nav-btn flex-1 py-1.5 flex flex-col items-center justify-center text-center rounded-xl transition-all">
+            <span class="text-base leading-none mb-1">🧢</span>
+            <span class="text-[11px] font-bold">MLB</span>
+        </button>
+        <button type="button" onclick="openSearchModal()" class="flex-1 py-1.5 flex flex-col items-center justify-center text-center text-gray-500 dark:text-gray-400 rounded-xl transition-all">
+            <i class="fa-solid fa-magnifying-glass text-base leading-none mb-1"></i>
+            <span class="text-[11px] font-bold">검색</span>
+        </button>
+    </nav>
+
+    <!-- 푸터 (모바일에서는 하단 바 여백 고려) -->
+    <footer class="bg-white dark:bg-darkbg-800 border-t border-gray-200 dark:border-gray-800 py-6 text-xs text-gray-500 dark:text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+            <div class="flex items-center justify-center md:justify-start space-x-2">
+                <span class="font-bold text-gray-700 dark:text-gray-300">SPORTS HUB</span>
+                <span>•</span>
+                <span>실시간 종합 순위 & 기록 포털</span>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-2 text-[11px] sm:text-xs">
+                <span>데이터 출처: KBO 공식, K리그 포털, Goal.com, MLB Stats API</span>
+                <span class="hidden sm:inline">•</span>
+                <span>초고속 실시간 캐싱</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 통합 검색 모달 (모바일 반응형 완벽 최적화) -->
+    <div id="search-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-start justify-center pt-8 sm:pt-20 px-3 sm:px-4 transition-opacity">
+        <div class="bg-white dark:bg-darkbg-800 w-full max-w-2xl rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden transform transition-all animate-fadeIn">
+            <!-- 검색 입력 헤더 -->
+            <div class="p-3.5 sm:p-4 border-b border-gray-200 dark:border-gray-700 flex items-center space-x-3">
+                <i class="fa-solid fa-magnifying-glass text-gray-400 text-base sm:text-lg"></i>
+                <input type="text" id="search-input" placeholder="구단명 또는 선수명을 입력하세요 (예: KIA, 손흥민, 김도영, 홀란드, 다저스)" 
+                       class="w-full bg-transparent text-gray-900 dark:text-white focus:outline-none text-sm sm:text-base placeholder-gray-400">
+                <button type="button" onclick="closeSearchModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-white p-1.5 active:scale-95">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <!-- 검색 결과 목록 -->
+            <div id="search-results" class="max-h-[60vh] sm:max-h-96 overflow-y-auto p-3 sm:p-4 space-y-4">
+                <div class="text-center py-8 text-gray-400 dark:text-gray-500 text-xs sm:text-sm">
+                    <i class="fa-regular fa-compass text-2xl sm:text-3xl mb-2"></i>
+                    <p>4대 스포츠(KBO, K리그, 해외축구, MLB)의 팀과 선수를 실시간으로 검색합니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 토스트 알림 -->
+    <div id="toast" class="fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-gray-900 text-white dark:bg-white dark:text-gray-900 px-4 py-2.5 rounded-xl shadow-xl flex items-center space-x-2.5 text-xs sm:text-sm font-medium">
+        <i id="toast-icon" class="fa-solid fa-check text-green-400"></i>
+        <span id="toast-message">알림</span>
+    </div>
+
+    <!-- 스크립트 -->
+    <script src="/static/js/main.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
