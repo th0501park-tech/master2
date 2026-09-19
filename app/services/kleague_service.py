@@ -725,9 +725,8 @@ def get_kleague_data(force_refresh=False):
         try:
             with open(CACHE_FILE, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            cached_time = datetime.fromisoformat(data.get("updated_at_iso", "2000-01-01"))
-            # highlights in k1 and k2 checks
-            if (datetime.now() - cached_time).total_seconds() < 300 and "highlights" in data.get("k1", {}) and "highlights" in data.get("k2", {}):
+            # 캐시 데이터가 유효하면 즉시 반환 (무료 서버 리소스 절약을 위해 자동 크롤링 방지)
+            if "highlights" in data.get("k1", {}) and "highlights" in data.get("k2", {}):
                 return data
         except Exception as e:
             print(f"K리그 캐시 로드 에러: {e}")
