@@ -4,7 +4,7 @@ MLB (메이저리그 베이스볼) 데이터 서비스 모듈
 """
 import os
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 import requests
 
 HEADERS = {
@@ -268,73 +268,127 @@ def build_mlb_team_hub(all_teams, hitter_cats, pitcher_cats):
 
 
 def fetch_mlb_recent_matches():
-    """MLB 공식 Stats API에서 최근 경기 결과 조회"""
+    """MLB 공식 Stats API에서 최근 경기 결과, 오늘/내일 예정 경기, 실시간 LIVE 경기 조회"""
     try:
-        # 최근 날짜 우선 조회 (2024 정규시즌 후반부 fallback)
-        test_dates = ["2024-09-18", "2024-09-17", "2024-09-19"]
-        games = []
-        for d in test_dates:
-            url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={d}&hydrate=linescore,decisions,team"
-            r = requests.get(url, headers=HEADERS, timeout=6)
-            if r.status_code == 200:
-                d_games = r.json().get("dates", [{}])[0].get("games", [])
-                if d_games:
-                    games = d_games
-                    break
+        now = datetime.now()
+        start_d = (now - timedelta(days=2)).strftime("%Y-%m-%d")
+        end_d = (now + timedelta(days=2)).strftime("%Y-%m-%d")
+
+        url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate={start_d}&endDate={end_d}&hydrate=linescore,decisions,team,probablePitcher"
+        r = requests.get(url, headers=HEADERS, timeout=6)
+        dates = r.json().get("dates", []) if r.status_code == 200 else []
+
+        # 만약 해당 기간 경기가 없으면 2024년 9월 시즌 후반부 fallback
+        if not dates:
+            fb_url = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate=2024-09-17&endDate=2024-09-19&hydrate=linescore,decisions,team,probablePitcher"
+            r_fb = requests.get(fb_url, headers=HEADERS, timeout=6)
+            dates = r_fb.json().get("dates", []) if r_fb.status_code == 200 else []
 
         matches = []
-        for g in games:
-            game_pk = g.get("gamePk")
-            away = g.get("teams", {}).get("away", {})
-            home = g.get("teams", {}).get("home", {})
-            away_team_id = away.get("team", {}).get("id")
-            home_team_id = home.get("team", {}).get("id")
+        for d_item in dates:
+            for g in d_item.get("games", []):
+                game_pk = g.get("gamePk")
+                status_obj = g.get("status", {})
+                state = status_obj.get("abstractGameState", "")  # 'Live', 'Final', 'Preview'
+                detailed_state = status_obj.get("detailedState", "Final")
 
-            away_info = MLB_TEAMS.get(away_team_id, {})
-            home_info = MLB_TEAMS.get(home_team_id, {})
+                away = g.get("teams", {}).get("away", {})
+                home = g.get("teams", {}).get("home", {})
+                away_team_id = away.get("team", {}).get("id")
+                home_team_id = home.get("team", {}).get("id")
 
-            away_name = away_info.get("name", away.get("team", {}).get("name", ""))
-            home_name = home_info.get("name", home.get("team", {}).get("name", ""))
+                away_info = MLB_TEAMS.get(away_team_id, {})
+                home_info = MLB_TEAMS.get(home_team_id, {})
 
-            away_emblem = f"https://www.mlbstatic.com/team-logos/{away_team_id}.svg" if away_team_id else ""
-            home_emblem = f"https://www.mlbstatic.com/team-logos/{home_team_id}.svg" if home_team_id else ""
+                away_name = away_info.get("name", away.get("team", {}).get("name", ""))
+                home_name = home_info.get("name", home.get("team", {}).get("name", ""))
 
-            decisions = g.get("decisions", {})
-            winner_pitcher = decisions.get("winner", {}).get("fullName", "")
-            loser_pitcher = decisions.get("loser", {}).get("fullName", "")
-            save_pitcher = decisions.get("save", {}).get("fullName", "")
+                away_emblem = f"https://www.mlbstatic.com/team-logos/{away_team_id}.svg" if away_team_id else ""
+                home_emblem = f"https://www.mlbstatic.com/team-logos/{home_team_id}.svg" if home_team_id else ""
 
-            pitcher_note = ""
-            if winner_pitcher:
-                pitcher_note += f"승: {winner_pitcher} "
-            if loser_pitcher:
-                pitcher_note += f"패: {loser_pitcher} "
-            if save_pitcher:
-                pitcher_note += f"세: {save_pitcher}"
+                decisions = g.get("decisions", {})
+                winner_pitcher = decisions.get("winner", {}).get("fullName", "")
+                loser_pitcher = decisions.get("loser", {}).get("fullName", "")
+                save_pitcher = decisions.get("save", {}).get("fullName", "")
 
-            matches.append({
-                "game_pk": game_pk,
-                "date": g.get("gameDate", "")[:10],
-                "status": g.get("status", {}).get("detailedState", "Final"),
-                "away_id": away_team_id,
-                "away_team": away_name,
-                "away_eng": away.get("team", {}).get("name", ""),
-                "away_emblem": away_emblem,
-                "away_color": away_info.get("color", "#002D62"),
-                "away_score": away.get("score", 0),
-                "away_win": away.get("isWinner", False),
-                "home_id": home_team_id,
-                "home_team": home_name,
-                "home_eng": home.get("team", {}).get("name", ""),
-                "home_emblem": home_emblem,
-                "home_color": home_info.get("color", "#BA0021"),
-                "home_score": home.get("score", 0),
-                "home_win": home.get("isWinner", False),
-                "venue": g.get("venue", {}).get("name", ""),
-                "pitcher_note": pitcher_note.strip()
-            })
+                pitcher_parts = []
+                if winner_pitcher:
+                    pitcher_parts.append(f"승: {winner_pitcher}")
+                if loser_pitcher:
+                    pitcher_parts.append(f"패: {loser_pitcher}")
+                if save_pitcher:
+                    pitcher_parts.append(f"세: {save_pitcher}")
+                pitcher_note = " | ".join(pitcher_parts)
 
-        return matches[:12]
+                # 선발투수
+                away_prob = away.get("probablePitcher", {}).get("fullName", "")
+                home_prob = home.get("probablePitcher", {}).get("fullName", "")
+                starter_note = ""
+                if away_prob or home_prob:
+                    starter_note = f"선발: {away_prob or '미정'} vs {home_prob or '미정'}"
+
+                # 이닝 / 상태 정보
+                linescore = g.get("linescore", {})
+                curr_inning = linescore.get("currentInningOrdinal", "")
+                inning_half = linescore.get("inningHalf", "")
+                
+                is_live = state == "Live" or "In Progress" in detailed_state
+                is_finished = state == "Final" or "Final" in detailed_state or "Game Over" in detailed_state
+                is_upcoming = not is_live and not is_finished
+
+                if is_live:
+                    status_label = "LIVE"
+                    half_kr = "초" if inning_half.lower() == "top" else ("말" if inning_half.lower() == "bottom" else "")
+                    status_info = f"{curr_inning} {half_kr}".strip() or "진행중"
+                elif is_finished:
+                    status_label = "종료"
+                    status_info = "종료"
+                else:
+                    status_label = "예정"
+                    status_info = "예정"
+
+                # 시간 표시
+                game_datetime = g.get("gameDate", "")
+                time_str = ""
+                if len(game_datetime) >= 16:
+                    time_str = game_datetime[11:16]
+
+                matches.append({
+                    "game_pk": game_pk,
+                    "date": game_datetime[:10],
+                    "time": time_str,
+                    "status": status_label,
+                    "status_info": status_info,
+                    "away_id": away_team_id,
+                    "away_team": away_name,
+                    "away_eng": away.get("team", {}).get("name", ""),
+                    "away_emblem": away_emblem,
+                    "away_color": away_info.get("color", "#002D62"),
+                    "away_score": away.get("score", "-") if (is_finished or is_live) else "-",
+                    "away_win": away.get("isWinner", False),
+                    "home_id": home_team_id,
+                    "home_team": home_name,
+                    "home_eng": home.get("team", {}).get("name", ""),
+                    "home_emblem": home_emblem,
+                    "home_color": home_info.get("color", "#BA0021"),
+                    "home_score": home.get("score", "-") if (is_finished or is_live) else "-",
+                    "home_win": home.get("isWinner", False),
+                    "venue": g.get("venue", {}).get("name", ""),
+                    "win_pitcher": winner_pitcher,
+                    "lose_pitcher": loser_pitcher,
+                    "save_pitcher": save_pitcher,
+                    "pitcher_note": pitcher_note or "정규 경기",
+                    "starter_note": starter_note,
+                    "is_live": is_live,
+                    "is_upcoming": is_upcoming,
+                    "is_finished": is_finished
+                })
+
+        live_games = [m for m in matches if m["is_live"]]
+        upcoming_games = [m for m in matches if m["is_upcoming"]]
+        finished_games = sorted([m for m in matches if m["is_finished"]], key=lambda x: x["date"], reverse=True)
+
+        return live_games + upcoming_games[:4] + finished_games[:10]
     except Exception as e:
         print(f"MLB 최근 경기 조회 실패: {e}")
         return []

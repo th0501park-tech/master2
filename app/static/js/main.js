@@ -5,10 +5,40 @@
 // 전역 상태
 let currentSport = "kbo";
 let currentViewMode = "matches"; // 'matches' | 'standings' | 'leaders' | 'teamhub'
+let currentMatchFilter = "all"; // 'all' | 'live' | 'finished' | 'upcoming'
 let currentKLeagueSub = "k1";
 let currentOverseasSub = "epl";
 let currentMLBSub = "overall";
 let searchDebounceTimer = null;
+
+// 경기 상태 필터 (전체 / 🔴 LIVE / 최근 결과 / 예정 경기)
+function setMatchFilter(filterType) {
+    currentMatchFilter = filterType || "all";
+    document.querySelectorAll(".match-filter-chip").forEach(chip => {
+        if (chip.id.endsWith(`-${currentMatchFilter}`)) {
+            chip.classList.add("active");
+        } else {
+            chip.classList.remove("active");
+        }
+    });
+
+    if (currentSport === "kbo") renderKboMatches();
+    else if (currentSport === "kleague") renderKLeague();
+    else if (currentSport === "overseas") renderOverseas();
+    else if (currentSport === "mlb") renderMlbMatches();
+}
+
+function filterMatchesByStatus(matches) {
+    if (!matches) return [];
+    if (currentMatchFilter === "live") {
+        return matches.filter(m => m.is_live || m.status === "LIVE" || (m.status_info && (m.status_info.includes("회") || m.status_info.includes("전반") || m.status_info.includes("후반") || m.status_info.includes("HT") || m.status_info.includes("진행중")) && !m.status_info.includes("종료")));
+    } else if (currentMatchFilter === "finished") {
+        return matches.filter(m => m.is_finished || m.status === "종료" || (m.status_info && m.status_info.includes("종료")));
+    } else if (currentMatchFilter === "upcoming") {
+        return matches.filter(m => m.is_upcoming || m.status === "예정" || (m.status_info && (m.status_info.includes("예정") || m.status_info.includes("Scheduled"))));
+    }
+    return matches;
+}
 
 // 선호 구단(마이팀) 상태 관리
 const FAVORITES_STORAGE_KEY = "sports_hub_favorites";
@@ -676,86 +706,157 @@ function renderKboMatches() {
         matches.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
     }
 
+    // 상태 필터 적용 (전체 / LIVE / 최근 결과 / 예정 경기)
+    matches = filterMatchesByStatus(matches);
+
     if (matches.length === 0) {
         grid.innerHTML = `
             <div class="col-span-full py-10 text-center bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800">
                 <p class="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400">
-                    ${isMyTeamOnlyFilter ? `선호 구단 [${fav}]의 최근 경기 결과가 없습니다.` : '최근 경기 결과가 준비 중입니다.'}
+                    ${isMyTeamOnlyFilter ? `선호 구단 [${fav}]의 해당 조건 경기 일정이 없습니다.` : '해당 조건의 경기 일정이 없습니다.'}
                 </p>
-                ${isMyTeamOnlyFilter ? `<button type="button" onclick="toggleMyTeamFilter()" class="mt-3 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold active:scale-95 transition-all">전체 경기 보기</button>` : ''}
+                ${(isMyTeamOnlyFilter || currentMatchFilter !== 'all') ? `<button type="button" onclick="setMatchFilter('all'); if (isMyTeamOnlyFilter) toggleMyTeamFilter();" class="mt-3 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold active:scale-95 transition-all">전체 경기 보기</button>` : ''}
             </div>
         `;
         return;
     }
 
-    grid.innerHTML = matches.map(m => `
-        <div class="bg-white dark:bg-darkbg-800 rounded-2xl border ${m.isFav ? 'border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/30 my-team-card' : 'border-gray-200 dark:border-gray-800'} p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
-            <div class="flex items-center justify-between pb-2.5 border-b border-gray-100 dark:border-gray-700/60 text-xs">
-                <div class="flex items-center space-x-1.5 text-gray-500 dark:text-gray-400 font-medium">
-                    <i class="fa-regular fa-calendar text-[11px]"></i>
-                    <span>${m.date}</span>
-                    ${m.time ? `<span class="text-[10px] text-gray-400">(${m.time})</span>` : ''}
-                </div>
-                <div class="flex items-center space-x-1.5">
-                    ${m.isFav ? `
-                    <span class="px-1.5 py-0.2 rounded text-[10px] font-black bg-amber-400 text-amber-950 shadow-xs flex items-center space-x-1">
-                        <i class="fa-solid fa-star text-[9px]"></i><span>MY TEAM</span>
-                    </span>
-                    ` : ''}
-                    ${m.stadium ? `
-                    <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-gray-100 dark:bg-darkbg-700 text-gray-600 dark:text-gray-300">
-                        ${m.stadium}
-                    </span>` : ''}
-                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">
-                        ${m.status}
-                    </span>
-                </div>
-            </div>
+    grid.innerHTML = matches.map(m => {
+        const isLive = m.is_live || m.status === 'LIVE';
+        const isFinished = m.is_finished || m.status === '종료';
+        const isUpcoming = m.is_upcoming || m.status === '예정';
 
-            <div class="py-3 space-y-2">
-                <!-- 원정팀 -->
-                <div class="flex items-center justify-between ${m.away_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
-                    <div class="flex items-center space-x-2.5 truncate">
-                        ${m.away_emblem ? `<img src="${m.away_emblem}" alt="${m.away_team}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">` : ''}
-                        <span class="text-xs sm:text-sm truncate font-semibold">${m.away_full_name || m.away_team}</span>
-                        ${m.away_win ? `<span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>` : ''}
-                        <button type="button" onclick="toggleFavoriteTeam('kbo', '${m.away_team}')" title="선호 구단 등록/해제" 
-                                class="fav-star-btn text-xs ${fav && isTeamMatch(m.away_team, fav) ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
-                            ★
-                        </button>
+        let statusBadgeHtml = '';
+        if (isLive) {
+            statusBadgeHtml = `
+                <span class="px-2 py-0.5 rounded text-[10px] font-black bg-red-500 text-white flex items-center space-x-1 shadow-xs animate-pulse">
+                    <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                    <span>LIVE ${m.status_info || '진행중'}</span>
+                </span>
+            `;
+        } else if (isFinished) {
+            statusBadgeHtml = `
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">
+                    종료
+                </span>
+            `;
+        } else {
+            statusBadgeHtml = `
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">
+                    ${m.status_info || '예정'}
+                </span>
+            `;
+        }
+
+        // 투수 정보 박스
+        let pitcherInfoHtml = '';
+        if (m.win_pitcher || m.lose_pitcher) {
+            pitcherInfoHtml = `
+                <div class="px-2.5 py-1.5 rounded-xl bg-gray-50 dark:bg-darkbg-900 border border-gray-100 dark:border-gray-800 text-[11px] mb-2 flex items-center justify-between truncate">
+                    <div class="flex items-center space-x-2 truncate">
+                        ${m.win_pitcher ? `<span class="text-blue-600 dark:text-blue-400 font-extrabold"><span class="px-1 py-0.2 rounded bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 text-[9px] mr-1">승</span>${m.win_pitcher}</span>` : ''}
+                        ${m.lose_pitcher ? `<span class="text-red-500 dark:text-red-400 font-bold"><span class="px-1 py-0.2 rounded bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300 text-[9px] mr-1">패</span>${m.lose_pitcher}</span>` : ''}
                     </div>
-                    <span class="text-base sm:text-lg ${m.away_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">
-                        ${m.away_score}
-                    </span>
+                    <span class="text-[10px] text-gray-400 ml-1 flex-shrink-0">결정투수</span>
                 </div>
+            `;
+        } else if (isLive && m.current_pitcher) {
+            pitcherInfoHtml = `
+                <div class="px-2.5 py-1.5 rounded-xl bg-red-50/60 dark:bg-red-950/30 border border-red-200/60 dark:border-red-800/40 text-[11px] mb-2 flex items-center justify-between truncate">
+                    <span class="font-bold text-red-700 dark:text-red-300 truncate">
+                        <span class="px-1.5 py-0.2 rounded bg-red-500 text-white font-black text-[9px] mr-1">투수</span>${m.current_pitcher}
+                    </span>
+                    <span class="text-[10px] text-red-500 font-bold ml-1 flex-shrink-0">${m.status_info || '실시간'}</span>
+                </div>
+            `;
+        } else if (isUpcoming && (m.home_starter || m.away_starter || m.starter_note)) {
+            pitcherInfoHtml = `
+                <div class="px-2.5 py-1.5 rounded-xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200/60 dark:border-blue-800/40 text-[11px] mb-2 flex items-center justify-between truncate">
+                    <span class="font-bold text-blue-700 dark:text-blue-300 truncate">
+                        ${m.starter_note || `선발: ${m.away_starter || '미정'} vs ${m.home_starter || '미정'}`}
+                    </span>
+                    <span class="text-[10px] text-blue-500 font-bold ml-1 flex-shrink-0">선발예고</span>
+                </div>
+            `;
+        } else if (m.pitcher_note) {
+            pitcherInfoHtml = `
+                <div class="px-2.5 py-1.5 rounded-xl bg-gray-50 dark:bg-darkbg-900 border border-gray-100 dark:border-gray-800 text-[11px] mb-2 flex items-center justify-between truncate">
+                    <span class="font-medium text-gray-600 dark:text-gray-300 truncate">${m.pitcher_note}</span>
+                    <span class="text-[10px] text-gray-400 ml-1 flex-shrink-0">경기정보</span>
+                </div>
+            `;
+        }
 
-                <!-- 홈팀 -->
-                <div class="flex items-center justify-between ${m.home_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
-                    <div class="flex items-center space-x-2.5 truncate">
-                        ${m.home_emblem ? `<img src="${m.home_emblem}" alt="${m.home_team}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">` : ''}
-                        <span class="text-xs sm:text-sm truncate font-semibold">${m.home_full_name || m.home_team}</span>
-                        ${m.home_win ? `<span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>` : ''}
-                        <button type="button" onclick="toggleFavoriteTeam('kbo', '${m.home_team}')" title="선호 구단 등록/해제" 
-                                class="fav-star-btn text-xs ${fav && isTeamMatch(m.home_team, fav) ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
-                            ★
-                        </button>
+        return `
+            <div class="bg-white dark:bg-darkbg-800 rounded-2xl border ${isLive ? 'border-red-400 dark:border-red-500 ring-2 ring-red-400/30' : (m.isFav ? 'border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/30 my-team-card' : 'border-gray-200 dark:border-gray-800')} p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-center justify-between pb-2.5 border-b border-gray-100 dark:border-gray-700/60 text-xs">
+                    <div class="flex items-center space-x-1.5 text-gray-500 dark:text-gray-400 font-medium">
+                        <i class="fa-regular fa-calendar text-[11px]"></i>
+                        <span>${m.date}</span>
+                        ${m.time ? `<span class="text-[10px] text-gray-400">(${m.time})</span>` : ''}
                     </div>
-                    <span class="text-base sm:text-lg ${m.home_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">
-                        ${m.home_score}
-                    </span>
+                    <div class="flex items-center space-x-1.5">
+                        ${m.isFav ? `
+                        <span class="px-1.5 py-0.2 rounded text-[10px] font-black bg-amber-400 text-amber-950 shadow-xs flex items-center space-x-1">
+                            <i class="fa-solid fa-star text-[9px]"></i><span>MY TEAM</span>
+                        </span>
+                        ` : ''}
+                        ${m.stadium ? `
+                        <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-gray-100 dark:bg-darkbg-700 text-gray-600 dark:text-gray-300">
+                            ${m.stadium}
+                        </span>` : ''}
+                        ${statusBadgeHtml}
+                    </div>
+                </div>
+
+                <div class="py-3 space-y-2">
+                    <!-- 원정팀 -->
+                    <div class="flex items-center justify-between ${m.away_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
+                        <div class="flex items-center space-x-2.5 truncate">
+                            ${m.away_emblem ? `<img src="${m.away_emblem}" alt="${m.away_team}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">` : ''}
+                            <span class="text-xs sm:text-sm truncate font-semibold">${m.away_full_name || m.away_team}</span>
+                            ${m.away_win ? `<span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>` : ''}
+                            <button type="button" onclick="toggleFavoriteTeam('kbo', '${m.away_team}')" title="선호 구단 등록/해제" 
+                                    class="fav-star-btn text-xs ${fav && isTeamMatch(m.away_team, fav) ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
+                                ★
+                            </button>
+                        </div>
+                        <span class="text-base sm:text-lg ${m.away_win ? 'text-blue-600 dark:text-blue-400 font-black' : (isLive ? 'text-red-600 font-black' : '')}">
+                            ${m.away_score}
+                        </span>
+                    </div>
+
+                    <!-- 홈팀 -->
+                    <div class="flex items-center justify-between ${m.home_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
+                        <div class="flex items-center space-x-2.5 truncate">
+                            ${m.home_emblem ? `<img src="${m.home_emblem}" alt="${m.home_team}" class="w-6 h-6 object-contain" onerror="this.style.display='none'">` : ''}
+                            <span class="text-xs sm:text-sm truncate font-semibold">${m.home_full_name || m.home_team}</span>
+                            ${m.home_win ? `<span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">승</span>` : ''}
+                            <button type="button" onclick="toggleFavoriteTeam('kbo', '${m.home_team}')" title="선호 구단 등록/해제" 
+                                    class="fav-star-btn text-xs ${fav && isTeamMatch(m.home_team, fav) ? 'text-amber-500 font-black' : 'text-gray-300 hover:text-amber-400'} ml-0.5">
+                                ★
+                            </button>
+                        </div>
+                        <span class="text-base sm:text-lg ${m.home_win ? 'text-blue-600 dark:text-blue-400 font-black' : (isLive ? 'text-red-600 font-black' : '')}">
+                            ${m.home_score}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- 투수 정보 (승리/패전 또는 선발투수) -->
+                ${pitcherInfoHtml}
+
+                <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
+                    <span class="text-gray-400 truncate">${m.broadcast || '공식 중계'}</span>
+                    <button type="button" onclick="focusKboHighlight('${m.away_team}', '${m.home_team}')" 
+                            class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 dark:text-blue-300 font-bold flex items-center space-x-1 active:scale-95 transition-all">
+                        <i class="fa-solid fa-play text-[9px]"></i>
+                        <span>하이라이트</span>
+                    </button>
                 </div>
             </div>
-
-            <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
-                <span class="text-gray-400 truncate">${m.broadcast || '공식 중계'}</span>
-                <button type="button" onclick="focusKboHighlight('${m.away_team}', '${m.home_team}')" 
-                        class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 dark:text-blue-300 font-bold flex items-center space-x-1 active:scale-95 transition-all">
-                    <i class="fa-solid fa-play text-[9px]"></i>
-                    <span>하이라이트</span>
-                </button>
-            </div>
-        </div>
-    `).join("");
+        `;
+    }).join("");
 }
 
 function renderKboHighlights() {
@@ -919,22 +1020,69 @@ function renderKLeague() {
             recentMatches.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
         }
 
+        // 상태 필터 적용 (전체 / LIVE / 최근 결과 / 예정 경기)
+        recentMatches = filterMatchesByStatus(recentMatches);
+
         if (recentMatches.length === 0) {
             matchesGrid.innerHTML = `
                 <div class="col-span-full py-10 text-center bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800">
                     <p class="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400">
-                        ${isMyTeamOnlyFilter ? `선호 구단 [${fav}]의 최근 경기 결과가 없습니다.` : '최근 경기 일정이 준비 중입니다.'}
+                        ${isMyTeamOnlyFilter ? `선호 구단 [${fav}]의 해당 조건 경기 일정이 없습니다.` : '해당 조건의 경기 일정이 없습니다.'}
                     </p>
-                    ${isMyTeamOnlyFilter ? `<button type="button" onclick="toggleMyTeamFilter()" class="mt-3 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold active:scale-95 transition-all">전체 경기 보기</button>` : ''}
+                    ${(isMyTeamOnlyFilter || currentMatchFilter !== 'all') ? `<button type="button" onclick="setMatchFilter('all'); if (isMyTeamOnlyFilter) toggleMyTeamFilter();" class="mt-3 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold active:scale-95 transition-all">전체 경기 보기</button>` : ''}
                 </div>
             `;
         } else {
-            matchesGrid.innerHTML = recentMatches.map(m => `
-                <div class="bg-white dark:bg-darkbg-800 rounded-2xl border ${m.isFav ? 'border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/30 my-team-card' : 'border-gray-200 dark:border-gray-800'} p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
+            matchesGrid.innerHTML = recentMatches.map(m => {
+                const isLive = m.is_live || m.status === 'LIVE' || (typeof m.status === 'string' && m.status.includes('LIVE'));
+                const isFinished = m.is_finished || m.status === '종료';
+                const isUpcoming = m.is_upcoming || m.status === '예정';
+
+                let statusBadgeHtml = '';
+                if (isLive) {
+                    statusBadgeHtml = `
+                        <span class="px-2 py-0.5 rounded text-[10px] font-black bg-red-500 text-white flex items-center space-x-1 shadow-xs animate-pulse">
+                            <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                            <span>LIVE ${m.status_info || '진행중'}</span>
+                        </span>
+                    `;
+                } else if (isFinished) {
+                    statusBadgeHtml = `
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">
+                            종료
+                        </span>
+                    `;
+                } else {
+                    statusBadgeHtml = `
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">
+                            금주 예정
+                        </span>
+                    `;
+                }
+
+                // 라이브 진행 정보
+                let liveNoticeHtml = '';
+                if (isLive && m.status_info) {
+                    liveNoticeHtml = `
+                        <div class="px-2.5 py-1 rounded-xl bg-red-50/60 dark:bg-red-950/30 border border-red-200/60 dark:border-red-800/40 text-[11px] mb-2 flex items-center justify-between text-red-600 dark:text-red-400 font-bold">
+                            <span class="flex items-center space-x-1.5 truncate">
+                                <i class="fa-regular fa-clock text-[10px]"></i>
+                                <span>경기 진행 중 (${m.status_info})</span>
+                            </span>
+                            <span class="text-[10px] px-1.5 py-0.2 rounded bg-red-100 dark:bg-red-900/60 font-black flex-shrink-0">실시간 스코어</span>
+                        </div>
+                    `;
+                }
+
+                const homeScoreDisplay = isUpcoming ? '-' : (m.home_goal !== null && m.home_goal !== undefined ? m.home_goal : '-');
+                const awayScoreDisplay = isUpcoming ? '-' : (m.away_goal !== null && m.away_goal !== undefined ? m.away_goal : '-');
+
+                return `
+                <div class="bg-white dark:bg-darkbg-800 rounded-2xl border ${isLive ? 'border-red-400 dark:border-red-500 ring-2 ring-red-400/30' : (m.isFav ? 'border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/30 my-team-card' : 'border-gray-200 dark:border-gray-800')} p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-2.5 border-b border-gray-100 dark:border-gray-700/60 text-xs">
                         <div class="flex items-center space-x-1.5 text-gray-500 dark:text-gray-400 font-medium">
                             <i class="fa-regular fa-calendar text-[11px]"></i>
-                            <span>${m.game_date}</span>
+                            <span>${m.game_date || m.date || ''}</span>
                             ${m.game_time ? `<span class="text-[10px] text-gray-400">(${m.game_time})</span>` : ''}
                         </div>
                         <div class="flex items-center space-x-1.5">
@@ -944,7 +1092,7 @@ function renderKLeague() {
                             </span>
                             ` : ''}
                             ${m.round ? `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">${m.round}</span>` : ''}
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">${m.status}</span>
+                            ${statusBadgeHtml}
                         </div>
                     </div>
                     <div class="py-3 space-y-2">
@@ -959,7 +1107,7 @@ function renderKLeague() {
                                     ★
                                 </button>
                             </div>
-                            <span class="text-base sm:text-lg ${m.home_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">${m.home_goal}</span>
+                            <span class="text-base sm:text-lg ${m.home_win ? 'text-blue-600 dark:text-blue-400 font-black' : (isLive ? 'text-red-600 dark:text-red-400 font-black' : '')}">${homeScoreDisplay}</span>
                         </div>
                         <!-- 원정팀 -->
                         <div class="flex items-center justify-between ${m.away_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
@@ -972,9 +1120,10 @@ function renderKLeague() {
                                     ★
                                 </button>
                             </div>
-                            <span class="text-base sm:text-lg ${m.away_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">${m.away_goal}</span>
+                            <span class="text-base sm:text-lg ${m.away_win ? 'text-blue-600 dark:text-blue-400 font-black' : (isLive ? 'text-red-600 dark:text-red-400 font-black' : '')}">${awayScoreDisplay}</span>
                         </div>
                     </div>
+                    ${liveNoticeHtml}
                     <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
                         <span class="text-gray-400 truncate">${m.field_name || '경기장'}</span>
                         <button type="button" onclick="focusKleagueHighlight('${m.home_team}', '${m.away_team}')" 
@@ -984,7 +1133,8 @@ function renderKLeague() {
                         </button>
                     </div>
                 </div>
-            `).join("");
+                `;
+            }).join("");
         }
     }
 
@@ -1218,22 +1368,70 @@ function renderOverseas() {
             recentMatches.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
         }
 
+        // 상태 필터 적용 (전체 / LIVE / 최근 결과 / 예정 경기)
+        recentMatches = filterMatchesByStatus(recentMatches);
+
         if (recentMatches.length === 0) {
             matchesGrid.innerHTML = `
                 <div class="col-span-full py-10 text-center bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800">
                     <p class="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400">
-                        ${isMyTeamOnlyFilter ? `선호 구단 [${fav}]의 최근 경기 결과가 없습니다.` : '최근 경기 결과가 준비 중입니다.'}
+                        ${isMyTeamOnlyFilter ? `선호 구단 [${fav}]의 해당 조건 경기 일정이 없습니다.` : '해당 조건의 경기 일정이 없습니다.'}
                     </p>
-                    ${isMyTeamOnlyFilter ? `<button type="button" onclick="toggleMyTeamFilter()" class="mt-3 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold active:scale-95 transition-all">전체 경기 보기</button>` : ''}
+                    ${(isMyTeamOnlyFilter || currentMatchFilter !== 'all') ? `<button type="button" onclick="setMatchFilter('all'); if (isMyTeamOnlyFilter) toggleMyTeamFilter();" class="mt-3 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold active:scale-95 transition-all">전체 경기 보기</button>` : ''}
                 </div>
             `;
         } else {
-            matchesGrid.innerHTML = recentMatches.map(m => `
-                <div class="bg-white dark:bg-darkbg-800 rounded-2xl border ${m.isFav ? 'border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/30 my-team-card' : 'border-gray-200 dark:border-gray-800'} p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
+            matchesGrid.innerHTML = recentMatches.map(m => {
+                const isLive = m.is_live || m.status === 'LIVE' || (typeof m.status === 'string' && m.status.includes('LIVE'));
+                const isFinished = m.is_finished || m.status === '종료';
+                const isUpcoming = m.is_upcoming || m.status === '예정';
+
+                let statusBadgeHtml = '';
+                if (isLive) {
+                    statusBadgeHtml = `
+                        <span class="px-2 py-0.5 rounded text-[10px] font-black bg-red-500 text-white flex items-center space-x-1 shadow-xs animate-pulse">
+                            <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                            <span>LIVE ${m.status_info || m.display_clock || '진행중'}</span>
+                        </span>
+                    `;
+                } else if (isFinished) {
+                    statusBadgeHtml = `
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">
+                            종료
+                        </span>
+                    `;
+                } else {
+                    statusBadgeHtml = `
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">
+                            금주 예정
+                        </span>
+                    `;
+                }
+
+                // 라이브 진행 정보
+                let liveNoticeHtml = '';
+                if (isLive && (m.status_info || m.display_clock)) {
+                    liveNoticeHtml = `
+                        <div class="px-2.5 py-1 rounded-xl bg-red-50/60 dark:bg-red-950/30 border border-red-200/60 dark:border-red-800/40 text-[11px] mb-2 flex items-center justify-between text-red-600 dark:text-red-400 font-bold">
+                            <span class="flex items-center space-x-1.5 truncate">
+                                <i class="fa-regular fa-clock text-[10px]"></i>
+                                <span>실시간 진행 (${m.status_info || m.display_clock})</span>
+                            </span>
+                            <span class="text-[10px] px-1.5 py-0.2 rounded bg-red-100 dark:bg-red-900/60 font-black flex-shrink-0">실시간 스코어</span>
+                        </div>
+                    `;
+                }
+
+                const homeScoreDisplay = isUpcoming ? '-' : (m.home_score !== null && m.home_score !== undefined ? m.home_score : '-');
+                const awayScoreDisplay = isUpcoming ? '-' : (m.away_score !== null && m.away_score !== undefined ? m.away_score : '-');
+
+                return `
+                <div class="bg-white dark:bg-darkbg-800 rounded-2xl border ${isLive ? 'border-red-400 dark:border-red-500 ring-2 ring-red-400/30' : (m.isFav ? 'border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/30 my-team-card' : 'border-gray-200 dark:border-gray-800')} p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-2.5 border-b border-gray-100 dark:border-gray-700/60 text-xs">
                         <div class="flex items-center space-x-1.5 text-gray-500 dark:text-gray-400 font-medium">
                             <i class="fa-regular fa-calendar text-[11px]"></i>
                             <span>${m.date}</span>
+                            ${m.time ? `<span class="text-[10px] text-gray-400">(${m.time})</span>` : ''}
                         </div>
                         <div class="flex items-center space-x-1.5">
                             ${m.isFav ? `
@@ -1241,7 +1439,7 @@ function renderOverseas() {
                                 <i class="fa-solid fa-star text-[9px]"></i><span>MY TEAM</span>
                             </span>
                             ` : ''}
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">${m.status}</span>
+                            ${statusBadgeHtml}
                         </div>
                     </div>
                     <div class="py-3 space-y-2">
@@ -1256,7 +1454,7 @@ function renderOverseas() {
                                     ★
                                 </button>
                             </div>
-                            <span class="text-base sm:text-lg ${m.home_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">${m.home_score}</span>
+                            <span class="text-base sm:text-lg ${m.home_win ? 'text-blue-600 dark:text-blue-400 font-black' : (isLive ? 'text-red-600 dark:text-red-400 font-black' : '')}">${homeScoreDisplay}</span>
                         </div>
                         <!-- 원정팀 -->
                         <div class="flex items-center justify-between ${m.away_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
@@ -1269,9 +1467,10 @@ function renderOverseas() {
                                     ★
                                 </button>
                             </div>
-                            <span class="text-base sm:text-lg ${m.away_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">${m.away_score}</span>
+                            <span class="text-base sm:text-lg ${m.away_win ? 'text-blue-600 dark:text-blue-400 font-black' : (isLive ? 'text-red-600 dark:text-red-400 font-black' : '')}">${awayScoreDisplay}</span>
                         </div>
                     </div>
+                    ${liveNoticeHtml}
                     <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
                         <span class="text-gray-400 truncate">${m.venue || '경기장'}</span>
                         <button type="button" onclick="focusOverseasHighlight('${m.home_team}', '${m.away_team}')" 
@@ -1281,7 +1480,8 @@ function renderOverseas() {
                         </button>
                     </div>
                 </div>
-            `).join("");
+                `;
+            }).join("");
         }
     }
 
@@ -1621,24 +1821,97 @@ function renderMlbMatches() {
         matches.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
     }
 
+    matches = filterMatchesByStatus(matches);
+
     if (matches.length === 0) {
         grid.innerHTML = `
             <div class="col-span-full py-10 text-center bg-white dark:bg-darkbg-800 rounded-2xl border border-gray-200 dark:border-gray-800">
                 <p class="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400">
-                    ${isMyTeamOnlyFilter ? `선호 구단 [${fav}]의 최근 경기 결과가 없습니다.` : '최근 경기 결과가 준비 중입니다.'}
+                    ${isMyTeamOnlyFilter ? `선호 구단 [${fav}]의 해당 조건 경기 일정이 없습니다.` : '해당 조건의 경기 일정이 없습니다.'}
                 </p>
-                ${isMyTeamOnlyFilter ? `<button type="button" onclick="toggleMyTeamFilter()" class="mt-3 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold active:scale-95 transition-all">전체 경기 보기</button>` : ''}
+                ${(isMyTeamOnlyFilter || currentMatchFilter !== 'all') ? `<button type="button" onclick="setMatchFilter('all'); if (isMyTeamOnlyFilter) toggleMyTeamFilter();" class="mt-3 px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold active:scale-95 transition-all">전체 경기 보기</button>` : ''}
             </div>
         `;
         return;
     }
 
-    grid.innerHTML = matches.map(m => `
-        <div class="bg-white dark:bg-darkbg-800 rounded-2xl border ${m.isFav ? 'border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/30 my-team-card' : 'border-gray-200 dark:border-gray-800'} p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
+    grid.innerHTML = matches.map(m => {
+        const isLive = m.is_live || m.status === 'LIVE' || (typeof m.status === 'string' && m.status.includes('LIVE'));
+        const isFinished = m.is_finished || m.status === '종료';
+        const isUpcoming = m.is_upcoming || m.status === '예정';
+
+        let statusBadgeHtml = '';
+        if (isLive) {
+            statusBadgeHtml = `
+                <span class="px-2 py-0.5 rounded text-[10px] font-black bg-red-500 text-white flex items-center space-x-1 shadow-xs animate-pulse">
+                    <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                    <span>LIVE ${m.status_info || '진행중'}</span>
+                </span>
+            `;
+        } else if (isFinished) {
+            statusBadgeHtml = `
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">
+                    종료
+                </span>
+            `;
+        } else {
+            statusBadgeHtml = `
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">
+                    ${m.status_info || '예정'}
+                </span>
+            `;
+        }
+
+        // 투수 정보 박스 (결정투수 / 라이브투수 / 선발예고)
+        let pitcherInfoHtml = '';
+        if (m.win_pitcher || m.lose_pitcher) {
+            pitcherInfoHtml = `
+                <div class="px-2.5 py-1.5 rounded-xl bg-gray-50 dark:bg-darkbg-900 border border-gray-100 dark:border-gray-800 text-[11px] mb-2 flex items-center justify-between truncate">
+                    <div class="flex items-center space-x-2 truncate">
+                        ${m.win_pitcher ? `<span class="text-blue-600 dark:text-blue-400 font-extrabold"><span class="px-1 py-0.2 rounded bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 text-[9px] mr-1">승</span>${m.win_pitcher}</span>` : ''}
+                        ${m.lose_pitcher ? `<span class="text-red-500 dark:text-red-400 font-bold"><span class="px-1 py-0.2 rounded bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300 text-[9px] mr-1">패</span>${m.lose_pitcher}</span>` : ''}
+                        ${m.save_pitcher ? `<span class="text-emerald-600 dark:text-emerald-400 font-bold"><span class="px-1 py-0.2 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 text-[9px] mr-1">세</span>${m.save_pitcher}</span>` : ''}
+                    </div>
+                    <span class="text-[10px] text-gray-400 ml-1 flex-shrink-0">결정투수</span>
+                </div>
+            `;
+        } else if (isLive && (m.current_pitcher || m.status_info)) {
+            pitcherInfoHtml = `
+                <div class="px-2.5 py-1.5 rounded-xl bg-red-50/60 dark:bg-red-950/30 border border-red-200/60 dark:border-red-800/40 text-[11px] mb-2 flex items-center justify-between truncate">
+                    <span class="font-bold text-red-700 dark:text-red-300 truncate">
+                        ${m.current_pitcher ? `<span class="px-1.5 py-0.2 rounded bg-red-500 text-white font-black text-[9px] mr-1">투수</span>${m.current_pitcher}` : '실시간 경기 진행 중'}
+                    </span>
+                    <span class="text-[10px] text-red-500 font-bold ml-1 flex-shrink-0">${m.status_info || 'LIVE'}</span>
+                </div>
+            `;
+        } else if (isUpcoming && (m.home_starter || m.away_starter || m.starter_note)) {
+            pitcherInfoHtml = `
+                <div class="px-2.5 py-1.5 rounded-xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200/60 dark:border-blue-800/40 text-[11px] mb-2 flex items-center justify-between truncate">
+                    <span class="font-bold text-blue-700 dark:text-blue-300 truncate">
+                        ${m.starter_note || `선발: ${m.away_starter || '미정'} vs ${m.home_starter || '미정'}`}
+                    </span>
+                    <span class="text-[10px] text-blue-500 font-bold ml-1 flex-shrink-0">선발예고</span>
+                </div>
+            `;
+        } else if (m.pitcher_note) {
+            pitcherInfoHtml = `
+                <div class="px-2.5 py-1.5 rounded-xl bg-gray-50 dark:bg-darkbg-900 border border-gray-100 dark:border-gray-800 text-[11px] mb-2 flex items-center justify-between truncate">
+                    <span class="font-medium text-gray-600 dark:text-gray-300 truncate">${m.pitcher_note}</span>
+                    <span class="text-[10px] text-gray-400 ml-1 flex-shrink-0">경기정보</span>
+                </div>
+            `;
+        }
+
+        const awayScoreDisplay = isUpcoming ? '-' : (m.away_score !== null && m.away_score !== undefined ? m.away_score : '-');
+        const homeScoreDisplay = isUpcoming ? '-' : (m.home_score !== null && m.home_score !== undefined ? m.home_score : '-');
+
+        return `
+        <div class="bg-white dark:bg-darkbg-800 rounded-2xl border ${isLive ? 'border-red-400 dark:border-red-500 ring-2 ring-red-400/30' : (m.isFav ? 'border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/30 my-team-card' : 'border-gray-200 dark:border-gray-800')} p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all">
             <div class="flex items-center justify-between pb-2.5 border-b border-gray-100 dark:border-gray-700/60 text-xs">
                 <div class="flex items-center space-x-1.5 text-gray-500 dark:text-gray-400 font-medium">
                     <i class="fa-regular fa-calendar text-[11px]"></i>
                     <span>${m.date}</span>
+                    ${m.time ? `<span class="text-[10px] text-gray-400">(${m.time})</span>` : ''}
                 </div>
                 <div class="flex items-center space-x-1.5">
                     ${m.isFav ? `
@@ -1646,9 +1919,7 @@ function renderMlbMatches() {
                         <i class="fa-solid fa-star text-[9px]"></i><span>MY TEAM</span>
                     </span>
                     ` : ''}
-                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300">
-                        ${m.status}
-                    </span>
+                    ${statusBadgeHtml}
                 </div>
             </div>
             <div class="py-3 space-y-2">
@@ -1663,7 +1934,7 @@ function renderMlbMatches() {
                             ★
                         </button>
                     </div>
-                    <span class="text-base sm:text-lg ${m.away_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">${m.away_score}</span>
+                    <span class="text-base sm:text-lg ${m.away_win ? 'text-blue-600 dark:text-blue-400 font-black' : (isLive ? 'text-red-600 dark:text-red-400 font-black' : '')}">${awayScoreDisplay}</span>
                 </div>
                 <!-- 홈팀 -->
                 <div class="flex items-center justify-between ${m.home_win ? 'font-black text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}">
@@ -1676,9 +1947,10 @@ function renderMlbMatches() {
                             ★
                         </button>
                     </div>
-                    <span class="text-base sm:text-lg ${m.home_win ? 'text-blue-600 dark:text-blue-400 font-black' : ''}">${m.home_score}</span>
+                    <span class="text-base sm:text-lg ${m.home_win ? 'text-blue-600 dark:text-blue-400 font-black' : (isLive ? 'text-red-600 dark:text-red-400 font-black' : '')}">${homeScoreDisplay}</span>
                 </div>
             </div>
+            ${pitcherInfoHtml}
             <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
                 <span class="text-gray-400 truncate">${m.venue || '경기장'}</span>
                 <button type="button" onclick="focusMlbHighlight('${m.away_team}', '${m.home_team}')" 
@@ -1688,7 +1960,8 @@ function renderMlbMatches() {
                 </button>
             </div>
         </div>
-    `).join("");
+        `;
+    }).join("");
 }
 
 // 5-2. MLB 하이라이트 영상 목록 렌더링 (마이팀 연동)

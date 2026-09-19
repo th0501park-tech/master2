@@ -4,7 +4,7 @@ Goal.com 크롤링 및 ESPN Soccer API 백업 연동
 """
 import os
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 import requests
 from bs4 import BeautifulSoup
 
@@ -100,6 +100,23 @@ TEAM_KR_NAMES = {
     "Sevilla": "세비야",
     "Mallorca": "마요르카",
     "Celta Vigo": "셀타 비고",
+    "Osasuna": "오사수나",
+    "Rayo Vallecano": "라요 바예카노",
+    "Alavés": "알라베스",
+    "Deportivo Alavés": "알라베스",
+    "Racing Santander": "라싱 산탄데르",
+    "Espanyol": "에스파뇰",
+    "Las Palmas": "라스팔마스",
+    "Getafe": "헤타페",
+    "Leganés": "레가네스",
+    "Valladolid": "바야돌리드",
+    "Hull City": "헐 시티",
+    "Coventry City": "코번트리 시티",
+    "Leeds United": "리즈",
+    "Sunderland": "선덜랜드",
+    "Málaga": "말라가",
+    "Elche": "엘체",
+    "Levante": "레반테",
     "Bayern Munich": "바이에른 뮌헨",
     "Bayer Leverkusen": "레버쿠젠",
     "Borussia Dortmund": "도르트문트",
@@ -192,7 +209,7 @@ def fetch_standings_goal(goal_url):
 
 def fetch_standings_espn(espn_code):
     """ESPN Soccer API를 통한 순위표 조회"""
-    url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{espn_code}/standings"
+    url = f"https://site.web.api.espn.com/apis/site/v2/sports/soccer/{espn_code}/standings"
     try:
         resp = requests.get(url, headers=HEADERS, timeout=8)
         if resp.status_code != 200:
@@ -324,15 +341,49 @@ def build_soccer_team_hub(teams, player_categories):
 
 
 def fetch_soccer_recent_matches(espn_code):
-    """ESPN Soccer Scoreboard API에서 리그별 최근 경기 결과 조회"""
+    """ESPN Soccer Scoreboard API에서 리그별 최근 경기(지난주 이후), 금주 예정 경기, 실시간 LIVE 경기 조회"""
     try:
-        url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{espn_code}/scoreboard"
-        r = requests.get(url, timeout=5)
-        if r.status_code != 200:
-            return []
-        events = r.json().get("events", [])
+        now = datetime.now()
+        this_week_start = (now - timedelta(days=now.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
+        this_week_end = this_week_start + timedelta(days=6, hours=23, minutes=59, seconds=59)
+        last_week_start = this_week_start - timedelta(days=7)
+
+        url = f"https://site.web.api.espn.com/apis/site/v2/sports/soccer/{espn_code}/scoreboard"
+        r = requests.get(url, headers=HEADERS, timeout=6)
+        base_json = r.json() if r.status_code == 200 else {}
+        events = list(base_json.get("events", []))
+
+        # 캘린더를 통해 지난주부터 이번 주말까지의 추가 경기 일정 조회
+        cal = base_json.get("leagues", [{}])[0].get("calendar", [])
+        target_dates = []
+        for c in cal:
+            try:
+                d = datetime.strptime(c[:10], "%Y-%m-%d")
+                if last_week_start <= d <= this_week_end:
+                    target_dates.append(d.strftime("%Y%m%d"))
+            except Exception:
+                pass
+
+        today_str = now.strftime("%Y%m%d")
+        fetch_dates = [dt for dt in target_dates if dt != today_str]
+        # 지난주 및 이번주 주요 경기일 최대 4일치 추가 조회
+        for dt in fetch_dates[-4:]:
+            sub_url = f"https://site.web.api.espn.com/apis/site/v2/sports/soccer/{espn_code}/scoreboard?dates={dt}"
+            try:
+                sr = requests.get(sub_url, headers=HEADERS, timeout=4)
+                if sr.status_code == 200:
+                    events.extend(sr.json().get("events", []))
+            except Exception:
+                pass
+
         matches = []
+        seen_ids = set()
         for e in events:
+            ev_id = e.get("id", "")
+            if ev_id in seen_ids:
+                continue
+            seen_ids.add(ev_id)
+
             comp = e.get("competitions", [{}])[0]
             competitors = comp.get("competitors", [])
             if len(competitors) < 2:
@@ -344,15 +395,49 @@ def fetch_soccer_recent_matches(espn_code):
             home_team = home_comp.get("team", {})
             away_team = away_comp.get("team", {})
 
+            home_name = home_team.get("displayName", "")
+            away_name = away_team.get("displayName", "")
+            home_kr = translate_team_name(home_name)
+            away_kr = translate_team_name(away_name)
+
             home_score = home_comp.get("score", "-")
             away_score = away_comp.get("score", "-")
 
             home_win = home_comp.get("winner", False)
             away_win = away_comp.get("winner", False)
 
-            status_desc = e.get("status", {}).get("type", {}).get("shortDetail", "FT")
+            # 상태 판별: LIVE, 종료, 예정
+            st_obj = e.get("status", {})
+            st_type = st_obj.get("type", {})
+            state = st_type.get("state", "")  # 'in', 'post', 'pre'
+            short_detail = st_type.get("shortDetail", "")
+            display_clock = st_obj.get("displayClock", "")
+
+            is_live = state == "in"
+            is_finished = state == "post" or short_detail == "FT"
+            is_upcoming = not is_live and not is_finished
+
             date_str = e.get("date", "")[:10]
+            time_str = e.get("date", "")[11:16] if len(e.get("date", "")) >= 16 else ""
             venue = comp.get("venue", {}).get("fullName", "")
+
+            if is_live:
+                status_label = "LIVE"
+                if "HT" in short_detail or "Half" in short_detail:
+                    status_info = "하프타임 (HT)"
+                elif display_clock:
+                    status_info = f"진행중 {display_clock}"
+                else:
+                    status_info = short_detail or "LIVE 진행중"
+            elif is_finished:
+                status_label = "종료"
+                status_info = "경기종료"
+            else:
+                status_label = "예정"
+                if time_str:
+                    status_info = f"금주 예정 ({time_str})"
+                else:
+                    status_info = "금주 예정"
 
             # 하이라이트 링크 확인
             hl_link = ""
@@ -362,23 +447,60 @@ def fetch_soccer_recent_matches(espn_code):
                     break
 
             matches.append({
-                "game_id": e.get("id", ""),
+                "game_id": ev_id,
                 "date": date_str,
-                "status": status_desc,
-                "home_team": home_team.get("displayName", ""),
-                "home_short": home_team.get("shortDisplayName", home_team.get("displayName", "")),
+                "time": time_str,
+                "status": status_label,
+                "status_info": status_info,
+                "display_clock": display_clock,
+                "home_team": home_kr,
+                "home_eng": home_name,
+                "home_short": home_kr,
                 "home_emblem": home_team.get("logo", ""),
-                "home_score": home_score,
-                "home_win": home_win,
-                "away_team": away_team.get("displayName", ""),
-                "away_short": away_team.get("shortDisplayName", away_team.get("displayName", "")),
+                "home_score": home_score if (is_finished or is_live) else "-",
+                "home_win": home_win if is_finished else False,
+                "away_team": away_kr,
+                "away_eng": away_name,
+                "away_short": away_kr,
                 "away_emblem": away_team.get("logo", ""),
-                "away_score": away_score,
-                "away_win": away_win,
+                "away_score": away_score if (is_finished or is_live) else "-",
+                "away_win": away_win if is_finished else False,
                 "venue": venue,
-                "highlight_link": hl_link
+                "highlight_link": hl_link,
+                "is_live": is_live,
+                "is_upcoming": is_upcoming,
+                "is_finished": is_finished
             })
-        return matches
+
+        def parse_date(m):
+            raw = (m.get("date") or "")[:10]
+            try:
+                return datetime.strptime(raw, "%Y-%m-%d")
+            except Exception:
+                return None
+
+        # 1) 라이브 경기
+        live_games = [m for m in matches if m["is_live"]]
+
+        # 2) 금주 예정 경기 (이번 주 일요일까지)
+        upcoming_games = []
+        for m in matches:
+            if m["is_upcoming"]:
+                dt = parse_date(m)
+                if dt is None or dt <= this_week_end:
+                    upcoming_games.append(m)
+        upcoming_games.sort(key=lambda x: (x.get("date", ""), x.get("time", "")))
+
+        # 3) 지난 경기: 지난주 월요일 이후 종료된 경기만 (지지난주 이전 경기 배제)
+        finished_games = []
+        for m in matches:
+            if m["is_finished"]:
+                dt = parse_date(m)
+                if dt is None or dt >= last_week_start:
+                    finished_games.append(m)
+        finished_games.sort(key=lambda x: (x.get("date", ""), x.get("time", "")), reverse=True)
+
+        return live_games + upcoming_games + finished_games[:8]
     except Exception as e:
         print(f"ESPN 해외축구 최근 경기 조회 실패 ({espn_code}): {e}")
         return []
@@ -467,14 +589,14 @@ def fetch_soccer_highlights(espn_code, league_key):
 
     # ESPN Scoreboard에서 최근 이벤트 비디오 fetch 시도
     try:
-        url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{espn_code}/scoreboard"
-        r = requests.get(url, timeout=5)
+        url = f"https://site.web.api.espn.com/apis/site/v2/sports/soccer/{espn_code}/scoreboard"
+        r = requests.get(url, headers=HEADERS, timeout=5)
         if r.status_code == 200:
             events = r.json().get("events", [])
             if events:
                 ev_id = events[0].get("id")
-                s_url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{espn_code}/summary?event={ev_id}"
-                sr = requests.get(s_url, timeout=5)
+                s_url = f"https://site.web.api.espn.com/apis/site/v2/sports/soccer/{espn_code}/summary?event={ev_id}"
+                sr = requests.get(s_url, headers=HEADERS, timeout=5)
                 if sr.status_code == 200:
                     videos = sr.json().get("videos", [])
                     parsed = []

@@ -5,7 +5,7 @@ KBO 리그 데이터 서비스 모듈
 import os
 import json
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 import requests
 from bs4 import BeautifulSoup
 
@@ -247,7 +247,136 @@ def build_team_hub(teams, hitters, pitchers):
 
 
 def fetch_kbo_recent_matches():
-    """KBO 최근 경기 결과 크롤링 (최근 15경기)"""
+    """KBO 최근 경기 결과, 오늘/내일 예정 경기, 실시간 LIVE 스코어 및 승/패전투수 정보 수집"""
+    now = datetime.now()
+    matches = []
+
+    # 1. 네이버 스포츠 KBO API 시도 (승리투수, 패전투수, 실시간 이닝, 선발투수 완벽 지원)
+    try:
+        # 최근 2일(어제/그저께)부터 향후 2일(오늘/내일/모레)까지 집중 조회
+        from_date = (now - timedelta(days=2)).strftime("%Y-%m-%d")
+        to_date = (now + timedelta(days=2)).strftime("%Y-%m-%d")
+        api_url = f"https://api-gw.sports.naver.com/schedule/games?fields=basic%2Cbaseball%2CsuperOrganId&fromDate={from_date}&toDate={to_date}&upperCategoryId=kbaseball&size=100"
+        r = requests.get(api_url, headers=HEADERS, timeout=6)
+        if r.status_code == 200:
+            games = r.json().get("result", {}).get("games", [])
+            for g in games:
+                home_name = g.get("homeTeamName", "").strip()
+                away_name = g.get("awayTeamName", "").strip()
+                # KBO 1군 10개 구단 경기만 필터링
+                if home_name not in TEAM_INFO or away_name not in TEAM_INFO:
+                    continue
+
+                status_code = g.get("statusCode", "")
+                status_info = g.get("statusInfo", "")
+
+                # 상태 판별: LIVE, 종료, 예정 (statusCode 우선 판별)
+                is_finished = status_code in ["RESULT", "END"] or "종료" in status_info
+                is_live = not is_finished and (status_code in ["STARTED", "ING", "PROGRESS", "PLAY"] or ("회" in status_info and "경기전" not in status_info and "종료" not in status_info))
+                is_upcoming = not is_live and not is_finished
+
+                if is_live:
+                    status_label = "LIVE"
+                    display_status_info = status_info or "LIVE 진행중"
+                elif is_finished:
+                    status_label = "종료"
+                    display_status_info = "경기종료"
+                else:
+                    status_label = "예정"
+                    display_status_info = "경기전"
+
+                home_score = str(g.get("homeTeamScore", "-")) if (is_finished or is_live) and g.get("homeTeamScore") is not None else "-"
+                away_score = str(g.get("awayTeamScore", "-")) if (is_finished or is_live) and g.get("awayTeamScore") is not None else "-"
+
+                home_info = TEAM_INFO.get(home_name, {})
+                away_info = TEAM_INFO.get(away_name, {})
+
+                # 승패 판별
+                home_win = False
+                away_win = False
+                if is_finished and home_score.isdigit() and away_score.isdigit():
+                    home_win = int(home_score) > int(away_score)
+                    away_win = int(away_score) > int(home_score)
+
+                # 날짜 및 시간 포맷
+                g_dt = g.get("gameDateTime", "")
+                time_str = g_dt[11:16] if len(g_dt) >= 16 else ""
+                date_str = g.get("gameDate", "")
+                if date_str:
+                    try:
+                        d_obj = datetime.strptime(date_str, "%Y-%m-%d")
+                        weekdays = ["월", "화", "수", "목", "금", "토", "일"]
+                        date_display = f"{d_obj.strftime('%m.%d')}({weekdays[d_obj.weekday()]})"
+                    except Exception:
+                        date_display = date_str
+                else:
+                    date_display = ""
+
+                if is_upcoming and time_str:
+                    display_status_info = f"예정 ({time_str})"
+
+                # 투수 정보
+                win_pitcher = g.get("winPitcherName") or ""
+                lose_pitcher = g.get("losePitcherName") or ""
+                home_starter = g.get("homeStarterName") or ""
+                away_starter = g.get("awayStarterName") or ""
+                current_pitcher = g.get("homeCurrentPitcherName") or g.get("awayCurrentPitcherName") or ""
+
+                pitcher_parts = []
+                if win_pitcher:
+                    pitcher_parts.append(f"승: {win_pitcher}")
+                if lose_pitcher:
+                    pitcher_parts.append(f"패: {lose_pitcher}")
+                pitcher_note = " | ".join(pitcher_parts)
+
+                starter_note = ""
+                if away_starter or home_starter:
+                    starter_note = f"선발: {away_starter or '미정'} vs {home_starter or '미정'}"
+
+                matches.append({
+                    'game_id': g.get("gameId", ""),
+                    'date': date_display,
+                    'raw_date': date_str,
+                    'time': time_str,
+                    'away_team': away_name,
+                    'away_full_name': away_info.get("fullName", away_name),
+                    'away_emblem': away_info.get("emblem", g.get("awayTeamEmblemUrl", "")),
+                    'away_color': away_info.get("color", "#4a5568"),
+                    'away_score': away_score,
+                    'away_win': away_win,
+                    'home_team': home_name,
+                    'home_full_name': home_info.get("fullName", home_name),
+                    'home_emblem': home_info.get("emblem", g.get("homeTeamEmblemUrl", "")),
+                    'home_color': home_info.get("color", "#4a5568"),
+                    'home_score': home_score,
+                    'home_win': home_win,
+                    'stadium': g.get("stadium", ""),
+                    'broadcast': (g.get("broadChannel") or "공식 중계").replace("^", " / "),
+                    'status': status_label,
+                    'status_info': display_status_info,
+                    'win_pitcher': win_pitcher,
+                    'lose_pitcher': lose_pitcher,
+                    'pitcher_note': pitcher_note,
+                    'starter_note': starter_note,
+                    'current_pitcher': current_pitcher,
+                    'home_starter': home_starter,
+                    'away_starter': away_starter,
+                    'is_live': is_live,
+                    'is_upcoming': is_upcoming,
+                    'is_finished': is_finished
+                })
+
+            if matches:
+                live_games = [m for m in matches if m['is_live']]
+                upcoming_games = sorted([m for m in matches if m['is_upcoming']], key=lambda x: (x.get('raw_date', ''), x.get('time', '')))
+                finished_games = sorted([m for m in matches if m['is_finished']], key=lambda x: (x.get('raw_date', ''), x.get('time', '')), reverse=True)
+                
+                # 라이브 최우선 + 향후 예정 경기 + 최근 종료 경기(어제/그저께) 순서로 구성
+                return live_games + upcoming_games[:5] + finished_games[:6]
+    except Exception as e:
+        print(f"네이버 KBO API 조회 실패, koreabaseball 크롤링 시도: {e}")
+
+    # 2. koreabaseball.com 크롤링 Fallback
     try:
         url = "https://www.koreabaseball.com/ws/Schedule.asmx/GetScheduleList"
         headers = {
@@ -256,8 +385,6 @@ def fetch_kbo_recent_matches():
             "X-Requested-With": "XMLHttpRequest",
             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
         }
-        # 현재 연도 및 월
-        now = datetime.now()
         year_str = str(now.year) if now.year <= 2026 else "2026"
         month_str = f"{now.month:02d}"
 
@@ -271,14 +398,13 @@ def fetch_kbo_recent_matches():
         r = requests.post(url, headers=headers, data=data, timeout=8)
         rows = r.json().get('rows', [])
 
-        # 만약 이번 달에 경기가 아직 없으면 이전 달로 시도
         if not rows:
             data['gameMonth'] = "09"
             data['seasonId'] = "2024"
             r = requests.post(url, headers=headers, data=data, timeout=8)
             rows = r.json().get('rows', [])
 
-        matches = []
+        fallback_matches = []
         curr_date = ""
         for rw in rows:
             cols = rw.get('row', [])
@@ -325,7 +451,9 @@ def fetch_kbo_recent_matches():
                     away_info = TEAM_INFO.get(away_team, {})
                     home_info = TEAM_INFO.get(home_team, {})
 
-                    matches.append({
+                    is_fin = away_score.isdigit() and home_score.isdigit()
+
+                    fallback_matches.append({
                         'date': curr_date,
                         'time': time_text,
                         'away_team': away_team,
@@ -343,12 +471,20 @@ def fetch_kbo_recent_matches():
                         'stadium': stadium,
                         'broadcast': broadcast,
                         'highlight_link': highlight_link,
-                        'status': '종료' if (away_score.isdigit() and home_score.isdigit()) else '예정'
+                        'status': '종료' if is_fin else '예정',
+                        'status_info': '경기종료' if is_fin else '예정',
+                        'win_pitcher': '',
+                        'lose_pitcher': '',
+                        'pitcher_note': '',
+                        'starter_note': '',
+                        'is_live': False,
+                        'is_upcoming': not is_fin,
+                        'is_finished': is_fin
                     })
 
-        # 종료된 최근 경기 위주로 정렬 (최신순 12경기)
-        finished = [m for m in matches if m['status'] == '종료']
-        return finished[-12:][::-1] if finished else matches[-12:][::-1]
+        finished = [m for m in fallback_matches if m['is_finished']]
+        upcoming = [m for m in fallback_matches if m['is_upcoming']]
+        return upcoming[:4] + finished[-10:][::-1]
     except Exception as e:
         print(f"KBO 최근 경기 크롤링 실패: {e}")
         return []

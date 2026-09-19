@@ -213,3 +213,36 @@ html {
     text-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
 }
 
+/* 경기 상태 필터 칩 스타일 */
+.match-filter-chip {
+    color: #6b7280;
+    cursor: pointer;
+    user-select: none;
+}
+.dark .match-filter-chip {
+    color: #9ca3af;
+}
+.match-filter-chip:hover {
+    color: #111827;
+}
+.dark .match-filter-chip:hover {
+    color: #f3f4f6;
+}
+.match-filter-chip.active {
+    background-color: #ffffff;
+    color: #2563eb !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    font-weight: 800;
+}
+.dark .match-filter-chip.active {
+    background-color: #1f2937;
+    color: #60a5fa !important;
+}
+.match-filter-chip[id$="-live"].active {
+    color: #dc2626 !important;
+}
+.dark .match-filter-chip[id$="-live"].active {
+    color: #f87171 !important;
+}
+
+

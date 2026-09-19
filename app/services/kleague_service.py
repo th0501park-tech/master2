@@ -5,7 +5,7 @@ K리그 공식 데이터 포털 및 공식 사이트 연동
 import os
 import json
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 import requests
 from bs4 import BeautifulSoup
 
@@ -458,7 +458,7 @@ def find_kleague_team_info(team_name, team_id=None):
 
 
 def fetch_kleague_recent_matches(league_id=1):
-    """K리그 공식 경기 일정/결과 크롤링 (최근 종료 경기 위주)"""
+    """K리그 공식 경기 일정/결과 (최근 종료 경기, 금주 예정 경기, 실시간 LIVE 스코어)"""
     try:
         url = "https://www.kleague.com/getScheduleList.do"
         headers = {
@@ -503,6 +503,31 @@ def fetch_kleague_recent_matches(league_id=1):
             home_goal = s.get("homeGoal")
             away_goal = s.get("awayGoal")
             end_yn = s.get("endYn") == "Y"
+            game_status_code = s.get("gameStatus", "")
+
+            # 상태 판별 (LIVE, 종료, 예정)
+            is_finished = end_yn or game_status_code == "FE"
+            is_live = not is_finished and (game_status_code in ["1H", "2H", "HT", "ET", "ING", "LIVE"])
+            is_upcoming = not is_finished and not is_live
+
+            if is_live:
+                status_label = "LIVE"
+                if game_status_code == "1H":
+                    status_info = "전반 진행중"
+                elif game_status_code == "2H":
+                    status_info = "후반 진행중"
+                elif game_status_code == "HT":
+                    status_info = "하프타임 (HT)"
+                else:
+                    status_info = "LIVE 경기중"
+            elif is_finished:
+                status_label = "종료"
+                status_info = "경기종료"
+            else:
+                status_label = "예정"
+                weekday_str = s.get('weekdayShort', '')
+                time_str = s.get('gameTime', '')
+                status_info = f"금주 예정 ({time_str})" if time_str else "금주 예정"
 
             home_info = find_kleague_team_info(home_name, team_id=home_id)
             away_info = find_kleague_team_info(away_name, team_id=away_id)
@@ -519,20 +544,56 @@ def fetch_kleague_recent_matches(league_id=1):
                 "home_team": home_name,
                 "home_emblem": home_info.get("emblem", ""),
                 "home_color": home_info.get("color", "#1f2937"),
-                "home_goal": home_goal if end_yn else "-",
-                "home_win": home_win,
+                "home_goal": home_goal if (is_finished or is_live) else "-",
+                "home_win": home_win if is_finished else False,
                 "away_team": away_name,
                 "away_emblem": away_info.get("emblem", ""),
                 "away_color": away_info.get("color", "#1f2937"),
-                "away_goal": away_goal if end_yn else "-",
-                "away_win": away_win,
+                "away_goal": away_goal if (is_finished or is_live) else "-",
+                "away_win": away_win if is_finished else False,
                 "field_name": s.get("fieldName", "") or s.get("fieldNameFull", ""),
                 "broadcast": s.get("broadcastName", "").replace("//", " / "),
-                "status": "종료" if end_yn else "예정"
+                "status": status_label,
+                "status_info": status_info,
+                "is_live": is_live,
+                "is_upcoming": is_upcoming,
+                "is_finished": is_finished
             })
 
-        finished = [m for m in matches if m["status"] == "종료"]
-        return finished[-10:][::-1] if finished else matches[-10:][::-1]
+        # 금주 및 지난주 날짜 범위 계산
+        this_week_start = (now - timedelta(days=now.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
+        this_week_end = this_week_start + timedelta(days=6, hours=23, minutes=59, seconds=59)
+        last_week_start = this_week_start - timedelta(days=7)
+
+        def parse_match_date(m):
+            raw = (m.get("game_date") or "").replace(".", "-")[:10]
+            try:
+                return datetime.strptime(raw, "%Y-%m-%d")
+            except Exception:
+                return None
+
+        # 1) 라이브 경기 (현재 진행 중)
+        live_games = [m for m in matches if m["is_live"]]
+
+        # 2) 예정 경기: 금주 일요일까지 예정된 경기만 (다음 주 경기 제외)
+        upcoming_games = []
+        for m in matches:
+            if m["is_upcoming"]:
+                dt = parse_match_date(m)
+                if dt is None or dt <= this_week_end:
+                    upcoming_games.append(m)
+        upcoming_games.sort(key=lambda x: (x.get("game_date", ""), x.get("game_time", "")))
+
+        # 3) 지난 경기 (종료 경기): 지난주 월요일 이후 종료된 경기만 (지지난주 이전 경기 제외)
+        finished_games = []
+        for m in matches:
+            if m["is_finished"]:
+                dt = parse_match_date(m)
+                if dt is None or dt >= last_week_start:
+                    finished_games.append(m)
+        finished_games.sort(key=lambda x: (x.get("game_date", ""), x.get("game_time", "")), reverse=True)
+
+        return live_games + upcoming_games + finished_games[:8]
     except Exception as e:
         print(f"K리그 {league_id} 경기 결과 조회 에러: {e}")
         return []
