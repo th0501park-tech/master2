@@ -116,10 +116,23 @@
                 <!-- 메인 인라인 비디오 플레이어 -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
                     <div class="lg:col-span-8 bg-black rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800">
-                        <div class="relative w-full aspect-video bg-neutral-900 flex items-center justify-center">
+                        <div id="kbo-player-container" class="relative w-full aspect-video bg-neutral-900 flex items-center justify-center group overflow-hidden">
+                            <!-- 지연 로딩용 썸네일 포스터 및 재생 버튼 (Facade) -->
+                            <div id="kbo-video-facade" onclick="startKboMainVideo()" class="absolute inset-0 cursor-pointer flex items-center justify-center z-10 transition-opacity">
+                                <img id="kbo-facade-thumb" 
+                                     src="{% if kbo.highlights and kbo.highlights|length > 0 %}{{ kbo.highlights[0].thumbnail }}{% else %}https://img.youtube.com/vi/jNN3rRIK9LE/maxresdefault.jpg{% endif %}" 
+                                     alt="KBO 영상 미리보기" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508344928928-7165b67de128?w=640&auto=format&fit=crop&q=80';">
+                                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-2xl group-hover:scale-110 group-active:scale-95 transition-transform">
+                                        <i class="fa-solid fa-play text-xl sm:text-2xl ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
                             <iframe id="kbo-video-frame" 
-                                    class="w-full h-full border-0" 
-                                    src="{% if kbo.highlights and kbo.highlights|length > 0 %}{{ kbo.highlights[0].embed_url }}{% else %}https://www.youtube.com/embed/jNN3rRIK9LE{% endif %}?rel=0" 
+                                    class="w-full h-full border-0 hidden" 
+                                    data-src="{% if kbo.highlights and kbo.highlights|length > 0 %}{{ kbo.highlights[0].embed_url }}{% else %}https://www.youtube.com/embed/jNN3rRIK9LE{% endif %}" 
                                     title="KBO Highlight Video Player" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                     allowfullscreen>
@@ -145,7 +158,7 @@
                         <div onclick="playKboVideo('{{ hl.embed_url }}', '{{ hl.title | e }}', '{{ hl.date }}')" 
                              class="kbo-hl-card cursor-pointer p-2 rounded-xl border border-gray-100 dark:border-gray-700/60 bg-white hover:bg-blue-50/50 dark:bg-darkbg-800 dark:hover:bg-darkbg-700 transition-all flex items-center space-x-3 active:scale-98 group shadow-xs">
                             <div class="relative w-28 h-16 sm:w-32 sm:h-18 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-800">
-                                <img src="{{ hl.thumbnail }}" alt="{{ hl.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://img.youtube.com/vi/{{ hl.youtube_id }}/hqdefault.jpg'">
+                                <img src="{{ hl.thumbnail }}" alt="{{ hl.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ hl.youtube_id }}/hqdefault.jpg'">
                                 <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
                                     <span class="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center shadow-md">
                                         <i class="fa-solid fa-play text-[10px] ml-0.5"></i>
@@ -350,7 +363,7 @@
                         {% if cat.first_player %}
                         <div class="mt-2.5 p-2.5 sm:p-3 rounded-xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 flex items-center space-x-3">
                             {% if cat.first_img %}
-                            <img src="{{ cat.first_img }}" alt="{{ cat.first_player.name }}" class="w-12 h-12 sm:w-14 sm:h-14 object-cover rounded-full border-2 border-amber-400 bg-white shadow-sm flex-shrink-0" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>'">
+                            <img src="{{ cat.first_img }}" alt="{{ cat.first_player.name }}" class="w-12 h-12 sm:w-14 sm:h-14 object-cover rounded-full border-2 border-amber-400 bg-white shadow-sm flex-shrink-0" onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>'">
                             {% else %}
                             <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-base flex-shrink-0">1위</div>
                             {% endif %}
@@ -401,7 +414,7 @@
                         {% if cat.first_player %}
                         <div class="mt-2.5 p-2.5 sm:p-3 rounded-xl bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 flex items-center space-x-3">
                             {% if cat.first_img %}
-                            <img src="{{ cat.first_img }}" alt="{{ cat.first_player.name }}" class="w-12 h-12 sm:w-14 sm:h-14 object-cover rounded-full border-2 border-blue-400 bg-white shadow-sm flex-shrink-0" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>'">
+                            <img src="{{ cat.first_img }}" alt="{{ cat.first_player.name }}" class="w-12 h-12 sm:w-14 sm:h-14 object-cover rounded-full border-2 border-blue-400 bg-white shadow-sm flex-shrink-0" onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>'">
                             {% else %}
                             <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-base flex-shrink-0">1위</div>
                             {% endif %}
@@ -497,10 +510,23 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
                     <div class="lg:col-span-8 bg-black rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800">
-                        <div class="relative w-full aspect-video bg-neutral-900 flex items-center justify-center">
+                        <div id="kleague-player-container" class="relative w-full aspect-video bg-neutral-900 flex items-center justify-center group overflow-hidden">
+                            <!-- 지연 로딩용 썸네일 포스터 및 재생 버튼 (Facade) -->
+                            <div id="kleague-video-facade" onclick="startKleagueMainVideo()" class="absolute inset-0 cursor-pointer flex items-center justify-center z-10 transition-opacity">
+                                <img id="kleague-facade-thumb" 
+                                     src="https://img.youtube.com/vi/QHq4QJ_R0E0/hqdefault.jpg" 
+                                     alt="K리그 영상 미리보기" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=640&auto=format&fit=crop&q=80';">
+                                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-600/90 text-white flex items-center justify-center shadow-2xl group-hover:scale-110 group-active:scale-95 transition-transform">
+                                        <i class="fa-solid fa-play text-xl sm:text-2xl ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
                             <iframe id="kleague-video-frame" 
-                                    class="w-full h-full border-0" 
-                                    src="https://www.youtube.com/embed/QHq4QJ_R0E0?rel=0" 
+                                    class="w-full h-full border-0 hidden" 
+                                    data-src="https://www.youtube.com/embed/QHq4QJ_R0E0" 
                                     title="K리그 Highlight Video Player" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                     allowfullscreen>
@@ -642,9 +668,21 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
                     <div class="lg:col-span-8 bg-black rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800">
-                        <div id="overseas-player-container" class="relative w-full aspect-video bg-neutral-900 flex items-center justify-center">
-                            <!-- JS 동적 생성 (video or iframe) -->
-                            <video id="overseas-video-player" class="w-full h-full object-cover hidden" controls playsinline></video>
+                        <div id="overseas-player-container" class="relative w-full aspect-video bg-neutral-900 flex items-center justify-center group overflow-hidden">
+                            <!-- 지연 로딩용 썸네일 포스터 및 재생 버튼 (Facade) -->
+                            <div id="overseas-video-facade" onclick="startOverseasMainVideo()" class="absolute inset-0 cursor-pointer flex items-center justify-center z-10 transition-opacity">
+                                <img id="overseas-facade-thumb" 
+                                     src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=640&auto=format&fit=crop&q=80" 
+                                     alt="해외축구 영상 미리보기" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=640&auto=format&fit=crop&q=80';">
+                                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-2xl group-hover:scale-110 group-active:scale-95 transition-transform">
+                                        <i class="fa-solid fa-play text-xl sm:text-2xl ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <video id="overseas-video-player" class="w-full h-full object-cover hidden" preload="none" controls playsinline></video>
                             <iframe id="overseas-video-frame" 
                                     class="w-full h-full border-0 hidden" 
                                     title="Overseas Soccer Highlight Video Player" 
@@ -786,10 +824,24 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
                     <div class="lg:col-span-8 bg-black rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800">
-                        <div class="relative w-full aspect-video bg-neutral-900 flex items-center justify-center">
+                        <div id="mlb-player-container" class="relative w-full aspect-video bg-neutral-900 flex items-center justify-center group overflow-hidden">
+                            <!-- 지연 로딩용 썸네일 포스터 및 재생 버튼 (Facade) -->
+                            <div id="mlb-video-facade" onclick="startMlbMainVideo()" class="absolute inset-0 cursor-pointer flex items-center justify-center z-10 transition-opacity">
+                                <img id="mlb-facade-thumb" 
+                                     src="{% if mlb.highlights and mlb.highlights|length > 0 %}{{ mlb.highlights[0].thumbnail }}{% else %}https://images.unsplash.com/photo-1508344928928-7165b67de128?w=640&auto=format&fit=crop&q=80{% endif %}" 
+                                     alt="MLB 영상 미리보기" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508344928928-7165b67de128?w=640&auto=format&fit=crop&q=80';">
+                                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-2xl group-hover:scale-110 group-active:scale-95 transition-transform">
+                                        <i class="fa-solid fa-play text-xl sm:text-2xl ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
                             <video id="mlb-video-player" 
-                                   class="w-full h-full object-contain" 
-                                   src="{% if mlb.highlights and mlb.highlights|length > 0 %}{{ mlb.highlights[0].video_url }}{% else %}https://mlb-cuts-diamond.mlb.com/FORGE/2024/2024-09/18/86028ed4-e4cdb89a-1313bd2f-csvm-diamondgcp-asset_1280x720_59_4000K.mp4{% endif %}" 
+                                   class="w-full h-full object-contain hidden" 
+                                   preload="none"
+                                   data-src="{% if mlb.highlights and mlb.highlights|length > 0 %}{{ mlb.highlights[0].video_url }}{% else %}https://mlb-cuts-diamond.mlb.com/FORGE/2024/2024-09/18/86028ed4-e4cdb89a-1313bd2f-csvm-diamondgcp-asset_1280x720_59_4000K.mp4{% endif %}" 
                                    controls 
                                    playsinline>
                             </video>
@@ -814,7 +866,7 @@
                         <div onclick="playMlbVideo('{{ hl.video_url }}', '{{ hl.title | e }}', '{{ hl.date }}')" 
                              class="mlb-hl-card cursor-pointer p-2 rounded-xl border border-gray-100 dark:border-gray-700/60 bg-white hover:bg-blue-50/50 dark:bg-darkbg-800 dark:hover:bg-darkbg-700 transition-all flex items-center space-x-3 active:scale-98 group shadow-xs">
                             <div class="relative w-28 h-16 sm:w-32 sm:h-18 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-800">
-                                <img src="{{ hl.thumbnail }}" alt="{{ hl.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://images.unsplash.com/photo-1508344928928-7165b67de128?w=640&auto=format&fit=crop&q=80'">
+                                <img src="{{ hl.thumbnail }}" alt="{{ hl.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508344928928-7165b67de128?w=640&auto=format&fit=crop&q=80'">
                                 <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
                                     <span class="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center shadow-md">
                                         <i class="fa-solid fa-play text-[10px] ml-0.5"></i>

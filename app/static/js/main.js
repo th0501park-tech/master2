@@ -772,14 +772,18 @@ function renderKboHighlights() {
 
     highlights.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
 
-    // 선호 구단 영상이 1순위로 있으면 상단 플레이어에 해당 영상 기본 로드
+    // 선호 구단 영상이 1순위로 있으면 상단 플레이어 프리뷰에 해당 영상 기본 세팅
     if (highlights.length > 0 && highlights[0].isFav) {
         const frame = document.getElementById("kbo-video-frame");
+        const thumbEl = document.getElementById("kbo-facade-thumb");
         const titleEl = document.getElementById("kbo-current-video-title");
         const dateEl = document.getElementById("kbo-current-video-date");
         const tagEl = document.getElementById("kbo-current-video-tag");
-        if (frame && !frame.src.includes(highlights[0].embed_url)) {
-            frame.src = `${highlights[0].embed_url}?rel=0`;
+        if (frame) {
+            frame.dataset.src = `${highlights[0].embed_url}?rel=0`;
+        }
+        if (thumbEl && highlights[0].thumbnail) {
+            thumbEl.src = highlights[0].thumbnail;
         }
         if (titleEl) titleEl.innerText = highlights[0].title;
         if (dateEl) dateEl.innerText = highlights[0].date;
@@ -794,7 +798,7 @@ function renderKboHighlights() {
             <div onclick="playKboVideo('${hl.embed_url}', '${escapeHtml(hl.title)}', '${hl.date}')" 
                  class="kbo-hl-card cursor-pointer p-2 rounded-xl border ${hl.isFav ? 'border-amber-400 bg-amber-50/40 dark:bg-amber-950/40 shadow-xs' : 'border-gray-100 dark:border-gray-700/60 bg-white dark:bg-darkbg-800'} hover:bg-blue-50/50 dark:hover:bg-darkbg-700 transition-all flex items-center space-x-3 active:scale-98 group shadow-xs">
                 <div class="relative w-28 h-16 sm:w-32 sm:h-18 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-800">
-                    <img src="${hl.thumbnail}" alt="${hl.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://images.unsplash.com/photo-1508344928928-7165b67de128?w=640&auto=format&fit=crop&q=80'">
+                    <img src="${hl.thumbnail}" alt="${hl.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508344928928-7165b67de128?w=640&auto=format&fit=crop&q=80'">
                     <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
                         <span class="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center shadow-md">
                             <i class="fa-solid fa-play text-[10px] ml-0.5"></i>
@@ -1000,15 +1004,19 @@ function renderKLeague() {
 
         highlights.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
 
-        // 리그 전환 시 해당 리그 1순위(선호구단 우선) 영상 플레이어 로드
+        // 리그 전환 시 해당 리그 1순위(선호구단 우선) 영상 플레이어 프리뷰 세팅
         if (highlights.length > 0) {
             const topVideo = highlights[0];
             const frame = document.getElementById("kleague-video-frame");
+            const thumbEl = document.getElementById("kleague-facade-thumb");
             const titleEl = document.getElementById("kleague-current-video-title");
             const dateEl = document.getElementById("kleague-current-video-date");
             const tagEl = document.getElementById("kleague-current-video-tag");
-            if (frame && (!frame.src || !frame.src.includes(topVideo.youtube_id))) {
-                frame.src = `${topVideo.embed_url}?rel=0`;
+            if (frame) {
+                frame.dataset.src = `${topVideo.embed_url}?rel=0`;
+            }
+            if (thumbEl && topVideo.thumbnail) {
+                thumbEl.src = topVideo.thumbnail;
             }
             if (titleEl) titleEl.innerText = topVideo.title;
             if (dateEl) dateEl.innerText = topVideo.date;
@@ -1023,7 +1031,7 @@ function renderKLeague() {
                 <div onclick="playKleagueVideo('${hl.embed_url}', '${escapeHtml(hl.title)}', '${hl.date}')" 
                      class="kleague-hl-card cursor-pointer p-2 rounded-xl border ${hl.isFav ? 'border-amber-400 bg-amber-50/40 dark:bg-amber-950/40 shadow-xs' : 'border-gray-100 dark:border-gray-700/60 bg-white dark:bg-darkbg-800'} hover:bg-blue-50/50 dark:hover:bg-darkbg-700 transition-all flex items-center space-x-3 active:scale-98 group shadow-xs">
                     <div class="relative w-28 h-16 sm:w-32 sm:h-18 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-800">
-                        <img src="${hl.thumbnail}" alt="${hl.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://img.youtube.com/vi/${hl.youtube_id}/hqdefault.jpg'">
+                        <img src="${hl.thumbnail}" alt="${hl.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${hl.youtube_id}/hqdefault.jpg'">
                         <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
                             <span class="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center shadow-md">
                                 <i class="fa-solid fa-play text-[10px] ml-0.5"></i>
@@ -1302,7 +1310,7 @@ function renderOverseas() {
                 <div onclick="playOverseasVideo('${hl.type}', '${hl.video_url || ''}', '${hl.embed_url || ''}', '${escapeHtml(hl.title)}', '${hl.date}')" 
                      class="overseas-hl-card cursor-pointer p-2 rounded-xl border ${hl.isFav ? 'border-amber-400 bg-amber-50/40 dark:bg-amber-950/40 shadow-xs' : 'border-gray-100 dark:border-gray-700/60 bg-white dark:bg-darkbg-800'} hover:bg-blue-50/50 dark:hover:bg-darkbg-700 transition-all flex items-center space-x-3 active:scale-98 group shadow-xs">
                     <div class="relative w-28 h-16 sm:w-32 sm:h-18 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-800">
-                        <img src="${hl.thumbnail}" alt="${hl.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=640&auto=format&fit=crop&q=80'">
+                        <img src="${hl.thumbnail}" alt="${hl.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=640&auto=format&fit=crop&q=80'">
                         <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
                             <span class="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center shadow-md">
                                 <i class="fa-solid fa-play text-[10px] ml-0.5"></i>
@@ -1386,7 +1394,7 @@ function renderOverseas() {
                 ${cat.first_player ? `
                 <div class="mt-4 p-3.5 rounded-xl bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 flex items-center space-x-4">
                     ${cat.first_player.headshot ? `
-                    <img src="${cat.first_player.headshot}" alt="${cat.first_player.name}" class="w-14 h-14 rounded-full object-cover border-2 border-indigo-400 bg-white shadow-sm" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>'">
+                    <img src="${cat.first_player.headshot}" alt="${cat.first_player.name}" class="w-14 h-14 rounded-full object-cover border-2 border-indigo-400 bg-white shadow-sm" onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>'">
                     ` : '<div class="w-14 h-14 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-lg">1위</div>'}
                     <div class="flex-grow">
                         <div class="flex items-center space-x-2">
@@ -1699,13 +1707,18 @@ function renderMlbHighlights() {
     highlights.sort((a, b) => (b.isFav ? 1 : 0) - (a.isFav ? 1 : 0));
 
     // 선호 구단 영상이 1순위로 있으면 상단 플레이어에 해당 영상 기본 세팅
+    // 선호 구단 영상이 1순위로 있으면 상단 플레이어 프리뷰에 해당 영상 세팅
     if (highlights.length > 0 && highlights[0].isFav) {
         const player = document.getElementById("mlb-video-player");
+        const thumbEl = document.getElementById("mlb-facade-thumb");
         const titleEl = document.getElementById("mlb-current-video-title");
         const dateEl = document.getElementById("mlb-current-video-date");
         const tagEl = document.getElementById("mlb-current-video-tag");
-        if (player && highlights[0].video_url && player.src !== highlights[0].video_url) {
-            player.src = highlights[0].video_url;
+        if (player && highlights[0].video_url) {
+            player.dataset.src = highlights[0].video_url;
+        }
+        if (thumbEl && highlights[0].thumbnail) {
+            thumbEl.src = highlights[0].thumbnail;
         }
         if (titleEl) titleEl.innerText = highlights[0].title;
         if (dateEl) dateEl.innerText = highlights[0].date;
@@ -1720,7 +1733,7 @@ function renderMlbHighlights() {
             <div onclick="playMlbVideo('${hl.video_url}', '${escapeHtml(hl.title)}', '${hl.date}')" 
                  class="mlb-hl-card cursor-pointer p-2 rounded-xl border ${hl.isFav ? 'border-amber-400 bg-amber-50/40 dark:bg-amber-950/40 shadow-xs' : 'border-gray-100 dark:border-gray-700/60 bg-white dark:bg-darkbg-800'} hover:bg-blue-50/50 dark:hover:bg-darkbg-700 transition-all flex items-center space-x-3 active:scale-98 group shadow-xs">
                 <div class="relative w-28 h-16 sm:w-32 sm:h-18 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-800">
-                    <img src="${hl.thumbnail}" alt="${hl.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://images.unsplash.com/photo-1508344928928-7165b67de128?w=640&auto=format&fit=crop&q=80'">
+                    <img src="${hl.thumbnail}" alt="${hl.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508344928928-7165b67de128?w=640&auto=format&fit=crop&q=80'">
                     <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
                         <span class="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center shadow-md">
                             <i class="fa-solid fa-play text-[10px] ml-0.5"></i>
@@ -2239,13 +2252,33 @@ function escapeHtml(str) {
         .replace(/'/g, "&#039;");
 }
 
-// 1) KBO 영상 재생
+// ========================================================
+// 비디오 재생 및 스마트 지연 로딩 (Facade) 로직
+// ========================================================
+
+// 1-1) KBO 메인 비디오 재생 시작 (Facade 클릭 시)
+function startKboMainVideo() {
+    const frame = document.getElementById("kbo-video-frame");
+    const facade = document.getElementById("kbo-video-facade");
+    if (!frame) return;
+    const url = frame.dataset.src || "https://www.youtube.com/embed/jNN3rRIK9LE";
+    const autoplayUrl = url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+    frame.src = autoplayUrl;
+    frame.classList.remove("hidden");
+    if (facade) facade.classList.add("hidden");
+}
+
+// 1-2) KBO 영상 선택 재생
 function playKboVideo(embedUrl, title, date) {
     const frame = document.getElementById("kbo-video-frame");
+    const facade = document.getElementById("kbo-video-facade");
     if (!frame || !embedUrl) return;
 
+    frame.dataset.src = embedUrl;
     const autoplayUrl = embedUrl.includes("?") ? `${embedUrl}&autoplay=1` : `${embedUrl}?autoplay=1`;
     frame.src = autoplayUrl;
+    frame.classList.remove("hidden");
+    if (facade) facade.classList.add("hidden");
 
     const titleEl = document.getElementById("kbo-current-video-title");
     if (titleEl) titleEl.innerText = title || "KBO 공식 하이라이트";
@@ -2257,13 +2290,29 @@ function playKboVideo(embedUrl, title, date) {
     frame.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
-// 2) K리그 영상 재생
+// 2-1) K리그 메인 비디오 재생 시작 (Facade 클릭 시)
+function startKleagueMainVideo() {
+    const frame = document.getElementById("kleague-video-frame");
+    const facade = document.getElementById("kleague-video-facade");
+    if (!frame) return;
+    const url = frame.dataset.src || "https://www.youtube.com/embed/QHq4QJ_R0E0";
+    const autoplayUrl = url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+    frame.src = autoplayUrl;
+    frame.classList.remove("hidden");
+    if (facade) facade.classList.add("hidden");
+}
+
+// 2-2) K리그 영상 선택 재생
 function playKleagueVideo(embedUrl, title, date) {
     const frame = document.getElementById("kleague-video-frame");
+    const facade = document.getElementById("kleague-video-facade");
     if (!frame || !embedUrl) return;
 
+    frame.dataset.src = embedUrl;
     const autoplayUrl = embedUrl.includes("?") ? `${embedUrl}&autoplay=1` : `${embedUrl}?autoplay=1`;
     frame.src = autoplayUrl;
+    frame.classList.remove("hidden");
+    if (facade) facade.classList.add("hidden");
 
     const titleEl = document.getElementById("kleague-current-video-title");
     if (titleEl) titleEl.innerText = title || "K리그 공식 하이라이트";
@@ -2275,11 +2324,30 @@ function playKleagueVideo(embedUrl, title, date) {
     frame.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
-// 3) 해외축구 기본 비디오 설정
+// 3-1) 해외축구 메인 비디오 재생 시작 (Facade 클릭 시)
+function startOverseasMainVideo() {
+    const facade = document.getElementById("overseas-video-facade");
+    const videoPlayer = document.getElementById("overseas-video-player");
+    const videoFrame = document.getElementById("overseas-video-frame");
+    if (facade) facade.classList.add("hidden");
+    if (videoPlayer && videoPlayer.dataset.src) {
+        videoPlayer.src = videoPlayer.dataset.src;
+        videoPlayer.classList.remove("hidden");
+        videoPlayer.play().catch(() => {});
+    } else if (videoFrame && videoFrame.dataset.src) {
+        const url = videoFrame.dataset.src;
+        videoFrame.src = url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+        videoFrame.classList.remove("hidden");
+    }
+}
+
+// 3-2) 해외축구 기본 비디오 프리뷰 설정
 function setOverseasDefaultVideo(hl) {
     if (!hl) return;
     const videoPlayer = document.getElementById("overseas-video-player");
     const videoFrame = document.getElementById("overseas-video-frame");
+    const facadeThumb = document.getElementById("overseas-facade-thumb");
+    const facade = document.getElementById("overseas-video-facade");
     if (!videoPlayer || !videoFrame) return;
 
     const titleEl = document.getElementById("overseas-current-video-title");
@@ -2291,24 +2359,34 @@ function setOverseasDefaultVideo(hl) {
     const tagEl = document.getElementById("overseas-current-video-tag");
     if (tagEl) tagEl.innerText = hl.source || "공식 영상";
 
+    if (facadeThumb && hl.thumbnail) {
+        facadeThumb.src = hl.thumbnail;
+    }
+    if (facade) facade.classList.remove("hidden");
+
     if (hl.type === "mp4" && hl.video_url) {
-        videoPlayer.src = hl.video_url;
-        videoPlayer.classList.remove("hidden");
+        videoPlayer.dataset.src = hl.video_url;
+        videoPlayer.src = "";
+        videoPlayer.classList.add("hidden");
         videoFrame.classList.add("hidden");
         videoFrame.src = "";
     } else if (hl.embed_url) {
-        videoFrame.src = hl.embed_url;
-        videoFrame.classList.remove("hidden");
+        videoFrame.dataset.src = hl.embed_url;
+        videoFrame.src = "";
+        videoFrame.classList.add("hidden");
         videoPlayer.classList.add("hidden");
         videoPlayer.src = "";
     }
 }
 
-// 4) 해외축구 영상 재생 (클릭 시 자동 재생)
+// 3-3) 해외축구 영상 선택 재생
 function playOverseasVideo(type, videoUrl, embedUrl, title, date) {
+    const facade = document.getElementById("overseas-video-facade");
     const videoPlayer = document.getElementById("overseas-video-player");
     const videoFrame = document.getElementById("overseas-video-frame");
     if (!videoPlayer || !videoFrame) return;
+
+    if (facade) facade.classList.add("hidden");
 
     const titleEl = document.getElementById("overseas-current-video-title");
     if (titleEl) titleEl.innerText = title || "해외축구 공식 하이라이트";
@@ -2335,12 +2413,29 @@ function playOverseasVideo(type, videoUrl, embedUrl, title, date) {
     showToast(`🎬 ${title} 재생 중`);
 }
 
-// 5) MLB 영상 재생 (mp4 고화질 재생)
+// 4-1) MLB 메인 비디오 재생 시작 (Facade 클릭 시)
+function startMlbMainVideo() {
+    const player = document.getElementById("mlb-video-player");
+    const facade = document.getElementById("mlb-video-facade");
+    if (!player) return;
+    if (facade) facade.classList.add("hidden");
+    const url = player.dataset.src;
+    if (url) {
+        player.src = url;
+    }
+    player.classList.remove("hidden");
+    player.play().catch(() => {});
+}
+
+// 4-2) MLB 영상 선택 재생 (mp4 고화질 재생)
 function playMlbVideo(videoUrl, title, date) {
     const player = document.getElementById("mlb-video-player");
+    const facade = document.getElementById("mlb-video-facade");
     if (!player || !videoUrl) return;
 
+    if (facade) facade.classList.add("hidden");
     player.src = videoUrl;
+    player.classList.remove("hidden");
     player.play().catch(() => {});
 
     const titleEl = document.getElementById("mlb-current-video-title");
