@@ -4,9 +4,15 @@ Goal.com 크롤링 및 ESPN Soccer API 백업 연동
 """
 import os
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 import requests
 from bs4 import BeautifulSoup
+
+KST = timezone(timedelta(hours=9))
+
+def get_now_kst():
+    """한국 표준시(KST, UTC+9) 기준 datetime 반환 (서버 타임존 무관)"""
+    return datetime.now(timezone.utc).astimezone(KST).replace(tzinfo=None)
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
@@ -343,7 +349,7 @@ def build_soccer_team_hub(teams, player_categories):
 def fetch_soccer_recent_matches(espn_code):
     """ESPN Soccer Scoreboard API에서 리그별 최근 경기(지난주 이후), 금주 예정 경기, 실시간 LIVE 경기 조회"""
     try:
-        now = datetime.now()
+        now = get_now_kst()
         this_week_start = (now - timedelta(days=now.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
         this_week_end = this_week_start + timedelta(days=6, hours=23, minutes=59, seconds=59)
         last_week_start = this_week_start - timedelta(days=7)
@@ -677,7 +683,7 @@ def get_overseas_soccer_data(force_refresh=False):
     """
     cached_data = None
     cache_valid = False
-    now = datetime.now()
+    now = get_now_kst()
 
     if os.path.exists(CACHE_FILE):
         try:
@@ -695,10 +701,11 @@ def get_overseas_soccer_data(force_refresh=False):
         if updated_at_str:
             try:
                 updated_time = datetime.strptime(updated_at_str, "%Y-%m-%d %H:%M:%S")
-                if (now - updated_time).total_seconds() > 1800:
+                diff = (now - updated_time).total_seconds()
+                if diff > 1800 or diff < 0:
                     need_full_refresh = True
             except Exception:
-                pass
+                need_full_refresh = True
 
     if need_full_refresh:
         result_leagues = {}
@@ -766,7 +773,8 @@ def get_overseas_soccer_data(force_refresh=False):
         else:
             try:
                 m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
-                if (now - m_time).total_seconds() >= 25:
+                diff = (now - m_time).total_seconds()
+                if diff >= 25 or diff < 0:
                     need_matches_refresh = True
             except Exception:
                 need_matches_refresh = True
@@ -776,7 +784,8 @@ def get_overseas_soccer_data(force_refresh=False):
         else:
             try:
                 m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
-                if (now - m_time).total_seconds() >= 120:
+                diff = (now - m_time).total_seconds()
+                if diff >= 120 or diff < 0:
                     need_matches_refresh = True
             except Exception:
                 need_matches_refresh = True

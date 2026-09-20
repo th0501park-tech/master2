@@ -5,9 +5,15 @@ K리그 공식 데이터 포털 및 공식 사이트 연동
 import os
 import json
 import re
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 import requests
 from bs4 import BeautifulSoup
+
+KST = timezone(timedelta(hours=9))
+
+def get_now_kst():
+    """한국 표준시(KST, UTC+9) 기준 datetime 반환 (서버 타임존 무관)"""
+    return datetime.now(timezone.utc).astimezone(KST).replace(tzinfo=None)
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -461,7 +467,7 @@ def fetch_naver_kfootball_map():
     """네이버 스포츠 kfootball API를 통해 실시간 경기, 스코어, gameId 매핑 조회"""
     naver_map = {}
     try:
-        now = datetime.now()
+        now = get_now_kst()
         from_date = (now - timedelta(days=2)).strftime("%Y-%m-%d")
         to_date = (now + timedelta(days=2)).strftime("%Y-%m-%d")
         url = f"https://api-gw.sports.naver.com/schedule/games?fields=basic%2CsuperOrganId&fromDate={from_date}&toDate={to_date}&upperCategoryId=kfootball&size=100"
@@ -493,7 +499,7 @@ def fetch_kleague_recent_matches(league_id=1):
             **HEADERS,
             "Referer": "https://www.kleague.com/schedule.do"
         }
-        now = datetime.now()
+        now = get_now_kst()
         year = now.year if now.year <= 2026 else 2026
         month = f"{now.month:02d}"
 
@@ -867,7 +873,7 @@ def get_kleague_data(force_refresh=False):
     """
     cached_data = None
     cache_valid = False
-    now = datetime.now()
+    now = get_now_kst()
 
     if os.path.exists(CACHE_FILE):
         try:
@@ -885,10 +891,11 @@ def get_kleague_data(force_refresh=False):
         if updated_at_str:
             try:
                 updated_time = datetime.strptime(updated_at_str, "%Y-%m-%d %H:%M:%S")
-                if (now - updated_time).total_seconds() > 1800:
+                diff = (now - updated_time).total_seconds()
+                if diff > 1800 or diff < 0:
                     need_full_refresh = True
             except Exception:
-                pass
+                need_full_refresh = True
 
     if need_full_refresh:
         try:
@@ -955,7 +962,8 @@ def get_kleague_data(force_refresh=False):
         else:
             try:
                 m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
-                if (now - m_time).total_seconds() >= 25:
+                diff = (now - m_time).total_seconds()
+                if diff >= 25 or diff < 0:
                     need_matches_refresh = True
             except Exception:
                 need_matches_refresh = True
@@ -966,7 +974,8 @@ def get_kleague_data(force_refresh=False):
         else:
             try:
                 m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
-                if (now - m_time).total_seconds() >= 120:
+                diff = (now - m_time).total_seconds()
+                if diff >= 120 or diff < 0:
                     need_matches_refresh = True
             except Exception:
                 need_matches_refresh = True

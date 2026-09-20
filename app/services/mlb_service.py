@@ -4,8 +4,14 @@ MLB (메이저리그 베이스볼) 데이터 서비스 모듈
 """
 import os
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 import requests
+
+KST = timezone(timedelta(hours=9))
+
+def get_now_kst():
+    """한국 표준시(KST, UTC+9) 기준 datetime 반환 (서버 타임존 무관)"""
+    return datetime.now(timezone.utc).astimezone(KST).replace(tzinfo=None)
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
@@ -296,7 +302,7 @@ def fetch_naver_wbaseball_map():
     """네이버 스포츠 해외야구 API를 통해 실시간 네이버 경기 gameId 매핑 조회"""
     naver_map = {}
     try:
-        now = datetime.now()
+        now = get_now_kst()
         from_date = (now - timedelta(days=2)).strftime("%Y-%m-%d")
         to_date = (now + timedelta(days=2)).strftime("%Y-%m-%d")
         url = f"https://api-gw.sports.naver.com/schedule/games?fields=basic%2CsuperOrganId&fromDate={from_date}&toDate={to_date}&upperCategoryId=wbaseball&size=100"
@@ -319,7 +325,8 @@ def fetch_naver_wbaseball_map():
 def fetch_mlb_recent_matches():
     """MLB 공식 Stats API에서 최근 경기 결과, 오늘/내일 예정 경기, 실시간 LIVE 경기 조회"""
     try:
-        now = datetime.now()
+        now = get_now_kst()
+        # 최근 2일(어제/그저께)부터 향후 2일(오늘/내일/모레)까지
         start_d = (now - timedelta(days=2)).strftime("%Y-%m-%d")
         end_d = (now + timedelta(days=2)).strftime("%Y-%m-%d")
 
@@ -327,7 +334,7 @@ def fetch_mlb_recent_matches():
         naver_map = fetch_naver_wbaseball_map()
 
         url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate={start_d}&endDate={end_d}&hydrate=linescore,decisions,team,probablePitcher"
-        r = requests.get(url, headers=HEADERS, timeout=6)
+        r = requests.get(url, headers=HEADERS, timeout=7)
         dates = r.json().get("dates", []) if r.status_code == 200 else []
 
         # 만약 해당 기간 경기가 없으면 2024년 9월 시즌 후반부 fallback
@@ -343,6 +350,9 @@ def fetch_mlb_recent_matches():
                 status_obj = g.get("status", {})
                 state = status_obj.get("abstractGameState", "")  # 'Live', 'Final', 'Preview'
                 detailed_state = status_obj.get("detailedState", "Final")
+                status_code = status_obj.get("statusCode", "")
+                abstract_code = status_obj.get("abstractGameCode", "")
+                det_lower = detailed_state.lower()
 
                 away = g.get("teams", {}).get("away", {})
                 home = g.get("teams", {}).get("home", {})
@@ -406,30 +416,95 @@ def fetch_mlb_recent_matches():
                     time_str = raw_datetime[11:16] if len(raw_datetime) >= 16 else ""
                     raw_date = raw_datetime[:10]
 
-                # 이닝 / 상태 정보
+                # 이닝 / 상태 정보 파싱
                 linescore = g.get("linescore", {})
+                curr_inning_num = linescore.get("currentInning")
                 curr_inning = linescore.get("currentInningOrdinal", "")
                 inning_half = linescore.get("inningHalf", "")
-                
-                is_cancelled = "postpon" in detailed_state.lower() or "cancel" in detailed_state.lower() or "suspended" in detailed_state.lower()
-                is_finished = not is_cancelled and (state == "Final" or "final" in detailed_state.lower() or "game over" in detailed_state.lower())
-                is_live = not is_cancelled and not is_finished and (state == "Live" or "in progress" in detailed_state.lower() or "warmup" in detailed_state.lower())
+                outs = linescore.get("outs")
+                balls = linescore.get("balls")
+                strikes = linescore.get("strikes")
 
-                # 방어 로직: 경기 시작(KST) 후 5.5시간 이상 경과한 경기는 종료로 안전 전환
+                # 실시간 수비(투수) / 공격(타자)
+                defense = linescore.get("defense", {})
+                offense = linescore.get("offense", {})
+                curr_pitcher = defense.get("pitcher", {}).get("fullName", "")
+                curr_batter = offense.get("batter", {}).get("fullName", "")
+
+                # 취소, 종료, 라이브 정밀 판정
+                is_cancelled = (
+                    "postpon" in det_lower or 
+                    "cancel" in det_lower or 
+                    "suspended" in det_lower or 
+                    status_code in ["DI", "DR", "POSTPONED", "CANCELLED", "SUSPENDED"]
+                )
+                is_finished = not is_cancelled and (
+                    state == "Final" or 
+                    abstract_code == "F" or 
+                    status_code in ["F", "O", "CR", "FR"] or 
+                    "final" in det_lower or 
+                    "game over" in det_lower or 
+                    "completed" in det_lower
+                )
+                is_live = not is_cancelled and not is_finished and (
+                    state == "Live" or 
+                    abstract_code == "L" or 
+                    status_code in ["I", "M", "PW", "PR"] or 
+                    "in progress" in det_lower or 
+                    "warmup" in det_lower
+                )
+
+                # 방어 로직: 경기 시작(KST) 후 4.5시간 이상 경과한 경기는 종료로 안전 전환
                 if is_live and kst_dt:
-                    if (now - kst_dt).total_seconds() > 5.5 * 3600:
+                    if (now - kst_dt).total_seconds() > 4.5 * 3600:
                         is_live = False
                         is_finished = True
 
                 is_upcoming = not is_live and not is_finished and not is_cancelled
 
+                # 스코어 처리 (진행중이거나 종료된 경기면 숫자, 미진행이면 '-')
+                raw_away_score = away.get("score")
+                raw_home_score = home.get("score")
+                if is_finished or is_live:
+                    away_score_val = raw_away_score if raw_away_score is not None else 0
+                    home_score_val = raw_home_score if raw_home_score is not None else 0
+                else:
+                    away_score_val = "-"
+                    home_score_val = "-"
+
+                away_win = away.get("isWinner", False)
+                home_win = home.get("isWinner", False)
+                if is_finished and not away_win and not home_win and away_score_val != "-" and home_score_val != "-":
+                    if away_score_val > home_score_val:
+                        away_win = True
+                    elif home_score_val > away_score_val:
+                        home_win = True
+
+                # 상태 텍스트 한국어 정밀 매핑
                 if is_cancelled:
                     status_label = "취소"
-                    status_info = detailed_state or "경기취소"
+                    status_info = "우천취소" if "rain" in det_lower else (detailed_state or "경기취소")
                 elif is_live:
                     status_label = "LIVE"
                     half_kr = "초" if inning_half.lower() == "top" else ("말" if inning_half.lower() == "bottom" else "")
-                    status_info = f"{curr_inning} {half_kr}".strip() or "진행중"
+                    if curr_inning_num:
+                        inning_str = f"{curr_inning_num}회{half_kr}"
+                    elif curr_inning:
+                        clean_ord = curr_inning.replace('th', '').replace('st', '').replace('nd', '').replace('rd', '')
+                        inning_str = f"{clean_ord}회{half_kr}"
+                    else:
+                        inning_str = "진행중"
+
+                    if outs is not None and outs >= 0 and inning_str != "진행중":
+                        status_info = f"{inning_str} {outs}아웃"
+                    else:
+                        status_info = inning_str
+
+                    if "warmup" in det_lower:
+                        status_info = "시작전 (몸푸는중)"
+
+                    if not pitcher_note and curr_pitcher:
+                        pitcher_note = f"투수: {curr_pitcher}"
                 elif is_finished:
                     status_label = "종료"
                     status_info = "종료"
@@ -457,19 +532,24 @@ def fetch_mlb_recent_matches():
                     "away_eng": away.get("team", {}).get("name", ""),
                     "away_emblem": away_emblem,
                     "away_color": away_info.get("color", "#002D62"),
-                    "away_score": away.get("score", "-") if (is_finished or is_live) else "-",
-                    "away_win": away.get("isWinner", False),
+                    "away_score": away_score_val,
+                    "away_win": away_win,
                     "home_id": home_team_id,
                     "home_team": home_name,
                     "home_eng": home.get("team", {}).get("name", ""),
                     "home_emblem": home_emblem,
                     "home_color": home_info.get("color", "#BA0021"),
-                    "home_score": home.get("score", "-") if (is_finished or is_live) else "-",
-                    "home_win": home.get("isWinner", False),
+                    "home_score": home_score_val,
+                    "home_win": home_win,
                     "venue": g.get("venue", {}).get("name", ""),
                     "win_pitcher": winner_pitcher,
                     "lose_pitcher": loser_pitcher,
                     "save_pitcher": save_pitcher,
+                    "current_pitcher": curr_pitcher,
+                    "current_batter": curr_batter,
+                    "outs": outs,
+                    "balls": balls,
+                    "strikes": strikes,
                     "pitcher_note": pitcher_note or "정규 경기",
                     "starter_note": starter_note,
                     "is_live": is_live,
@@ -481,7 +561,7 @@ def fetch_mlb_recent_matches():
         upcoming_games = sorted([m for m in matches if m["is_upcoming"]], key=lambda x: (x.get("raw_date", ""), x.get("time", "")))
         finished_games = sorted([m for m in matches if m["is_finished"]], key=lambda x: (x.get("raw_date", ""), x.get("time", "")), reverse=True)
 
-        return live_games + upcoming_games[:8] + finished_games[:10]
+        return live_games + upcoming_games[:16] + finished_games[:25]
     except Exception as e:
         print(f"MLB 최근 경기 조회 실패: {e}")
         return []
@@ -577,12 +657,12 @@ def get_mlb_data(force_refresh=False):
     """
     MLB 전체 데이터 조회 및 캐싱
     - 전체 크롤링(순위, 하이라이트 등): 30분 TTL 캐싱
-    - 경기 일정/LIVE 스코어(recent_matches): LIVE 경기 시 25초, 일반 시 2분 주기로 동적 갱신
-    - 페이지 새로고침 시 LIVE 경기의 최신 이닝/스코어/종료 여부를 즉시 반영
+    - 경기 일정/LIVE 스코어(recent_matches): LIVE 경기 시 20초, 일반 시 90초 주기로 동적 갱신
+    - 타임존 독립적(KST 기준) 운영 및 미래 타임스탬프 오류 방지
     """
     cached_data = None
     cache_valid = False
-    now = datetime.now()
+    now = get_now_kst()
 
     if os.path.exists(CACHE_FILE):
         try:
@@ -600,10 +680,12 @@ def get_mlb_data(force_refresh=False):
         if updated_at_str:
             try:
                 updated_time = datetime.strptime(updated_at_str, "%Y-%m-%d %H:%M:%S")
-                if (now - updated_time).total_seconds() > 1800:
+                diff = (now - updated_time).total_seconds()
+                # 30분 초과 또는 비정상적인 미래 타임스탬프(음수) 시 전체 갱신
+                if diff > 1800 or diff < 0:
                     need_full_refresh = True
             except Exception:
-                pass
+                need_full_refresh = True
 
     if need_full_refresh:
         try:
@@ -649,7 +731,9 @@ def get_mlb_data(force_refresh=False):
         else:
             try:
                 m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
-                if (now - m_time).total_seconds() >= 25:
+                diff = (now - m_time).total_seconds()
+                # LIVE 진행 중: 20초 이상 경과했거나 미래 타임스탬프면 갱신
+                if diff >= 20 or diff < 0:
                     need_matches_refresh = True
             except Exception:
                 need_matches_refresh = True
@@ -659,7 +743,9 @@ def get_mlb_data(force_refresh=False):
         else:
             try:
                 m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
-                if (now - m_time).total_seconds() >= 120:
+                diff = (now - m_time).total_seconds()
+                # LIVE 없을 때: 90초 이상 경과했거나 미래 타임스탬프면 갱신
+                if diff >= 90 or diff < 0:
                     need_matches_refresh = True
             except Exception:
                 need_matches_refresh = True

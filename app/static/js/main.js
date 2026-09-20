@@ -170,13 +170,19 @@ async function pollLiveMatches() {
 
 function startLivePolling() {
     if (livePollingInterval) clearInterval(livePollingInterval);
-    // 30초마다 폴링 확인
+    // LIVE 경기 진행 시 25초 주기 실시간 자동 폴링
     livePollingInterval = setInterval(() => {
-        // 브라우저 탭이 활성화되어 있고 LIVE 경기가 있을 때 자동 갱신
         if (!document.hidden && hasActiveLiveMatches()) {
             pollLiveMatches();
         }
-    }, 30000);
+    }, 25000);
+
+    // LIVE 경기가 없더라도 예정 경기 시작을 감지하기 위한 90초 주기 백그라운드 확인
+    setInterval(() => {
+        if (!document.hidden && !hasActiveLiveMatches()) {
+            pollLiveMatches();
+        }
+    }, 90000);
 }
 
 // ========================================================
@@ -1961,13 +1967,14 @@ function renderMlbMatches() {
                     <span class="text-[10px] text-gray-400 ml-1 flex-shrink-0">결정투수</span>
                 </div>
             `;
-        } else if (isLive && (m.current_pitcher || m.status_info)) {
+        } else if (isLive && (m.current_pitcher || m.current_batter || m.status_info)) {
             pitcherInfoHtml = `
                 <div class="px-2.5 py-1.5 rounded-xl bg-red-50/60 dark:bg-red-950/30 border border-red-200/60 dark:border-red-800/40 text-[11px] mb-2 flex items-center justify-between truncate">
-                    <span class="font-bold text-red-700 dark:text-red-300 truncate">
-                        ${m.current_pitcher ? `<span class="px-1.5 py-0.2 rounded bg-red-500 text-white font-black text-[9px] mr-1">투수</span>${m.current_pitcher}` : '실시간 경기 진행 중'}
-                    </span>
-                    <span class="text-[10px] text-red-500 font-bold ml-1 flex-shrink-0">${m.status_info || 'LIVE'}</span>
+                    <div class="flex items-center space-x-1.5 truncate">
+                        ${m.current_pitcher ? `<span class="font-bold text-red-700 dark:text-red-300 truncate"><span class="px-1.5 py-0.2 rounded bg-red-500 text-white font-black text-[9px] mr-1">투수</span>${m.current_pitcher}</span>` : '<span class="text-red-700 dark:text-red-300 font-bold">실시간 진행중</span>'}
+                        ${m.current_batter ? `<span class="text-gray-400 text-[10px]">vs</span><span class="font-medium text-blue-700 dark:text-blue-300 truncate"><span class="px-1 py-0.2 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-[9px] mr-0.5">타자</span>${m.current_batter}</span>` : ''}
+                    </div>
+                    <span class="text-[10px] text-red-600 dark:text-red-400 font-black ml-1 flex-shrink-0">${m.status_info || 'LIVE'}</span>
                 </div>
             `;
         } else if (isUpcoming && (m.home_starter || m.away_starter || m.starter_note)) {

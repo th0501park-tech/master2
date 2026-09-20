@@ -1,8 +1,9 @@
 {
   "sports": "kbo",
   "title": "KBO 한국야구",
-  "updated_at": "2026-09-20 08:56:03",
-  "updated_at_iso": "2026-09-20T08:56:03.144212",
+  "updated_at": "2026-09-20 12:45:43",
+  "updated_at_iso": "2026-09-20T12:45:43.226431",
+  "matches_updated_at": "2026-09-20 12:45:43",
   "teams": [
     {
       "rank": 1,
@@ -3730,6 +3731,5 @@
       "bgColor": "#f7e8ea",
       "emblem": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/KBOHome/resources/images/emblem/regular/2022/WO.png"
     }
-  },
-  "matches_updated_at": "2026-09-20 09:19:20"
+  }
 }

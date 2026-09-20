@@ -1,8 +1,9 @@
 {
   "sports": "kleague",
   "title": "K리그 (K LEAGUE)",
-  "updated_at": "2026-09-20 08:56:08",
-  "updated_at_iso": "2026-09-20T08:56:08.971094",
+  "updated_at": "2026-09-20 12:45:44",
+  "updated_at_iso": "2026-09-20T12:45:44.429244",
+  "matches_updated_at": "2026-09-20 12:45:44",
   "highlights": [
     {
       "title": "[30분 하이라이트] 하나은행 K리그1 2026 29R 광주 vs 안양 (2026-09-13)",
@@ -36,13 +37,43 @@
     },
     {
       "title": "[30분 하이라이트] 하나은행 K리그1 2026 29R 전북 vs 서울 (2026-09-12)",
-      "match": "[30분 하이라이트] 하나은행 K리그1 2026 29R 전북 vs 서울 (2026-09-12)",
+      "match": "전북 vs 서울",
+      "score": "2 : 1",
       "date": "2026.09.12",
       "youtube_id": "8bYANXGyqQs",
       "embed_url": "https://www.youtube.com/embed/8bYANXGyqQs",
       "thumbnail": "https://i.ytimg.com/vi/8bYANXGyqQs/sddefault.jpg",
-      "source": "K리그1 공식",
-      "league_id": 1
+      "source": "K리그1 공식"
+    },
+    {
+      "title": "[30분 하이라이트] 하나은행 K리그2 2026 27R 전남 vs 수원FC Jeonnam vs SuwonFC (2026-09-19)",
+      "match": "[30분 하이라이트] 하나은행 K리그2 2026 27R 전남 vs 수원FC Jeonnam vs SuwonFC (2026-09-19)",
+      "date": "2026.09.19",
+      "youtube_id": "UTymKthlenM",
+      "embed_url": "https://www.youtube.com/embed/UTymKthlenM",
+      "thumbnail": "https://i.ytimg.com/vi/UTymKthlenM/sddefault.jpg",
+      "source": "K리그2 공식",
+      "league_id": 2
+    },
+    {
+      "title": "[30분 하이라이트] 하나은행 K리그2 2026 27R 충남아산 vs 천안 (2026-09-19)",
+      "match": "[30분 하이라이트] 하나은행 K리그2 2026 27R 충남아산 vs 천안 (2026-09-19)",
+      "date": "2026.09.19",
+      "youtube_id": "apXpoXyBk6M",
+      "embed_url": "https://www.youtube.com/embed/apXpoXyBk6M",
+      "thumbnail": "https://i.ytimg.com/vi/apXpoXyBk6M/sddefault.jpg",
+      "source": "K리그2 공식",
+      "league_id": 2
+    },
+    {
+      "title": "[30분 하이라이트] 하나은행 K리그1 2026 30R 부천 vs 김천 (2026-09-19)",
+      "match": "[30분 하이라이트] 하나은행 K리그1 2026 30R 부천 vs 김천 (2026-09-19)",
+      "date": "2026.09.19",
+      "youtube_id": "gXn_gasKuR0",
+      "embed_url": "https://www.youtube.com/embed/gXn_gasKuR0",
+      "thumbnail": "https://i.ytimg.com/vi/gXn_gasKuR0/sddefault.jpg",
+      "source": "K리그2 공식",
+      "league_id": 2
     },
     {
       "title": "[30분 하이라이트] 하나은행 K리그2 2026 26R 부산 vs 김해 (2026-09-13)",
@@ -101,26 +132,6 @@
       "youtube_id": "eCURQpehjlQ",
       "embed_url": "https://www.youtube.com/embed/eCURQpehjlQ",
       "thumbnail": "https://i.ytimg.com/vi/eCURQpehjlQ/sddefault.jpg",
-      "source": "K리그2 공식",
-      "league_id": 2
-    },
-    {
-      "title": "[30분 하이라이트] 하나은행 K리그2 2026 26R 서울E vs 수원삼성 (2026-09-12)",
-      "match": "[30분 하이라이트] 하나은행 K리그2 2026 26R 서울E vs 수원삼성 (2026-09-12)",
-      "date": "2026.09.12",
-      "youtube_id": "f4D8e_Jf9i8",
-      "embed_url": "https://www.youtube.com/embed/f4D8e_Jf9i8",
-      "thumbnail": "https://i.ytimg.com/vi/f4D8e_Jf9i8/sddefault.jpg",
-      "source": "K리그2 공식",
-      "league_id": 2
-    },
-    {
-      "title": "[30분 하이라이트] 하나은행 K리그2 2026 26R 대구 vs 용인 (2026-09-12)",
-      "match": "[30분 하이라이트] 하나은행 K리그2 2026 26R 대구 vs 용인 (2026-09-12)",
-      "date": "2026.09.12",
-      "youtube_id": "1PH0ihm4aJE",
-      "embed_url": "https://www.youtube.com/embed/1PH0ihm4aJE",
-      "thumbnail": "https://i.ytimg.com/vi/1PH0ihm4aJE/sddefault.jpg",
       "source": "K리그2 공식",
       "league_id": 2
     }
@@ -1963,13 +1974,13 @@
       },
       {
         "title": "[30분 하이라이트] 하나은행 K리그1 2026 29R 전북 vs 서울 (2026-09-12)",
-        "match": "[30분 하이라이트] 하나은행 K리그1 2026 29R 전북 vs 서울 (2026-09-12)",
+        "match": "전북 vs 서울",
+        "score": "2 : 1",
         "date": "2026.09.12",
         "youtube_id": "8bYANXGyqQs",
         "embed_url": "https://www.youtube.com/embed/8bYANXGyqQs",
         "thumbnail": "https://i.ytimg.com/vi/8bYANXGyqQs/sddefault.jpg",
-        "source": "K리그1 공식",
-        "league_id": 1
+        "source": "K리그1 공식"
       }
     ]
   },
@@ -4025,6 +4036,36 @@
     ],
     "highlights": [
       {
+        "title": "[30분 하이라이트] 하나은행 K리그2 2026 27R 전남 vs 수원FC Jeonnam vs SuwonFC (2026-09-19)",
+        "match": "[30분 하이라이트] 하나은행 K리그2 2026 27R 전남 vs 수원FC Jeonnam vs SuwonFC (2026-09-19)",
+        "date": "2026.09.19",
+        "youtube_id": "UTymKthlenM",
+        "embed_url": "https://www.youtube.com/embed/UTymKthlenM",
+        "thumbnail": "https://i.ytimg.com/vi/UTymKthlenM/sddefault.jpg",
+        "source": "K리그2 공식",
+        "league_id": 2
+      },
+      {
+        "title": "[30분 하이라이트] 하나은행 K리그2 2026 27R 충남아산 vs 천안 (2026-09-19)",
+        "match": "[30분 하이라이트] 하나은행 K리그2 2026 27R 충남아산 vs 천안 (2026-09-19)",
+        "date": "2026.09.19",
+        "youtube_id": "apXpoXyBk6M",
+        "embed_url": "https://www.youtube.com/embed/apXpoXyBk6M",
+        "thumbnail": "https://i.ytimg.com/vi/apXpoXyBk6M/sddefault.jpg",
+        "source": "K리그2 공식",
+        "league_id": 2
+      },
+      {
+        "title": "[30분 하이라이트] 하나은행 K리그1 2026 30R 부천 vs 김천 (2026-09-19)",
+        "match": "[30분 하이라이트] 하나은행 K리그1 2026 30R 부천 vs 김천 (2026-09-19)",
+        "date": "2026.09.19",
+        "youtube_id": "gXn_gasKuR0",
+        "embed_url": "https://www.youtube.com/embed/gXn_gasKuR0",
+        "thumbnail": "https://i.ytimg.com/vi/gXn_gasKuR0/sddefault.jpg",
+        "source": "K리그2 공식",
+        "league_id": 2
+      },
+      {
         "title": "[30분 하이라이트] 하나은행 K리그2 2026 26R 부산 vs 김해 (2026-09-13)",
         "match": "[30분 하이라이트] 하나은행 K리그2 2026 26R 부산 vs 김해 (2026-09-13)",
         "date": "2026.09.13",
@@ -4083,28 +4124,7 @@
         "thumbnail": "https://i.ytimg.com/vi/eCURQpehjlQ/sddefault.jpg",
         "source": "K리그2 공식",
         "league_id": 2
-      },
-      {
-        "title": "[30분 하이라이트] 하나은행 K리그2 2026 26R 서울E vs 수원삼성 (2026-09-12)",
-        "match": "[30분 하이라이트] 하나은행 K리그2 2026 26R 서울E vs 수원삼성 (2026-09-12)",
-        "date": "2026.09.12",
-        "youtube_id": "f4D8e_Jf9i8",
-        "embed_url": "https://www.youtube.com/embed/f4D8e_Jf9i8",
-        "thumbnail": "https://i.ytimg.com/vi/f4D8e_Jf9i8/sddefault.jpg",
-        "source": "K리그2 공식",
-        "league_id": 2
-      },
-      {
-        "title": "[30분 하이라이트] 하나은행 K리그2 2026 26R 대구 vs 용인 (2026-09-12)",
-        "match": "[30분 하이라이트] 하나은행 K리그2 2026 26R 대구 vs 용인 (2026-09-12)",
-        "date": "2026.09.12",
-        "youtube_id": "1PH0ihm4aJE",
-        "embed_url": "https://www.youtube.com/embed/1PH0ihm4aJE",
-        "thumbnail": "https://i.ytimg.com/vi/1PH0ihm4aJE/sddefault.jpg",
-        "source": "K리그2 공식",
-        "league_id": 2
       }
     ]
-  },
-  "matches_updated_at": "2026-09-20 09:19:20"
+  }
 }
