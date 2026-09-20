@@ -213,7 +213,7 @@
                         <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
                             <span class="text-gray-400 truncate">{{ m.broadcast or '공식 중계' }}</span>
                             {% if m.status == 'LIVE' or m.is_live %}
-                            <button type="button" onclick="openLiveRelayModal('{{ m.game_id }}', '{{ m.away_team }}', '{{ m.home_team }}', 'kbo')" 
+                            <button type="button" onclick="openLiveRelayModal('{{ m.game_id }}', '{{ m.away_team }}', '{{ m.home_team }}', 'kbo', '', '{{ m.naver_relay_url or '' }}')" 
                                     class="px-2.5 py-1 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-950/60 dark:hover:bg-red-900/80 dark:text-red-300 font-bold flex items-center space-x-1.5 active:scale-95 transition-all shadow-xs border border-red-200 dark:border-red-900/40"
                                     title="네이버스포츠 실시간 문자중계 보기">
                                 <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
@@ -728,8 +728,9 @@
                             <h3 id="overseas-matches-title" class="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
                                 프리미어리그 경기 스코어보드 & 일정
                             </h3>
-                            <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">
-                                실시간 LIVE(전·후반 경기시간) · 최근 경기 결과 · 금주 예정 경기
+                            <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 flex items-center flex-wrap gap-1.5">
+                                <span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-300 font-extrabold text-[10px]"><i class="fa-regular fa-clock text-[9px] mr-0.5"></i>한국시간(KST) 기준</span>
+                                <span>실시간 LIVE(전·후반 경기시간) · 최근 경기 결과 · 금주 예정 경기</span>
                             </p>
                         </div>
                     </div>
@@ -899,8 +900,9 @@
                             <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
                                 2026 MLB 경기 스코어보드 & 일정
                             </h3>
-                            <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">
-                                실시간 LIVE 스코어 · 최근 경기 결과(승·패전투수) · 오늘/내일 예정 경기
+                            <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 flex items-center flex-wrap gap-1.5">
+                                <span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-300 font-extrabold text-[10px]"><i class="fa-regular fa-clock text-[9px] mr-0.5"></i>한국시간(KST) 기준</span>
+                                <span>실시간 LIVE 스코어 · 최근 경기 결과(승·패전투수) · 오늘/내일 예정 경기</span>
                             </p>
                         </div>
                     </div>
@@ -1007,9 +1009,9 @@
                         <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
                             <span class="text-gray-400 truncate">{{ m.venue or 'MLB 정규경기' }}</span>
                             {% if m.status == 'LIVE' or m.is_live %}
-                            <button type="button" onclick="openLiveRelayModal('{{ m.game_id or '' }}', '{{ m.away_team }}', '{{ m.home_team }}', 'mlb')" 
+                            <button type="button" onclick="openLiveRelayModal('{{ m.game_id or '' }}', '{{ m.away_team }}', '{{ m.home_team }}', 'mlb', '{{ m.gameday_url or '' }}', '{{ m.naver_relay_url or '' }}')" 
                                     class="px-2.5 py-1 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-950/60 dark:hover:bg-red-900/80 dark:text-red-300 font-bold flex items-center space-x-1.5 active:scale-95 transition-all shadow-xs border border-red-200 dark:border-red-900/40"
-                                    title="네이버스포츠 실시간 문자중계 보기">
+                                    title="네이버스포츠 & 공식 실시간 중계 보기">
                                 <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
                                 <span>실시간 중계확인</span>
                             </button>
@@ -1239,7 +1241,7 @@
     </div>
 </div>
 
-<!-- 실시간 네이버스포츠 문자중계 모달 -->
+<!-- 실시간 공식 스포츠 문자중계 모달 -->
 <div id="live-relay-modal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 transition-opacity">
     <div class="bg-white dark:bg-darkbg-800 w-full max-w-4xl h-[90vh] max-h-[820px] rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden transform transition-all animate-fadeIn">
         <!-- 모달 헤더 -->
@@ -1251,17 +1253,23 @@
                 <div class="min-w-0">
                     <div class="flex items-center space-x-2">
                         <span class="px-1.5 py-0.5 rounded text-[10px] font-black bg-red-500 text-white tracking-wider animate-pulse">LIVE</span>
-                        <h3 id="relay-modal-title" class="text-sm sm:text-base font-black text-gray-900 dark:text-white truncate">네이버스포츠 실시간 문자중계</h3>
+                        <h3 id="relay-modal-title" class="text-sm sm:text-base font-black text-gray-900 dark:text-white truncate">실시간 공식 중계센터</h3>
                     </div>
                     <p id="relay-modal-subtitle" class="text-[11px] text-gray-500 dark:text-gray-400 truncate">실시간 투구 현황 · 볼카운트 · 타석 결과 문자중계</p>
                 </div>
             </div>
             <div class="flex items-center space-x-2 flex-shrink-0 ml-2">
                 <a id="relay-modal-external-link" href="#" target="_blank" rel="noopener noreferrer" 
-                   class="px-2.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 dark:text-blue-300 text-xs font-bold flex items-center space-x-1.5 transition-all shadow-xs border border-blue-200 dark:border-blue-900/40"
-                   title="네이버스포츠 새 창으로 보기">
+                   class="px-3 py-1.5 rounded-xl bg-[#03C75A] hover:bg-[#02b350] text-white text-xs font-bold flex items-center space-x-1.5 transition-all shadow-sm active:scale-95"
+                   title="네이버스포츠 실시간 중계 새 창으로 보기">
                     <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
-                    <span class="hidden sm:inline">새 창으로 보기</span>
+                    <span>네이버 새 창 보기</span>
+                </a>
+                <a id="relay-modal-gameday-link" href="#" target="_blank" rel="noopener noreferrer" 
+                   class="hidden px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold flex items-center space-x-1.5 transition-all shadow-sm active:scale-95"
+                   title="MLB.com 공식 3D GameDay 새 창으로 보기">
+                    <i class="fa-solid fa-baseball text-[11px]"></i>
+                    <span class="hidden sm:inline">MLB 3D게임데이</span>
                 </a>
                 <button type="button" onclick="closeLiveRelayModal()" 
                         class="p-1.5 rounded-xl text-gray-400 hover:text-gray-700 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-darkbg-700 transition-colors">
@@ -1270,21 +1278,47 @@
             </div>
         </div>
 
-        <!-- 모달 컨텐츠 (아이프레임 및 로딩 상태) -->
+        <!-- 실시간 바로가기 허브 상단 배너 -->
+        <div class="px-4 py-2 bg-neutral-100 dark:bg-darkbg-950 border-b border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-2 text-xs flex-shrink-0">
+            <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
+                <i class="fa-solid fa-circle-check text-[#03C75A]"></i>
+                <span class="font-medium text-[11px] sm:text-xs">실시간 볼카운트 및 투구 추적이 지원되는 공식 중계창입니다.</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <a id="relay-modal-btn-naver" href="#" target="_blank" rel="noopener noreferrer"
+                   class="px-2.5 py-1 rounded-lg bg-[#03C75A] text-white text-[11px] font-bold hover:brightness-105 flex items-center space-x-1 transition-all shadow-xs">
+                    <span>네이버 문자중계</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                </a>
+                <a id="relay-modal-btn-gameday" href="#" target="_blank" rel="noopener noreferrer"
+                   class="hidden px-2.5 py-1 rounded-lg bg-[#002D62] text-white text-[11px] font-bold hover:brightness-110 flex items-center space-x-1 transition-all shadow-xs">
+                    <span>MLB 공식 GameDay</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- 모달 컨텐츠 (아이프레임 및 안내 상태) -->
         <div class="relative flex-1 w-full bg-neutral-100 dark:bg-darkbg-900 overflow-hidden">
-            <!-- 로딩 스피너 -->
-            <div id="relay-iframe-loader" class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white/90 dark:bg-darkbg-900/90 transition-opacity">
-                <div class="w-10 h-10 border-4 border-red-200 border-t-red-600 rounded-full animate-spin mb-3"></div>
-                <p class="text-xs font-bold text-gray-700 dark:text-gray-200">네이버스포츠 실시간 문자중계 불러오는 중...</p>
-                <p class="text-[11px] text-gray-400 mt-1">볼카운트, 투구 추적, 이닝별 상세 기록을 실시간 동기화합니다</p>
+            <!-- 로딩 스피너 및 브라우저 정책 안내 -->
+            <div id="relay-iframe-loader" class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white/95 dark:bg-darkbg-900/95 transition-opacity p-6 text-center">
+                <div class="w-10 h-10 border-4 border-emerald-200 border-t-[#03C75A] rounded-full animate-spin mb-3"></div>
+                <p class="text-sm font-bold text-gray-800 dark:text-gray-200">실시간 공식 중계 연결 중...</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 max-w-md">브라우저 보안 환경에 따라 화면이 표시되지 않는 경우 아래 버튼을 누르면 새 창에서 즉시 실시간 중계를 보실 수 있습니다.</p>
+                <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
+                    <a id="relay-loader-direct-btn" href="#" target="_blank" rel="noopener noreferrer" 
+                       class="px-4 py-2 rounded-xl bg-[#03C75A] text-white text-xs font-black shadow hover:brightness-105 flex items-center space-x-2">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span>네이버 실시간 중계 새 창 열기</span>
+                    </a>
+                </div>
             </div>
 
             <!-- 아이프레임 -->
             <iframe id="live-relay-iframe" 
                     src="" 
                     class="w-full h-full border-0 bg-white" 
-                    allow="autoplay; fullscreen; encrypted-media"
-                    onload="onRelayIframeLoaded()">
+                    allow="autoplay; fullscreen; encrypted-media">
             </iframe>
         </div>
 
@@ -1292,7 +1326,7 @@
         <div class="px-4 py-2.5 bg-gray-50 dark:bg-darkbg-900 border-t border-gray-200 dark:border-gray-700/80 flex items-center justify-between text-[11px] text-gray-500 dark:text-gray-400 flex-shrink-0">
             <div class="flex items-center space-x-1.5 truncate">
                 <i class="fa-solid fa-circle-info text-blue-500"></i>
-                <span class="truncate">네이버스포츠 공식 문자중계 화면입니다. 브라우저 정책으로 인해 로드가 제한될 경우 상단 [새 창으로 보기]를 이용해주세요.</span>
+                <span class="truncate">실시간 볼카운트, 투구 추적, 라인업 정보는 네이버스포츠 및 공식 데이터로 실시간 업데이트됩니다.</span>
             </div>
             <button type="button" onclick="closeLiveRelayModal()" class="px-3 py-1 rounded-lg bg-gray-200 dark:bg-darkbg-700 hover:bg-gray-300 dark:hover:bg-darkbg-600 text-gray-700 dark:text-gray-200 font-bold ml-2 flex-shrink-0">
                 닫기

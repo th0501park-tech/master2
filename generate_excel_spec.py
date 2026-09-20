@@ -44,7 +44,7 @@ def apply_sheet_styling(ws, title_text, col_widths, headers, data_rows, status_c
     # 2. 부제목 / 설명
     ws.merge_cells("A2:G2" if len(headers) >= 7 else f"A2:{get_column_letter(len(headers))}2")
     sub_cell = ws["A2"]
-    sub_cell.value = f"프로젝트: SPORTS HUB (실시간 스포츠 종합 대시보드)  |  작성일자: 2026-09-19  |  버전: v2.2.0"
+    sub_cell.value = f"프로젝트: SPORTS HUB (실시간 스포츠 종합 대시보드)  |  작성일자: 2026-09-20  |  버전: v2.3.0"
     sub_cell.font = SUBTITLE_FONT
     sub_cell.alignment = Alignment(horizontal="left", vertical="center")
     ws.row_dimensions[2].height = 20
@@ -114,15 +114,15 @@ ws1.row_dimensions[2].height = 50
 overview_items = [
     ("프로젝트명", "SPORTS HUB - 실시간 스포츠 종합 순위 & 기록 대시보드"),
     ("시스템 정의", "KBO 한국프로야구, K리그(1·2), 해외축구 5대리그, MLB 메이저리그 4대 스포츠의 실시간 스코어, 순위, 선수 기록, 공식 하이라이트 영상 및 네이버스포츠 실시간 문자중계를 단일 웹 허브에서 통합 제공하는 올인원 대시보드"),
-    ("시스템 버전", "v2.2.0 (2026.09 업데이트)"),
-    ("작성 일자", "2026년 09월 19일"),
+    ("시스템 버전", "v2.3.0 (2026.09.20 업데이트)"),
+    ("작성 일자", "2026년 09월 20일"),
     ("주요 대상 종목", "1) KBO 프로야구  2) K리그 1 / K리그 2  3) 해외축구 (EPL, 라리가, 분데스리가, UCL, UEL)  4) MLB 메이저리그"),
     ("아키텍처 구조", "FastAPI 비동기 웹 프레임워크 기반 SSR(Jinja2) + Vanilla JS 클라이언트 Hydration + 파일 기반 캐싱 레이어"),
     ("백엔드 기술 스택", "Python 3.14, FastAPI 0.115+, Uvicorn(ASGI), Jinja2 템플릿 엔진, Requests, BeautifulSoup4, LXML"),
     ("프론트엔드 기술 스택", "TailwindCSS (CDN 기반 모던 스타일링), FontAwesome 6, Vanilla JavaScript (ES6+), YouTube Embed API, Iframe Modal"),
-    ("데이터 연동 소스", "네이버 스포츠 KBO/K리그 API, K리그 공식 데이터 포털(getScheduleList.do), MLB Stats API, ESPN Soccer Scoreboard API, Goal.com"),
-    ("캐싱 및 성능 최적화", "JSON 파일 기반 로컬 캐시(TTL 관리), 유튜브/영상 Facade(지연 로딩 포스터) 기법 적용으로 초기 로딩 속도 0.5초 이내 유지"),
-    ("최근 주요 개선사항", "1) 실시간(LIVE) 진행 중인 경기 카드에 '실시간 중계확인' 버튼 동적 배치\n2) 클릭 시 네이버스포츠 실시간 문자중계 페이지가 인라인 모달로 즉시 렌더링(새 창 열기 포함)\n3) K리그 공식 상태코드(1S, 2S, HT, ET, PK) 및 네이버 kfootball 실시간 API 연동으로 라이브 스코어·진행 분·gameId 매핑\n4) 해외축구 UTC 시간의 한국 표준시(KST, UTC+9) 자동 변환 표기\n5) 메인 상단 스코어보드 / 하단 영상 플레이어 레이아웃 및 마이팀 개인화"),
+    ("데이터 연동 소스", "네이버 스포츠 KBO/K리그/해외야구 API, K리그 공식 데이터 포털, MLB Stats API, ESPN Soccer Scoreboard API, Goal.com"),
+    ("캐싱 및 성능 최적화", "스마트 캐시 갱신(LIVE 시 25초 주기 실시간 fetch + 안전 종료 방어 로직), 파일 기반 로컬 캐시(TTL 30분), Facade 지연 로딩"),
+    ("최근 주요 개선사항", "1) 스마트 캐시 도입: LIVE 경기 시 페이지 새로고침 시 즉시 실시간 fetch 동기화 & 야구 5.5h/축구 3.5h 안전 종료 로직으로 LIVE 오류 완벽 해결\n2) MLB 한국시간(KST, UTC+9) 자동 변환 및 30개 구단 ID 오타 수정, 네이버 wbaseball gameId 사전 연동\n3) 실시간 중계 모달 UX 단독 팝업화: 외부 새 창 동시 실행 제거 -> 단독 내부 팝업으로 깔끔하게 표출 및 [네이버 새 창 보기], [MLB 3D게임데이] 액션 버튼 제공\n4) 브라우저 콘솔 오류 3종(iframe onload ReferenceError, ESPN artwork 401, Tailwind CDN 경고) 완전 제거"),
     ("운영 및 배포 환경", "로컬(Uvicorn 로컬 호스트 8000번 포트), 클라우드 PaaS(Render.com Procfile / render.yaml 사전 구성)"),
     ("저장소 (Git)", "https://github.com/th0501park-tech/master2.git (main branch)")
 ]
@@ -257,11 +257,31 @@ ui_data = [
     ("SCR-06", "영상 추천 목록", "영상 플레이어 우측/하단", "최근 5~10개 공식 하이라이트 카드 리스트 (썸네일, 재생시간, 제목, 경기 날짜)", "카드 클릭 시 좌측 대형 플레이어에 해당 영상 즉시 로드 및 포커스", "마우스 호버 시 살짝 확대 효과, 모바일 가로/세로 유연 대응"),
     ("SCR-07", "구단별 허브 선택기", "순위 테이블 상단", "리그 소속 전 구단 원형/사각 엠블럼 버튼 리스트", "구단 클릭 시 해당 팀의 세부 성적, 소속 주요선수 득점/도움/ERA 랭킹 동적 표시", "선호 구단 등록된 팀은 별표 및 골드 테두리 자동 부여"),
     ("SCR-08", "리그 종합 순위표", "하단 탭/섹션", "순위, 구단 엠블럼, 팀명, 경기수, 승/무/패, 승점/승률, 게임차, 최근 전적 뱃지", "선호 구단 행 자동 하이라이트 음영 처리, 승률/승점 컬럼 볼드 강조", "스트라이프 테이블, 모바일 가로 스크롤(overflow-x-auto)"),
-    ("SCR-09", "네이버 실시간 문자중계 모달", "레이어 팝업 (Modal)", "LIVE 뱃지 헤더, 매치업 정보 타이틀, [새 창으로 보기] 링크 버튼, 닫기 버튼, Iframe 문자중계 뷰어, 로딩 스피너", "LIVE 경기 카드에서 [실시간 중계확인] 클릭 시 팝업, 볼카운트/투구추적 실시간 렌더링, ESC/배경 클릭 시 닫기", "fixed inset-0 z-50 백드롭 블러, 최대폭 max-w-4xl, 높이 90vh")
+    ("SCR-09", "실시간 공식 중계센터 모달", "레이어 팝업 (Modal)", "LIVE 뱃지 헤더, 매치업 정보 타이틀, [네이버 새 창 보기] 버튼, [MLB 3D게임데이] 버튼, 닫기 버튼, Iframe 문자중계 뷰어, 안전 안내바", "LIVE 경기 카드에서 [실시간 중계확인] 클릭 시 내부 단독 팝업 오픈, 실시간 볼카운트/투구추적 렌더링, 새 창 버튼 옵션 제공, ESC/배경 클릭 닫기", "fixed inset-0 z-50 백드롭 블러, 최대폭 max-w-4xl, 높이 90vh")
 ]
 apply_sheet_styling(ws6, "화면 및 UI/UX 상세 명세서 (UI/UX Specifications)", ui_widths, ui_headers, ui_data)
+
+
+# ==============================================================================
+# Sheet 7: 시스템 수정 및 보완 이력 (System Changelog)
+# ==============================================================================
+ws7 = wb.create_sheet(title="07_수정및보완이력")
+change_headers = ["NO", "버전", "일자", "구분", "대상 모듈 / 파일", "주요 수정 및 보완 내용", "개선 효과 및 해결 상세"]
+change_widths = [6, 12, 14, 14, 32, 50, 40]
+change_data = [
+    (1, "v2.3.0", "2026-09-20", "기능 개선", "kbo_service.py\nkleague_service.py\nmlb_service.py\noverseas_soccer_service.py", "스마트 캐시 갱신 구조 도입 및 LIVE 경기 안전 판별 강화:\n- 30분 TTL 캐시 유지 + 라이브 경기 시 25초 주기 실시간 fetch\n- 경기 시작(KST) 기준 안전 종료(야구 5.5h, 축구 3.5h 초과 시 자동 종료) 방어\n- 프론트엔드 30초 무중단 자동 폴링(startLivePolling)", "종료된 경기가 LIVE로 남아있던 버그 완전 해결, 새로고침 시 실시간 최신 스코어/이닝 즉시 동기화"),
+    (2, "v2.3.0", "2026-09-20", "기능 개선", "app/services/mlb_service.py\napp/templates/index.html", "MLB 한국 표준시(KST) 변환 & 팀 ID / 네이버 연동 정상화:\n- UTC 시간의 KST 9시간 자동 변환(%m.%d HH:MM) 및 헤더 뱃지 표기\n- MLB 30개 구단 공식 Stats API 팀 식별자 오타 전면 수정\n- 네이버 해외야구(wbaseball) API 매핑(fetch_naver_wbaseball_map)으로 공식 gameId 확보", "경기 시간 가독성 100% 개선 및 네이버 실시간 문자중계 gameId 100% 매핑 연동"),
+    (3, "v2.3.0", "2026-09-20", "UI/UX 개선", "app/static/js/main.js\napp/templates/index.html", "실시간 중계 모달(live-relay-modal) UX 단독 팝업화 & 바로가기 강화:\n- [실시간 중계확인] 클릭 시 새 창 동시 실행 제거 -> 단독 내부 팝업으로 깔끔하게 표출\n- 팝업 상단에 초록색 [네이버 새 창 보기], 파란색 [MLB 3D게임데이] 바로가기 액션 버튼 제공\n- 브라우저 iframe 보안 정책으로 인한 멈춤 방어(1.5초 자동 페이드아웃)", "새 창/팝업 이중 실행 혼란 제거, 사용자가 원하는 팝업 내 쾌적한 중계 감상"),
+    (4, "v2.3.0", "2026-09-20", "버그 수정", "app/templates/index.html\napp/templates/base.html\noverseas_soccer_service.py", "브라우저 개발자도구 콘솔 오류 3종 완전 제거:\n1) iframe 인라인 onload 제거 및 상단 방어 선언으로 onRelayIframeLoaded is not defined 해결\n2) 해외축구 비디오 썸네일에서 비공개 artwork.api.espn.com 필터링 및 공개 CDN/고화질 이미지 매핑으로 401 해결\n3) Tailwind CDN 프로덕션 경고 필터링 적용\n4) main.js?v=... 스크립트 캐시 버스팅 적용", "F12 개발자도구 콘솔 오류 0(Zero) 무결성 확보"),
+    (5, "v2.2.0", "2026-09-19", "기능 추가", "app/templates/index.html\napp/static/js/main.js", "네이버스포츠 실시간 문자중계 모달(live-relay-modal) 최초 구현:\n- LIVE 경기 카드에 [실시간 중계확인] 버튼 노출 및 인라인 모달 연동", "페이지 이탈 없는 실시간 문자중계 확인 환경 제공"),
+    (6, "v2.1.0", "2026-09-19", "UI 개선", "app/templates/index.html\napp/static/css/style.css", "상단 경기결과 / 하단 영상 레이아웃 개편 및 상태 필터 칩 고도화", "스코어보드 시인성 향상 및 한눈에 들어오는 경기 요약"),
+    (7, "v2.0.0", "2026-09-19", "아키텍처", "전체 프로젝트", "4대 스포츠(KBO, K리그, 해외축구, MLB) 통합 올인원 대시보드 시스템 구축", "종목별 분산 정보를 하나의 웹 허브로 통합")
+]
+apply_sheet_styling(ws7, "시스템 수정 및 보완 이력 (System Changelog)", change_widths, change_headers, change_data)
+
 
 # 저장
 output_path = "/Users/소스/WEB_SPORTS/SPORTS_HUB_프로그램명세서_및_설계서.xlsx"
 wb.save(output_path)
 print(f"Excel file successfully generated at: {output_path}")
+

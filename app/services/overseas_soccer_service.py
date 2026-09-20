@@ -413,31 +413,51 @@ def fetch_soccer_recent_matches(espn_code):
             short_detail = st_type.get("shortDetail", "")
             display_clock = st_obj.get("displayClock", "")
 
-            is_live = state == "in" or "in" in state.lower() or short_detail in ["HT", "Half Time"] or ("'" in short_detail)
-            is_finished = state == "post" or short_detail in ["FT", "AET", "PEN", "Final"] or "종료" in short_detail
-            is_upcoming = not is_live and not is_finished
-
-            # UTC -> KST 한국 시간 변환 (+9h)
+            # UTC -> KST 한국 시간 완벽 변환 (+9h)
             raw_date = e.get("date", "")
-            date_str = raw_date[:10]
-            time_str = raw_date[11:16] if len(raw_date) >= 16 else ""
+            kst_dt = None
             if raw_date:
                 try:
                     if raw_date.endswith("Z"):
-                        utc_dt = datetime.strptime(raw_date, "%Y-%m-%dT%H:%MZ")
-                        kst_dt = utc_dt + timedelta(hours=9)
-                        date_str = kst_dt.strftime("%Y-%m-%d")
-                        time_str = kst_dt.strftime("%H:%M")
-                    elif "+" in raw_date:
-                        utc_dt = datetime.fromisoformat(raw_date)
-                        date_str = utc_dt.strftime("%Y-%m-%d")
-                        time_str = utc_dt.strftime("%H:%M")
+                        utc_dt = datetime.strptime(raw_date, "%Y-%m-%dT%H:%M:%SZ")
+                    else:
+                        utc_dt = datetime.fromisoformat(raw_date.replace("Z", "+00:00")).replace(tzinfo=None)
+                    kst_dt = utc_dt + timedelta(hours=9)
                 except Exception:
-                    pass
+                    try:
+                        utc_dt = datetime.strptime(raw_date[:16], "%Y-%m-%dT%H:%M")
+                        kst_dt = utc_dt + timedelta(hours=9)
+                    except Exception:
+                        pass
+
+            if kst_dt:
+                weekdays = ["월", "화", "수", "목", "금", "토", "일"]
+                date_display = f"{kst_dt.strftime('%m.%d')}({weekdays[kst_dt.weekday()]})"
+                time_str = kst_dt.strftime("%H:%M")
+                raw_date_str = kst_dt.strftime("%Y-%m-%d")
+            else:
+                date_display = raw_date[:10]
+                time_str = raw_date[11:16] if len(raw_date) >= 16 else ""
+                raw_date_str = raw_date[:10]
+
+            is_cancelled = "postpon" in short_detail.lower() or "cancel" in short_detail.lower() or "연기" in short_detail or "취소" in short_detail
+            is_finished = not is_cancelled and (state == "post" or short_detail in ["FT", "AET", "PEN", "Final"] or "종료" in short_detail)
+            is_live = not is_cancelled and not is_finished and (state == "in" or "in" in state.lower() or short_detail in ["HT", "Half Time"] or ("'" in short_detail))
+
+            # 방어 로직: KST 경기 시작 후 3.5시간 이상 경과한 경기는 종료로 안전 전환
+            if is_live and kst_dt:
+                if (now - (kst_dt.replace(tzinfo=None) if kst_dt.tzinfo else kst_dt)).total_seconds() > 3.5 * 3600:
+                    is_live = False
+                    is_finished = True
+
+            is_upcoming = not is_live and not is_finished and not is_cancelled
 
             venue = comp.get("venue", {}).get("fullName", "")
 
-            if is_live:
+            if is_cancelled:
+                status_label = "취소"
+                status_info = short_detail or "경기취소"
+            elif is_live:
                 status_label = "LIVE"
                 if "HT" in short_detail or "Half" in short_detail:
                     status_info = "하프타임 (HT)"
@@ -464,7 +484,9 @@ def fetch_soccer_recent_matches(espn_code):
 
             matches.append({
                 "game_id": ev_id,
-                "date": date_str,
+                "naver_relay_url": "https://m.sports.naver.com/wfootball/schedule/index",
+                "date": date_display,
+                "raw_date": raw_date_str,
                 "time": time_str,
                 "status": status_label,
                 "status_info": status_info,
@@ -489,14 +511,14 @@ def fetch_soccer_recent_matches(espn_code):
             })
 
         def parse_date(m):
-            raw = (m.get("date") or "")[:10]
+            raw = (m.get("raw_date") or m.get("date") or "")[:10]
             try:
                 return datetime.strptime(raw, "%Y-%m-%d")
             except Exception:
                 return None
 
         # 1) 라이브 경기
-        live_games = [m for m in matches if m["is_live"]]
+        live_games = sorted([m for m in matches if m["is_live"]], key=lambda x: (x.get("raw_date", ""), x.get("time", "")))
 
         # 2) 금주 예정 경기 (이번 주 일요일까지)
         upcoming_games = []
@@ -505,7 +527,7 @@ def fetch_soccer_recent_matches(espn_code):
                 dt = parse_date(m)
                 if dt is None or dt <= this_week_end:
                     upcoming_games.append(m)
-        upcoming_games.sort(key=lambda x: (x.get("date", ""), x.get("time", "")))
+        upcoming_games.sort(key=lambda x: (x.get("raw_date", ""), x.get("time", "")))
 
         # 3) 지난 경기: 지난주 월요일 이후 종료된 경기만 (지지난주 이전 경기 배제)
         finished_games = []
@@ -514,7 +536,7 @@ def fetch_soccer_recent_matches(espn_code):
                 dt = parse_date(m)
                 if dt is None or dt >= last_week_start:
                     finished_games.append(m)
-        finished_games.sort(key=lambda x: (x.get("date", ""), x.get("time", "")), reverse=True)
+        finished_games.sort(key=lambda x: (x.get("raw_date", ""), x.get("time", "")), reverse=True)
 
         return live_games + upcoming_games + finished_games[:8]
     except Exception as e:
@@ -618,7 +640,15 @@ def fetch_soccer_highlights(espn_code, league_key):
                     parsed = []
                     for v in videos:
                         mp4 = v.get("links", {}).get("source", {}).get("href", "")
-                        art = v.get("links", {}).get("api", {}).get("artwork", {}).get("href", "")
+                        # 썸네일: 공개 CDN 이미지 우선 (인증이 필요한 artwork.api.espn.com 은 401을 발생시키므로 필터링)
+                        raw_thumb = v.get("thumbnail") or ""
+                        if not raw_thumb or "artwork.api.espn.com" in raw_thumb:
+                            poster = v.get("posterImages", {}).get("default", {}).get("href", "")
+                            raw_thumb = poster if (poster and "artwork.api.espn.com" not in poster) else ""
+                        
+                        fallback_thumb = "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=640&auto=format&fit=crop&q=80"
+                        final_thumb = raw_thumb if (raw_thumb and "artwork.api.espn.com" not in raw_thumb) else fallback_thumb
+
                         if mp4:
                             parsed.append({
                                 "title": v.get("headline", f"{events[0].get('name', '경기')} 공식 하이라이트"),
@@ -626,7 +656,7 @@ def fetch_soccer_highlights(espn_code, league_key):
                                 "date": events[0].get("date", "")[:10],
                                 "video_url": mp4,
                                 "embed_url": "",
-                                "thumbnail": art if art else "https://a.espncdn.com/media/motion/2026/0918/dm_260918_Nicol_Chelsea_arent_performing_any_better_than_last_year/dm_260918_Nicol_Chelsea_arent_performing_any_better_than_last_year.jpg",
+                                "thumbnail": final_thumb,
                                 "source": "ESPN 공식",
                                 "type": "mp4"
                             })
@@ -639,62 +669,129 @@ def fetch_soccer_highlights(espn_code, league_key):
 
 
 def get_overseas_soccer_data(force_refresh=False):
-    """해외축구 전체 5대 대회 데이터 조회 및 캐싱"""
-    if not force_refresh and os.path.exists(CACHE_FILE):
+    """
+    해외축구 전체 5대 대회 데이터 조회 및 캐싱
+    - 전체 크롤링(순위, 하이라이트 등): 30분 TTL 캐싱
+    - 경기 일정/LIVE 스코어(recent_matches): LIVE 경기 시 25초, 일반 시 2분 주기로 동적 갱신
+    - 페이지 새로고침 시 LIVE 경기의 최신 시간/스코어/종료 여부를 즉시 반영
+    """
+    cached_data = None
+    cache_valid = False
+    now = datetime.now()
+
+    if os.path.exists(CACHE_FILE):
         try:
             with open(CACHE_FILE, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            # 캐시 데이터가 유효하면 즉시 반환 (무료 서버 리소스 절약을 위해 자동 크롤링 방지)
-            if "recent_matches" in data.get("leagues", {}).get("epl", {}):
-                return data
+                cached_data = json.load(f)
+            if "recent_matches" in cached_data.get("leagues", {}).get("epl", {}):
+                cache_valid = True
         except Exception as e:
             print(f"해외축구 캐시 로드 에러: {e}")
 
-    result_leagues = {}
-    for key, cfg in LEAGUES.items():
-        # 1. Goal.com 시도 후, 없거나 비어있으면 ESPN 연동
-        teams = []
-        if cfg["goalUrl"]:
-            teams = fetch_standings_goal(cfg["goalUrl"])
-        if not teams:
-            teams = fetch_standings_espn(cfg["espnCode"])
+    # 1. 전체 데이터 갱신 필요 여부 판단 (기본 30분 TTL)
+    need_full_refresh = force_refresh or not cache_valid
+    if cache_valid and not need_full_refresh:
+        updated_at_str = cached_data.get("updated_at")
+        if updated_at_str:
+            try:
+                updated_time = datetime.strptime(updated_at_str, "%Y-%m-%d %H:%M:%S")
+                if (now - updated_time).total_seconds() > 1800:
+                    need_full_refresh = True
+            except Exception:
+                pass
 
-        # 2. 선수 랭킹
-        players = fetch_player_leaders_espn(cfg["espnCode"])
+    if need_full_refresh:
+        result_leagues = {}
+        for key, cfg in LEAGUES.items():
+            # 1. Goal.com 시도 후, 없거나 비어있으면 ESPN 연동
+            teams = []
+            if cfg["goalUrl"]:
+                teams = fetch_standings_goal(cfg["goalUrl"])
+            if not teams:
+                teams = fetch_standings_espn(cfg["espnCode"])
 
-        # 3. 구단 허브
-        hub = build_soccer_team_hub(teams, players)
+            # 2. 선수 랭킹
+            players = fetch_player_leaders_espn(cfg["espnCode"])
 
-        # 4. 최근 경기 결과
-        recent_matches = fetch_soccer_recent_matches(cfg["espnCode"])
+            # 3. 구단 허브
+            hub = build_soccer_team_hub(teams, players)
 
-        # 5. 공식 하이라이트 영상
-        highlights = fetch_soccer_highlights(cfg["espnCode"], key)
+            # 4. 최근 경기 결과
+            recent_matches = fetch_soccer_recent_matches(cfg["espnCode"])
 
-        result_leagues[key] = {
-            "key": key,
-            "name": cfg["name"],
-            "shortName": cfg["shortName"],
-            "country": cfg["country"],
-            "color": cfg["color"],
-            "icon": cfg["icon"],
-            "teams": teams,
-            "players": players,
-            "team_hub": hub,
-            "recent_matches": recent_matches,
-            "highlights": highlights
+            # 5. 공식 하이라이트 영상
+            highlights = fetch_soccer_highlights(cfg["espnCode"], key)
+
+            result_leagues[key] = {
+                "key": key,
+                "name": cfg["name"],
+                "shortName": cfg["shortName"],
+                "country": cfg["country"],
+                "color": cfg["color"],
+                "icon": cfg["icon"],
+                "teams": teams,
+                "players": players,
+                "team_hub": hub,
+                "recent_matches": recent_matches,
+                "highlights": highlights
+            }
+
+        data = {
+            "sports": "overseas",
+            "title": "해외 축구 (Overseas Football)",
+            "updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
+            "updated_at_iso": now.isoformat(),
+            "matches_updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
+            "leagues": result_leagues
         }
 
-    now = datetime.now()
-    data = {
-        "sports": "overseas",
-        "title": "해외 축구 (Overseas Football)",
-        "updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
-        "updated_at_iso": now.isoformat(),
-        "leagues": result_leagues
-    }
+        with open(CACHE_FILE, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
 
-    with open(CACHE_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+        return data
 
-    return data
+    # 2. 캐시가 유효한 경우: 각 리그별 경기 결과 및 LIVE 스코어의 동적 갱신 여부 확인!
+    has_live = False
+    for l_val in cached_data.get("leagues", {}).values():
+        if any(m.get("is_live") for m in l_val.get("recent_matches", [])):
+            has_live = True
+            break
+
+    matches_updated_at = cached_data.get("matches_updated_at")
+    need_matches_refresh = False
+
+    if has_live:
+        if not matches_updated_at:
+            need_matches_refresh = True
+        else:
+            try:
+                m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
+                if (now - m_time).total_seconds() >= 25:
+                    need_matches_refresh = True
+            except Exception:
+                need_matches_refresh = True
+    else:
+        if not matches_updated_at:
+            need_matches_refresh = True
+        else:
+            try:
+                m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
+                if (now - m_time).total_seconds() >= 120:
+                    need_matches_refresh = True
+            except Exception:
+                need_matches_refresh = True
+
+    if need_matches_refresh:
+        try:
+            for key, cfg in LEAGUES.items():
+                if key in cached_data.get("leagues", {}):
+                    new_matches = fetch_soccer_recent_matches(cfg["espnCode"])
+                    if new_matches:
+                        cached_data["leagues"][key]["recent_matches"] = new_matches
+            cached_data["matches_updated_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
+            with open(CACHE_FILE, "w", encoding="utf-8") as f:
+                json.dump(cached_data, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"해외축구 경기 동적 갱신 에러: {e}")
+
+    return cached_data

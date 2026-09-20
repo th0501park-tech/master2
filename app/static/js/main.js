@@ -118,7 +118,66 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 250);
         });
     }
+
+    // 실시간 LIVE 경기 자동 폴링 시작 (30초 주기)
+    startLivePolling();
 });
+
+// ========================================================
+// 실시간 LIVE 경기 자동 폴링 (Auto-polling)
+// ========================================================
+let livePollingInterval = null;
+
+function hasActiveLiveMatches() {
+    const d = window.INITIAL_DATA;
+    if (!d) return false;
+    if (currentSport === "kbo") {
+        return (d.kbo?.recent_matches || []).some(m => m.is_live || m.status === "LIVE");
+    } else if (currentSport === "kleague") {
+        const k1 = d.kleague?.k1?.recent_matches || [];
+        const k2 = d.kleague?.k2?.recent_matches || [];
+        return [...k1, ...k2].some(m => m.is_live || m.status === "LIVE");
+    } else if (currentSport === "overseas") {
+        const leagues = d.overseas?.leagues || {};
+        for (const l of Object.values(leagues)) {
+            if ((l.recent_matches || []).some(m => m.is_live || m.status === "LIVE")) return true;
+        }
+        return false;
+    } else if (currentSport === "mlb") {
+        return (d.mlb?.recent_matches || []).some(m => m.is_live || m.status === "LIVE");
+    }
+    return false;
+}
+
+async function pollLiveMatches() {
+    try {
+        const resp = await fetch(`/api/data?sport=${currentSport}`);
+        if (!resp.ok) return;
+        const freshData = await resp.json();
+        if (freshData && !freshData.error) {
+            window.INITIAL_DATA[currentSport] = freshData;
+            updateLastUpdatedTime(currentSport);
+            // 경기 렌더링 갱신
+            if (currentSport === "kbo") renderKboMatches();
+            else if (currentSport === "kleague") renderKLeague();
+            else if (currentSport === "overseas") renderOverseas();
+            else if (currentSport === "mlb") renderMlbMatches();
+        }
+    } catch (e) {
+        console.debug("Live polling error:", e);
+    }
+}
+
+function startLivePolling() {
+    if (livePollingInterval) clearInterval(livePollingInterval);
+    // 30초마다 폴링 확인
+    livePollingInterval = setInterval(() => {
+        // 브라우저 탭이 활성화되어 있고 LIVE 경기가 있을 때 자동 갱신
+        if (!document.hidden && hasActiveLiveMatches()) {
+            pollLiveMatches();
+        }
+    }, 30000);
+}
 
 // ========================================================
 // 마이팀 (선호 구단) 핵심 로직
@@ -849,7 +908,7 @@ function renderKboMatches() {
                 <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
                     <span class="text-gray-400 truncate">${m.broadcast || '공식 중계'}</span>
                     ${isLive ? `
-                    <button type="button" onclick="openLiveRelayModal('${m.game_id || ''}', '${m.away_team}', '${m.home_team}', 'kbo')" 
+                    <button type="button" onclick="openLiveRelayModal('${m.game_id || ''}', '${m.away_team}', '${m.home_team}', 'kbo', '', '${m.naver_relay_url || ''}')" 
                             class="px-2.5 py-1 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-950/60 dark:hover:bg-red-900/80 dark:text-red-300 font-bold flex items-center space-x-1.5 active:scale-95 transition-all shadow-xs border border-red-200 dark:border-red-900/40"
                             title="네이버스포츠 실시간 문자중계 보기">
                         <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
@@ -1136,7 +1195,7 @@ function renderKLeague() {
                     <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
                         <span class="text-gray-400 truncate">${m.field_name || '경기장'}</span>
                         ${isLive ? `
-                        <button type="button" onclick="openLiveRelayModal('${m.game_id || ''}', '${m.home_team}', '${m.away_team}', 'kleague')" 
+                        <button type="button" onclick="openLiveRelayModal('${m.game_id || ''}', '${m.home_team}', '${m.away_team}', 'kleague', '', '${m.naver_relay_url || ''}')" 
                                 class="px-2.5 py-1 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-950/60 dark:hover:bg-red-900/80 dark:text-red-300 font-bold flex items-center space-x-1.5 active:scale-95 transition-all shadow-xs border border-red-200 dark:border-red-900/40"
                                 title="네이버스포츠 실시간 문자중계 보기">
                             <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
@@ -1492,7 +1551,7 @@ function renderOverseas() {
                     <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
                         <span class="text-gray-400 truncate">${m.venue || '경기장'}</span>
                         ${isLive ? `
-                        <button type="button" onclick="openLiveRelayModal('${m.game_id || ''}', '${m.home_team}', '${m.away_team}', 'overseas')" 
+                        <button type="button" onclick="openLiveRelayModal('${m.game_id || ''}', '${m.home_team}', '${m.away_team}', 'overseas', '', '${m.naver_relay_url || ''}')" 
                                 class="px-2.5 py-1 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-950/60 dark:hover:bg-red-900/80 dark:text-red-300 font-bold flex items-center space-x-1.5 active:scale-95 transition-all shadow-xs border border-red-200 dark:border-red-900/40"
                                 title="네이버스포츠 실시간 문자중계 보기">
                             <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
@@ -1981,9 +2040,9 @@ function renderMlbMatches() {
             <div class="pt-2 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between text-[11px]">
                 <span class="text-gray-400 truncate">${m.venue || '경기장'}</span>
                 ${isLive ? `
-                <button type="button" onclick="openLiveRelayModal('${m.game_id || ''}', '${m.away_team}', '${m.home_team}', 'mlb')" 
+                <button type="button" onclick="openLiveRelayModal('${m.game_id || ''}', '${m.away_team}', '${m.home_team}', 'mlb', '${m.gameday_url || ''}', '${m.naver_relay_url || ''}')" 
                         class="px-2.5 py-1 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-950/60 dark:hover:bg-red-900/80 dark:text-red-300 font-bold flex items-center space-x-1.5 active:scale-95 transition-all shadow-xs border border-red-200 dark:border-red-900/40"
-                        title="네이버스포츠 실시간 문자중계 보기">
+                        title="네이버스포츠 & 공식 실시간 중계 보기">
                     <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
                     <span>실시간 중계확인</span>
                 </button>
@@ -2363,8 +2422,9 @@ async function refreshCurrentSport() {
 
             // 해당 종목 재렌더링
             if (currentSport === "kbo") {
-                // KBO 테이블 및 리더스 갱신은 페이지 reload 또는 DOM 갱신
-                window.location.reload();
+                renderKboMatches();
+                renderKboHighlights();
+                renderKboStandings();
             } else if (currentSport === "kleague") {
                 renderKLeague();
             } else if (currentSport === "overseas") {
@@ -2817,54 +2877,107 @@ function focusMlbHighlight(t1, t2) {
 // ==========================================
 function getNaverRelayUrl(gameId, sportCategory) {
     if (gameId && typeof gameId === 'string' && gameId.trim().length > 0 && gameId !== 'undefined' && gameId !== 'null') {
-        return `https://m.sports.naver.com/game/${encodeURIComponent(gameId.trim())}/relay`;
+        const cleanId = gameId.trim();
+        // 네이버 정식 게임 ID 형식: 8자리 날짜 + 팀코드 (예: 20260920OACL0, 2026092012K01)
+        // 순수 숫자 5~8자리(MLB gamePk, ESPN id 등)는 네이버 중계 URL이 아니므로 종목별 일정센터로 연결
+        const isNaverGameId = /^[0-9]{8}[A-Za-z0-9]+$/.test(cleanId);
+        if (isNaverGameId) {
+            return `https://m.sports.naver.com/game/${encodeURIComponent(cleanId)}/relay`;
+        }
     }
     switch (sportCategory) {
         case 'kbo':
-            return 'https://m.sports.naver.com/kbaseball/index';
+            return 'https://m.sports.naver.com/kbaseball/schedule/index';
         case 'kleague':
-            return 'https://m.sports.naver.com/kleague/index';
+            return 'https://m.sports.naver.com/kleague/schedule/index';
         case 'overseas':
-            return 'https://m.sports.naver.com/wfootball/index';
+            return 'https://m.sports.naver.com/wfootball/schedule/index';
         case 'mlb':
-            return 'https://m.sports.naver.com/wbaseball/index';
+            return 'https://m.sports.naver.com/wbaseball/schedule/index';
         default:
             return 'https://m.sports.naver.com/';
     }
 }
 
-function openLiveRelayModal(gameId, awayTeam, homeTeam, sportCategory = 'kbo') {
+function openLiveRelayModal(gameId, awayTeam, homeTeam, sportCategory = 'kbo', gamedayUrl = '', naverRelayUrl = '') {
     const modal = document.getElementById('live-relay-modal');
     const iframe = document.getElementById('live-relay-iframe');
     const titleEl = document.getElementById('relay-modal-title');
     const subtitleEl = document.getElementById('relay-modal-subtitle');
     const extLink = document.getElementById('relay-modal-external-link');
+    const gamedayLink = document.getElementById('relay-modal-gameday-link');
+    const btnNaver = document.getElementById('relay-modal-btn-naver');
+    const btnGameday = document.getElementById('relay-modal-btn-gameday');
+    const directBtn = document.getElementById('relay-loader-direct-btn');
     const loader = document.getElementById('relay-iframe-loader');
 
-    if (!modal || !iframe) return;
+    // 최종 네이버 중계 URL 산출
+    const finalNaverUrl = (naverRelayUrl && typeof naverRelayUrl === 'string' && naverRelayUrl.startsWith('http')) 
+        ? naverRelayUrl 
+        : getNaverRelayUrl(gameId, sportCategory);
 
-    const url = getNaverRelayUrl(gameId, sportCategory);
+    if (!modal) return;
 
+    // 2. 모달 내 텍스트 및 링크 설정
     if (titleEl) {
         titleEl.innerText = (awayTeam && homeTeam) 
-            ? `${awayTeam} vs ${homeTeam} 실시간 문자중계` 
-            : '네이버스포츠 실시간 문자중계';
+            ? `${awayTeam} vs ${homeTeam} 실시간 중계` 
+            : '실시간 공식 중계센터';
     }
     if (subtitleEl) {
         const catName = sportCategory === 'kbo' ? 'KBO 프로야구' : (sportCategory === 'mlb' ? 'MLB 메이저리그' : (sportCategory === 'kleague' ? 'K리그' : '해외축구'));
-        subtitleEl.innerText = `${catName} 공식 실시간 볼카운트 & 투구/경기 상황 문자중계`;
-    }
-    if (extLink) {
-        extLink.href = url;
+        subtitleEl.innerText = (sportCategory === 'mlb')
+            ? 'MLB 공식 실시간 볼카운트 & 투구/타석 추적 문자중계'
+            : `${catName} 공식 실시간 볼카운트 & 투구/경기 상황 문자중계`;
     }
 
+    // 네이버 바로가기 링크들 업데이트
+    if (extLink) extLink.href = finalNaverUrl;
+    if (btnNaver) btnNaver.href = finalNaverUrl;
+    if (directBtn) directBtn.href = finalNaverUrl;
+
+    // MLB GameDay 링크 처리
+    let resolvedGamedayUrl = gamedayUrl;
+    if (!resolvedGamedayUrl && sportCategory === 'mlb') {
+        if (/^\d{5,8}$/.test(String(gameId))) {
+            resolvedGamedayUrl = `https://www.mlb.com/gameday/${gameId}`;
+        }
+    }
+
+    if (gamedayLink) {
+        if (resolvedGamedayUrl) {
+            gamedayLink.href = resolvedGamedayUrl;
+            gamedayLink.classList.remove('hidden');
+        } else {
+            gamedayLink.classList.add('hidden');
+        }
+    }
+    if (btnGameday) {
+        if (resolvedGamedayUrl) {
+            btnGameday.href = resolvedGamedayUrl;
+            btnGameday.classList.remove('hidden');
+        } else {
+            btnGameday.classList.add('hidden');
+        }
+    }
+
+    // 3. 로더 및 iframe 세팅
     if (loader) {
         loader.classList.remove('hidden');
         loader.style.opacity = '1';
+        // 브라우저 iframe 보안 정책으로 인한 멈춤 방지를 위해 1.5초 후 자동 페이드아웃
+        setTimeout(() => {
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.classList.add('hidden'), 250);
+            }
+        }, 1500);
     }
 
-    // iframe URL 변경 및 모달 표시
-    iframe.src = url;
+    if (iframe) {
+        iframe.src = finalNaverUrl;
+    }
+
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 }

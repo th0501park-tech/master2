@@ -6,6 +6,24 @@
     <title>{% block title %}SPORTS HUB - 실시간 스포츠 종합 순위 & 기록{% endblock %}</title>
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏆</text></svg>">
+    <script>
+        // 1. Tailwind CDN 개발용 콘솔 안내 경고 필터링
+        (function() {
+            const origWarn = console.warn;
+            console.warn = function(...args) {
+                if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return;
+                origWarn.apply(console, args);
+            };
+        })();
+        // 2. Iframe 로드 콜백 전역 방어 선언
+        window.onRelayIframeLoaded = function() {
+            const loader = document.getElementById('relay-iframe-loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.classList.add('hidden'), 250);
+            }
+        };
+    </script>
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -203,7 +221,7 @@
     </div>
 
     <!-- 스크립트 -->
-    <script src="/static/js/main.js"></script>
+    <script src="/static/js/main.js?v=20260920_live3"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>

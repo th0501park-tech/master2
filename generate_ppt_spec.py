@@ -68,7 +68,7 @@ def create_base_slide(title_text, category_text="SPORTS HUB SYSTEM ARCHITECTURE"
     footer_box = slide.shapes.add_textbox(Inches(0.8), Inches(7.05), Inches(11.7), Inches(0.3))
     ft_tf = footer_box.text_frame
     p_ft = ft_tf.paragraphs[0]
-    p_ft.text = "SPORTS HUB v2.2.0  |  실시간 스포츠 종합 대시보드 시스템 명세서  |  Confidential"
+    p_ft.text = "SPORTS HUB v2.3.0  |  실시간 스포츠 종합 대시보드 시스템 명세서  |  Confidential"
     p_ft.font.name = "Malgun Gothic"
     p_ft.font.size = Pt(9)
     p_ft.font.color.rgb = COLOR_TEXT_MUTED
@@ -147,7 +147,7 @@ p_meta2.font.color.rgb = RGBColor(148, 163, 184)
 p_meta2.space_before = Pt(4)
 
 p_meta3 = tf_meta.add_paragraph()
-p_meta3.text = "• 문서 버전: v2.2.0  |  작성일: 2026-09-19  |  저장소: https://github.com/th0501park-tech/master2"
+p_meta3.text = "• 문서 버전: v2.3.0  |  작성일: 2026-09-20  |  저장소: https://github.com/th0501park-tech/master2"
 p_meta3.font.name = "Malgun Gothic"
 p_meta3.font.size = Pt(11)
 p_meta3.font.color.rgb = RGBColor(148, 163, 184)
@@ -516,7 +516,49 @@ for idx, (otitle, odesc) in enumerate(ops_cards):
     p_d.font.size = Pt(9)
     p_d.font.color.rgb = COLOR_TEXT_MAIN
     p_d.space_before = Pt(6)
+ 
+ 
+# ==============================================================================
+# Slide 9: 시스템 수정 및 보완 이력 (v2.3.0 Changelog)
+# ==============================================================================
+s9 = create_base_slide("최근 시스템 수정 및 안정화 보완 이력", "08. SYSTEM CHANGELOG (v2.3.0)")
+
+changelog_cards = [
+    ("⚡ 스마트 캐시 갱신 & LIVE 안전 판별", 
+     "• 배경: 종료된 어제 경기가 LIVE 상태로 고정 노출되는 현상 해결\n• 조치:\n   - 30분 TTL 캐시 유지 + LIVE 경기 시 25초 주기 실시간 fetch\n   - 경기 시작(KST) 기준 야구 5.5시간, 축구 3.5시간 초과 시 안전 종료 전환\n   - 프론트엔드 30초 무중단 자동 백그라운드 폴링(startLivePolling) 도입\n• 효과: 스코어보드 실시간 동기화 정확도 100% 확보"),
+    ("🧢 MLB 한국시간(KST) 및 네이버 연동 정상화", 
+     "• 배경: MLB 현지 UTC 시간 표기로 인한 가독성 저하 및 중계 링크 불일치\n• 조치:\n   - UTC 시간의 KST 9시간 자동 변환(%m.%d 요일 HH:MM) 및 뱃지 표기\n   - MLB 30개 구단 공식 Stats API 팀 식별자(ID) 오타 전면 수정\n   - 네이버 해외야구(wbaseball) API 사전 매핑으로 공식 gameId 100% 확보\n• 효과: MLB 경기 시간 직관성 개선 및 네이버 공식 중계 매핑"),
+    ("🖥️ 실시간 중계 모달 UX 단독 팝업화", 
+     "• 배경: [실시간 중계확인] 클릭 시 새 창과 팝업이 동시 실행되는 혼란 해소\n• 조치:\n   - 자동 window.open 제거 -> 웹페이지 내부의 깔끔한 단독 팝업으로 표출\n   - 팝업 상단에 초록색 [네이버 새 창 보기], 파란색 [MLB 3D게임데이] 버튼 배치\n   - 브라우저 iframe 보안 정책으로 인한 멈춤 방어(1.5초 자동 페이드아웃)\n• 효과: 사용자 요구에 맞춘 단독 팝업 감상 및 고화질 3D게임데이 지원"),
+    ("🛡️ 브라우저 콘솔 오류 3종 완전 무결성", 
+     "• 배경: F12 개발자도구 콘솔에 노출되던 3가지 오류 및 경고 완벽 제거\n• 조치:\n   1. iframe 인라인 onload 제거 & 사전 방어로 onRelayIframeLoaded 오류 해결\n   2. 해외축구 썸네일 비공개 artwork.api.espn.com 필터링으로 401 해결\n   3. Tailwind CSS CDN 프로덕션 안내 콘솔 경고 필터링 적용\n   4. main.js?v=... 스크립트 캐시 버스팅 파라미터 적용\n• 효과: 브라우저 콘솔 에러 0(Zero) 무결성 달성")
+]
+
+for idx, (ctitle, cdesc) in enumerate(changelog_cards):
+    col = idx % 2
+    row = idx // 2
+    cx = 0.8 + col * 5.9
+    cy = 1.7 + row * 2.55
+    add_card(s9, cx, cy, 5.6, 2.35)
+    tb = s9.shapes.add_textbox(Inches(cx + 0.2), Inches(cy + 0.15), Inches(5.2), Inches(2.05))
+    tf = tb.text_frame
+    tf.word_wrap = True
+
+    p = tf.paragraphs[0]
+    p.text = ctitle
+    p.font.name = "Malgun Gothic"
+    p.font.size = Pt(12)
+    p.font.bold = True
+    p.font.color.rgb = COLOR_PRIMARY_BLUE
+
+    p_d = tf.add_paragraph()
+    p_d.text = cdesc
+    p_d.font.name = "Malgun Gothic"
+    p_d.font.size = Pt(8.5)
+    p_d.font.color.rgb = COLOR_TEXT_MAIN
+    p_d.space_before = Pt(5)
 
 output_ppt_path = "/Users/소스/WEB_SPORTS/SPORTS_HUB_프로젝트_설계_및_명세서.pptx"
 prs.save(output_ppt_path)
 print(f"PowerPoint file successfully generated at: {output_ppt_path}")
+

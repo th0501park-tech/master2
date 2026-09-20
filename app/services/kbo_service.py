@@ -270,12 +270,36 @@ def fetch_kbo_recent_matches():
                 status_code = g.get("statusCode", "")
                 status_info = g.get("statusInfo", "")
 
-                # 상태 판별: LIVE, 종료, 예정 (statusCode 우선 판별)
-                is_finished = status_code in ["RESULT", "END"] or "종료" in status_info
-                is_live = not is_finished and (status_code in ["STARTED", "ING", "PROGRESS", "PLAY"] or ("회" in status_info and "경기전" not in status_info and "종료" not in status_info))
-                is_upcoming = not is_live and not is_finished
+                # 상태 판별: LIVE, 종료, 예정, 취소
+                is_cancelled = status_code in ["CANCEL", "POSTPONED", "SUSPENDED"] or "취소" in status_info
+                is_finished = not is_cancelled and (status_code in ["RESULT", "END"] or "종료" in status_info)
+                is_live = not is_cancelled and not is_finished and (
+                    status_code in ["STARTED", "ING", "PROGRESS", "PLAY"] or
+                    ("회" in status_info and "경기전" not in status_info and "종료" not in status_info)
+                )
 
+                # 방어 로직: 과거 날짜 경기이거나 시작 후 5.5시간 이상 경과한 경기는 절대 LIVE로 남지 않도록 차단
+                g_dt = g.get("gameDateTime", "")
+                date_str = g.get("gameDate", "")
                 if is_live:
+                    if date_str and date_str < now.strftime("%Y-%m-%d"):
+                        is_live = False
+                        is_finished = True
+                    elif g_dt:
+                        try:
+                            game_time_obj = datetime.strptime(g_dt[:16], "%Y-%m-%d %H:%M")
+                            if (now - game_time_obj).total_seconds() > 5.5 * 3600:
+                                is_live = False
+                                is_finished = True
+                        except Exception:
+                            pass
+
+                is_upcoming = not is_live and not is_finished and not is_cancelled
+
+                if is_cancelled:
+                    status_label = "취소"
+                    display_status_info = status_info or "우천취소"
+                elif is_live:
                     status_label = "LIVE"
                     display_status_info = status_info or "LIVE 진행중"
                 elif is_finished:
@@ -335,6 +359,7 @@ def fetch_kbo_recent_matches():
 
                 matches.append({
                     'game_id': g.get("gameId", ""),
+                    'naver_relay_url': f"https://m.sports.naver.com/game/{g.get('gameId')}/relay" if g.get("gameId") else "https://m.sports.naver.com/kbaseball/schedule/index",
                     'date': date_display,
                     'raw_date': date_str,
                     'time': time_str,
@@ -602,46 +627,108 @@ def fetch_kbo_highlights():
 
 
 def get_kbo_data(force_refresh=False):
-    """KBO 데이터 조회 (5분 캐시 적용)"""
-    if not force_refresh and os.path.exists(CACHE_FILE):
+    """
+    KBO 데이터 조회
+    - 전체 크롤링(순위, 하이라이트 등): 30분 TTL 캐싱
+    - 경기 일정/LIVE 스코어(recent_matches): LIVE 경기 시 25초, 일반 시 2분 주기로 동적 갱신
+    - 페이지 새로고침 시 LIVE 경기의 최신 이닝/스코어/종료 여부를 즉시 반영
+    """
+    cached_data = None
+    cache_valid = False
+    now = datetime.now()
+
+    if os.path.exists(CACHE_FILE):
         try:
             with open(CACHE_FILE, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            # 캐시 데이터가 유효하면 즉시 반환 (무료 서버 리소스 절약을 위해 자동 크롤링 방지)
-            if "recent_matches" in data and "highlights" in data:
-                return data
+                cached_data = json.load(f)
+            if "recent_matches" in cached_data and "teams" in cached_data:
+                cache_valid = True
         except Exception as e:
             print(f"KBO 캐시 로드 에러: {e}")
 
-    try:
-        team_ranks = fetch_team_rankings()
-        hitters, pitchers = fetch_player_rankings()
-        team_hub = build_team_hub(team_ranks, hitters, pitchers)
-        recent_matches = fetch_kbo_recent_matches()
-        highlights = fetch_kbo_highlights()
+    # 1. 전체 데이터 갱신 필요 여부 판단 (기본 30분 TTL)
+    need_full_refresh = force_refresh or not cache_valid
+    if cache_valid and not need_full_refresh:
+        updated_at_str = cached_data.get("updated_at")
+        if updated_at_str:
+            try:
+                updated_time = datetime.strptime(updated_at_str, "%Y-%m-%d %H:%M:%S")
+                # 30분(1800초) 이상 경과 시 전체 갱신
+                if (now - updated_time).total_seconds() > 1800:
+                    need_full_refresh = True
+            except Exception:
+                pass
 
-        now = datetime.now()
-        data = {
-            "sports": "kbo",
-            "title": "KBO 한국야구",
-            "updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
-            "updated_at_iso": now.isoformat(),
-            "teams": team_ranks,
-            "hitters": hitters,
-            "pitchers": pitchers,
-            "team_hub": team_hub,
-            "recent_matches": recent_matches,
-            "highlights": highlights,
-            "team_info": TEAM_INFO
-        }
+    if need_full_refresh:
+        try:
+            team_ranks = fetch_team_rankings()
+            hitters, pitchers = fetch_player_rankings()
+            team_hub = build_team_hub(team_ranks, hitters, pitchers)
+            recent_matches = fetch_kbo_recent_matches()
+            highlights = fetch_kbo_highlights()
 
-        with open(CACHE_FILE, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
+            data = {
+                "sports": "kbo",
+                "title": "KBO 한국야구",
+                "updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "updated_at_iso": now.isoformat(),
+                "matches_updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "teams": team_ranks,
+                "hitters": hitters,
+                "pitchers": pitchers,
+                "team_hub": team_hub,
+                "recent_matches": recent_matches,
+                "highlights": highlights,
+                "team_info": TEAM_INFO
+            }
 
-        return data
-    except Exception as e:
-        print(f"KBO 크롤링 에러: {e}")
-        if os.path.exists(CACHE_FILE):
-            with open(CACHE_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
-        raise e
+            with open(CACHE_FILE, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+
+            return data
+        except Exception as e:
+            print(f"KBO 전체 크롤링 에러: {e}")
+            if cached_data:
+                return cached_data
+            raise e
+
+    # 2. 캐시가 유효한 경우: 경기 결과 및 LIVE 스코어의 동적 갱신 여부 확인!
+    has_live = any(m.get("is_live") for m in cached_data.get("recent_matches", []))
+    matches_updated_at = cached_data.get("matches_updated_at")
+    need_matches_refresh = False
+
+    if has_live:
+        # LIVE 경기 진행 중: 페이지 새로고침 시 25초 이상 경과했으면 즉시 최신 정보 fetch
+        if not matches_updated_at:
+            need_matches_refresh = True
+        else:
+            try:
+                m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
+                if (now - m_time).total_seconds() >= 25:
+                    need_matches_refresh = True
+            except Exception:
+                need_matches_refresh = True
+    else:
+        # LIVE 경기가 없더라도 2분(120초) 이상 지났으면 최신 경기 스케줄/결과 확인
+        if not matches_updated_at:
+            need_matches_refresh = True
+        else:
+            try:
+                m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
+                if (now - m_time).total_seconds() >= 120:
+                    need_matches_refresh = True
+            except Exception:
+                need_matches_refresh = True
+
+    if need_matches_refresh:
+        try:
+            new_matches = fetch_kbo_recent_matches()
+            if new_matches:
+                cached_data["recent_matches"] = new_matches
+                cached_data["matches_updated_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
+                with open(CACHE_FILE, "w", encoding="utf-8") as f:
+                    json.dump(cached_data, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"KBO 경기 동적 갱신 에러: {e}")
+
+    return cached_data

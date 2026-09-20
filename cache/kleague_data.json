@@ -1,8 +1,8 @@
 {
   "sports": "kleague",
   "title": "K리그 (K LEAGUE)",
-  "updated_at": "2026-09-19 19:33:17",
-  "updated_at_iso": "2026-09-19T19:33:17.971907",
+  "updated_at": "2026-09-20 08:56:08",
+  "updated_at_iso": "2026-09-20T08:56:08.971094",
   "highlights": [
     {
       "title": "[30분 하이라이트] 하나은행 K리그1 2026 29R 광주 vs 안양 (2026-09-13)",
@@ -166,14 +166,14 @@
         "win": 14,
         "draw": 5,
         "loss": 11,
-        "goalsFor": 44,
-        "goalsAgainst": 39,
+        "goalsFor": 45,
+        "goalsAgainst": 40,
         "goalDiff": 5,
         "recent": [
           "승",
+          "승",
           "무",
           "승",
-          "패",
           "패"
         ],
         "homepage": "https://www.uhdfc.com/fc/greetings.php"
@@ -291,15 +291,15 @@
         "win": 9,
         "draw": 11,
         "loss": 10,
-        "goalsFor": 37,
-        "goalsAgainst": 46,
+        "goalsFor": 38,
+        "goalsAgainst": 47,
         "goalDiff": -9,
         "recent": [
+          "무",
           "패",
           "패",
           "무",
-          "승",
-          "패"
+          "승"
         ],
         "homepage": "https://www.fc-anyang.com"
       },
@@ -372,8 +372,8 @@
         "recent": [
           "무",
           "무",
-          "패",
           "무",
+          "패",
           "무"
         ],
         "homepage": "https://gimcheonfc.com/"
@@ -395,11 +395,11 @@
         "goalsAgainst": 40,
         "goalDiff": -9,
         "recent": [
+          "무",
           "패",
           "패",
           "무",
-          "패",
-          "승"
+          "패"
         ],
         "homepage": "https://www.bfc1995.com"
       },
@@ -503,9 +503,9 @@
             "teamColor": "#002B49",
             "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K01.png",
             "backNo": 10,
-            "value": "10골 (29경기)",
+            "value": "11골 (29경기)",
             "games": 29,
-            "perGame": "0.34"
+            "perGame": "0.38"
           },
           {
             "rank": 6,
@@ -720,9 +720,9 @@
           "teamColor": "#002B49",
           "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K01.png",
           "backNo": 10,
-          "value": "20P (10골 10도움)",
+          "value": "21P (11골 10도움)",
           "games": 29,
-          "perGame": "0.69"
+          "perGame": "0.72"
         },
         "ranks": [
           {
@@ -733,9 +733,9 @@
             "teamColor": "#002B49",
             "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K01.png",
             "backNo": 10,
-            "value": "20P (10골 10도움)",
+            "value": "21P (11골 10도움)",
             "games": 29,
-            "perGame": "0.69"
+            "perGame": "0.72"
           },
           {
             "rank": 2,
@@ -763,6 +763,18 @@
           },
           {
             "rank": 4,
+            "name": "야고",
+            "playerId": "20230315",
+            "team": "울산",
+            "teamColor": "#002B49",
+            "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K01.png",
+            "backNo": 99,
+            "value": "14P (13골 1도움)",
+            "games": 23,
+            "perGame": "0.61"
+          },
+          {
+            "rank": 4,
             "name": "갈레고",
             "playerId": "20220353",
             "team": "부천",
@@ -786,19 +798,7 @@
             "perGame": "0.48"
           },
           {
-            "rank": 6,
-            "name": "야고",
-            "playerId": "20230315",
-            "team": "울산",
-            "teamColor": "#002B49",
-            "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K01.png",
-            "backNo": 99,
-            "value": "13P (13골 0도움)",
-            "games": 23,
-            "perGame": "0.57"
-          },
-          {
-            "rank": 6,
+            "rank": 7,
             "name": "무고사",
             "playerId": "20180196",
             "team": "인천",
@@ -810,7 +810,7 @@
             "perGame": "0.52"
           },
           {
-            "rank": 6,
+            "rank": 7,
             "name": "클리말라",
             "playerId": "20250331",
             "team": "서울",
@@ -1052,7 +1052,7 @@
           },
           {
             "category": "공격포인트 순위 (Attacking Points)",
-            "rank": 6,
+            "rank": 7,
             "name": "클리말라",
             "value": "13P (12골 1도움)",
             "backNo": 9
@@ -1080,14 +1080,14 @@
           "win": 14,
           "draw": 5,
           "loss": 11,
-          "goalsFor": 44,
-          "goalsAgainst": 39,
+          "goalsFor": 45,
+          "goalsAgainst": 40,
           "goalDiff": 5,
           "recent": [
             "승",
+            "승",
             "무",
             "승",
-            "패",
             "패"
           ],
           "homepage": "https://www.uhdfc.com/fc/greetings.php"
@@ -1104,7 +1104,7 @@
             "category": "득점 순위 (Top Scorers)",
             "rank": 5,
             "name": "이동경",
-            "value": "10골 (29경기)",
+            "value": "11골 (29경기)",
             "backNo": 10
           },
           {
@@ -1118,14 +1118,14 @@
             "category": "공격포인트 순위 (Attacking Points)",
             "rank": 1,
             "name": "이동경",
-            "value": "20P (10골 10도움)",
+            "value": "21P (11골 10도움)",
             "backNo": 10
           },
           {
             "category": "공격포인트 순위 (Attacking Points)",
-            "rank": 6,
+            "rank": 4,
             "name": "야고",
-            "value": "13P (13골 0도움)",
+            "value": "14P (13골 1도움)",
             "backNo": 99
           },
           {
@@ -1365,15 +1365,15 @@
           "win": 9,
           "draw": 11,
           "loss": 10,
-          "goalsFor": 37,
-          "goalsAgainst": 46,
+          "goalsFor": 38,
+          "goalsAgainst": 47,
           "goalDiff": -9,
           "recent": [
+            "무",
             "패",
             "패",
             "무",
-            "승",
-            "패"
+            "승"
           ],
           "homepage": "https://www.fc-anyang.com"
         },
@@ -1430,7 +1430,7 @@
           },
           {
             "category": "공격포인트 순위 (Attacking Points)",
-            "rank": 6,
+            "rank": 7,
             "name": "무고사",
             "value": "13P (12골 1도움)",
             "backNo": 9
@@ -1507,8 +1507,8 @@
           "recent": [
             "무",
             "무",
-            "패",
             "무",
+            "패",
             "무"
           ],
           "homepage": "https://gimcheonfc.com/"
@@ -1548,11 +1548,11 @@
           "goalsAgainst": 40,
           "goalDiff": -9,
           "recent": [
+            "무",
             "패",
             "패",
             "무",
-            "패",
-            "승"
+            "패"
           ],
           "homepage": "https://www.bfc1995.com"
         },
@@ -1618,32 +1618,8 @@
     },
     "recent_matches": [
       {
-        "game_id": "202609192701176",
-        "game_date": "2026.09.19",
-        "game_time": "19:00",
-        "weekday": "토",
-        "round": "30R",
-        "league_name": "하나은행 K리그1 2026",
-        "home_team": "안양",
-        "home_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K27.png",
-        "home_color": "#532E85",
-        "home_goal": 1,
-        "home_win": false,
-        "away_team": "울산",
-        "away_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K01.png",
-        "away_color": "#002B49",
-        "away_goal": 0,
-        "away_win": false,
-        "field_name": "안양 종합",
-        "broadcast": "JTBC SPORTS / COUPANGPLAY",
-        "status": "LIVE",
-        "status_info": "전반 33'",
-        "is_live": true,
-        "is_upcoming": false,
-        "is_finished": false
-      },
-      {
         "game_id": "202609202104177",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609202104177/relay",
         "game_date": "2026.09.20",
         "game_time": "16:30",
         "weekday": "일",
@@ -1669,6 +1645,7 @@
       },
       {
         "game_id": "202609200522178",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609200522178/relay",
         "game_date": "2026.09.20",
         "game_time": "16:30",
         "weekday": "일",
@@ -1694,6 +1671,7 @@
       },
       {
         "game_id": "202609201810179",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609201810179/relay",
         "game_date": "2026.09.20",
         "game_time": "19:00",
         "weekday": "일",
@@ -1719,6 +1697,7 @@
       },
       {
         "game_id": "202609200309180",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609200309180/relay",
         "game_date": "2026.09.20",
         "game_time": "19:00",
         "weekday": "일",
@@ -1743,7 +1722,34 @@
         "is_finished": false
       },
       {
+        "game_id": "202609192701176",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609192701176/relay",
+        "game_date": "2026.09.19",
+        "game_time": "19:00",
+        "weekday": "토",
+        "round": "30R",
+        "league_name": "하나은행 K리그1 2026",
+        "home_team": "안양",
+        "home_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K27.png",
+        "home_color": "#532E85",
+        "home_goal": 2,
+        "home_win": true,
+        "away_team": "울산",
+        "away_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K01.png",
+        "away_color": "#002B49",
+        "away_goal": 1,
+        "away_win": false,
+        "field_name": "안양 종합",
+        "broadcast": "JTBC SPORTS / COUPANGPLAY",
+        "status": "종료",
+        "status_info": "경기종료",
+        "is_live": false,
+        "is_upcoming": false,
+        "is_finished": true
+      },
+      {
         "game_id": "202609192635175",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609192635175/relay",
         "game_date": "2026.09.19",
         "game_time": "16:30",
         "weekday": "토",
@@ -1769,6 +1775,7 @@
       },
       {
         "game_id": "",
+        "naver_relay_url": "https://m.sports.naver.com/kleague/schedule/index",
         "game_date": "2026.09.13",
         "game_time": "19:00",
         "weekday": "일",
@@ -1794,6 +1801,7 @@
       },
       {
         "game_id": "",
+        "naver_relay_url": "https://m.sports.naver.com/kleague/schedule/index",
         "game_date": "2026.09.13",
         "game_time": "16:30",
         "weekday": "일",
@@ -1819,6 +1827,7 @@
       },
       {
         "game_id": "",
+        "naver_relay_url": "https://m.sports.naver.com/kleague/schedule/index",
         "game_date": "2026.09.12",
         "game_time": "19:00",
         "weekday": "토",
@@ -1844,6 +1853,7 @@
       },
       {
         "game_id": "",
+        "naver_relay_url": "https://m.sports.naver.com/kleague/schedule/index",
         "game_date": "2026.09.12",
         "game_time": "16:30",
         "weekday": "토",
@@ -1869,6 +1879,7 @@
       },
       {
         "game_id": "",
+        "naver_relay_url": "https://m.sports.naver.com/kleague/schedule/index",
         "game_date": "2026.09.12",
         "game_time": "16:30",
         "weekday": "토",
@@ -1894,6 +1905,7 @@
       },
       {
         "game_id": "",
+        "naver_relay_url": "https://m.sports.naver.com/kleague/schedule/index",
         "game_date": "2026.09.12",
         "game_time": "16:30",
         "weekday": "토",
@@ -1911,31 +1923,6 @@
         "away_win": false,
         "field_name": "부천 종합",
         "broadcast": "IB SPORTS / COUPANGPLAY",
-        "status": "종료",
-        "status_info": "경기종료",
-        "is_live": false,
-        "is_upcoming": false,
-        "is_finished": true
-      },
-      {
-        "game_id": "",
-        "game_date": "2026.09.09",
-        "game_time": "19:30",
-        "weekday": "수",
-        "round": "28R",
-        "league_name": "하나은행 K리그1 2026",
-        "home_team": "대전",
-        "home_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K10.png",
-        "home_color": "#006738",
-        "home_goal": 3,
-        "home_win": true,
-        "away_team": "안양",
-        "away_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K27.png",
-        "away_color": "#532E85",
-        "away_goal": 2,
-        "away_win": false,
-        "field_name": "대전 월드컵",
-        "broadcast": "ENA SPORTS / COUPANGPLAY",
         "status": "종료",
         "status_info": "경기종료",
         "is_live": false,
@@ -2032,10 +2019,10 @@
         "goalDiff": 21,
         "recent": [
           "무",
-          "승",
-          "승",
           "무",
-          "승"
+          "승",
+          "승",
+          "무"
         ],
         "homepage": "https://www.suwonfc.com"
       },
@@ -2052,15 +2039,15 @@
         "win": 14,
         "draw": 6,
         "loss": 6,
-        "goalsFor": 44,
-        "goalsAgainst": 29,
+        "goalsFor": 45,
+        "goalsAgainst": 30,
         "goalDiff": 15,
         "recent": [
+          "패",
           "승",
           "무",
           "무",
-          "승",
-          "무"
+          "승"
         ],
         "homepage": "https://www.seoulelandfc.com"
       },
@@ -2077,14 +2064,14 @@
         "win": 13,
         "draw": 7,
         "loss": 6,
-        "goalsFor": 47,
-        "goalsAgainst": 34,
+        "goalsFor": 48,
+        "goalsAgainst": 35,
         "goalDiff": 13,
         "recent": [
-          "무",
           "승",
           "무",
           "승",
+          "무",
           "승"
         ],
         "homepage": "https://daegufc.co.kr"
@@ -2123,24 +2110,49 @@
         "accent": "#FFFFFF",
         "emblem": "https://www.kleague.com/assets/images/emblem/emblem_K06.png",
         "games": 26,
-        "points": 42,
+        "points": 41,
         "win": 12,
-        "draw": 6,
-        "loss": 8,
+        "draw": 5,
+        "loss": 9,
         "goalsFor": 41,
-        "goalsAgainst": 33,
-        "goalDiff": 8,
+        "goalsAgainst": 34,
+        "goalDiff": 7,
         "recent": [
+          "승",
           "패",
           "패",
           "무",
-          "무",
-          "패"
+          "무"
         ],
         "homepage": "https://www.busanipark.com"
       },
       {
         "rank": 7,
+        "teamId": "K36",
+        "team": "김포",
+        "fullName": "김포 FC",
+        "color": "#0047AB",
+        "accent": "#FFC72C",
+        "emblem": "https://www.kleague.com/assets/images/emblem/emblem_K36.png",
+        "games": 25,
+        "points": 35,
+        "win": 8,
+        "draw": 11,
+        "loss": 6,
+        "goalsFor": 31,
+        "goalsAgainst": 30,
+        "goalDiff": 1,
+        "recent": [
+          "무",
+          "패",
+          "패",
+          "무",
+          "승"
+        ],
+        "homepage": "https://www.gimpofc.com"
+      },
+      {
+        "rank": 8,
         "teamId": "K34",
         "team": "충남아산",
         "fullName": "충남 아산 FC",
@@ -2157,15 +2169,15 @@
         "goalDiff": 3,
         "recent": [
           "패",
+          "패",
           "승",
           "패",
-          "무",
-          "승"
+          "무"
         ],
         "homepage": "https://www.asanfc.com"
       },
       {
-        "rank": 8,
+        "rank": 9,
         "teamId": "K20",
         "team": "경남",
         "fullName": "경남 FC",
@@ -2188,31 +2200,6 @@
           "무"
         ],
         "homepage": "http://www.gyeongnamfc.com"
-      },
-      {
-        "rank": 9,
-        "teamId": "K36",
-        "team": "김포",
-        "fullName": "김포 FC",
-        "color": "#0047AB",
-        "accent": "#FFC72C",
-        "emblem": "https://www.kleague.com/assets/images/emblem/emblem_K36.png",
-        "games": 25,
-        "points": 33,
-        "win": 7,
-        "draw": 12,
-        "loss": 6,
-        "goalsFor": 30,
-        "goalsAgainst": 30,
-        "goalDiff": 0,
-        "recent": [
-          "패",
-          "패",
-          "무",
-          "승",
-          "무"
-        ],
-        "homepage": "https://www.gimpofc.com"
       },
       {
         "rank": 10,
@@ -2332,10 +2319,10 @@
         "goalDiff": -7,
         "recent": [
           "무",
-          "패",
-          "패",
           "무",
-          "패"
+          "패",
+          "패",
+          "무"
         ],
         "homepage": "https://cheonancityfc.kr/"
       },
@@ -2382,9 +2369,9 @@
         "goalDiff": -15,
         "recent": [
           "무",
+          "무",
           "승",
           "승",
-          "패",
           "패"
         ],
         "homepage": "https://www.dragons.co.kr"
@@ -2489,9 +2476,9 @@
             "teamColor": "#00205B",
             "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K31.png",
             "backNo": 16,
-            "value": "9골 (25경기)",
+            "value": "10골 (25경기)",
             "games": 25,
-            "perGame": "0.36"
+            "perGame": "0.4"
           },
           {
             "rank": 6,
@@ -2567,9 +2554,9 @@
           "teamColor": "#76C5EE",
           "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K17.png",
           "backNo": 10,
-          "value": "10도움 (25경기)",
-          "games": 25,
-          "perGame": "0.4"
+          "value": "10도움 (26경기)",
+          "games": 26,
+          "perGame": "0.38"
         },
         "ranks": [
           {
@@ -2580,9 +2567,9 @@
             "teamColor": "#76C5EE",
             "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K17.png",
             "backNo": 10,
-            "value": "10도움 (25경기)",
-            "games": 25,
-            "perGame": "0.4"
+            "value": "10도움 (26경기)",
+            "games": 26,
+            "perGame": "0.38"
           },
           {
             "rank": 2,
@@ -2610,6 +2597,18 @@
           },
           {
             "rank": 4,
+            "name": "세징야",
+            "playerId": "20160237",
+            "team": "대구",
+            "teamColor": "#76C5EE",
+            "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K17.png",
+            "backNo": 11,
+            "value": "6도움 (15경기)",
+            "games": 15,
+            "perGame": "0.4"
+          },
+          {
+            "rank": 5,
             "name": "프리조",
             "playerId": "20260098",
             "team": "수원FC",
@@ -2621,7 +2620,7 @@
             "perGame": "0.26"
           },
           {
-            "rank": 5,
+            "rank": 6,
             "name": "김보섭",
             "playerId": "20170171",
             "team": "용인",
@@ -2633,7 +2632,7 @@
             "perGame": "0.25"
           },
           {
-            "rank": 6,
+            "rank": 7,
             "name": "손준호",
             "playerId": "20140032",
             "team": "충남아산",
@@ -2645,7 +2644,7 @@
             "perGame": "0.25"
           },
           {
-            "rank": 7,
+            "rank": 8,
             "name": "발디비아",
             "playerId": "20230119",
             "team": "전남",
@@ -2655,18 +2654,6 @@
             "value": "6도움 (25경기)",
             "games": 25,
             "perGame": "0.24"
-          },
-          {
-            "rank": 8,
-            "name": "세징야",
-            "playerId": "20160237",
-            "team": "대구",
-            "teamColor": "#76C5EE",
-            "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K17.png",
-            "backNo": 11,
-            "value": "5도움 (15경기)",
-            "games": 15,
-            "perGame": "0.33"
           },
           {
             "rank": 9,
@@ -2744,11 +2731,23 @@
             "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K17.png",
             "backNo": 10,
             "value": "18P (8골 10도움)",
-            "games": 25,
-            "perGame": "0.72"
+            "games": 26,
+            "perGame": "0.69"
           },
           {
             "rank": 4,
+            "name": "박재용",
+            "playerId": "20220035",
+            "team": "서울E",
+            "teamColor": "#00205B",
+            "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K31.png",
+            "backNo": 16,
+            "value": "14P (10골 4도움)",
+            "games": 25,
+            "perGame": "0.56"
+          },
+          {
+            "rank": 5,
             "name": "루이스",
             "playerId": "20230147",
             "team": "수원",
@@ -2760,7 +2759,7 @@
             "perGame": "0.54"
           },
           {
-            "rank": 4,
+            "rank": 5,
             "name": "가르시아",
             "playerId": "20260194",
             "team": "충북청주",
@@ -2772,19 +2771,7 @@
             "perGame": "0.52"
           },
           {
-            "rank": 4,
-            "name": "박재용",
-            "playerId": "20220035",
-            "team": "서울E",
-            "teamColor": "#00205B",
-            "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K31.png",
-            "backNo": 16,
-            "value": "13P (9골 4도움)",
-            "games": 25,
-            "perGame": "0.52"
-          },
-          {
-            "rank": 4,
+            "rank": 5,
             "name": "에울레르",
             "playerId": "20250192",
             "team": "서울E",
@@ -2876,18 +2863,6 @@
           },
           {
             "rank": 3,
-            "name": "민성준",
-            "playerId": "20200019",
-            "team": "서울E",
-            "teamColor": "#00205B",
-            "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K31.png",
-            "backNo": 1,
-            "value": "8경기 무실점",
-            "games": 26,
-            "perGame": "0"
-          },
-          {
-            "rank": 3,
             "name": "한태희",
             "playerId": "20230051",
             "team": "대구",
@@ -2899,6 +2874,18 @@
             "perGame": "0"
           },
           {
+            "rank": 4,
+            "name": "민성준",
+            "playerId": "20200019",
+            "team": "서울E",
+            "teamColor": "#00205B",
+            "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K31.png",
+            "backNo": 1,
+            "value": "7경기 무실점",
+            "games": 26,
+            "perGame": "0"
+          },
+          {
             "rank": 5,
             "name": "구상민",
             "playerId": "20160006",
@@ -2906,12 +2893,12 @@
             "teamColor": "#C8102E",
             "teamEmblem": "https://www.kleague.com/assets/images/emblem/emblem_K06.png",
             "backNo": 1,
-            "value": "7경기 무실점",
+            "value": "6경기 무실점",
             "games": 26,
             "perGame": "0"
           },
           {
-            "rank": 6,
+            "rank": 5,
             "name": "신송훈",
             "playerId": "20210152",
             "team": "충남아산",
@@ -3021,10 +3008,10 @@
           "goalDiff": 21,
           "recent": [
             "무",
-            "승",
-            "승",
             "무",
-            "승"
+            "승",
+            "승",
+            "무"
           ],
           "homepage": "https://www.suwonfc.com"
         },
@@ -3045,7 +3032,7 @@
           },
           {
             "category": "도움 순위 (Top Assists)",
-            "rank": 4,
+            "rank": 5,
             "name": "프리조",
             "value": "6도움 (23경기)",
             "backNo": 10
@@ -3080,15 +3067,15 @@
           "win": 14,
           "draw": 6,
           "loss": 6,
-          "goalsFor": 44,
-          "goalsAgainst": 29,
+          "goalsFor": 45,
+          "goalsAgainst": 30,
           "goalDiff": 15,
           "recent": [
+            "패",
             "승",
             "무",
             "무",
-            "승",
-            "무"
+            "승"
           ],
           "homepage": "https://www.seoulelandfc.com"
         },
@@ -3097,28 +3084,28 @@
             "category": "득점 순위 (Top Scorers)",
             "rank": 5,
             "name": "박재용",
-            "value": "9골 (25경기)",
+            "value": "10골 (25경기)",
             "backNo": 16
           },
           {
             "category": "공격포인트 순위 (Attacking Points)",
             "rank": 4,
             "name": "박재용",
-            "value": "13P (9골 4도움)",
+            "value": "14P (10골 4도움)",
             "backNo": 16
           },
           {
             "category": "공격포인트 순위 (Attacking Points)",
-            "rank": 4,
+            "rank": 5,
             "name": "에울레르",
             "value": "13P (8골 5도움)",
             "backNo": 7
           },
           {
             "category": "무실점 경기 (Clean Sheets)",
-            "rank": 3,
+            "rank": 4,
             "name": "민성준",
-            "value": "8경기 무실점",
+            "value": "7경기 무실점",
             "backNo": 1
           }
         ]
@@ -3137,14 +3124,14 @@
           "win": 13,
           "draw": 7,
           "loss": 6,
-          "goalsFor": 47,
-          "goalsAgainst": 34,
+          "goalsFor": 48,
+          "goalsAgainst": 35,
           "goalDiff": 13,
           "recent": [
-            "무",
             "승",
             "무",
             "승",
+            "무",
             "승"
           ],
           "homepage": "https://daegufc.co.kr"
@@ -3161,14 +3148,14 @@
             "category": "도움 순위 (Top Assists)",
             "rank": 1,
             "name": "세라핌",
-            "value": "10도움 (25경기)",
+            "value": "10도움 (26경기)",
             "backNo": 10
           },
           {
             "category": "도움 순위 (Top Assists)",
-            "rank": 8,
+            "rank": 4,
             "name": "세징야",
-            "value": "5도움 (15경기)",
+            "value": "6도움 (15경기)",
             "backNo": 11
           },
           {
@@ -3261,19 +3248,19 @@
           "accent": "#FFFFFF",
           "emblem": "https://www.kleague.com/assets/images/emblem/emblem_K06.png",
           "games": 26,
-          "points": 42,
+          "points": 41,
           "win": 12,
-          "draw": 6,
-          "loss": 8,
+          "draw": 5,
+          "loss": 9,
           "goalsFor": 41,
-          "goalsAgainst": 33,
-          "goalDiff": 8,
+          "goalsAgainst": 34,
+          "goalDiff": 7,
           "recent": [
+            "승",
             "패",
             "패",
             "무",
-            "무",
-            "패"
+            "무"
           ],
           "homepage": "https://www.busanipark.com"
         },
@@ -3303,14 +3290,42 @@
             "category": "무실점 경기 (Clean Sheets)",
             "rank": 5,
             "name": "구상민",
-            "value": "7경기 무실점",
+            "value": "6경기 무실점",
             "backNo": 1
           }
         ]
       },
-      "충남아산": {
+      "김포": {
         "team": {
           "rank": 7,
+          "teamId": "K36",
+          "team": "김포",
+          "fullName": "김포 FC",
+          "color": "#0047AB",
+          "accent": "#FFC72C",
+          "emblem": "https://www.kleague.com/assets/images/emblem/emblem_K36.png",
+          "games": 25,
+          "points": 35,
+          "win": 8,
+          "draw": 11,
+          "loss": 6,
+          "goalsFor": 31,
+          "goalsAgainst": 30,
+          "goalDiff": 1,
+          "recent": [
+            "무",
+            "패",
+            "패",
+            "무",
+            "승"
+          ],
+          "homepage": "https://www.gimpofc.com"
+        },
+        "players": []
+      },
+      "충남아산": {
+        "team": {
+          "rank": 8,
           "teamId": "K34",
           "team": "충남아산",
           "fullName": "충남 아산 FC",
@@ -3327,17 +3342,17 @@
           "goalDiff": 3,
           "recent": [
             "패",
+            "패",
             "승",
             "패",
-            "무",
-            "승"
+            "무"
           ],
           "homepage": "https://www.asanfc.com"
         },
         "players": [
           {
             "category": "도움 순위 (Top Assists)",
-            "rank": 6,
+            "rank": 7,
             "name": "손준호",
             "value": "6도움 (24경기)",
             "backNo": 10
@@ -3351,7 +3366,7 @@
           },
           {
             "category": "무실점 경기 (Clean Sheets)",
-            "rank": 6,
+            "rank": 5,
             "name": "신송훈",
             "value": "6경기 무실점",
             "backNo": 18
@@ -3360,7 +3375,7 @@
       },
       "경남": {
         "team": {
-          "rank": 8,
+          "rank": 9,
           "teamId": "K20",
           "team": "경남",
           "fullName": "경남 FC",
@@ -3393,34 +3408,6 @@
             "backNo": 90
           }
         ]
-      },
-      "김포": {
-        "team": {
-          "rank": 9,
-          "teamId": "K36",
-          "team": "김포",
-          "fullName": "김포 FC",
-          "color": "#0047AB",
-          "accent": "#FFC72C",
-          "emblem": "https://www.kleague.com/assets/images/emblem/emblem_K36.png",
-          "games": 25,
-          "points": 33,
-          "win": 7,
-          "draw": 12,
-          "loss": 6,
-          "goalsFor": 30,
-          "goalsAgainst": 30,
-          "goalDiff": 0,
-          "recent": [
-            "패",
-            "패",
-            "무",
-            "승",
-            "무"
-          ],
-          "homepage": "https://www.gimpofc.com"
-        },
-        "players": []
       },
       "성남": {
         "team": {
@@ -3479,7 +3466,7 @@
         "players": [
           {
             "category": "도움 순위 (Top Assists)",
-            "rank": 5,
+            "rank": 6,
             "name": "김보섭",
             "value": "6도움 (24경기)",
             "backNo": 27
@@ -3536,7 +3523,7 @@
           },
           {
             "category": "공격포인트 순위 (Attacking Points)",
-            "rank": 4,
+            "rank": 5,
             "name": "가르시아",
             "value": "13P (13골 0도움)",
             "backNo": 11
@@ -3598,10 +3585,10 @@
           "goalDiff": -7,
           "recent": [
             "무",
-            "패",
-            "패",
             "무",
-            "패"
+            "패",
+            "패",
+            "무"
           ],
           "homepage": "https://cheonancityfc.kr/"
         },
@@ -3662,9 +3649,9 @@
           "goalDiff": -15,
           "recent": [
             "무",
+            "무",
             "승",
             "승",
-            "패",
             "패"
           ],
           "homepage": "https://www.dragons.co.kr"
@@ -3672,7 +3659,7 @@
         "players": [
           {
             "category": "도움 순위 (Top Assists)",
-            "rank": 7,
+            "rank": 8,
             "name": "발디비아",
             "value": "6도움 (25경기)",
             "backNo": 10
@@ -3724,57 +3711,8 @@
     },
     "recent_matches": [
       {
-        "game_id": "202609193117211",
-        "game_date": "2026.09.19",
-        "game_time": "19:00",
-        "weekday": "토",
-        "round": "27R",
-        "league_name": "하나은행 K리그2 2026",
-        "home_team": "서울E",
-        "home_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K31.png",
-        "home_color": "#00205B",
-        "home_goal": 1,
-        "home_win": false,
-        "away_team": "대구",
-        "away_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K17.png",
-        "away_color": "#76C5EE",
-        "away_goal": 0,
-        "away_win": false,
-        "field_name": "목동 종합",
-        "broadcast": "IB SPORTS / COUPANGPLAY",
-        "status": "LIVE",
-        "status_info": "전반 34'",
-        "is_live": true,
-        "is_upcoming": false,
-        "is_finished": false
-      },
-      {
-        "game_id": "202609193606212",
-        "game_date": "2026.09.19",
-        "game_time": "19:00",
-        "weekday": "토",
-        "round": "27R",
-        "league_name": "하나은행 K리그2 2026",
-        "home_team": "김포",
-        "home_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K36.png",
-        "home_color": "#0047AB",
-        "home_goal": 0,
-        "home_win": false,
-        "away_team": "부산",
-        "away_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K06.png",
-        "away_color": "#C8102E",
-        "away_goal": 0,
-        "away_win": false,
-        "field_name": "김포솔터축구장",
-        "broadcast": "MAXPORTS / COUPANGPLAY",
-        "status": "LIVE",
-        "status_info": "전반 33'",
-        "is_live": true,
-        "is_upcoming": false,
-        "is_finished": false
-      },
-      {
         "game_id": "202609203237213",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609203237213/relay",
         "game_date": "2026.09.20",
         "game_time": "16:30",
         "weekday": "일",
@@ -3800,6 +3738,7 @@
       },
       {
         "game_id": "202609204220214",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609204220214/relay",
         "game_date": "2026.09.20",
         "game_time": "16:30",
         "weekday": "일",
@@ -3825,6 +3764,7 @@
       },
       {
         "game_id": "202609204140215",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609204140215/relay",
         "game_date": "2026.09.20",
         "game_time": "19:00",
         "weekday": "일",
@@ -3850,6 +3790,7 @@
       },
       {
         "game_id": "202609200839216",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609200839216/relay",
         "game_date": "2026.09.20",
         "game_time": "19:00",
         "weekday": "일",
@@ -3874,7 +3815,60 @@
         "is_finished": false
       },
       {
+        "game_id": "202609193117211",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609193117211/relay",
+        "game_date": "2026.09.19",
+        "game_time": "19:00",
+        "weekday": "토",
+        "round": "27R",
+        "league_name": "하나은행 K리그2 2026",
+        "home_team": "서울E",
+        "home_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K31.png",
+        "home_color": "#00205B",
+        "home_goal": 2,
+        "home_win": true,
+        "away_team": "대구",
+        "away_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K17.png",
+        "away_color": "#76C5EE",
+        "away_goal": 1,
+        "away_win": false,
+        "field_name": "목동 종합",
+        "broadcast": "IB SPORTS / COUPANGPLAY",
+        "status": "종료",
+        "status_info": "경기종료",
+        "is_live": false,
+        "is_upcoming": false,
+        "is_finished": true
+      },
+      {
+        "game_id": "202609193606212",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609193606212/relay",
+        "game_date": "2026.09.19",
+        "game_time": "19:00",
+        "weekday": "토",
+        "round": "27R",
+        "league_name": "하나은행 K리그2 2026",
+        "home_team": "김포",
+        "home_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K36.png",
+        "home_color": "#0047AB",
+        "home_goal": 1,
+        "home_win": true,
+        "away_team": "부산",
+        "away_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K06.png",
+        "away_color": "#C8102E",
+        "away_goal": 0,
+        "away_win": false,
+        "field_name": "김포솔터축구장",
+        "broadcast": "MAXPORTS / COUPANGPLAY",
+        "status": "종료",
+        "status_info": "경기종료",
+        "is_live": false,
+        "is_upcoming": false,
+        "is_finished": true
+      },
+      {
         "game_id": "202609190729209",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609190729209/relay",
         "game_date": "2026.09.19",
         "game_time": "16:30",
         "weekday": "토",
@@ -3900,6 +3894,7 @@
       },
       {
         "game_id": "202609193438210",
+        "naver_relay_url": "https://m.sports.naver.com/game/202609193438210/relay",
         "game_date": "2026.09.19",
         "game_time": "16:30",
         "weekday": "토",
@@ -3925,6 +3920,7 @@
       },
       {
         "game_id": "",
+        "naver_relay_url": "https://m.sports.naver.com/kleague/schedule/index",
         "game_date": "2026.09.13",
         "game_time": "19:00",
         "weekday": "일",
@@ -3950,6 +3946,7 @@
       },
       {
         "game_id": "",
+        "naver_relay_url": "https://m.sports.naver.com/kleague/schedule/index",
         "game_date": "2026.09.13",
         "game_time": "19:00",
         "weekday": "일",
@@ -3975,6 +3972,7 @@
       },
       {
         "game_id": "",
+        "naver_relay_url": "https://m.sports.naver.com/kleague/schedule/index",
         "game_date": "2026.09.13",
         "game_time": "16:30",
         "weekday": "일",
@@ -4000,6 +3998,7 @@
       },
       {
         "game_id": "",
+        "naver_relay_url": "https://m.sports.naver.com/kleague/schedule/index",
         "game_date": "2026.09.13",
         "game_time": "16:30",
         "weekday": "일",
@@ -4017,56 +4016,6 @@
         "away_win": false,
         "field_name": "광양 전용",
         "broadcast": "IB SPORTS / COUPANGPLAY",
-        "status": "종료",
-        "status_info": "경기종료",
-        "is_live": false,
-        "is_upcoming": false,
-        "is_finished": true
-      },
-      {
-        "game_id": "",
-        "game_date": "2026.09.12",
-        "game_time": "19:00",
-        "weekday": "토",
-        "round": "26R",
-        "league_name": "하나은행 K리그2 2026",
-        "home_team": "안산",
-        "home_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K32.png",
-        "home_color": "#006738",
-        "home_goal": 0,
-        "home_win": false,
-        "away_team": "화성",
-        "away_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K39.png",
-        "away_color": "#E31B23",
-        "away_goal": 2,
-        "away_win": true,
-        "field_name": "안산 와스타디움",
-        "broadcast": "BALL TV / COUPANGPLAY",
-        "status": "종료",
-        "status_info": "경기종료",
-        "is_live": false,
-        "is_upcoming": false,
-        "is_finished": true
-      },
-      {
-        "game_id": "",
-        "game_date": "2026.09.12",
-        "game_time": "19:00",
-        "weekday": "토",
-        "round": "26R",
-        "league_name": "하나은행 K리그2 2026",
-        "home_team": "충남아산",
-        "home_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K34.png",
-        "home_color": "#003A70",
-        "home_goal": 0,
-        "home_win": false,
-        "away_team": "충북청주",
-        "away_emblem": "https://www.kleague.com/assets/images/emblem/emblem_K37.png",
-        "away_color": "#002B49",
-        "away_goal": 1,
-        "away_win": true,
-        "field_name": "아산 이순신",
-        "broadcast": "MAXPORTS / COUPANGPLAY",
         "status": "종료",
         "status_info": "경기종료",
         "is_live": false,
@@ -4156,5 +4105,6 @@
         "league_id": 2
       }
     ]
-  }
+  },
+  "matches_updated_at": "2026-09-20 09:19:20"
 }

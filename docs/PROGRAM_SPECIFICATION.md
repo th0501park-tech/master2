@@ -1,7 +1,7 @@
 # 🏆 SPORTS HUB - 프로그램 명세서 및 시스템 설계서
 
-> **버전**: v2.2.0  
-> **작성일**: 2026-09-19  
+> **버전**: v2.3.0  
+> **작성일**: 2026-09-20  
 > **저장소**: [https://github.com/th0501park-tech/master2](https://github.com/th0501park-tech/master2)  
 > **산출물 파일**:
 > - 📊 Excel 문서: [SPORTS_HUB_프로그램명세서_및_설계서.xlsx](file:///Users/소스/WEB_SPORTS/SPORTS_HUB_프로그램명세서_및_설계서.xlsx)
@@ -142,3 +142,17 @@ sequenceDiagram
 - **클라우드 배포 (Render.com)**:
   - `Procfile`: `web: uvicorn app.main:app --host 0.0.0.0 --port $PORT`
   - `render.yaml`을 통한 자동 빌드 및 배포 지원.
+
+---
+
+## 7. 시스템 수정 및 보완 이력 (Changelog)
+
+| 버전 | 일자 | 구분 | 대상 모듈 | 주요 수정 및 보완 내용 | 개선 효과 및 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **v2.3.0** | 2026-09-20 | 기능 개선 | `kbo_service.py`<br>`kleague_service.py`<br>`mlb_service.py`<br>`overseas_soccer_service.py` | **스마트 캐시 갱신 구조 도입 및 LIVE 경기 안전 판별 강화**<br>- 무거운 전체 크롤링은 TTL 캐시 유지하되, 라이브 경기 발생 시 25초 주기 실시간 fetch<br>- 경기 시작(KST) 기준 야구 5.5시간, 축구 3.5시간 초과 시 안전 종료 처리<br>- 클라이언트 30초 자동 폴링(`startLivePolling`) 지원 | 종료된 경기가 LIVE로 남아있던 버그 해결 및 실시간 새로고침 속도/정확도 개선 |
+| **v2.3.0** | 2026-09-20 | 기능 개선 | `mlb_service.py`<br>`index.html` | **MLB 한국 표준시(KST) 변환 & 팀 식별자 및 네이버 연동 정상화**<br>- UTC 시간의 KST 9시간 자동 변환(`%m.%d(요일) HH:MM`) 표기<br>- 30개 구단 공식 Stats API ID 오타 전면 수정 및 구단명 정규화<br>- 네이버 해외야구(`wbaseball`) API 매핑(`fetch_naver_wbaseball_map`)으로 공식 gameId 확보 | MLB 경기 시간 가독성 향상 및 네이버 실시간 중계 gameId 완벽 매핑 |
+| **v2.3.0** | 2026-09-20 | UI/UX 개선 | `main.js`<br>`index.html` | **실시간 중계 모달(`live-relay-modal`) UX 단독 팝업화 & 바로가기 강화**<br>- [실시간 중계확인] 클릭 시 새 창 동시 실행을 제거하고 **단독 팝업(모달)으로만** 깔끔하게 표출<br>- 팝업 상단에 초록색 [네이버 새 창 보기], 파란색 [MLB 3D게임데이] 바로가기 액션 버튼 배치<br>- 브라우저 iframe 보안 정책에 의한 로딩 멈춤 방지(1.5초 자동 페이드아웃) | 팝업/새 창 이중 실행 혼란 해결 및 편의성 극대화 |
+| **v2.3.0** | 2026-09-20 | 버그 수정 | `index.html`<br>`base.html`<br>`overseas_soccer_service.py` | **브라우저 개발자도구 콘솔 오류 3종 완전 제거**<br>1) `iframe` 인라인 `onload` 제거 및 상단 방어 선언으로 `onRelayIframeLoaded is not defined` 해결<br>2) 해외축구 비디오 썸네일에서 비공개 `artwork.api.espn.com` API를 필터링하고 공개 CDN 이미지로 교체하여 `401 Unauthorized` 해결<br>3) Tailwind CDN 프로덕션 안내 콘솔 경고 필터링 적용<br>4) `main.js?v=...` 스크립트 캐시 버스팅 적용 | F12 개발자도구 콘솔 무결성 확보 및 안정성 향상 |
+| **v2.2.0** | 2026-09-19 | 기능 추가 | `index.html`<br>`main.js` | **네이버스포츠 실시간 문자중계 모달(`live-relay-modal`) 최초 탑재**<br>- LIVE 경기 카드에 [실시간 중계확인] 버튼 노출 및 모달 연동 | 페이지 이탈 없는 실시간 문자중계 확인 |
+| **v2.1.0** | 2026-09-19 | UI 개선 | `index.html`<br>`style.css` | **상단 경기결과 / 하단 영상 레이아웃 개편 및 상태 필터 칩 고도화** | 스코어보드 시인성 향상 |
+| **v2.0.0** | 2026-09-19 | 아키텍처 | 전체 프로젝트 | **4대 스포츠 통합 올인원 대시보드 시스템 구축** | KBO, K리그, 해외축구, MLB 통합 |

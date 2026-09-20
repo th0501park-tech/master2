@@ -557,6 +557,23 @@ def fetch_kleague_recent_matches(league_id=1):
             is_live_code = any(code in game_status_code for code in ["1S", "2S", "HT", "ET", "PK", "1H", "2H", "ING", "LIVE", "PLAY", "1E", "2E"])
             is_naver_live = naver_status in ["STARTED", "ING", "PROGRESS", "PLAY"] or ("전반" in naver_info or "후반" in naver_info or "하프타임" in naver_info)
             is_live = not is_finished and (is_live_code or is_naver_live)
+
+            # 방어 로직: 경기 날짜가 과거이거나 경기 시작 시간으로부터 3.5시간 이상 경과한 경기는 절대 LIVE로 남지 않도록 차단
+            game_date_str = (s.get("gameDate") or "").replace(".", "-")[:10]
+            game_time_str = s.get("gameTime") or ""
+            if is_live:
+                if game_date_str and game_date_str < now.strftime("%Y-%m-%d"):
+                    is_live = False
+                    is_finished = True
+                elif game_date_str and game_time_str:
+                    try:
+                        g_datetime_obj = datetime.strptime(f"{game_date_str} {game_time_str[:5]}", "%Y-%m-%d %H:%M")
+                        if (now - g_datetime_obj).total_seconds() > 3.5 * 3600:
+                            is_live = False
+                            is_finished = True
+                    except Exception:
+                        pass
+
             is_upcoming = not is_finished and not is_live
 
             if is_live:
@@ -596,6 +613,7 @@ def fetch_kleague_recent_matches(league_id=1):
 
             matches.append({
                 "game_id": naver_game_id,
+                "naver_relay_url": f"https://m.sports.naver.com/game/{naver_game_id}/relay" if naver_game_id else "https://m.sports.naver.com/kleague/schedule/index",
                 "game_date": s.get("gameDate", ""),
                 "game_time": s.get("gameTime", ""),
                 "weekday": s.get("weekdayShort", ""),
@@ -841,64 +859,130 @@ def fetch_kleague_highlights(league_id=None):
 
 
 def get_kleague_data(force_refresh=False):
-    """K리그 전체 데이터 조회 (K리그1, K리그2) 및 캐싱"""
-    if not force_refresh and os.path.exists(CACHE_FILE):
+    """
+    K리그 전체 데이터 조회 (K리그1, K리그2)
+    - 전체 크롤링(순위, 하이라이트 등): 30분 TTL 캐싱
+    - 경기 일정/LIVE 스코어(recent_matches): LIVE 경기 시 25초, 일반 시 2분 주기로 동적 갱신
+    - 페이지 새로고침 시 LIVE 경기의 최신 시간/스코어/종료 여부를 즉시 반영
+    """
+    cached_data = None
+    cache_valid = False
+    now = datetime.now()
+
+    if os.path.exists(CACHE_FILE):
         try:
             with open(CACHE_FILE, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            # 캐시 데이터가 유효하면 즉시 반환 (무료 서버 리소스 절약을 위해 자동 크롤링 방지)
-            if "highlights" in data.get("k1", {}) and "highlights" in data.get("k2", {}):
-                return data
+                cached_data = json.load(f)
+            if "highlights" in cached_data.get("k1", {}) and "highlights" in cached_data.get("k2", {}):
+                cache_valid = True
         except Exception as e:
             print(f"K리그 캐시 로드 에러: {e}")
 
-    try:
-        # K리그 1
-        k1_teams = fetch_kleague_standings(league_id=1, year=2026)
-        k1_players = fetch_kleague_player_rankings(league_id=1, year=2026)
-        k1_hub = build_kleague_team_hub(k1_teams, k1_players)
-        k1_recent = fetch_kleague_recent_matches(league_id=1)
-        k1_highlights = fetch_kleague_highlights(league_id=1)
+    # 1. 전체 데이터 갱신 필요 여부 판단 (기본 30분 TTL)
+    need_full_refresh = force_refresh or not cache_valid
+    if cache_valid and not need_full_refresh:
+        updated_at_str = cached_data.get("updated_at")
+        if updated_at_str:
+            try:
+                updated_time = datetime.strptime(updated_at_str, "%Y-%m-%d %H:%M:%S")
+                if (now - updated_time).total_seconds() > 1800:
+                    need_full_refresh = True
+            except Exception:
+                pass
 
-        # K리그 2
-        k2_teams = fetch_kleague_standings(league_id=2, year=2026)
-        k2_players = fetch_kleague_player_rankings(league_id=2, year=2026)
-        k2_hub = build_kleague_team_hub(k2_teams, k2_players)
-        k2_recent = fetch_kleague_recent_matches(league_id=2)
-        k2_highlights = fetch_kleague_highlights(league_id=2)
+    if need_full_refresh:
+        try:
+            # K리그 1
+            k1_teams = fetch_kleague_standings(league_id=1, year=2026)
+            k1_players = fetch_kleague_player_rankings(league_id=1, year=2026)
+            k1_hub = build_kleague_team_hub(k1_teams, k1_players)
+            k1_recent = fetch_kleague_recent_matches(league_id=1)
+            k1_highlights = fetch_kleague_highlights(league_id=1)
 
-        now = datetime.now()
-        data = {
-            "sports": "kleague",
-            "title": "K리그 (K LEAGUE)",
-            "updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
-            "updated_at_iso": now.isoformat(),
-            "highlights": k1_highlights + k2_highlights,
-            "k1": {
-                "name": "K리그 1",
-                "teams": k1_teams,
-                "players": k1_players,
-                "team_hub": k1_hub,
-                "recent_matches": k1_recent,
-                "highlights": k1_highlights
-            },
-            "k2": {
-                "name": "K리그 2",
-                "teams": k2_teams,
-                "players": k2_players,
-                "team_hub": k2_hub,
-                "recent_matches": k2_recent,
-                "highlights": k2_highlights
+            # K리그 2
+            k2_teams = fetch_kleague_standings(league_id=2, year=2026)
+            k2_players = fetch_kleague_player_rankings(league_id=2, year=2026)
+            k2_hub = build_kleague_team_hub(k2_teams, k2_players)
+            k2_recent = fetch_kleague_recent_matches(league_id=2)
+            k2_highlights = fetch_kleague_highlights(league_id=2)
+
+            data = {
+                "sports": "kleague",
+                "title": "K리그 (K LEAGUE)",
+                "updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "updated_at_iso": now.isoformat(),
+                "matches_updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "highlights": k1_highlights + k2_highlights,
+                "k1": {
+                    "name": "K리그 1",
+                    "teams": k1_teams,
+                    "players": k1_players,
+                    "team_hub": k1_hub,
+                    "recent_matches": k1_recent,
+                    "highlights": k1_highlights
+                },
+                "k2": {
+                    "name": "K리그 2",
+                    "teams": k2_teams,
+                    "players": k2_players,
+                    "team_hub": k2_hub,
+                    "recent_matches": k2_recent,
+                    "highlights": k2_highlights
+                }
             }
-        }
 
-        with open(CACHE_FILE, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
+            with open(CACHE_FILE, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
 
-        return data
-    except Exception as e:
-        print(f"K리그 크롤링 에러: {e}")
-        if os.path.exists(CACHE_FILE):
-            with open(CACHE_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
-        raise e
+            return data
+        except Exception as e:
+            print(f"K리그 전체 크롤링 에러: {e}")
+            if cached_data:
+                return cached_data
+            raise e
+
+    # 2. 캐시가 유효한 경우: 경기 결과 및 LIVE 스코어의 동적 갱신 여부 확인!
+    k1_matches = cached_data.get("k1", {}).get("recent_matches", [])
+    k2_matches = cached_data.get("k2", {}).get("recent_matches", [])
+    has_live = any(m.get("is_live") for m in (k1_matches + k2_matches))
+    matches_updated_at = cached_data.get("matches_updated_at")
+    need_matches_refresh = False
+
+    if has_live:
+        # LIVE 경기 진행 중: 25초 이상 경과 시 즉시 fetch
+        if not matches_updated_at:
+            need_matches_refresh = True
+        else:
+            try:
+                m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
+                if (now - m_time).total_seconds() >= 25:
+                    need_matches_refresh = True
+            except Exception:
+                need_matches_refresh = True
+    else:
+        # LIVE 경기가 없더라도 2분(120초) 이상 지났으면 최신 경기 스케줄/결과 확인
+        if not matches_updated_at:
+            need_matches_refresh = True
+        else:
+            try:
+                m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
+                if (now - m_time).total_seconds() >= 120:
+                    need_matches_refresh = True
+            except Exception:
+                need_matches_refresh = True
+
+    if need_matches_refresh:
+        try:
+            k1_recent = fetch_kleague_recent_matches(league_id=1)
+            k2_recent = fetch_kleague_recent_matches(league_id=2)
+            if k1_recent:
+                cached_data["k1"]["recent_matches"] = k1_recent
+            if k2_recent:
+                cached_data["k2"]["recent_matches"] = k2_recent
+            cached_data["matches_updated_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
+            with open(CACHE_FILE, "w", encoding="utf-8") as f:
+                json.dump(cached_data, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"K리그 경기 동적 갱신 에러: {e}")
+
+    return cached_data

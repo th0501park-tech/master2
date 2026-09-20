@@ -22,12 +22,12 @@ MLB_TEAMS = {
     110: {"name": "볼티모어 오리올스", "color": "#DF4601", "short": "BAL"},
     111: {"name": "보스턴 레드삭스", "color": "#BD3039", "short": "BOS"},
     112: {"name": "시카고 컵스", "color": "#0E3386", "short": "CHC"},
-    113: {"name": "시카고 화이트삭스", "color": "#27251F", "short": "CWS"},
-    114: {"name": "신시내티 레즈", "color": "#C6011F", "short": "CIN"},
-    115: {"name": "클리블랜드 가디언스", "color": "#E31937", "short": "CLE"},
-    116: {"name": "콜로라도 로키스", "color": "#333366", "short": "COL"},
-    117: {"name": "디트로이트 타이거스", "color": "#0C2340", "short": "DET"},
-    118: {"name": "휴스턴 애스트로스", "color": "#002D62", "short": "HOU"},
+    113: {"name": "신시내티 레즈", "color": "#C6011F", "short": "CIN"},
+    114: {"name": "클리블랜드 가디언스", "color": "#E31937", "short": "CLE"},
+    115: {"name": "콜로라도 로키스", "color": "#333366", "short": "COL"},
+    116: {"name": "디트로이트 타이거스", "color": "#0C2340", "short": "DET"},
+    117: {"name": "휴스턴 애스트로스", "color": "#002D62", "short": "HOU"},
+    118: {"name": "캔자스시티 로열스", "color": "#004687", "short": "KC"},
     119: {"name": "LA 다저스", "color": "#005A9C", "short": "LAD"},
     120: {"name": "워싱턴 내셔널스", "color": "#AB0003", "short": "WSH"},
     121: {"name": "뉴욕 메츠", "color": "#002D72", "short": "NYM"},
@@ -46,8 +46,7 @@ MLB_TEAMS = {
     145: {"name": "시카고 화이트삭스", "color": "#27251F", "short": "CWS"},
     146: {"name": "마이애미 말린스", "color": "#00A3E0", "short": "MIA"},
     147: {"name": "뉴욕 양키스", "color": "#0C2340", "short": "NYY"},
-    158: {"name": "밀워키 브루어스", "color": "#12284B", "short": "MIL"},
-    118: {"name": "캔자스시티 로열스", "color": "#004687", "short": "KC"}
+    158: {"name": "밀워키 브루어스", "color": "#12284B", "short": "MIL"}
 }
 
 DIV_NAMES = {
@@ -267,12 +266,65 @@ def build_mlb_team_hub(all_teams, hitter_cats, pitcher_cats):
     return hub
 
 
+def normalize_mlb_team_name(name):
+    """네이버 스포츠와 MLB 팀명 정규화 매칭 헬퍼"""
+    if not name:
+        return ""
+    n = name.replace(" ", "")
+    if "화이트삭스" in n or "시카고W" in n:
+        return "시카고W"
+    if "다저스" in n or "LA다저스" in n:
+        return "LA다저스"
+    if "양키스" in n or "뉴욕양키스" in n:
+        return "뉴욕양키스"
+    if "메츠" in n or "뉴욕메츠" in n:
+        return "뉴욕메츠"
+    if "에인절스" in n or "LA에인절스" in n:
+        return "LA에인절스"
+    if "애슬레틱스" in n:
+        return "애슬레틱스"
+    if "탬파" in n or "템파" in n:
+        return "탬파베이"
+    suffixes = ["가디언스", "로키스", "타이거스", "애스트로스", "로열스", "내셔널스", "파이리츠", "파드리스", "매리너스", "자이언츠", "카디널스", "레이스", "레인저스", "블루제이스", "트윈스", "필리스", "브레이브스", "말린스", "브루어스", "다이아몬드백스", "오리올스", "레드삭스", "컵스", "레즈"]
+    for s in suffixes:
+        if n.endswith(s) and len(n) > len(s):
+            return n[:-len(s)]
+    return n
+
+
+def fetch_naver_wbaseball_map():
+    """네이버 스포츠 해외야구 API를 통해 실시간 네이버 경기 gameId 매핑 조회"""
+    naver_map = {}
+    try:
+        now = datetime.now()
+        from_date = (now - timedelta(days=2)).strftime("%Y-%m-%d")
+        to_date = (now + timedelta(days=2)).strftime("%Y-%m-%d")
+        url = f"https://api-gw.sports.naver.com/schedule/games?fields=basic%2CsuperOrganId&fromDate={from_date}&toDate={to_date}&upperCategoryId=wbaseball&size=100"
+        r = requests.get(url, headers=HEADERS, timeout=5)
+        if r.status_code == 200:
+            games = r.json().get("result", {}).get("games", [])
+            for g in games:
+                g_id = g.get("gameId", "")
+                home = normalize_mlb_team_name(g.get("homeTeamName", ""))
+                away = normalize_mlb_team_name(g.get("awayTeamName", ""))
+                dt = g.get("gameDate", "")
+                if g_id and home and away:
+                    naver_map[(dt, home, away)] = g_id
+                    naver_map[(home, away)] = g_id
+    except Exception as e:
+        print(f"네이버 해외야구 API 매핑 에러: {e}")
+    return naver_map
+
+
 def fetch_mlb_recent_matches():
     """MLB 공식 Stats API에서 최근 경기 결과, 오늘/내일 예정 경기, 실시간 LIVE 경기 조회"""
     try:
         now = datetime.now()
         start_d = (now - timedelta(days=2)).strftime("%Y-%m-%d")
         end_d = (now + timedelta(days=2)).strftime("%Y-%m-%d")
+
+        # 네이버 실시간 문자중계 gameId 매핑 사전 조회
+        naver_map = fetch_naver_wbaseball_map()
 
         url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate={start_d}&endDate={end_d}&hydrate=linescore,decisions,team,probablePitcher"
         r = requests.get(url, headers=HEADERS, timeout=6)
@@ -327,16 +379,54 @@ def fetch_mlb_recent_matches():
                 if away_prob or home_prob:
                     starter_note = f"선발: {away_prob or '미정'} vs {home_prob or '미정'}"
 
+                # 시간 표시 (UTC -> KST 한국 시간 완벽 변환)
+                raw_datetime = g.get("gameDate", "")
+                kst_dt = None
+                if raw_datetime:
+                    try:
+                        if raw_datetime.endswith("Z"):
+                            utc_dt = datetime.strptime(raw_datetime, "%Y-%m-%dT%H:%M:%SZ")
+                        else:
+                            utc_dt = datetime.fromisoformat(raw_datetime.replace('Z', '+00:00')).replace(tzinfo=None)
+                        kst_dt = utc_dt + timedelta(hours=9)
+                    except Exception:
+                        try:
+                            utc_dt = datetime.strptime(raw_datetime[:16], "%Y-%m-%dT%H:%M")
+                            kst_dt = utc_dt + timedelta(hours=9)
+                        except Exception:
+                            pass
+
+                if kst_dt:
+                    weekdays = ["월", "화", "수", "목", "금", "토", "일"]
+                    date_display = f"{kst_dt.strftime('%m.%d')}({weekdays[kst_dt.weekday()]})"
+                    time_str = kst_dt.strftime("%H:%M")
+                    raw_date = kst_dt.strftime("%Y-%m-%d")
+                else:
+                    date_display = raw_datetime[:10]
+                    time_str = raw_datetime[11:16] if len(raw_datetime) >= 16 else ""
+                    raw_date = raw_datetime[:10]
+
                 # 이닝 / 상태 정보
                 linescore = g.get("linescore", {})
                 curr_inning = linescore.get("currentInningOrdinal", "")
                 inning_half = linescore.get("inningHalf", "")
                 
-                is_live = state == "Live" or "In Progress" in detailed_state
-                is_finished = state == "Final" or "Final" in detailed_state or "Game Over" in detailed_state
-                is_upcoming = not is_live and not is_finished
+                is_cancelled = "postpon" in detailed_state.lower() or "cancel" in detailed_state.lower() or "suspended" in detailed_state.lower()
+                is_finished = not is_cancelled and (state == "Final" or "final" in detailed_state.lower() or "game over" in detailed_state.lower())
+                is_live = not is_cancelled and not is_finished and (state == "Live" or "in progress" in detailed_state.lower() or "warmup" in detailed_state.lower())
 
-                if is_live:
+                # 방어 로직: 경기 시작(KST) 후 5.5시간 이상 경과한 경기는 종료로 안전 전환
+                if is_live and kst_dt:
+                    if (now - kst_dt).total_seconds() > 5.5 * 3600:
+                        is_live = False
+                        is_finished = True
+
+                is_upcoming = not is_live and not is_finished and not is_cancelled
+
+                if is_cancelled:
+                    status_label = "취소"
+                    status_info = detailed_state or "경기취소"
+                elif is_live:
                     status_label = "LIVE"
                     half_kr = "초" if inning_half.lower() == "top" else ("말" if inning_half.lower() == "bottom" else "")
                     status_info = f"{curr_inning} {half_kr}".strip() or "진행중"
@@ -345,18 +435,20 @@ def fetch_mlb_recent_matches():
                     status_info = "종료"
                 else:
                     status_label = "예정"
-                    status_info = "예정"
+                    status_info = f"예정 ({time_str})" if time_str else "예정"
 
-                # 시간 표시
-                game_datetime = g.get("gameDate", "")
-                time_str = ""
-                if len(game_datetime) >= 16:
-                    time_str = game_datetime[11:16]
+                h_norm = normalize_mlb_team_name(home_name)
+                a_norm = normalize_mlb_team_name(away_name)
+                naver_game_id = naver_map.get((raw_date, h_norm, a_norm)) or naver_map.get((h_norm, a_norm)) or ""
 
                 matches.append({
-                    "game_id": str(game_pk),
+                    "game_id": naver_game_id or str(game_pk),
+                    "naver_game_id": naver_game_id,
                     "game_pk": game_pk,
-                    "date": game_datetime[:10],
+                    "naver_relay_url": f"https://m.sports.naver.com/game/{naver_game_id}/relay" if naver_game_id else "https://m.sports.naver.com/wbaseball/schedule/index",
+                    "gameday_url": f"https://www.mlb.com/gameday/{game_pk}",
+                    "date": date_display,
+                    "raw_date": raw_date,
                     "time": time_str,
                     "status": status_label,
                     "status_info": status_info,
@@ -385,11 +477,11 @@ def fetch_mlb_recent_matches():
                     "is_finished": is_finished
                 })
 
-        live_games = [m for m in matches if m["is_live"]]
-        upcoming_games = [m for m in matches if m["is_upcoming"]]
-        finished_games = sorted([m for m in matches if m["is_finished"]], key=lambda x: x["date"], reverse=True)
+        live_games = sorted([m for m in matches if m["is_live"]], key=lambda x: (x.get("raw_date", ""), x.get("time", "")))
+        upcoming_games = sorted([m for m in matches if m["is_upcoming"]], key=lambda x: (x.get("raw_date", ""), x.get("time", "")))
+        finished_games = sorted([m for m in matches if m["is_finished"]], key=lambda x: (x.get("raw_date", ""), x.get("time", "")), reverse=True)
 
-        return live_games + upcoming_games[:4] + finished_games[:10]
+        return live_games + upcoming_games[:8] + finished_games[:10]
     except Exception as e:
         print(f"MLB 최근 경기 조회 실패: {e}")
         return []
@@ -482,46 +574,105 @@ def fetch_mlb_highlights(recent_matches=None):
 
 
 def get_mlb_data(force_refresh=False):
-    """MLB 전체 데이터 조회 및 캐싱"""
-    if not force_refresh and os.path.exists(CACHE_FILE):
+    """
+    MLB 전체 데이터 조회 및 캐싱
+    - 전체 크롤링(순위, 하이라이트 등): 30분 TTL 캐싱
+    - 경기 일정/LIVE 스코어(recent_matches): LIVE 경기 시 25초, 일반 시 2분 주기로 동적 갱신
+    - 페이지 새로고침 시 LIVE 경기의 최신 이닝/스코어/종료 여부를 즉시 반영
+    """
+    cached_data = None
+    cache_valid = False
+    now = datetime.now()
+
+    if os.path.exists(CACHE_FILE):
         try:
             with open(CACHE_FILE, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            # 캐시 데이터가 유효하면 즉시 반환 (무료 서버 리소스 절약을 위해 자동 크롤링 방지)
-            if "recent_matches" in data and "highlights" in data:
-                return data
+                cached_data = json.load(f)
+            if "recent_matches" in cached_data and "highlights" in cached_data:
+                cache_valid = True
         except Exception as e:
             print(f"MLB 캐시 로드 에러: {e}")
 
-    try:
-        divisions, all_teams = fetch_mlb_standings()
-        hitters, pitchers = fetch_mlb_leaders()
-        hub = build_mlb_team_hub(all_teams, hitters, pitchers)
-        recent_matches = fetch_mlb_recent_matches()
-        highlights = fetch_mlb_highlights(recent_matches)
+    # 1. 전체 데이터 갱신 필요 여부 판단 (기본 30분 TTL)
+    need_full_refresh = force_refresh or not cache_valid
+    if cache_valid and not need_full_refresh:
+        updated_at_str = cached_data.get("updated_at")
+        if updated_at_str:
+            try:
+                updated_time = datetime.strptime(updated_at_str, "%Y-%m-%d %H:%M:%S")
+                if (now - updated_time).total_seconds() > 1800:
+                    need_full_refresh = True
+            except Exception:
+                pass
 
-        now = datetime.now()
-        data = {
-            "sports": "mlb",
-            "title": "MLB 메이저리그 (Major League Baseball)",
-            "updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
-            "updated_at_iso": now.isoformat(),
-            "divisions": divisions,
-            "all_teams": all_teams,
-            "hitters": hitters,
-            "pitchers": pitchers,
-            "team_hub": hub,
-            "recent_matches": recent_matches,
-            "highlights": highlights
-        }
+    if need_full_refresh:
+        try:
+            divisions, all_teams = fetch_mlb_standings()
+            hitters, pitchers = fetch_mlb_leaders()
+            hub = build_mlb_team_hub(all_teams, hitters, pitchers)
+            recent_matches = fetch_mlb_recent_matches()
+            highlights = fetch_mlb_highlights(recent_matches)
 
-        with open(CACHE_FILE, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
+            data = {
+                "sports": "mlb",
+                "title": "MLB 메이저리그 (Major League Baseball)",
+                "updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "updated_at_iso": now.isoformat(),
+                "matches_updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "divisions": divisions,
+                "all_teams": all_teams,
+                "hitters": hitters,
+                "pitchers": pitchers,
+                "team_hub": hub,
+                "recent_matches": recent_matches,
+                "highlights": highlights
+            }
 
-        return data
-    except Exception as e:
-        print(f"MLB 수집 에러: {e}")
-        if os.path.exists(CACHE_FILE):
-            with open(CACHE_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
-        raise e
+            with open(CACHE_FILE, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+
+            return data
+        except Exception as e:
+            print(f"MLB 수집 에러: {e}")
+            if cached_data:
+                return cached_data
+            raise e
+
+    # 2. 캐시가 유효한 경우: 경기 결과 및 LIVE 스코어의 동적 갱신 여부 확인!
+    has_live = any(m.get("is_live") for m in cached_data.get("recent_matches", []))
+    matches_updated_at = cached_data.get("matches_updated_at")
+    need_matches_refresh = False
+
+    if has_live:
+        if not matches_updated_at:
+            need_matches_refresh = True
+        else:
+            try:
+                m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
+                if (now - m_time).total_seconds() >= 25:
+                    need_matches_refresh = True
+            except Exception:
+                need_matches_refresh = True
+    else:
+        if not matches_updated_at:
+            need_matches_refresh = True
+        else:
+            try:
+                m_time = datetime.strptime(matches_updated_at, "%Y-%m-%d %H:%M:%S")
+                if (now - m_time).total_seconds() >= 120:
+                    need_matches_refresh = True
+            except Exception:
+                need_matches_refresh = True
+
+    if need_matches_refresh:
+        try:
+            new_matches = fetch_mlb_recent_matches()
+            if new_matches:
+                cached_data["recent_matches"] = new_matches
+                cached_data["matches_updated_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
+                with open(CACHE_FILE, "w", encoding="utf-8") as f:
+                    json.dump(cached_data, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"MLB 경기 동적 갱신 에러: {e}")
+
+    return cached_data
