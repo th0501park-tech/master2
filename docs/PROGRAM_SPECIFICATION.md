@@ -1,6 +1,6 @@
 # 🏆 SPORTS HUB - 프로그램 명세서 및 시스템 설계서
 
-> **버전**: v2.3.0  
+> **버전**: v2.4.0  
 > **작성일**: 2026-09-20  
 > **저장소**: [https://github.com/th0501park-tech/master2](https://github.com/th0501park-tech/master2)  
 > **산출물 파일**:
@@ -149,6 +149,8 @@ sequenceDiagram
 
 | 버전 | 일자 | 구분 | 대상 모듈 | 주요 수정 및 보완 내용 | 개선 효과 및 비고 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| **v2.4.0** | 2026-09-20 | 긴급 버그수정 | `mlb_service.py`<br>`kbo_service.py`<br>`kleague_service.py`<br>`overseas_soccer_service.py` | **서버 타임존(Render UTC vs 로컬 KST) 불일치 캐시 프리징 해결 및 KST 표준화**<br>- `get_now_kst()` 공통 표준화로 호스팅 서버 타임존과 무관하게 한국 표준시 일치<br>- 캐시 타임스탬프 만료 검사 시 음수(`diff < 0`) 즉시 무효화 안전장치 탑재<br>- 커밋된 미래 타임스탬프 파일로 인해 서버 캐시가 갱신되지 않고 멈추던 버그 원천 해결 | Render 클라우드 배포 후 경기 스코어/상태가 수 시간 동안 멈추던 버그 완전 해결 |
+| **v2.4.0** | 2026-09-20 | 기능 고도화 | `mlb_service.py`<br>`main.js` | **MLB 실시간 LIVE 경기 판정 정밀화 및 투수/타자 실시간 연동**<br>- MLB API `statusCode`(`O`, `F`, `CR`, `FR`) 및 `detailedState`(`Game Over`) 즉시 종료 처리<br>- 실시간 LIVE 이닝 포맷 한국어 정밀 매핑 (`8회초 1아웃`, `8회말` 등)<br>- 공식 linescore에서 현재 마운드 투수(`current_pitcher`) 및 타석 타자(`current_batter`) 실시간 추출하여 카드에 표출<br>- 종료 경기 노출 25개, 예정 경기 16개로 확대하여 당일 전 경기 및 내일 일정 완벽 커버<br>- LIVE 경기 25초, 비경기 시간대 90초 백그라운드 스마트 자동 폴링 적용 | 끝난 경기가 LIVE로 남는 현상 방지, 실시간 투수 vs 타자 매치업 카드 시각화, 당일 전 경기 스코어 열람 |
 | **v2.3.0** | 2026-09-20 | 기능 개선 | `kbo_service.py`<br>`kleague_service.py`<br>`mlb_service.py`<br>`overseas_soccer_service.py` | **스마트 캐시 갱신 구조 도입 및 LIVE 경기 안전 판별 강화**<br>- 무거운 전체 크롤링은 TTL 캐시 유지하되, 라이브 경기 발생 시 25초 주기 실시간 fetch<br>- 경기 시작(KST) 기준 야구 5.5시간, 축구 3.5시간 초과 시 안전 종료 처리<br>- 클라이언트 30초 자동 폴링(`startLivePolling`) 지원 | 종료된 경기가 LIVE로 남아있던 버그 해결 및 실시간 새로고침 속도/정확도 개선 |
 | **v2.3.0** | 2026-09-20 | 기능 개선 | `mlb_service.py`<br>`index.html` | **MLB 한국 표준시(KST) 변환 & 팀 식별자 및 네이버 연동 정상화**<br>- UTC 시간의 KST 9시간 자동 변환(`%m.%d(요일) HH:MM`) 표기<br>- 30개 구단 공식 Stats API ID 오타 전면 수정 및 구단명 정규화<br>- 네이버 해외야구(`wbaseball`) API 매핑(`fetch_naver_wbaseball_map`)으로 공식 gameId 확보 | MLB 경기 시간 가독성 향상 및 네이버 실시간 중계 gameId 완벽 매핑 |
 | **v2.3.0** | 2026-09-20 | UI/UX 개선 | `main.js`<br>`index.html` | **실시간 중계 모달(`live-relay-modal`) UX 단독 팝업화 & 바로가기 강화**<br>- [실시간 중계확인] 클릭 시 새 창 동시 실행을 제거하고 **단독 팝업(모달)으로만** 깔끔하게 표출<br>- 팝업 상단에 초록색 [네이버 새 창 보기], 파란색 [MLB 3D게임데이] 바로가기 액션 버튼 배치<br>- 브라우저 iframe 보안 정책에 의한 로딩 멈춤 방지(1.5초 자동 페이드아웃) | 팝업/새 창 이중 실행 혼란 해결 및 편의성 극대화 |

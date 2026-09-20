@@ -44,7 +44,7 @@ def apply_sheet_styling(ws, title_text, col_widths, headers, data_rows, status_c
     # 2. 부제목 / 설명
     ws.merge_cells("A2:G2" if len(headers) >= 7 else f"A2:{get_column_letter(len(headers))}2")
     sub_cell = ws["A2"]
-    sub_cell.value = f"프로젝트: SPORTS HUB (실시간 스포츠 종합 대시보드)  |  작성일자: 2026-09-20  |  버전: v2.3.0"
+    sub_cell.value = f"프로젝트: SPORTS HUB (실시간 스포츠 종합 대시보드)  |  작성일자: 2026-09-20  |  버전: v2.4.0"
     sub_cell.font = SUBTITLE_FONT
     sub_cell.alignment = Alignment(horizontal="left", vertical="center")
     ws.row_dimensions[2].height = 20
@@ -114,15 +114,15 @@ ws1.row_dimensions[2].height = 50
 overview_items = [
     ("프로젝트명", "SPORTS HUB - 실시간 스포츠 종합 순위 & 기록 대시보드"),
     ("시스템 정의", "KBO 한국프로야구, K리그(1·2), 해외축구 5대리그, MLB 메이저리그 4대 스포츠의 실시간 스코어, 순위, 선수 기록, 공식 하이라이트 영상 및 네이버스포츠 실시간 문자중계를 단일 웹 허브에서 통합 제공하는 올인원 대시보드"),
-    ("시스템 버전", "v2.3.0 (2026.09.20 업데이트)"),
+    ("시스템 버전", "v2.4.0 (2026.09.20 업데이트)"),
     ("작성 일자", "2026년 09월 20일"),
     ("주요 대상 종목", "1) KBO 프로야구  2) K리그 1 / K리그 2  3) 해외축구 (EPL, 라리가, 분데스리가, UCL, UEL)  4) MLB 메이저리그"),
     ("아키텍처 구조", "FastAPI 비동기 웹 프레임워크 기반 SSR(Jinja2) + Vanilla JS 클라이언트 Hydration + 파일 기반 캐싱 레이어"),
     ("백엔드 기술 스택", "Python 3.14, FastAPI 0.115+, Uvicorn(ASGI), Jinja2 템플릿 엔진, Requests, BeautifulSoup4, LXML"),
     ("프론트엔드 기술 스택", "TailwindCSS (CDN 기반 모던 스타일링), FontAwesome 6, Vanilla JavaScript (ES6+), YouTube Embed API, Iframe Modal"),
     ("데이터 연동 소스", "네이버 스포츠 KBO/K리그/해외야구 API, K리그 공식 데이터 포털, MLB Stats API, ESPN Soccer Scoreboard API, Goal.com"),
-    ("캐싱 및 성능 최적화", "스마트 캐시 갱신(LIVE 시 25초 주기 실시간 fetch + 안전 종료 방어 로직), 파일 기반 로컬 캐시(TTL 30분), Facade 지연 로딩"),
-    ("최근 주요 개선사항", "1) 스마트 캐시 도입: LIVE 경기 시 페이지 새로고침 시 즉시 실시간 fetch 동기화 & 야구 5.5h/축구 3.5h 안전 종료 로직으로 LIVE 오류 완벽 해결\n2) MLB 한국시간(KST, UTC+9) 자동 변환 및 30개 구단 ID 오타 수정, 네이버 wbaseball gameId 사전 연동\n3) 실시간 중계 모달 UX 단독 팝업화: 외부 새 창 동시 실행 제거 -> 단독 내부 팝업으로 깔끔하게 표출 및 [네이버 새 창 보기], [MLB 3D게임데이] 액션 버튼 제공\n4) 브라우저 콘솔 오류 3종(iframe onload ReferenceError, ESPN artwork 401, Tailwind CDN 경고) 완전 제거"),
+    ("캐싱 및 성능 최적화", "서버 타임존(UTC/KST) 무결성 표준화(get_now_kst) 및 diff<0 무효화 안전장치, 스마트 캐시 갱신(LIVE 시 25초 주기 실시간 fetch), 파일 캐시, Facade 지연 로딩"),
+    ("최근 주요 개선사항", "1) 서버 타임존(Render UTC vs 로컬 KST) 불일치 캐시 프리징 버그 완전 해결(get_now_kst 표준화 및 음수 diff 즉시 갱신 가드 탑재)\n2) MLB 실시간 LIVE 판정 정밀화: statusCode(O, F, CR, FR) 및 Game Over 즉시 종료 처리로 끝난 경기 고정 현상 원천 해결\n3) 공식 linescore 기반 현재 마운드 투수(current_pitcher) 및 타석 타자(current_batter) 실시간 매치업 표출 & 이닝 한국어 포맷팅(8회초 1아웃)\n4) 당일 전 경기 커버(종료 경기 25개, 예정 경기 16개 확대) 및 LIVE 경기 25초/비경기 90초 스마트 자동 백그라운드 폴링\n5) 실시간 중계 모달(live-relay-modal) 단독 팝업화 & 네이버 새 창 / MLB 3D게임데이 바로가기 버튼 제공\n6) F12 브라우저 개발자도구 콘솔 오류 3종(iframe onload, ESPN artwork 401, Tailwind 경고) 0(Zero) 무결성 확보"),
     ("운영 및 배포 환경", "로컬(Uvicorn 로컬 호스트 8000번 포트), 클라우드 PaaS(Render.com Procfile / render.yaml 사전 구성)"),
     ("저장소 (Git)", "https://github.com/th0501park-tech/master2.git (main branch)")
 ]
@@ -269,13 +269,15 @@ ws7 = wb.create_sheet(title="07_수정및보완이력")
 change_headers = ["NO", "버전", "일자", "구분", "대상 모듈 / 파일", "주요 수정 및 보완 내용", "개선 효과 및 해결 상세"]
 change_widths = [6, 12, 14, 14, 32, 50, 40]
 change_data = [
-    (1, "v2.3.0", "2026-09-20", "기능 개선", "kbo_service.py\nkleague_service.py\nmlb_service.py\noverseas_soccer_service.py", "스마트 캐시 갱신 구조 도입 및 LIVE 경기 안전 판별 강화:\n- 30분 TTL 캐시 유지 + 라이브 경기 시 25초 주기 실시간 fetch\n- 경기 시작(KST) 기준 안전 종료(야구 5.5h, 축구 3.5h 초과 시 자동 종료) 방어\n- 프론트엔드 30초 무중단 자동 폴링(startLivePolling)", "종료된 경기가 LIVE로 남아있던 버그 완전 해결, 새로고침 시 실시간 최신 스코어/이닝 즉시 동기화"),
-    (2, "v2.3.0", "2026-09-20", "기능 개선", "app/services/mlb_service.py\napp/templates/index.html", "MLB 한국 표준시(KST) 변환 & 팀 ID / 네이버 연동 정상화:\n- UTC 시간의 KST 9시간 자동 변환(%m.%d HH:MM) 및 헤더 뱃지 표기\n- MLB 30개 구단 공식 Stats API 팀 식별자 오타 전면 수정\n- 네이버 해외야구(wbaseball) API 매핑(fetch_naver_wbaseball_map)으로 공식 gameId 확보", "경기 시간 가독성 100% 개선 및 네이버 실시간 문자중계 gameId 100% 매핑 연동"),
-    (3, "v2.3.0", "2026-09-20", "UI/UX 개선", "app/static/js/main.js\napp/templates/index.html", "실시간 중계 모달(live-relay-modal) UX 단독 팝업화 & 바로가기 강화:\n- [실시간 중계확인] 클릭 시 새 창 동시 실행 제거 -> 단독 내부 팝업으로 깔끔하게 표출\n- 팝업 상단에 초록색 [네이버 새 창 보기], 파란색 [MLB 3D게임데이] 바로가기 액션 버튼 제공\n- 브라우저 iframe 보안 정책으로 인한 멈춤 방어(1.5초 자동 페이드아웃)", "새 창/팝업 이중 실행 혼란 제거, 사용자가 원하는 팝업 내 쾌적한 중계 감상"),
-    (4, "v2.3.0", "2026-09-20", "버그 수정", "app/templates/index.html\napp/templates/base.html\noverseas_soccer_service.py", "브라우저 개발자도구 콘솔 오류 3종 완전 제거:\n1) iframe 인라인 onload 제거 및 상단 방어 선언으로 onRelayIframeLoaded is not defined 해결\n2) 해외축구 비디오 썸네일에서 비공개 artwork.api.espn.com 필터링 및 공개 CDN/고화질 이미지 매핑으로 401 해결\n3) Tailwind CDN 프로덕션 경고 필터링 적용\n4) main.js?v=... 스크립트 캐시 버스팅 적용", "F12 개발자도구 콘솔 오류 0(Zero) 무결성 확보"),
-    (5, "v2.2.0", "2026-09-19", "기능 추가", "app/templates/index.html\napp/static/js/main.js", "네이버스포츠 실시간 문자중계 모달(live-relay-modal) 최초 구현:\n- LIVE 경기 카드에 [실시간 중계확인] 버튼 노출 및 인라인 모달 연동", "페이지 이탈 없는 실시간 문자중계 확인 환경 제공"),
-    (6, "v2.1.0", "2026-09-19", "UI 개선", "app/templates/index.html\napp/static/css/style.css", "상단 경기결과 / 하단 영상 레이아웃 개편 및 상태 필터 칩 고도화", "스코어보드 시인성 향상 및 한눈에 들어오는 경기 요약"),
-    (7, "v2.0.0", "2026-09-19", "아키텍처", "전체 프로젝트", "4대 스포츠(KBO, K리그, 해외축구, MLB) 통합 올인원 대시보드 시스템 구축", "종목별 분산 정보를 하나의 웹 허브로 통합")
+    (1, "v2.4.0", "2026-09-20", "긴급 버그수정", "mlb_service.py\nkbo_service.py\nkleague_service.py\noverseas_soccer_service.py", "서버 타임존(Render UTC vs 로컬 KST) 불일치 캐시 프리징 해결 및 KST 표준화:\n- get_now_kst() 공통 표준화로 호스팅 서버 타임존과 무관하게 한국 표준시 일치\n- 캐시 타임스탬프 만료 검사 시 음수(diff < 0) 즉시 무효화 안전장치 탑재\n- 커밋된 미래 타임스탬프 파일로 인해 서버 캐시가 갱신되지 않고 멈추던 버그 원천 해결", "Render 클라우드 배포 후 경기 스코어/상태가 수 시간 동안 멈추던 버그 완전 해결"),
+    (2, "v2.4.0", "2026-09-20", "기능 고도화", "app/services/mlb_service.py\napp/static/js/main.js", "MLB 실시간 LIVE 경기 판정 정밀화 및 투수/타자 실시간 연동:\n- MLB API statusCode('O', 'F', 'CR', 'FR') 및 detailedState('Game Over') 즉시 종료 처리\n- 실시간 LIVE 이닝 포맷 한국어 정밀 매핑 (8회초 1아웃, 8회말 등)\n- 공식 linescore에서 현재 마운드 투수(current_pitcher) 및 타석 타자(current_batter) 실시간 추출하여 카드에 표출\n- 종료 경기 노출 25개, 예정 경기 16개로 확대하여 당일 전 경기 및 내일 일정 완벽 커버\n- LIVE 경기 25초, 비경기 시간대 90초 백그라운드 스마트 자동 폴링 적용", "끝난 경기가 LIVE로 남는 현상 방지, 실시간 투수 vs 타자 매치업 카드 시각화, 당일 전 경기 스코어 열람"),
+    (3, "v2.3.0", "2026-09-20", "기능 개선", "kbo_service.py\nkleague_service.py\nmlb_service.py\noverseas_soccer_service.py", "스마트 캐시 갱신 구조 도입 및 LIVE 경기 안전 판별 강화:\n- 30분 TTL 캐시 유지 + 라이브 경기 시 25초 주기 실시간 fetch\n- 경기 시작(KST) 기준 안전 종료(야구 5.5h, 축구 3.5h 초과 시 자동 종료) 방어\n- 프론트엔드 30초 무중단 자동 폴링(startLivePolling)", "종료된 경기가 LIVE로 남아있던 버그 완전 해결, 새로고침 시 실시간 최신 스코어/이닝 즉시 동기화"),
+    (4, "v2.3.0", "2026-09-20", "기능 개선", "app/services/mlb_service.py\napp/templates/index.html", "MLB 한국 표준시(KST) 변환 & 팀 ID / 네이버 연동 정상화:\n- UTC 시간의 KST 9시간 자동 변환(%m.%d HH:MM) 및 헤더 뱃지 표기\n- MLB 30개 구단 공식 Stats API 팀 식별자 오타 전면 수정\n- 네이버 해외야구(wbaseball) API 매핑(fetch_naver_wbaseball_map)으로 공식 gameId 확보", "경기 시간 가독성 100% 개선 및 네이버 실시간 문자중계 gameId 100% 매핑 연동"),
+    (5, "v2.3.0", "2026-09-20", "UI/UX 개선", "app/static/js/main.js\napp/templates/index.html", "실시간 중계 모달(live-relay-modal) UX 단독 팝업화 & 바로가기 강화:\n- [실시간 중계확인] 클릭 시 새 창 동시 실행 제거 -> 단독 내부 팝업으로 깔끔하게 표출\n- 팝업 상단에 초록색 [네이버 새 창 보기], 파란색 [MLB 3D게임데이] 바로가기 액션 버튼 제공\n- 브라우저 iframe 보안 정책으로 인한 멈춤 방어(1.5초 자동 페이드아웃)", "새 창/팝업 이중 실행 혼란 제거, 사용자가 원하는 팝업 내 쾌적한 중계 감상"),
+    (6, "v2.3.0", "2026-09-20", "버그 수정", "app/templates/index.html\napp/templates/base.html\noverseas_soccer_service.py", "브라우저 개발자도구 콘솔 오류 3종 완전 제거:\n1) iframe 인라인 onload 제거 및 상단 방어 선언으로 onRelayIframeLoaded is not defined 해결\n2) 해외축구 비디오 썸네일에서 비공개 artwork.api.espn.com 필터링 및 공개 CDN/고화질 이미지 매핑으로 401 해결\n3) Tailwind CDN 프로덕션 경고 필터링 적용\n4) main.js?v=... 스크립트 캐시 버스팅 적용", "F12 개발자도구 콘솔 오류 0(Zero) 무결성 확보"),
+    (7, "v2.2.0", "2026-09-19", "기능 추가", "app/templates/index.html\napp/static/js/main.js", "네이버스포츠 실시간 문자중계 모달(live-relay-modal) 최초 구현:\n- LIVE 경기 카드에 [실시간 중계확인] 버튼 노출 및 인라인 모달 연동", "페이지 이탈 없는 실시간 문자중계 확인 환경 제공"),
+    (8, "v2.1.0", "2026-09-19", "UI 개선", "app/templates/index.html\napp/static/css/style.css", "상단 경기결과 / 하단 영상 레이아웃 개편 및 상태 필터 칩 고도화", "스코어보드 시인성 향상 및 한눈에 들어오는 경기 요약"),
+    (9, "v2.0.0", "2026-09-19", "아키텍처", "전체 프로젝트", "4대 스포츠(KBO, K리그, 해외축구, MLB) 통합 올인원 대시보드 시스템 구축", "종목별 분산 정보를 하나의 웹 허브로 통합")
 ]
 apply_sheet_styling(ws7, "시스템 수정 및 보완 이력 (System Changelog)", change_widths, change_headers, change_data)
 

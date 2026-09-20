@@ -152,7 +152,7 @@ p_meta2.font.color.rgb = RGBColor(148, 163, 184)
 p_meta2.space_before = Pt(4)
 
 p_meta3 = tf_meta.add_paragraph()
-p_meta3.text = "• 작성 버전: v2.3.0 (스마트 캐시 & LIVE 안전 판정 & 중계 모달 고도화)  |  작성일: 2026-09-20"
+p_meta3.text = "• 작성 버전: v2.4.0 (서버 타임존 캐시 동기화 & 실시간 매치업 고도화)  |  작성일: 2026-09-20"
 p_meta3.font.name = "Malgun Gothic"
 p_meta3.font.size = Pt(11)
 p_meta3.font.color.rgb = RGBColor(148, 163, 184)

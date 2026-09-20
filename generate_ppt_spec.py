@@ -68,7 +68,7 @@ def create_base_slide(title_text, category_text="SPORTS HUB SYSTEM ARCHITECTURE"
     footer_box = slide.shapes.add_textbox(Inches(0.8), Inches(7.05), Inches(11.7), Inches(0.3))
     ft_tf = footer_box.text_frame
     p_ft = ft_tf.paragraphs[0]
-    p_ft.text = "SPORTS HUB v2.3.0  |  실시간 스포츠 종합 대시보드 시스템 명세서  |  Confidential"
+    p_ft.text = "SPORTS HUB v2.4.0  |  실시간 스포츠 종합 대시보드 시스템 명세서  |  Confidential"
     p_ft.font.name = "Malgun Gothic"
     p_ft.font.size = Pt(9)
     p_ft.font.color.rgb = COLOR_TEXT_MUTED
@@ -147,7 +147,7 @@ p_meta2.font.color.rgb = RGBColor(148, 163, 184)
 p_meta2.space_before = Pt(4)
 
 p_meta3 = tf_meta.add_paragraph()
-p_meta3.text = "• 문서 버전: v2.3.0  |  작성일: 2026-09-20  |  저장소: https://github.com/th0501park-tech/master2"
+p_meta3.text = "• 문서 버전: v2.4.0  |  작성일: 2026-09-20  |  저장소: https://github.com/th0501park-tech/master2"
 p_meta3.font.name = "Malgun Gothic"
 p_meta3.font.size = Pt(11)
 p_meta3.font.color.rgb = RGBColor(148, 163, 184)
@@ -519,28 +519,69 @@ for idx, (otitle, odesc) in enumerate(ops_cards):
  
  
 # ==============================================================================
-# Slide 9: 시스템 수정 및 보완 이력 (v2.3.0 Changelog)
+# Slide 9: 최근 시스템 수정 및 보완 이력 (v2.4.0 Changelog)
 # ==============================================================================
-s9 = create_base_slide("최근 시스템 수정 및 안정화 보완 이력", "08. SYSTEM CHANGELOG (v2.3.0)")
+s9 = create_base_slide("최근 시스템 수정 및 안정화 보완 이력 (v2.4.0)", "08. SYSTEM CHANGELOG (v2.4.0)")
 
-changelog_cards = [
-    ("⚡ 스마트 캐시 갱신 & LIVE 안전 판별", 
-     "• 배경: 종료된 어제 경기가 LIVE 상태로 고정 노출되는 현상 해결\n• 조치:\n   - 30분 TTL 캐시 유지 + LIVE 경기 시 25초 주기 실시간 fetch\n   - 경기 시작(KST) 기준 야구 5.5시간, 축구 3.5시간 초과 시 안전 종료 전환\n   - 프론트엔드 30초 무중단 자동 백그라운드 폴링(startLivePolling) 도입\n• 효과: 스코어보드 실시간 동기화 정확도 100% 확보"),
-    ("🧢 MLB 한국시간(KST) 및 네이버 연동 정상화", 
-     "• 배경: MLB 현지 UTC 시간 표기로 인한 가독성 저하 및 중계 링크 불일치\n• 조치:\n   - UTC 시간의 KST 9시간 자동 변환(%m.%d 요일 HH:MM) 및 뱃지 표기\n   - MLB 30개 구단 공식 Stats API 팀 식별자(ID) 오타 전면 수정\n   - 네이버 해외야구(wbaseball) API 사전 매핑으로 공식 gameId 100% 확보\n• 효과: MLB 경기 시간 직관성 개선 및 네이버 공식 중계 매핑"),
-    ("🖥️ 실시간 중계 모달 UX 단독 팝업화", 
-     "• 배경: [실시간 중계확인] 클릭 시 새 창과 팝업이 동시 실행되는 혼란 해소\n• 조치:\n   - 자동 window.open 제거 -> 웹페이지 내부의 깔끔한 단독 팝업으로 표출\n   - 팝업 상단에 초록색 [네이버 새 창 보기], 파란색 [MLB 3D게임데이] 버튼 배치\n   - 브라우저 iframe 보안 정책으로 인한 멈춤 방어(1.5초 자동 페이드아웃)\n• 효과: 사용자 요구에 맞춘 단독 팝업 감상 및 고화질 3D게임데이 지원"),
-    ("🛡️ 브라우저 콘솔 오류 3종 완전 무결성", 
-     "• 배경: F12 개발자도구 콘솔에 노출되던 3가지 오류 및 경고 완벽 제거\n• 조치:\n   1. iframe 인라인 onload 제거 & 사전 방어로 onRelayIframeLoaded 오류 해결\n   2. 해외축구 썸네일 비공개 artwork.api.espn.com 필터링으로 401 해결\n   3. Tailwind CSS CDN 프로덕션 안내 콘솔 경고 필터링 적용\n   4. main.js?v=... 스크립트 캐시 버스팅 파라미터 적용\n• 효과: 브라우저 콘솔 에러 0(Zero) 무결성 달성")
+changelog_cards_v24 = [
+    ("🌐 서버 타임존 무결성 & 캐시 프리징 해결", 
+     "• 배경: Render 클라우드(UTC)와 로컬(KST) 간 9시간 시차로 음수 diff 발생 -> 캐시 갱신 최대 9시간 동결 버그\n• 조치:\n   - get_now_kst() 표준화로 서버 OS 타임존과 무관하게 한국 표준시(UTC+9) 일치\n   - diff > TTL or diff < 0 무효화 안전장치 탑재 (음수 즉시 갱신)\n• 효과: 배포 후에도 실시간 스코어/이닝 즉시 갱신 및 캐시 무결성 100% 확보"),
+    ("🧢 MLB 실시간 LIVE 정밀 판정 (Game Over)", 
+     "• 배경: 공식 기록원 최종 승인 전(Game Over)인 경기가 LIVE 상태로 남아있던 현상\n• 조치:\n   - MLB Stats API statusCode('O', 'F', 'CR', 'FR') 및 abstractGameCode('F') 검증\n   - detailedState('Game Over', 'Final') 검증으로 경기 종료 즉시 '종료' 상태 전환\n• 효과: 끝난 경기가 LIVE로 오표기되는 버그 완전 방지 및 정확한 상태 표출"),
+    ("⚾ 실시간 이닝 한국어화 & 투수/타자 매치업", 
+     "• 배경: 기존 영문 약어 이닝 표기 및 실시간 승부 정보(투수/타자) 부재\n• 조치:\n   - 실시간 LIVE 이닝 포맷 한국어 정밀 매핑 ('8회초 1아웃', '8회말' 등)\n   - 공식 linescore에서 현재 마운드 투수(current_pitcher) 및 타석 타자(current_batter) 실시간 추출하여 표출\n• 효과: MLB 경기 진행 상황의 직관적 시각화 및 실시간 긴장감 전달"),
+    ("🔄 당일 전 경기 확대 & 스마트 자동 폴링", 
+     "• 배경: 당일 경기 수가 많을 때 일부 종료 경기가 누락되거나 백그라운드 갱신 부족\n• 조치:\n   - 종료 경기 25개, 예정 경기 16개로 노출 대폭 확대 (당일 15경기 전수 커버)\n   - LIVE 경기 시 25초, 비경기 시간대 90초 스마트 백그라운드 자동 폴링 탑재\n• 효과: 별도 새로고침 없이도 최신 경기 결과를 완전하고 쾌적하게 자동 열람")
 ]
 
-for idx, (ctitle, cdesc) in enumerate(changelog_cards):
+for idx, (ctitle, cdesc) in enumerate(changelog_cards_v24):
     col = idx % 2
     row = idx // 2
     cx = 0.8 + col * 5.9
     cy = 1.7 + row * 2.55
     add_card(s9, cx, cy, 5.6, 2.35)
     tb = s9.shapes.add_textbox(Inches(cx + 0.2), Inches(cy + 0.15), Inches(5.2), Inches(2.05))
+    tf = tb.text_frame
+    tf.word_wrap = True
+
+    p = tf.paragraphs[0]
+    p.text = ctitle
+    p.font.name = "Malgun Gothic"
+    p.font.size = Pt(12)
+    p.font.bold = True
+    p.font.color.rgb = COLOR_PRIMARY_BLUE
+
+    p_d = tf.add_paragraph()
+    p_d.text = cdesc
+    p_d.font.name = "Malgun Gothic"
+    p_d.font.size = Pt(8.5)
+    p_d.font.color.rgb = COLOR_TEXT_MAIN
+    p_d.space_before = Pt(5)
+
+
+# ==============================================================================
+# Slide 10: 누적 시스템 보완 및 릴리즈 이력 (v2.0.0 ~ v2.3.0)
+# ==============================================================================
+s10 = create_base_slide("누적 시스템 보완 및 릴리즈 이력 (v2.0.0 ~ v2.3.0)", "09. HISTORICAL CHANGELOG")
+
+changelog_cards_prev = [
+    ("⚡ v2.3.0 스마트 캐시 갱신 & LIVE 안전 판별", 
+     "• 스마트 캐시: 30분 TTL 캐시 유지 + LIVE 경기 시 25초 주기 실시간 fetch\n• 안전 종료 판정: 경기 시작 기준 야구 5.5시간, 축구 3.5시간 초과 시 자동 종료\n• 실시간 중계 모달 UX 단독 팝업화: 외부 새 창 제거 -> 단독 내부 모달 표출\n• 네이버 새 창 보기 및 MLB 3D게임데이 바로가기 액션 버튼 지원"),
+    ("🧢 v2.3.0 MLB 한국시간(KST) & 콘솔 무결성", 
+     "• MLB 한국시간 자동 변환: UTC 기준 9시간 시차 반영 (%m.%d 요일 HH:MM)\n• MLB 30개 구단 공식 Stats API 팀 식별자(ID) 오타 전면 수정\n• 네이버 해외야구(wbaseball) API 사전 매핑으로 공식 gameId 100% 연동\n• F12 콘솔 무결성: iframe onload, ESPN artwork 401, Tailwind CDN 경고 0(Zero) 달성"),
+    ("🖥️ v2.2.0 네이버 실시간 문자중계 모달 탑재", 
+     "• LIVE 경기 카드에 [⚡ 실시간 중계확인] 버튼 인터랙티브 자동 전환\n• 네이버스포츠 실시간 문자중계 인라인 모달 연동 (볼카운트/투구추적/이닝결과)\n• 페이지 이탈 없이 실시간 중계를 확인하는 원스톱 UX 환경 구축"),
+    ("🏆 v2.0.0 ~ v2.1.0 4대 스포츠 통합 & 레이아웃 개편", 
+     "• 4대 스포츠 올인원 통합: KBO, K리그 1·2, 유럽 축구 5대리그, MLB 메이저리그\n• 상단 경기결과 스코어보드 / 하단 공식 영상 혁신 레이아웃 적용\n• 원클릭 상태 필터 칩 ([전체], [LIVE], [최근 결과], [금주/내일 예정]) 및 마이팀 개인화")
+]
+
+for idx, (ctitle, cdesc) in enumerate(changelog_cards_prev):
+    col = idx % 2
+    row = idx // 2
+    cx = 0.8 + col * 5.9
+    cy = 1.7 + row * 2.55
+    add_card(s10, cx, cy, 5.6, 2.35)
+    tb = s10.shapes.add_textbox(Inches(cx + 0.2), Inches(cy + 0.15), Inches(5.2), Inches(2.05))
     tf = tb.text_frame
     tf.word_wrap = True
 
